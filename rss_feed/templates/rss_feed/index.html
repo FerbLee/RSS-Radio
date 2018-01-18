@@ -1,0 +1,17 @@
+<h1>{{ "RSS Parser" }}</h1>
+
+<form action="{% url 'rss_feed:addLink'%}" method="post">
+{% csrf_token %}
+<label for="rss_link">Add new RSS link</label>
+<input type="text" name="rss_link"/>
+<input type="submit" value="Send" />
+    
+{% if lista_programas %}
+    <ul>
+    {% for programa in lista_programas %}
+        <li><a href="{% url 'rss_feed:detail_programa' programa.id %}">{{ programa.nome }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Non se engadiron programas aínda.</p>
+{% endif %}

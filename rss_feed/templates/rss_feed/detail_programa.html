@@ -1,0 +1,15 @@
+<h1>{{ programa.nome }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p><b>Autor:</b>{{ programa.autor }}</p>
+<p><b>Descrición:</b>{{ programa.descricion }}</p>
+<p><b>RSS:</b><a href={{ programa.rss_link }}>{{ programa.rss_link }}</a></p>
+
+<h3>Episodios:</h3>
+
+<ul>
+{% for episodio in programa.episodio_set.all %}
+    <li><a href="{% url 'rss_feed:detail_episodio' episodio.id %}">{{ episodio.titulo }}</a></li>
+{% endfor %}
+</ul>
