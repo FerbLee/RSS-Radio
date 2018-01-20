@@ -2,15 +2,19 @@ from django.db import models
 from django.utils import timezone
 import datetime
 
-MAX_LENGTH_DESCRIPTIONS = 1000
+ML_DESCRICION = 1000
+ML_NOME = 200
+ML_AUTOR = 200 
+ML_TITULO = 200
+ML_LINKS = 500
 
 # Create your models here.
 class Programa(models.Model):
        
-    nome = models.CharField(max_length=200)
-    autor = models.CharField(max_length=200,null=True)
-    descricion = models.CharField(max_length=MAX_LENGTH_DESCRIPTIONS)
-    rss_link = models.CharField(max_length=200)
+    nome = models.CharField(max_length=ML_NOME)
+    autor = models.CharField(max_length=ML_AUTOR ,null=True)
+    descricion = models.CharField(max_length=ML_DESCRICION)
+    rss_link = models.CharField(max_length=500)
 
     def __str__(self):
         return self.nome
@@ -27,8 +31,8 @@ class Episodio(models.Model):
         return self.titulo
     
     programa = models.ForeignKey(Programa, on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=ML_TITULO)
     #data_publicacion = models.DateTimeField('data publicacion')
-    resumo = models.CharField(max_length=MAX_LENGTH_DESCRIPTIONS)
-    ficheiro = models.CharField(max_length=200)
+    resumo = models.CharField(max_length=ML_DESCRICION)
+    ficheiro = models.CharField(max_length=ML_LINKS)
     

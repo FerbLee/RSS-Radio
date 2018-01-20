@@ -5,7 +5,8 @@ from django.views import generic
 import feedparser
 import time
 from .models import Episodio, Programa
-from .models import MAX_LENGTH_DESCRIPTIONS as mld
+from .models import ML_AUTOR,ML_DESCRICION,ML_TITULO,ML_NOME
+
 
 
 class IndexView(generic.ListView):
@@ -46,7 +47,16 @@ def getLinkToAudio(dict_list):
             pass
         
     return None
-        
+
+def truncate_strings(desc_string,max_len):
+ 
+    if len(desc_string) > max_len:
+        return desc_string[:max_len-2] + '..'
+    
+    return desc_string
+ 
+    
+ 
 
 def addLinkIvoox(link):
     
@@ -56,9 +66,9 @@ def addLinkIvoox(link):
     
     try:
     
-        novo_programa.nome = feed_dict['feed']['title']
-        novo_programa.autor = feed_dict['feed']['author']
-        novo_programa.descricion = feed_dict['feed']['subtitle']
+        novo_programa.nome = truncate_strings(feed_dict['feed']['title'],ML_NOME)
+        novo_programa.autor = truncate_strings(feed_dict['feed']['author'],ML_AUTOR)
+        novo_programa.descricion = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRICION)
         novo_programa.rss_link = link
     
     except KeyError:
@@ -71,18 +81,12 @@ def addLinkIvoox(link):
 
         novo_episodio = Episodio()
         novo_episodio.programa = novo_programa
-                
-        try:
 
-            novo_episodio.titulo = an_entry['title']
-            novo_episodio.resumo = an_entry['summary']
-            #novo_episodio.data_publicacion = iso = time.strftime('%Y-%M-%D %H:%M', an_entry['published_parsed'])
-            novo_episodio.ficheiro = an_entry['link']
-        
-        except KeyError:
-            
-            return False
-        
+        novo_episodio.titulo = truncate_strings(an_entry['title'],ML_TITULO)
+        novo_episodio.resumo = truncate_strings(an_entry['summary'],ML_DESCRICION)
+        #novo_episodio.data_publicacion = iso = time.strftime('%Y-%M-%D %H:%M', an_entry['published_parsed'])
+        novo_episodio.ficheiro = getLinkToAudio(an_entry['links'])
+
         novo_episodio.save()
     
     return True
@@ -96,9 +100,9 @@ def addLinkRadioco(link):
     
     try:
         
-        novo_programa.nome = feed_dict['feed']['title']
+        novo_programa.nome = truncate_strings(feed_dict['feed']['title'],ML_NOME)
         novo_programa.autor = None
-        novo_programa.descricion = (feed_dict['feed']['subtitle'][:mld-2] + '..') if len(feed_dict['feed']['subtitle']) > mld else feed_dict['feed']['subtitle']
+        novo_programa.descricion = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRICION)
         novo_programa.rss_link = link
         
     except KeyError:
@@ -112,20 +116,53 @@ def addLinkRadioco(link):
         novo_episodio = Episodio()
         novo_episodio.programa = novo_programa
         
-        try:
+        novo_episodio.titulo = truncate_strings(an_entry['title'],ML_TITULO)
+        novo_episodio.resumo = truncate_strings(an_entry['summary'],ML_DESCRICION)
+        #novo_episodio.data_publicacion = iso = time.strftime('%Y-%M-%D %H:%M', an_entry['published_parsed'])
+        novo_episodio.ficheiro = getLinkToAudio(an_entry['links'])
         
-            novo_episodio.titulo = an_entry['title']
-            novo_episodio.resumo = (an_entry['summary'][:mld-2] + '..') if len(an_entry['summary']) > mld else an_entry['summary']
-            #novo_episodio.data_publicacion = iso = time.strftime('%Y-%M-%D %H:%M', an_entry['published_parsed'])
-            print (getLinkToAudio(an_entry['links']))
-            novo_episodio.ficheiro = getLinkToAudio(an_entry['links'])
-        
-        except KeyError:
-            
-            return False
         
         novo_episodio.save()
 
+    return True
+
+
+def addLinkPodomatic(link):
+
+    print('Podomatic')
+    feed_dict = feedparser.parse(link.strip())
+    novo_programa = Programa()
+    
+    try:
+    
+        novo_programa.nome = truncate_strings(feed_dict['feed']['title'],ML_NOME)
+        novo_programa.autor = truncate_strings(feed_dict['feed']['author'],ML_AUTOR)
+        novo_programa.descricion = truncate_strings(feed_dict['feed']['summary'],ML_DESCRICION)
+        novo_programa.rss_link = link
+
+    except KeyError:
+        
+        return False
+    
+    novo_programa.save()
+    
+    for an_entry in feed_dict['entries']:
+
+        novo_episodio = Episodio()
+        novo_episodio.programa = novo_programa
+                
+        novo_episodio.titulo = truncate_strings(an_entry['title'],ML_TITULO)
+        
+        try:
+            novo_episodio.resumo = truncate_strings(an_entry['content'][0]['value'],ML_DESCRICION)
+        except IndexError:
+            novo_episodio.resumo = ''
+        #novo_episodio.data_publicacion = iso = time.strftime('%Y-%M-%D %H:%M', an_entry['published_parsed'])
+        novo_episodio.ficheiro = getLinkToAudio(an_entry['links'])
+    
+        
+        novo_episodio.save()
+    
     return True
 
 
@@ -138,13 +175,26 @@ def addLink(request):
     
     link = request.POST.get("rss_link")
     
-    if addLinkIvoox(link):
-        pass
-    elif addLinkRadioco(link):
-        pass
-    else:         
-        print("ERROR: Format Unknown")
-                
+    known_parsers = {'podomatic':addLinkPodomatic,'ivoox':addLinkIvoox,'radioco':addLinkRadioco}
+    
+    for key,function in known_parsers.items():
+    
+        new_program_added = function(link) if key in link.lower() else False
+    
+    
+    if not new_program_added:
+        
+        print('Could not identify parser per link. Trying with all of them')
+        
+        for key,function in known_parsers:
+            
+            if function(link):
+                new_program_added = True
+                break;
+    
+    if not new_program_added:
+        print('ERROR IN PARSING. PROGRAM NOT ADDED')
+          
     return HttpResponseRedirect(reverse('rss_feed:index', args=()))
 
 
