@@ -1,3 +1,13 @@
+{% load staticfiles %}
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">!-->
+<!--<link rel="stylesheet" href="{% static 'css/blog.css' %}"> !-->
+<link rel="stylesheet" href="{% static 'css/company.css' %}"> 
+</head>
+
+<div class="jumbotron text-center" id="add-link-header">
+
 <h1>{{ "RSS Parser" }}</h1>
 
 <form action="{% url 'rss_feed:addLink'%}" method="post">
@@ -5,7 +15,9 @@
 <label for="rss_link">Add new RSS link</label>
 <input type="text" name="rss_link"/>
 <input type="submit" value="Send" />
-    
+</form>
+</div>
+ 
 {% if lista_programas %}
     <ul>
     {% for programa in lista_programas %}
