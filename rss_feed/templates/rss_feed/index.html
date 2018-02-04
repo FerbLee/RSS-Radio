@@ -3,31 +3,21 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">!-->
 <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}"> !-->
-<link rel="stylesheet" href="{% static 'css/company.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/company.css' %}" type='text/css'/> 
 </head>
+
 
 <div class="jumbotron text-center" id="add-link-header">
 
 	<h1>{{ "RSS Parser" }}</h1>
 
-	<form class="form-inline" action="{% url 'rss_feed:addLink'%}" method="post">
+	<form class="form-inline" action="{% url 'rss_feed:addLink'%}" method="POST">
 		{% csrf_token %}
-    	<div class="input-group">
-      		<input type="text" class="form-control" size="50" placeholder="RSS link">
-      		<div class="input-group-btn">
-        		<button type="button" class="btn btn-default">Add Feed</button>
-      		</div>
-    	</div>
+      	<input type="text" class="form-control" size="50" placeholder="RSS link" name="rss_link"/>
+        <input type="submit" class="btn btn-default" value="Add Feed" >
 	</form>
 </div>
-<!--
-<form action="{% url 'rss_feed:addLink'%}" method="post">
-{% csrf_token %}
-<label for="rss_link">Add new RSS link</label>
-<input id=tb1 type="text" name="rss_link"/>
-<input type="submit" value="Send" />
-</form>
-!-->
+
  
 {% if lista_programas %}
     <ul>
