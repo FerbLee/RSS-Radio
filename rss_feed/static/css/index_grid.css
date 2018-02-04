@@ -1,0 +1,15 @@
+.input-header{
+	grid-column: span 12;
+}
+  
+ .grid-container{
+   display: grid;
+   grid-template-columns: auto auto auto;
+   grid-gap: 50px 100px;
+ }
+ 
+ .grid-item{
+ 	border: 1px solid rgba(0, 0, 0, 0.8);
+ 	text-align: center;
+ 	padding: 20px;
+ }

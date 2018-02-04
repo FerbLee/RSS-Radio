@@ -4,27 +4,35 @@
 <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">!-->
 <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}"> !-->
 <link rel="stylesheet" href="{% static 'css/company.css' %}" type='text/css'/> 
+<link rel="stylesheet" href="{% static 'css/index_grid.css' %}" type='text/css'/> 
 </head>
 
+<div class="input-header">
 
-<div class="jumbotron text-center" id="add-link-header">
-
-	<h1>{{ "RSS Parser" }}</h1>
-
-	<form class="form-inline" action="{% url 'rss_feed:addLink'%}" method="POST">
-		{% csrf_token %}
-      	<input type="text" class="form-control" size="50" placeholder="RSS link" name="rss_link"/>
-        <input type="submit" class="btn btn-default" value="Add Feed" >
-	</form>
+	<div class="jumbotron text-center" id="add-link-header">
+	
+		<h1>{{ "RSS Parser" }}</h1>
+	
+		<form class="form-inline" action="{% url 'rss_feed:addLink'%}" method="POST">
+			{% csrf_token %}
+	      	<input type="text" class="form-control" size="50" placeholder="RSS link" name="rss_link"/>
+	        <input type="submit" class="btn btn-default" value="Add Feed" >
+		</form>
+	</div>
+	
+</div>
+<div class="grid-container">
+	{% if lista_programas %}
+	    <ul>
+	    {% for programa in lista_programas %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_programa' programa.id %}">{{ programa.nome }}</a>
+	        </div>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>Non se engadiron programas aínda.</p>
+	{% endif %}
 </div>
 
- 
-{% if lista_programas %}
-    <ul>
-    {% for programa in lista_programas %}
-        <li><a href="{% url 'rss_feed:detail_programa' programa.id %}">{{ programa.nome }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Non se engadiron programas aínda.</p>
-{% endif %}
+
