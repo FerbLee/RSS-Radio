@@ -23,13 +23,13 @@
 </div>
 <div class="grid-container">
 	{% if lista_programas %}
-	    <ul>
+	   
 	    {% for programa in lista_programas %}
 	        <div class="grid-item" >
 	        	<a href="{% url 'rss_feed:detail_programa' programa.id %}">{{ programa.nome }}</a>
 	        </div>
 	    {% endfor %}
-	    </ul>
+	    
 	{% else %}
 	    <p>Non se engadiron programas aínda.</p>
 	{% endif %}
