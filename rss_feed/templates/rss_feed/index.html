@@ -1,7 +1,7 @@
 {% load staticfiles %}
+{% load bootstrap4 %}
 <head>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">!-->
 <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}"> !-->
 <link rel="stylesheet" href="{% static 'css/company.css' %}" type='text/css'/> 
 <link rel="stylesheet" href="{% static 'css/index_grid.css' %}" type='text/css'/> 
@@ -12,6 +12,8 @@
 	<div class="jumbotron text-center" id="add-link-header">
 	
 		<h1>{{ "RSS Parser" }}</h1>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<form class="form-inline" action="{% url 'rss_feed:addLink'%}" method="POST">
 			{% csrf_token %}

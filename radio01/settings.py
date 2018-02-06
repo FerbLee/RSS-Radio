@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rss_feed.apps.RSSFeedConfig',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
