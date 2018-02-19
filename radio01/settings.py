@@ -129,4 +129,4 @@ STATIC_URL = '/static/'
 
 # CELERY parameters
 CELERY_RESULT_BACKEND = 'django-db'
-CELERY_RESULT_BACKEND = 'django-cache'
+
