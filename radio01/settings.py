@@ -130,4 +130,15 @@ STATIC_URL = '/static/'
 
 # CELERY parameters
 CELERY_RESULT_BACKEND = 'django-db'
+#CELERY_BIN="/usr/local/bin/celery"
+# App instance to use
+# comment out this line if you don't use an app
+#CELERY_APP="proj"
+# or fully qualified:
+#CELERY_APP="proj.tasks:app"
 
+# Where to chdir at start. --> ./ by default
+#CELERYBEAT_CHDIR="./"
+
+# Extra arguments to celerybeat
+CELERYBEAT_OPTS="--schedule=celerybeat-schedule"
