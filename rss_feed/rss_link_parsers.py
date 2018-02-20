@@ -44,7 +44,8 @@ class RSSLinkParser(object):
     
     def process_episode_date(self,a_time_struct):
         
-        return datetime(a_time_struct.tm_year,a_time_struct.tm_mon,a_time_struct.tm_mday,a_time_struct.tm_hour,a_time_struct.tm_min,a_time_struct.tm_sec,0,tzinfo=pytz.UTC)
+        return datetime(a_time_struct.tm_year,a_time_struct.tm_mon,a_time_struct.tm_mday,a_time_struct.tm_hour,
+                        a_time_struct.tm_min,a_time_struct.tm_sec,0,tzinfo=pytz.UTC)
     
 
 
@@ -86,6 +87,7 @@ class ParserIvoox(RSSLinkParser):
             new_episode.summary = truncate_strings(an_entry['summary'],ML_DESCRIPTION)
             new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
             new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
+            new_episode.insertion_date = timezone.now()
     
             new_episode.save()
         
@@ -124,6 +126,7 @@ class ParserRadioco(RSSLinkParser):
             new_episode.summary = truncate_strings(an_entry['summary'],ML_DESCRIPTION)
             new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
             new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
+            new_episode.insertion_date = timezone.now()
             
             new_episode.save()
     
@@ -169,6 +172,8 @@ class ParserPodomatic(RSSLinkParser):
                 new_episode.save()
             else:
                 print('Episode ' + new_episode.title + ' NOT saved: No audio file found.')
+            
+            new_episode.insertion_date = timezone.now()
         
         return True
     
