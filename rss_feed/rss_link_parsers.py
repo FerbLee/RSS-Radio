@@ -42,9 +42,9 @@ class RSSLinkParser(object):
         return None,None
 
     
-    def process_episode_date(self,a_timetuple):
+    def process_episode_date(self,a_time_struct):
         
-        return calendar.timegm(a_timetuple)
+        return datetime(a_time_struct.tm_year,a_time_struct.tm_mon,a_time_struct.tm_mday,a_time_struct.tm_hour,a_time_struct.tm_min,a_time_struct.tm_sec,0,tzinfo=pytz.UTC)
     
 
 
@@ -84,8 +84,8 @@ class ParserIvoox(RSSLinkParser):
     
             new_episode.title = truncate_strings(an_entry['title'],ML_TITLE)
             new_episode.summary = truncate_strings(an_entry['summary'],ML_DESCRIPTION)
-            #novo_episodio.data_publicacion = iso = time.strftime('%Y-%M-%D %H:%M', an_entry['published_parsed'])
-            new_episode.ficheiro,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
+            new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
+            new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
     
             new_episode.save()
         
@@ -107,6 +107,7 @@ class ParserRadioco(RSSLinkParser):
             new_program.author = None
             new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
             new_program.rss_link = self._link
+            new_program.creation_date = timezone.now()
             
         except KeyError:
             
@@ -121,8 +122,8 @@ class ParserRadioco(RSSLinkParser):
             
             new_episode.title = truncate_strings(an_entry['title'],ML_TITLE)
             new_episode.summary = truncate_strings(an_entry['summary'],ML_DESCRIPTION)
-            #novo_episodio.data_publicacion = iso = time.strftime('%Y-%M-%D %H:%M', an_entry['published_parsed'])
-            new_episode.ficheiro,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
+            new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
+            new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
             
             new_episode.save()
     
@@ -161,11 +162,7 @@ class ParserPodomatic(RSSLinkParser):
             
             new_episode.summary = truncate_strings(an_entry['content'][0]['value'],ML_DESCRIPTION)
        
-            pub_date = datetime.utcfromtimestamp(calendar.timegm(an_entry['published_parsed']))
-            
-            tt = an_entry['published_parsed']
-            pub_date = datetime(tt.tm_year,tt.tm_mon,tt.tm_mday,tt.tm_hour,tt.tm_min,tt.tm_sec,0,tzinfo=pytz.UTC)
-            new_episode.publication_date = pub_date
+            new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
             new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
             
             if new_episode.file != None:
