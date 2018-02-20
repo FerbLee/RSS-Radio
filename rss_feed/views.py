@@ -2,34 +2,34 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
-from .models import Episodio, Programa
+from .models import Episode, Program
 from rss_feed import rss_link_parsers as rlp 
 
 
 class IndexView(generic.ListView):
     
     template_name = 'rss_feed/index.html'
-    context_object_name = 'lista_programas'
+    context_object_name = 'program_list'
 
     def get_queryset(self):
         
-        """Listado de Programas engadidos"""
-        return Programa.objects.all()
+        """List of added programs"""
+        return Program.objects.all()
 
 
-class ProgramaDetailView(generic.DetailView):
+class ProgramDetailView(generic.DetailView):
     
     #Overrides model and template_name from superclass
-    model = Programa
-    template_name = 'rss_feed/detail_programa.html'
+    model = Program
+    template_name = 'rss_feed/detail_program.html'
 
         
 
-class EpisodioDetailView(generic.DetailView):
+class EpisodeDetailView(generic.DetailView):
     
     #Overrides model and template_name from superclass
-    model = Episodio
-    template_name = 'rss_feed/detail_episodio.html'
+    model = Episode
+    template_name = 'rss_feed/detail_episode.html'
 
 
 

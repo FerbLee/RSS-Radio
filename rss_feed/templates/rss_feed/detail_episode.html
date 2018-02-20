@@ -1,0 +1,8 @@
+<h1>{{ episode.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p><b>Publicado en:</b>{{ episode.publication_date }}</p>
+<p><b>Resumo:</b>{{ episode.summary }}</p>
+<p><b>Ficheiro:</b><a href={{ episode.file }}>{{ episode.file }}</a></p>
+

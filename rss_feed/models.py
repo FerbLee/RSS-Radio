@@ -2,22 +2,24 @@ from django.db import models
 from django.utils import timezone
 import datetime
 
-ML_DESCRICION = 1000
-ML_NOME = 200
-ML_AUTOR = 200 
-ML_TITULO = 200
+ML_DESCRIPTION = 1000
+ML_NAME = 200
+ML_AUTHOR = 200 
+ML_TITLE = 200
 ML_LINKS = 500
+ML_TYPE = 20
 
 # Create your models here.
-class Programa(models.Model):
+class Program(models.Model):
        
-    nome = models.CharField(max_length=ML_NOME)
-    autor = models.CharField(max_length=ML_AUTOR ,null=True)
-    descricion = models.CharField(max_length=ML_DESCRICION)
+    name = models.CharField(max_length=ML_NAME)
+    author = models.CharField(max_length=ML_AUTHOR ,null=True)
+    description = models.CharField(max_length=ML_DESCRIPTION)
+    creation_date = models.DateTimeField('date created')
     rss_link = models.CharField(max_length=500)
 
     def __str__(self):
-        return self.nome
+        return self.name
 
     
     #def was_published_recently(self):
@@ -25,14 +27,14 @@ class Programa(models.Model):
 
 
 
-class Episodio(models.Model):
+class Episode(models.Model):
     
     def __str__(self):
-        return self.titulo
+        return self.title
     
-    programa = models.ForeignKey(Programa, on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=ML_TITULO)
-    #data_publicacion = models.DateTimeField('data publicacion')
-    resumo = models.CharField(max_length=ML_DESCRICION)
-    ficheiro = models.CharField(max_length=ML_LINKS)
-    
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    title = models.CharField(max_length=ML_TITLE)
+    publication_date = models.DateTimeField('date published')
+    summary = models.CharField(max_length=ML_DESCRIPTION)
+    file = models.CharField(max_length=ML_LINKS)
+    file_type = models.CharField(max_length=ML_TYPE)
