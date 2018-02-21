@@ -65,7 +65,8 @@ class Episode(models.Model):
     file = models.URLField()
     file_type = models.CharField(max_length=ML_TYPE,null=True)
     downloads = models.BigIntegerField(default=0)
-    rating = models.PositiveSmallIntegerField(default=50,validators=[MaxValueValidator(100), MinValueValidator(0)])
+    up_votes = models.BigIntegerField(default=0)
+    down_votes = models.BigIntegerField(default=0)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
 
 
