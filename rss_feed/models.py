@@ -6,7 +6,6 @@ import pytz
 
 default_time = datetime(1,1,1,0,0,0,0,tzinfo=pytz.UTC)
 
-
 ML_DESCRIPTION = 1000
 ML_NAME = 200
 ML_AUTHOR = 200 
@@ -17,19 +16,51 @@ ML_TYPE = 40
 EXISTING_CATEGORIES = (('re','revista'),('hu','humor'),('in','informativo'),('te','tertulia'),('en','entretemento'),
                        ('di','divulgativo'),('ou','outros'))
 
-IMAGE_DIR_PATH = '/home/fer/eclipse-workspace/RSS-Radio/rss_feed/images'
+IMAGE_DIR = '/home/fer/eclipse-workspace/RSS-Radio/rss_feed/images'
+DEFAULT_IMAGES_DIR = IMAGE_DIR + '/default'
+DEFAULT_IMAGE_PATH = os.path.join(DEFAULT_IMAGES_DIR,'program.jpg')
 
 # Create your models here.
 
 class Image(models.Model):
     
-    def __str__(self):
-        return self.title
-    
-    path = models.ImageField(default=os.path.join(IMAGE_DIR_PATH,'default.jpg'))
+    path = models.ImageField(default=DEFAULT_IMAGE_PATH)
     name = models.CharField(max_length=ML_NAME,null=True)
     alt_text = models.CharField(max_length=ML_NAME,default='Image')
 
+    
+    def __str__(self):
+        
+        return str(self.path)
+    
+    
+    @classmethod
+    def get_default_program_image(cls):
+        
+        return cls.objects.filter(path=DEFAULT_IMAGE_PATH)
+    
+    
+    @classmethod
+    def default_program_image_creation(cls):
+    
+        program_def_img = cls.get_default_program_image()
+        
+        if not program_def_img:
+            
+            new_program_def_img = Image()
+            new_program_def_img.path = DEFAULT_IMAGE_PATH
+            new_program_def_img.name = 'Program-Episode default image'
+            new_program_def_img.alt_text = 'default-image'
+            
+            new_program_def_img.save()
+        
+        
+    @classmethod
+    def default_images_creation(cls):
+        
+        cls.default_program_image_creation()
+        
+        
 
 
 class Program(models.Model):
@@ -54,9 +85,6 @@ class Program(models.Model):
 
 class Episode(models.Model):
     
-    def __str__(self):
-        return self.title
-    
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     title = models.CharField(max_length=ML_TITLE)
     publication_date = models.DateTimeField(default=default_time)
@@ -69,4 +97,13 @@ class Episode(models.Model):
     down_votes = models.BigIntegerField(default=0)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+        return self.title
 
+
+### CREATE DEFAULT VALUES ###
+
+Image.default_images_creation()
+
+
+############################
