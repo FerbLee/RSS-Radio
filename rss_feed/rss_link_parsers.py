@@ -7,7 +7,7 @@ Created on 20 Feb 2018
 from django.utils import timezone
 from django.core.files import File
 from .models import Episode, Program, Image
-from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME,ABSOLUTE_IMAGE_DIR 
+from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME
 from datetime import datetime
 import feedparser
 import pytz
@@ -75,15 +75,6 @@ class RSSLinkParser(object):
             new_image_instance.save()
         
         return new_image_instance
-        
-    
-    #def get_remote_image(self):
-    #    if self.image_url and not self.image_file:
-    #        result = urllib.urlretrieve(self.image_url)
-    #        self.image_file.save(
-    #                os.path.basename(self.image_url),
-    #                File(open(result[0]))
-    #                )
             
             
 
@@ -109,6 +100,7 @@ class ParserIvoox(RSSLinkParser):
             new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
             new_program.rss_link = self._link
             new_program.creation_date = timezone.now()
+            new_program.image = self.create_image(feed_dict['feed']['image']['href'])
         
         except KeyError:
             
@@ -126,6 +118,7 @@ class ParserIvoox(RSSLinkParser):
             new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
             new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
             new_episode.insertion_date = timezone.now()
+            new_episode.image = Image.get_default_program_image()
     
             new_episode.save()
         
@@ -148,6 +141,7 @@ class ParserRadioco(RSSLinkParser):
             new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
             new_program.rss_link = self._link
             new_program.creation_date = timezone.now()
+            new_program.image = self.create_image(feed_dict['feed']['image']['href'])
             
         except KeyError:
             
@@ -165,6 +159,7 @@ class ParserRadioco(RSSLinkParser):
             new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
             new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
             new_episode.insertion_date = timezone.now()
+            new_episode.image = Image.get_default_program_image()
             
             new_episode.save()
     
@@ -187,6 +182,9 @@ class ParserPodomatic(RSSLinkParser):
             new_program.description = truncate_strings(feed_dict['feed']['summary'],ML_DESCRIPTION)
             new_program.rss_link = self._link
             new_program.creation_date = timezone.now()
+            
+            #Not working due to web permissions. Check bookmarks
+            new_program.image = self.create_image(feed_dict['feed']['image']['href'])
     
         except KeyError:
             
@@ -212,6 +210,12 @@ class ParserPodomatic(RSSLinkParser):
                 print('Episode ' + new_episode.title + ' NOT saved: No audio file found.')
             
             new_episode.insertion_date = timezone.now()
+            
+            try:
+                new_episode.image = self.create_image(an_entry['image'])
+            except:
+                print('Episode ' + new_episode.title + ' No image file found.')
+                new_episode.image = Image.get_default_program_image()
         
         return True
     

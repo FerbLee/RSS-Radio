@@ -22,6 +22,7 @@ EXISTING_CATEGORIES = (('re','revista'),('hu','humor'),('in','informativo'),('te
 DEFAULT_IMAGES_DIR = 'default'
 ABSOLUTE_DEFAULT_IMAGES_DIR = os.path.join(settings.MEDIA_ROOT,DEFAULT_IMAGES_DIR) 
 DEFAULT_IMAGE_PATH = os.path.join(DEFAULT_IMAGES_DIR,'program.jpg')
+#ABSOLUTE_DEFAULT_IMAGE_PATH = os.path.join(ABSOLUTE_DEFAULT_IMAGES_DIR,'program.jpg')
 IMAGE_DIR = 'pictures'
 ABSOLUTE_IMAGE_DIR = os.path.join(settings.MEDIA_ROOT,IMAGE_DIR)
 
@@ -46,7 +47,6 @@ class Image(models.Model):
             
         new_program_def_img = Image()
         new_program_def_img.creation_date = timezone.now()
-        new_program_def_img.path = ABSOLUTE_DEFAULT_IMAGES_DIR 
         new_program_def_img.name = 'Program-Episode default image'
         new_program_def_img.alt_text = 'default-image'
         
@@ -58,13 +58,13 @@ class Image(models.Model):
     @classmethod
     def get_default_program_image(cls):
         
-        program_def_img = cls.objects.filter(path=DEFAULT_IMAGE_PATH)
+        program_def_img = cls.objects.filter(path=DEFAULT_IMAGE_PATH).order_by('-creation_date')
         
         if not program_def_img:
     
             return cls.default_program_image_creation()
         
-        return program_def_img[-1]
+        return program_def_img[0]
         
     #@classmethod
     #def default_images_creation(cls):
