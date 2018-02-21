@@ -5,12 +5,16 @@ Created on 20 Feb 2018
 '''
 
 from django.utils import timezone
-from .models import Episode, Program
-from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME
+from django.core.files import File
+from .models import Episode, Program, Image
+from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME,ABSOLUTE_IMAGE_DIR 
 from datetime import datetime
 import feedparser
-import calendar
 import pytz
+import urllib
+import os
+
+
 
 def truncate_strings(desc_string,max_len):
  
@@ -26,7 +30,8 @@ class RSSLinkParser(object):
     def __init__(self,rss_link):
         
         self._link = rss_link  
-    
+        #self._image_dir = ABSOLUTE_IMAGE_DIR 
+        
     
     def getLinkToAudio(self,dict_list):
         
@@ -48,6 +53,39 @@ class RSSLinkParser(object):
                         a_time_struct.tm_min,a_time_struct.tm_sec,0,tzinfo=pytz.UTC)
     
 
+    def create_image(self,image_url):
+        
+        creation_date = timezone.now()
+        original_image_name = os.path.basename(image_url)
+        image_name = creation_date.strftime("%d%H%M%S") + '-' + original_image_name.lower()
+        #image_path = os.path.join(self._image_dir,image_name)
+        
+        image_file = urllib.request.urlretrieve(image_url)
+        
+        with open(image_file[0],'rb') as ifd: 
+        
+            new_image_instance = Image()
+            new_image_instance.path.save( image_name, File(ifd) )
+        
+            new_image_instance.creation_date = creation_date
+            new_image_instance.name = original_image_name
+            new_image_instance.alt_text = original_image_name.lower()
+            new_image_instance.original_url = image_url
+            
+            new_image_instance.save()
+        
+        return new_image_instance
+        
+    
+    #def get_remote_image(self):
+    #    if self.image_url and not self.image_file:
+    #        result = urllib.urlretrieve(self.image_url)
+    #        self.image_file.save(
+    #                os.path.basename(self.image_url),
+    #                File(open(result[0]))
+    #                )
+            
+            
 
     def parse_and_save(self):
         

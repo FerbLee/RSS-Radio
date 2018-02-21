@@ -142,3 +142,8 @@ CELERY_RESULT_BACKEND = 'django-db'
 
 # Extra arguments to celerybeat
 CELERYBEAT_OPTS="--schedule=celerybeat-schedule"
+
+
+# Image Directory
+MEDIA_ROOT = '/home/fer/eclipse-workspace/RSS-Radio/media'
+MEDIA_URL = '/media/'

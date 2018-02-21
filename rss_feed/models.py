@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils import timezone
+from django.conf import settings
 import os
 from datetime import datetime
 import pytz
@@ -16,15 +18,20 @@ ML_TYPE = 40
 EXISTING_CATEGORIES = (('re','revista'),('hu','humor'),('in','informativo'),('te','tertulia'),('en','entretemento'),
                        ('di','divulgativo'),('ou','outros'))
 
-IMAGE_DIR = '/home/fer/eclipse-workspace/RSS-Radio/rss_feed/images'
-DEFAULT_IMAGES_DIR = IMAGE_DIR + '/default'
+
+DEFAULT_IMAGES_DIR = 'default'
+ABSOLUTE_DEFAULT_IMAGES_DIR = os.path.join(settings.MEDIA_ROOT,DEFAULT_IMAGES_DIR) 
 DEFAULT_IMAGE_PATH = os.path.join(DEFAULT_IMAGES_DIR,'program.jpg')
+IMAGE_DIR = 'pictures'
+ABSOLUTE_IMAGE_DIR = os.path.join(settings.MEDIA_ROOT,IMAGE_DIR)
 
 # Create your models here.
 
 class Image(models.Model):
     
-    path = models.ImageField(default=DEFAULT_IMAGE_PATH)
+    path = models.ImageField(upload_to=IMAGE_DIR+'/%Y/%m/',default=DEFAULT_IMAGE_PATH)
+    original_url = models.URLField(null=True)
+    creation_date = models.DateTimeField(default=default_time,null=True)
     name = models.CharField(max_length=ML_NAME,null=True)
     alt_text = models.CharField(max_length=ML_NAME,default='Image')
 
@@ -35,30 +42,34 @@ class Image(models.Model):
     
     
     @classmethod
+    def default_program_image_creation(cls):
+            
+        new_program_def_img = Image()
+        new_program_def_img.creation_date = timezone.now()
+        new_program_def_img.path = ABSOLUTE_DEFAULT_IMAGES_DIR 
+        new_program_def_img.name = 'Program-Episode default image'
+        new_program_def_img.alt_text = 'default-image'
+        
+        new_program_def_img.save()
+        
+        return new_program_def_img
+    
+    
+    @classmethod
     def get_default_program_image(cls):
         
-        return cls.objects.filter(path=DEFAULT_IMAGE_PATH)
-    
-    
-    @classmethod
-    def default_program_image_creation(cls):
-    
-        program_def_img = cls.get_default_program_image()
+        program_def_img = cls.objects.filter(path=DEFAULT_IMAGE_PATH)
         
         if not program_def_img:
-            
-            new_program_def_img = Image()
-            new_program_def_img.path = DEFAULT_IMAGE_PATH
-            new_program_def_img.name = 'Program-Episode default image'
-            new_program_def_img.alt_text = 'default-image'
-            
-            new_program_def_img.save()
+    
+            return cls.default_program_image_creation()
         
+        return program_def_img[-1]
         
-    @classmethod
-    def default_images_creation(cls):
-        
-        cls.default_program_image_creation()
+    #@classmethod
+    #def default_images_creation(cls):
+    #    
+    #    cls.default_program_image_creation()
         
         
 
@@ -101,9 +112,3 @@ class Episode(models.Model):
         return self.title
 
 
-### CREATE DEFAULT VALUES ###
-
-Image.default_images_creation()
-
-
-############################
