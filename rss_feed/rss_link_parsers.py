@@ -58,12 +58,14 @@ class RSSLinkParser(object):
         creation_date = timezone.now()
         original_image_name = os.path.basename(image_url)
         image_name = creation_date.strftime("%d%H%M%S") + '-' + original_image_name.lower()
-        #image_path = os.path.join(self._image_dir,image_name)
         
+        opener = urllib.request.build_opener()
+        opener.addheaders = [('User-Agent','Mozilla/5.0')]
+        urllib.request.install_opener(opener)
         image_file = urllib.request.urlretrieve(image_url)
         
         with open(image_file[0],'rb') as ifd: 
-        
+            
             new_image_instance = Image()
             new_image_instance.path.save( image_name, File(ifd) )
         
@@ -212,9 +214,9 @@ class ParserPodomatic(RSSLinkParser):
             new_episode.insertion_date = timezone.now()
             
             try:
-                new_episode.image = self.create_image(an_entry['image'])
+                new_episode.image = self.create_image(an_entry['image']['href'])
             except:
-                print('Episode ' + new_episode.title + ' No image file found.')
+                print('Episode ' + new_episode.title + ' No image file found. Setting default instead')
                 new_episode.image = Image.get_default_program_image()
         
         return True
