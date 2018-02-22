@@ -8,12 +8,12 @@ from django.utils import timezone
 from django.core.files import File
 from .models import Episode, Program, Image
 from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME
+from .models import IVOOX_TYPE,RADIOCO_TYPE,PODOMATIC_TYPE
 from datetime import datetime
 import feedparser
 import pytz
 import urllib
 import os
-
 
 
 def truncate_strings(desc_string,max_len):
@@ -22,6 +22,22 @@ def truncate_strings(desc_string,max_len):
         return desc_string[:max_len-2] + '..'
     
     return desc_string
+
+
+def get_parser_by_program(a_program):
+    
+    if a_program.rss_link_type == IVOOX_TYPE[0]:
+        return ParserIvoox(a_program.rss_link)
+    
+    if a_program.rss_link_type == RADIOCO_TYPE[0]:
+        return ParserRadioco(a_program.rss_link)
+    
+    if a_program.rss_link_type == PODOMATIC_TYPE[0]:
+        return ParserPodomatic(a_program.rss_link)
+
+    else:
+        print('No known parser')
+        return None
 
 
 class RSSLinkParser(object):
@@ -78,21 +94,45 @@ class RSSLinkParser(object):
         
         return new_image_instance
             
-            
+    
+    def get_program_image_url_from_feed_dict(self,feed_dict):
+        
+        return feed_dict['feed']['image']['href']
+    
+    
+    def parse_program(self,feed_dict,disable_image_creation=False):
+        
+        pass
+    
+    
+    def parse_episode(self,entry_dict,a_program):
+        
+        pass
+    
 
     def parse_and_save(self):
         
-        pass
+        feed_dict = feedparser.parse(self._link.strip())
+        new_program = self.parse_program(feed_dict)
+        
+        if new_program == None:   
+            return False
+        
+        new_program.save()
+        
+        for an_entry in feed_dict['entries']:
+    
+            self.parse_episode(an_entry, new_program).save()
+        
+        return True
  
  
  
 class ParserIvoox(RSSLinkParser): 
-
-
-    def parse_and_save(self):
         
-        print('Ivoox')
-        feed_dict = feedparser.parse(self._link.strip())
+    
+    def parse_program(self,feed_dict,disable_image_creation=False):
+
         new_program = Program()
         
         try:
@@ -101,80 +141,84 @@ class ParserIvoox(RSSLinkParser):
             new_program.author = truncate_strings(feed_dict['feed']['author'],ML_AUTHOR)
             new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
             new_program.rss_link = self._link
+            new_program.rss_link_type = IVOOX_TYPE[0]
             new_program.creation_date = timezone.now()
-            new_program.image = self.create_image(feed_dict['feed']['image']['href'])
+            
+            if not disable_image_creation:
+                new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
+            
+            return new_program
         
         except KeyError:
             
-            return False
+            return None
+
+
+    def parse_episode(self,entry_dict,a_program):
+
+        new_episode = Episode()
+        new_episode.program = a_program
+
+        new_episode.title = truncate_strings(entry_dict['title'],ML_TITLE)
+        new_episode.summary = truncate_strings(entry_dict['summary'],ML_DESCRIPTION)
+        new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
+        new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
+        new_episode.insertion_date = timezone.now()
+        new_episode.image = Image.get_default_program_image()
         
-        new_program.save()
-        
-        for an_entry in feed_dict['entries']:
+        return new_episode
     
-            new_episode = Episode()
-            new_episode.program = new_program
     
-            new_episode.title = truncate_strings(an_entry['title'],ML_TITLE)
-            new_episode.summary = truncate_strings(an_entry['summary'],ML_DESCRIPTION)
-            new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
-            new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
-            new_episode.insertion_date = timezone.now()
-            new_episode.image = Image.get_default_program_image()
-    
-            new_episode.save()
-        
-        return True
 
 
 class ParserRadioco(RSSLinkParser):
 
 
-    def parse_and_save(self):
-        
-        print('RADIOCO')
-        feed_dict = feedparser.parse(self._link.strip())
+    def parse_program(self,feed_dict,disable_image_creation=False):
+
         new_program = Program()
-        
+
         try:
             
             new_program.name = truncate_strings(feed_dict['feed']['title'],ML_NAME)
             new_program.author = None
             new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
             new_program.rss_link = self._link
+            new_program.rss_link_type = RADIOCO_TYPE[0]
             new_program.creation_date = timezone.now()
-            new_program.image = self.create_image(feed_dict['feed']['image']['href'])
+            
+            if not disable_image_creation:
+                new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
+            
+            return new_program
             
         except KeyError:
             
-            return False
+            return None
+
+    
+    def parse_episode(self,entry_dict,a_program):
         
-        new_program.save()
+        
+        new_episode = Episode()
+        new_episode.program = a_program
+        
+        new_episode.title = truncate_strings(entry_dict['title'],ML_TITLE)
+        new_episode.summary = truncate_strings(entry_dict['summary'],ML_DESCRIPTION)
+        new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
+        new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
+        new_episode.insertion_date = timezone.now()
+        new_episode.image = Image.get_default_program_image()
+        
+        return new_episode
     
-        for an_entry in feed_dict['entries']:
-            
-            new_episode = Episode()
-            new_episode.program = new_program
-            
-            new_episode.title = truncate_strings(an_entry['title'],ML_TITLE)
-            new_episode.summary = truncate_strings(an_entry['summary'],ML_DESCRIPTION)
-            new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
-            new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
-            new_episode.insertion_date = timezone.now()
-            new_episode.image = Image.get_default_program_image()
-            
-            new_episode.save()
-    
-        return True
 
 
 class ParserPodomatic(RSSLinkParser):
 
 
-    def parse_and_save(self):
+    def parse_program(self,feed_dict,disable_image_creation=False):
         
-        print('Podomatic')
-        feed_dict = feedparser.parse(self._link.strip())
         new_program = Program()
         
         try:
@@ -183,43 +227,41 @@ class ParserPodomatic(RSSLinkParser):
             new_program.author = truncate_strings(feed_dict['feed']['author'],ML_AUTHOR)
             new_program.description = truncate_strings(feed_dict['feed']['summary'],ML_DESCRIPTION)
             new_program.rss_link = self._link
+            new_program.rss_link_type = PODOMATIC_TYPE[0]
             new_program.creation_date = timezone.now()
             
-            #Not working due to web permissions. Check bookmarks
-            new_program.image = self.create_image(feed_dict['feed']['image']['href'])
+            if not disable_image_creation:
+                new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
     
+            
+            return new_program
+            
         except KeyError:
             
-            return False
-        
-        new_program.save()
-        
-        for an_entry in feed_dict['entries']:
+            return None
     
-            new_episode = Episode()
-            new_episode.program = new_program
-                    
-            new_episode.title = truncate_strings(an_entry['title'],ML_TITLE)
-            
-            new_episode.summary = truncate_strings(an_entry['content'][0]['value'],ML_DESCRIPTION)
-       
-            new_episode.publication_date = self.process_episode_date(an_entry['published_parsed'])
-            new_episode.file,new_episode.file_type = self.getLinkToAudio(an_entry['links'])
-            
-            if new_episode.file != None:
-                new_episode.save()
-            else:
-                print('Episode ' + new_episode.title + ' NOT saved: No audio file found.')
-            
-            new_episode.insertion_date = timezone.now()
-            
-            try:
-                new_episode.image = self.create_image(an_entry['image']['href'])
-            except:
-                print('Episode ' + new_episode.title + ' No image file found. Setting default instead')
-                new_episode.image = Image.get_default_program_image()
+    
+    def parse_episode(self,entry_dict,a_program):
         
-        return True
+        new_episode = Episode()
+        
+        new_episode.program = a_program        
+        new_episode.title = truncate_strings(entry_dict['title'],ML_TITLE)
+        new_episode.summary = truncate_strings(entry_dict['content'][0]['value'],ML_DESCRIPTION)
+        new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
+        new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
+        new_episode.insertion_date = timezone.now()
+        
+        try:
+            new_episode.image = self.create_image(entry_dict['image']['href'])
+        except:
+            print('Episode ' + new_episode.title + ' No image file found. Setting default instead')
+            new_episode.image = Image.get_default_program_image()
+    
+        return new_episode
+        
+
+
     
     
     

@@ -18,6 +18,11 @@ ML_TYPE = 40
 EXISTING_CATEGORIES = (('re','revista'),('hu','humor'),('in','informativo'),('te','tertulia'),('en','entretemento'),
                        ('di','divulgativo'),('ou','outros'))
 
+IVOOX_TYPE = ('iv','ivoox')
+RADIOCO_TYPE = ('ra','radioco')
+PODOMATIC_TYPE = ('po','podomatic')
+
+EXISTING_PARSERS = (IVOOX_TYPE,RADIOCO_TYPE,PODOMATIC_TYPE)
 
 DEFAULT_IMAGES_DIR = 'default'
 ABSOLUTE_DEFAULT_IMAGES_DIR = os.path.join(settings.MEDIA_ROOT,DEFAULT_IMAGES_DIR) 
@@ -25,6 +30,9 @@ DEFAULT_IMAGE_PATH = os.path.join(DEFAULT_IMAGES_DIR,'program.jpg')
 #ABSOLUTE_DEFAULT_IMAGE_PATH = os.path.join(ABSOLUTE_DEFAULT_IMAGES_DIR,'program.jpg')
 IMAGE_DIR = 'pictures'
 ABSOLUTE_IMAGE_DIR = os.path.join(settings.MEDIA_ROOT,IMAGE_DIR)
+
+
+
 
 # Create your models here.
 
@@ -73,6 +81,7 @@ class Image(models.Model):
         
         
 
+PROGRAM_ATB_FROM_RSS = ['name','author','description'] 
 
 class Program(models.Model):
        
@@ -81,6 +90,7 @@ class Program(models.Model):
     description = models.CharField(max_length=ML_DESCRIPTION)
     creation_date = models.DateTimeField(default=default_time)
     rss_link = models.URLField()
+    rss_link_type = models.CharField(choices=EXISTING_PARSERS,max_length=2,default='ra')
     rating = models.PositiveSmallIntegerField(default=50,validators=[MaxValueValidator(100), MinValueValidator(0)])
     category = models.CharField(choices=EXISTING_CATEGORIES,max_length=2,default='ou')
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
