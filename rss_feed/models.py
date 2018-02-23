@@ -82,7 +82,7 @@ class Image(models.Model):
         
         
 
-PROGRAM_ATB_FROM_RSS = ['name','author','description'] 
+PROGRAM_ATB_FROM_RSS = ['name','author','description','original_site'] 
 
 class Program(models.Model):
        
