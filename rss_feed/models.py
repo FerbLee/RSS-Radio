@@ -14,6 +14,7 @@ ML_AUTHOR = 200
 ML_TITLE = 200
 #ML_LINKS = 500
 ML_TYPE = 40
+ML_ORIGINAL_ID = 200
 
 EXISTING_CATEGORIES = (('re','revista'),('hu','humor'),('in','informativo'),('te','tertulia'),('en','entretemento'),
                        ('di','divulgativo'),('ou','outros'))
@@ -93,6 +94,7 @@ class Program(models.Model):
     rss_link_type = models.CharField(choices=EXISTING_PARSERS,max_length=2,default='ra')
     rating = models.PositiveSmallIntegerField(default=50,validators=[MaxValueValidator(100), MinValueValidator(0)])
     category = models.CharField(choices=EXISTING_CATEGORIES,max_length=2,default='ou')
+    original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
@@ -116,6 +118,8 @@ class Episode(models.Model):
     downloads = models.BigIntegerField(default=0)
     up_votes = models.BigIntegerField(default=0)
     down_votes = models.BigIntegerField(default=0)
+    original_id = models.CharField(max_length=ML_ORIGINAL_ID,null=True)
+    original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

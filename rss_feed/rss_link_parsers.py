@@ -100,6 +100,11 @@ class RSSLinkParser(object):
         return feed_dict['feed']['image']['href']
     
     
+    def get_entry_list(self,feed_dict):
+    
+        return feed_dict['entries']
+    
+    
     def parse_program(self,feed_dict,disable_image_creation=False):
         
         pass
@@ -120,7 +125,9 @@ class RSSLinkParser(object):
         
         new_program.save()
         
-        for an_entry in feed_dict['entries']:
+        entry_list = self.get_entry_list(feed_dict)
+        
+        for an_entry in entry_list:
     
             self.parse_episode(an_entry, new_program).save()
         
@@ -143,6 +150,7 @@ class ParserIvoox(RSSLinkParser):
             new_program.rss_link = self._link
             new_program.rss_link_type = IVOOX_TYPE[0]
             new_program.creation_date = timezone.now()
+            new_program.original_site = feed_dict['feed']['link']
             
             if not disable_image_creation:
                 new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
@@ -164,6 +172,8 @@ class ParserIvoox(RSSLinkParser):
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()
+        new_episode.original_id = entry_dict['id']
+        new_episode.original_site = entry_dict['link']
         new_episode.image = Image.get_default_program_image()
         
         return new_episode
@@ -186,6 +196,7 @@ class ParserRadioco(RSSLinkParser):
             new_program.rss_link = self._link
             new_program.rss_link_type = RADIOCO_TYPE[0]
             new_program.creation_date = timezone.now()
+            new_program.original_site = feed_dict['feed']['link']
             
             if not disable_image_creation:
                 new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
@@ -208,6 +219,8 @@ class ParserRadioco(RSSLinkParser):
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()
+        # No original id in Radioco feeds
+        new_episode.original_site = entry_dict['link']
         new_episode.image = Image.get_default_program_image()
         
         return new_episode
@@ -229,6 +242,7 @@ class ParserPodomatic(RSSLinkParser):
             new_program.rss_link = self._link
             new_program.rss_link_type = PODOMATIC_TYPE[0]
             new_program.creation_date = timezone.now()
+            new_program.original_site = feed_dict['feed']['link']
             
             if not disable_image_creation:
                 new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
@@ -251,6 +265,8 @@ class ParserPodomatic(RSSLinkParser):
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()
+        new_episode.original_id = entry_dict['id']
+        new_episode.original_site = entry_dict['link']
         
         try:
             new_episode.image = self.create_image(entry_dict['image']['href'])
