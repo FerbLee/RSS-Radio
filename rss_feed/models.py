@@ -15,6 +15,7 @@ ML_TITLE = 200
 #ML_LINKS = 500
 ML_TYPE = 40
 ML_ORIGINAL_ID = 200
+ML_TAG = 50
 
 EXISTING_CATEGORIES = (('re','revista'),('hu','humor'),('in','informativo'),('te','tertulia'),('en','entretemento'),
                        ('di','divulgativo'),('ou','outros'))
@@ -36,6 +37,17 @@ ABSOLUTE_IMAGE_DIR = os.path.join(settings.MEDIA_ROOT,IMAGE_DIR)
 
 
 # Create your models here.
+
+class Tag(models.Model):
+
+    name = models.CharField(max_length=ML_TAG)
+    times_used = models.PositiveIntegerField(default=1)
+    
+    
+    def __str__(self):
+        
+        return str(self.name)
+    
 
 class Image(models.Model):
     
