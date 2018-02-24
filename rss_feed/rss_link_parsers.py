@@ -7,7 +7,6 @@ Created on 20 Feb 2018
 from django.utils import timezone
 from django.core.files import File
 from .models import Episode, Program, Image, Tag
-#from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME
 from .models import IVOOX_TYPE,RADIOCO_TYPE,PODOMATIC_TYPE
 from datetime import datetime
 import feedparser
@@ -230,6 +229,15 @@ class ParserIvoox(RSSLinkParser):
         new_program.creation_date = timezone.now()
         new_program.original_site = feed_dict['feed']['link']
         
+        new_program.language = feed_dict['feed']['language']
+        
+        for auth_item in feed_dict['feed']['authors']:
+            
+            try:
+                new_program.author_email = auth_item['email']
+            except KeyError:
+                pass
+        
         return new_program
 
 
@@ -264,21 +272,17 @@ class ParserRadioco(RSSLinkParser):
 
         new_program = Program()
 
-        try:
-            
-            new_program.name = feed_dict['feed']['title']
-            new_program.author = None
-            new_program.description = feed_dict['feed']['subtitle']
-            new_program.rss_link = self._link
-            new_program.rss_link_type = RADIOCO_TYPE[0]
-            new_program.creation_date = timezone.now()
-            new_program.original_site = feed_dict['feed']['link']
-            
-            return new_program
-            
-        except KeyError:
-            
-            return None
+        new_program.name = feed_dict['feed']['title']
+        new_program.author = None
+        new_program.description = feed_dict['feed']['subtitle']
+        new_program.rss_link = self._link
+        new_program.rss_link_type = RADIOCO_TYPE[0]
+        new_program.creation_date = timezone.now()
+        new_program.original_site = feed_dict['feed']['link']
+        new_program.language = feed_dict['feed']['language']
+       
+        return new_program
+             
 
     
     def parse_episode(self,entry_dict,a_program):
@@ -308,6 +312,15 @@ class ParserPodomatic(RSSLinkParser):
         
         new_program.name = feed_dict['feed']['title']
         new_program.author = feed_dict['feed']['author']
+        new_program.language = feed_dict['feed']['language']
+        
+        for auth_item in feed_dict['feed']['authors']:
+            
+            try:
+                new_program.author_email = auth_item['email']
+            except KeyError:
+                pass
+             
         new_program.description = feed_dict['feed']['summary']
         new_program.rss_link = self._link
         new_program.rss_link_type = PODOMATIC_TYPE[0]

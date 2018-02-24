@@ -91,14 +91,15 @@ class Image(models.Model):
         
         
 
-PROGRAM_ATB_FROM_RSS = ['name','author','description','original_site'] 
+PROGRAM_ATB_FROM_RSS = ['name','author','description','original_site','author_email','language'] 
 
 class Program(models.Model):
        
     name = TruncatingCharField(max_length=ML_NAME)
+    # Author (RSS link) ! = Owner (System user)
     author = TruncatingCharField(max_length=ML_AUTHOR ,null=True)
-    #author_email = models.EmailField()
-    #language = models.CharField(max_length=50,null=True)
+    author_email = models.EmailField(null=True)
+    language = TruncatingCharField(max_length=10,null=True)
     description = models.TextField()
     creation_date = models.DateTimeField(default=default_time)
     rss_link = models.URLField()
