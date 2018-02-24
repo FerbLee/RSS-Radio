@@ -33,20 +33,7 @@ DEFAULT_IMAGE_PATH = os.path.join(DEFAULT_IMAGES_DIR,'program.jpg')
 IMAGE_DIR = 'pictures'
 ABSOLUTE_IMAGE_DIR = os.path.join(settings.MEDIA_ROOT,IMAGE_DIR)
 
-
-
-
 # Create your models here.
-
-class Tag(models.Model):
-
-    name = models.CharField(max_length=ML_TAG)
-    times_used = models.PositiveIntegerField(default=1)
-    
-    
-    def __str__(self):
-        
-        return str(self.name)
     
 
 class Image(models.Model):
@@ -56,7 +43,6 @@ class Image(models.Model):
     creation_date = models.DateTimeField(default=default_time,null=True)
     name = models.CharField(max_length=ML_NAME,null=True)
     alt_text = models.CharField(max_length=ML_NAME,default='Image')
-
     
     def __str__(self):
         
@@ -138,3 +124,15 @@ class Episode(models.Model):
         return self.title
 
 
+class Tag(models.Model):
+
+    name = models.CharField(max_length=ML_TAG)
+    times_used = models.PositiveIntegerField(default=1)
+    programs = models.ManyToManyField(Program)
+    episodes = models.ManyToManyField(Episode)
+    
+    def __str__(self):
+        
+        return str(self.name)
+    
+    

@@ -6,7 +6,7 @@ Created on 20 Feb 2018
 
 from django.utils import timezone
 from django.core.files import File
-from .models import Episode, Program, Image
+from .models import Episode, Program, Image, Tag
 from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME
 from .models import IVOOX_TYPE,RADIOCO_TYPE,PODOMATIC_TYPE
 from datetime import datetime
@@ -14,6 +14,7 @@ import feedparser
 import pytz
 import urllib
 import os
+from django.utils.timezone import override
 
 
 def truncate_strings(desc_string,max_len):
@@ -93,12 +94,50 @@ class RSSLinkParser(object):
             new_image_instance.save()
         
         return new_image_instance
+    
+    
+    def get_tag_instance(self,name):
+        
+        clean_name = name.lower().strip()
+    
+        tag_instance = Tag.objects.filter(name=clean_name)
+
+        if tag_instance.exists():
             
+            tag_instance = tag_instance[0]
+            tag_instance.times_used += 1
+        
+        else:
+            
+            tag_instance = Tag(name=clean_name)
+ 
+        tag_instance.save()
+ 
+        return tag_instance
+    
+    
     
     def get_program_image_url_from_feed_dict(self,feed_dict):
         
         return feed_dict['feed']['image']['href']
     
+    
+    def get_program_tag_names_from_feed_dict(self,feed_dict):
+    
+        return [tag_dict['term'] for tag_dict in feed_dict['feed']['tags']]
+
+
+    def get_episode_tag_names_from_entry_dict(self,entry_dict):
+    
+        try:
+            
+            return [tag_dict['term'] for tag_dict in entry_dict['tags']]
+        
+        except KeyError:
+            
+            print(entry_dict)
+            return []
+            
     
     def get_entry_list(self,feed_dict):
     
@@ -117,49 +156,73 @@ class RSSLinkParser(object):
 
     def parse_and_save(self):
         
+        # 1. Get dictionary from rss_link
         feed_dict = feedparser.parse(self._link.strip())
-        new_program = self.parse_program(feed_dict)
         
-        if new_program == None:   
+        try:
+            # 2. Create new program instance
+            new_program = self.parse_program(feed_dict)
+            # 3. Create image instance and add to program
+            new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
+        
+        except KeyError:
+            
             return False
         
+        # 4. Save program
         new_program.save()
         
+        # 5. Create/Get tag instances and add them to program
+        program_tag_list = self.get_program_tag_names_from_feed_dict(feed_dict)
+        
+        for tag_name in program_tag_list:
+            
+            tag_instance = self.get_tag_instance(tag_name)
+            tag_instance.programs.add(new_program) 
+        
+        
+        # 6. Get episodes
         entry_list = self.get_entry_list(feed_dict)
         
-        for an_entry in entry_list:
+        for entry_dict in entry_list:
     
-            self.parse_episode(an_entry, new_program).save()
+            new_episode = self.parse_episode(entry_dict, new_program)
+            new_episode.save()
+        
+            episode_tag_list = self.get_episode_tag_names_from_entry_dict(entry_dict)
+            
+            for tag_name in episode_tag_list:
+            
+                tag_instance = self.get_tag_instance(tag_name)
+                tag_instance.episodes.add(new_episode) 
+        
         
         return True
  
  
  
 class ParserIvoox(RSSLinkParser): 
-        
+    
+    # Overrides superclass method.
+    def get_episode_tag_names_from_entry_dict(self,_):
+    
+        # No tags in episode entry for this feed type
+        return []
+    
     
     def parse_program(self,feed_dict,disable_image_creation=False):
 
         new_program = Program()
         
-        try:
+        new_program.name = truncate_strings(feed_dict['feed']['title'],ML_NAME)
+        new_program.author = truncate_strings(feed_dict['feed']['author'],ML_AUTHOR)
+        new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
+        new_program.rss_link = self._link
+        new_program.rss_link_type = IVOOX_TYPE[0]
+        new_program.creation_date = timezone.now()
+        new_program.original_site = feed_dict['feed']['link']
         
-            new_program.name = truncate_strings(feed_dict['feed']['title'],ML_NAME)
-            new_program.author = truncate_strings(feed_dict['feed']['author'],ML_AUTHOR)
-            new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
-            new_program.rss_link = self._link
-            new_program.rss_link_type = IVOOX_TYPE[0]
-            new_program.creation_date = timezone.now()
-            new_program.original_site = feed_dict['feed']['link']
-            
-            if not disable_image_creation:
-                new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
-            
-            return new_program
-        
-        except KeyError:
-            
-            return None
+        return new_program
 
 
     def parse_episode(self,entry_dict,a_program):
@@ -182,6 +245,12 @@ class ParserIvoox(RSSLinkParser):
 
 
 class ParserRadioco(RSSLinkParser):
+    
+    # Overrides superclass method.
+    def get_episode_tag_names_from_entry_dict(self,_):
+    
+        # No tags in episode entry for this feed type
+        return []
     
 
     def parse_program(self,feed_dict,disable_image_creation=False):
