@@ -122,6 +122,12 @@ class RSSLinkParser(object):
         return feed_dict['feed']['image']['href']
     
     
+    def get_episode_image_url_from_entry_dict(self,entry_dict):
+    
+        # WARNING: Can raise KeyError in any parser
+        return entry_dict['image']['href']
+            
+    
     def get_program_tag_names_from_feed_dict(self,feed_dict):
     
         return [tag_dict['term'] for tag_dict in feed_dict['feed']['tags']]
@@ -135,7 +141,6 @@ class RSSLinkParser(object):
         
         except KeyError:
             
-            print(entry_dict)
             return []
             
     
@@ -186,7 +191,20 @@ class RSSLinkParser(object):
         
         for entry_dict in entry_list:
     
-            new_episode = self.parse_episode(entry_dict, new_program)
+            try:
+                new_episode = self.parse_episode(entry_dict, new_program)
+            except KeyError:
+                continue
+            
+            try:
+                
+                image_url = self.get_episode_image_url_from_entry_dict(entry_dict)
+                new_episode.image = self.create_image(image_url)
+            
+            except KeyError:
+            
+                new_episode.image = Image.get_default_program_image()
+            
             new_episode.save()
         
             episode_tag_list = self.get_episode_tag_names_from_entry_dict(entry_dict)
@@ -210,7 +228,7 @@ class ParserIvoox(RSSLinkParser):
         return []
     
     
-    def parse_program(self,feed_dict,disable_image_creation=False):
+    def parse_program(self,feed_dict):
 
         new_program = Program()
         
@@ -237,7 +255,6 @@ class ParserIvoox(RSSLinkParser):
         new_episode.insertion_date = timezone.now()
         new_episode.original_id = entry_dict['id']
         new_episode.original_site = entry_dict['link']
-        new_episode.image = Image.get_default_program_image()
         
         return new_episode
     
@@ -253,7 +270,7 @@ class ParserRadioco(RSSLinkParser):
         return []
     
 
-    def parse_program(self,feed_dict,disable_image_creation=False):
+    def parse_program(self,feed_dict):
 
         new_program = Program()
 
@@ -266,9 +283,6 @@ class ParserRadioco(RSSLinkParser):
             new_program.rss_link_type = RADIOCO_TYPE[0]
             new_program.creation_date = timezone.now()
             new_program.original_site = feed_dict['feed']['link']
-            
-            if not disable_image_creation:
-                new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
             
             return new_program
             
@@ -290,7 +304,6 @@ class ParserRadioco(RSSLinkParser):
         new_episode.insertion_date = timezone.now()
         # No original id in Radioco feeds
         new_episode.original_site = entry_dict['link']
-        new_episode.image = Image.get_default_program_image()
         
         return new_episode
     
@@ -303,25 +316,15 @@ class ParserPodomatic(RSSLinkParser):
         
         new_program = Program()
         
-        try:
+        new_program.name = truncate_strings(feed_dict['feed']['title'],ML_NAME)
+        new_program.author = truncate_strings(feed_dict['feed']['author'],ML_AUTHOR)
+        new_program.description = truncate_strings(feed_dict['feed']['summary'],ML_DESCRIPTION)
+        new_program.rss_link = self._link
+        new_program.rss_link_type = PODOMATIC_TYPE[0]
+        new_program.creation_date = timezone.now()
+        new_program.original_site = feed_dict['feed']['link']
         
-            new_program.name = truncate_strings(feed_dict['feed']['title'],ML_NAME)
-            new_program.author = truncate_strings(feed_dict['feed']['author'],ML_AUTHOR)
-            new_program.description = truncate_strings(feed_dict['feed']['summary'],ML_DESCRIPTION)
-            new_program.rss_link = self._link
-            new_program.rss_link_type = PODOMATIC_TYPE[0]
-            new_program.creation_date = timezone.now()
-            new_program.original_site = feed_dict['feed']['link']
-            
-            if not disable_image_creation:
-                new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
-    
-            
-            return new_program
-            
-        except KeyError:
-            
-            return None
+        return new_program
     
     
     def parse_episode(self,entry_dict,a_program):
@@ -336,12 +339,6 @@ class ParserPodomatic(RSSLinkParser):
         new_episode.insertion_date = timezone.now()
         new_episode.original_id = entry_dict['id']
         new_episode.original_site = entry_dict['link']
-        
-        try:
-            new_episode.image = self.create_image(entry_dict['image']['href'])
-        except:
-            print('Episode ' + new_episode.title + ' No image file found. Setting default instead')
-            new_episode.image = Image.get_default_program_image()
     
         return new_episode
         

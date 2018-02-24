@@ -86,6 +86,8 @@ class Program(models.Model):
        
     name = models.CharField(max_length=ML_NAME)
     author = models.CharField(max_length=ML_AUTHOR ,null=True)
+    #author_email = models.EmailField()
+    #language = models.CharField(max_length=50,null=True)
     description = models.CharField(max_length=ML_DESCRIPTION)
     creation_date = models.DateTimeField(default=default_time)
     rss_link = models.URLField()
