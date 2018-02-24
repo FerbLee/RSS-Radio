@@ -8,7 +8,7 @@ import pytz
 
 default_time = datetime(1,1,1,0,0,0,0,tzinfo=pytz.UTC)
 
-ML_DESCRIPTION = 1000
+#ML_DESCRIPTION = 300
 ML_NAME = 200
 ML_AUTHOR = 200 
 ML_TITLE = 200
@@ -33,16 +33,27 @@ DEFAULT_IMAGE_PATH = os.path.join(DEFAULT_IMAGES_DIR,'program.jpg')
 IMAGE_DIR = 'pictures'
 ABSOLUTE_IMAGE_DIR = os.path.join(settings.MEDIA_ROOT,IMAGE_DIR)
 
-# Create your models here.
+# Create custom fields
+
+class TruncatingCharField(models.CharField):
     
+    def get_prep_value(self, value):
+        value = super(TruncatingCharField,self).get_prep_value(value)
+        if value:
+            if len(value) > self.max_length:
+                return value[:self.max_length-3] + '...' 
+        return value
+
+
+# Create your models here.    
 
 class Image(models.Model):
     
     path = models.ImageField(upload_to=IMAGE_DIR+'/%Y/%m/',default=DEFAULT_IMAGE_PATH)
     original_url = models.URLField(null=True)
     creation_date = models.DateTimeField(default=default_time,null=True)
-    name = models.CharField(max_length=ML_NAME,null=True)
-    alt_text = models.CharField(max_length=ML_NAME,default='Image')
+    name = TruncatingCharField(max_length=ML_NAME,null=True)
+    alt_text = TruncatingCharField(max_length=ML_NAME,default='Image')
     
     def __str__(self):
         
@@ -84,11 +95,11 @@ PROGRAM_ATB_FROM_RSS = ['name','author','description','original_site']
 
 class Program(models.Model):
        
-    name = models.CharField(max_length=ML_NAME)
-    author = models.CharField(max_length=ML_AUTHOR ,null=True)
+    name = TruncatingCharField(max_length=ML_NAME)
+    author = TruncatingCharField(max_length=ML_AUTHOR ,null=True)
     #author_email = models.EmailField()
     #language = models.CharField(max_length=50,null=True)
-    description = models.CharField(max_length=ML_DESCRIPTION)
+    description = models.TextField()
     creation_date = models.DateTimeField(default=default_time)
     rss_link = models.URLField()
     rss_link_type = models.CharField(choices=EXISTING_PARSERS,max_length=2,default='ra')
@@ -109,16 +120,16 @@ class Program(models.Model):
 class Episode(models.Model):
     
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
-    title = models.CharField(max_length=ML_TITLE)
+    title = TruncatingCharField(max_length=ML_TITLE)
     publication_date = models.DateTimeField(default=default_time)
     insertion_date = models.DateTimeField(default=default_time) 
-    summary = models.CharField(max_length=ML_DESCRIPTION)
+    summary = models.TextField()
     file = models.URLField()
-    file_type = models.CharField(max_length=ML_TYPE,null=True)
+    file_type = TruncatingCharField(max_length=ML_TYPE,null=True)
     downloads = models.BigIntegerField(default=0)
     up_votes = models.BigIntegerField(default=0)
     down_votes = models.BigIntegerField(default=0)
-    original_id = models.CharField(max_length=ML_ORIGINAL_ID,null=True)
+    original_id = TruncatingCharField(max_length=ML_ORIGINAL_ID,null=True)
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
 
@@ -128,7 +139,7 @@ class Episode(models.Model):
 
 class Tag(models.Model):
 
-    name = models.CharField(max_length=ML_TAG)
+    name = TruncatingCharField(max_length=ML_TAG)
     times_used = models.PositiveIntegerField(default=1)
     programs = models.ManyToManyField(Program)
     episodes = models.ManyToManyField(Episode)

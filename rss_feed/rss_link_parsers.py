@@ -7,22 +7,13 @@ Created on 20 Feb 2018
 from django.utils import timezone
 from django.core.files import File
 from .models import Episode, Program, Image, Tag
-from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME
+#from .models import ML_AUTHOR,ML_DESCRIPTION,ML_TITLE,ML_NAME
 from .models import IVOOX_TYPE,RADIOCO_TYPE,PODOMATIC_TYPE
 from datetime import datetime
 import feedparser
 import pytz
 import urllib
 import os
-from django.utils.timezone import override
-
-
-def truncate_strings(desc_string,max_len):
- 
-    if len(desc_string) > max_len:
-        return desc_string[:max_len-2] + '..'
-    
-    return desc_string
 
 
 def get_parser_by_program(a_program):
@@ -47,7 +38,6 @@ class RSSLinkParser(object):
     def __init__(self,rss_link):
         
         self._link = rss_link  
-        #self._image_dir = ABSOLUTE_IMAGE_DIR 
         
     
     def getLinkToAudio(self,dict_list):
@@ -232,9 +222,9 @@ class ParserIvoox(RSSLinkParser):
 
         new_program = Program()
         
-        new_program.name = truncate_strings(feed_dict['feed']['title'],ML_NAME)
-        new_program.author = truncate_strings(feed_dict['feed']['author'],ML_AUTHOR)
-        new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
+        new_program.name = feed_dict['feed']['title']
+        new_program.author = feed_dict['feed']['author']
+        new_program.description = feed_dict['feed']['subtitle']
         new_program.rss_link = self._link
         new_program.rss_link_type = IVOOX_TYPE[0]
         new_program.creation_date = timezone.now()
@@ -248,8 +238,8 @@ class ParserIvoox(RSSLinkParser):
         new_episode = Episode()
         new_episode.program = a_program
 
-        new_episode.title = truncate_strings(entry_dict['title'],ML_TITLE)
-        new_episode.summary = truncate_strings(entry_dict['summary'],ML_DESCRIPTION)
+        new_episode.title = entry_dict['title']
+        new_episode.summary = entry_dict['summary']
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()
@@ -276,9 +266,9 @@ class ParserRadioco(RSSLinkParser):
 
         try:
             
-            new_program.name = truncate_strings(feed_dict['feed']['title'],ML_NAME)
+            new_program.name = feed_dict['feed']['title']
             new_program.author = None
-            new_program.description = truncate_strings(feed_dict['feed']['subtitle'],ML_DESCRIPTION)
+            new_program.description = feed_dict['feed']['subtitle']
             new_program.rss_link = self._link
             new_program.rss_link_type = RADIOCO_TYPE[0]
             new_program.creation_date = timezone.now()
@@ -297,8 +287,8 @@ class ParserRadioco(RSSLinkParser):
         new_episode = Episode()
         new_episode.program = a_program
         
-        new_episode.title = truncate_strings(entry_dict['title'],ML_TITLE)
-        new_episode.summary = truncate_strings(entry_dict['summary'],ML_DESCRIPTION)
+        new_episode.title = entry_dict['title']
+        new_episode.summary = entry_dict['summary']
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()
@@ -312,13 +302,13 @@ class ParserRadioco(RSSLinkParser):
 class ParserPodomatic(RSSLinkParser):
 
 
-    def parse_program(self,feed_dict,disable_image_creation=False):
+    def parse_program(self,feed_dict):
         
         new_program = Program()
         
-        new_program.name = truncate_strings(feed_dict['feed']['title'],ML_NAME)
-        new_program.author = truncate_strings(feed_dict['feed']['author'],ML_AUTHOR)
-        new_program.description = truncate_strings(feed_dict['feed']['summary'],ML_DESCRIPTION)
+        new_program.name = feed_dict['feed']['title']
+        new_program.author = feed_dict['feed']['author']
+        new_program.description = feed_dict['feed']['summary']
         new_program.rss_link = self._link
         new_program.rss_link_type = PODOMATIC_TYPE[0]
         new_program.creation_date = timezone.now()
@@ -332,8 +322,8 @@ class ParserPodomatic(RSSLinkParser):
         new_episode = Episode()
         
         new_episode.program = a_program        
-        new_episode.title = truncate_strings(entry_dict['title'],ML_TITLE)
-        new_episode.summary = truncate_strings(entry_dict['content'][0]['value'],ML_DESCRIPTION)
+        new_episode.title = entry_dict['title']
+        new_episode.summary = entry_dict['content'][0]['value']
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()
