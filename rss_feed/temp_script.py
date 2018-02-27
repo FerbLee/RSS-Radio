@@ -4,46 +4,79 @@ Created on 20 Feb 2018
 @author: fer
 '''
 
-from rss_feed.rss_link_parsers import get_parser_by_program
+from rss_feed.rss_link_parsers import get_parser_by_program, create_image, get_tag_instance
 from rss_feed.models import Program, Episode
-from rss_feed.models import PROGRAM_ATB_FROM_RSS
+from rss_feed.models import PROGRAM_ATB_FROM_RSS,EPISODE_ATB_FROM_RSS
 import feedparser
 
 
-def ud_update_program(program_old,program_new,image_url_new,rss_parser):
+def ud_update_tags(entity_old,new_tags_name_list):
 
-    po_dict = program_old.__dict__
-    pn_dict = program_new.__dict__
+    old_tags = entity_old.tag_set.all()
+    new_tags_name_set = set(new_tags_name_list)
+    change = False
     
-    it_keys = PROGRAM_ATB_FROM_RSS
+    for a_tag in old_tags:
+      
+        if a_tag.name not in new_tags_name_set:
+            
+            print(a_tag.name)
+            a_tag.programs.remove(entity_old)
+            a_tag.times_used -= 1
+            a_tag.save()
+            change = True
+        
+        else:
+            
+            new_tags_name_set.remove(a_tag.name)
+            
+    for tag_name in new_tags_name_set:
+        
+        a_tag = get_tag_instance(tag_name)
+        a_tag.programs.add(entity_old)
+        change = True
     
-    # Check updated attributes
+    return change
+    
+
+
+
+def ud_update_program_episode(entity_old,entity_new,it_keys,image_url_new,tags_name_list):
+
+    eo_dict = entity_old.__dict__
+    en_dict = entity_new.__dict__
+    
+    #it_keys = PROGRAM_ATB_FROM_RSS
+    
+    # Check update attributes
     change = False
     for a_key in it_keys:
         
-        if po_dict[a_key] != pn_dict[a_key]:
+        if eo_dict[a_key] != en_dict[a_key]:
             
-            po_dict[a_key] = pn_dict[a_key]
+            eo_dict[a_key] = en_dict[a_key]
             change = True
 
     # Check updated image
-    if program_old.image.original_url != image_url_new:
+    if entity_old.image.original_url != image_url_new:
         
-        new_image = rss_parser.create_image(image_url_new)
-        program_old.image = rss_parser.create_image(new_image)
+        entity_old.image = create_image(image_url_new)
         change = True
     
+    # Save attributes if changed
     if change:
-        print('Program ' + program_old.name + ' was UPDATED')
-        program_old.save() 
-    else:
-        print('Program ' + program_old.name + ' nothing to do')
+        entity_old.save() 
+        print(str(type(entity_old)) + ' ' + entity_old.name + ' attributes UPDATED')
         
+    # Check update tags (needs to be done after saving due to many-to-many rel)
+    change_tags = ud_update_tags(entity_old,tags_name_list)
+        
+    if change_tags:
+        print(str(type(entity_old)) + ' ' + entity_old.name + ' tags UPDATED')
+        
+    elif not (change or change_tags):
+        print('Program ' + entity_old.name + ' nothing to do')
 
-
-def ud_update_episode(episode_old,episode_new):
-
-    pass
 
 
 def ud_create_episode_rss():
@@ -88,10 +121,11 @@ def ud_iterate_program_table():
         
         parser = get_parser_by_program(a_program)
         
-        updated_program = parser.parse_program(feed_dict,disable_image_creation=True)
+        updated_program = parser.parse_program(feed_dict)
         updated_image_url = parser.get_program_image_url_from_feed_dict(feed_dict)   
+        updated_tag_names = parser.get_program_tag_names_from_feed_dict(feed_dict,clean=True)
         
-        ud_update_program(a_program,updated_program,updated_image_url,parser)
+        ud_update_program_episode(a_program,updated_program,PROGRAM_ATB_FROM_RSS,updated_image_url,updated_tag_names)
             
          
          

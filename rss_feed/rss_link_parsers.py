@@ -59,7 +59,7 @@ def create_image(image_url):
 
 def get_tag_instance(name):
     
-    clean_name = name.lower().strip()
+    clean_name = Tag.clean_name(name)
 
     tag_instance = Tag.objects.filter(name=clean_name)
 
@@ -117,16 +117,25 @@ class RSSLinkParser(object):
         return entry_dict['image']['href']
             
     
-    def get_program_tag_names_from_feed_dict(self,feed_dict):
+    def get_program_tag_names_from_feed_dict(self,feed_dict,clean=False):
     
-        return [tag_dict['term'] for tag_dict in feed_dict['feed']['tags']]
+        if clean:
+            return [Tag.clean_name(tag_dict['term']) for tag_dict in feed_dict['feed']['tags']]
+        else:
+            return [tag_dict['term'] for tag_dict in feed_dict['feed']['tags']]
 
 
-    def get_episode_tag_names_from_entry_dict(self,entry_dict):
+    def get_episode_tag_names_from_entry_dict(self,entry_dict,clean=False):
     
         try:
             
-            return [tag_dict['term'] for tag_dict in entry_dict['tags']]
+            if clean:
+            
+                return [Tag.clean_name(tag_dict['term']) for tag_dict in entry_dict['tags']]
+            
+            else:
+            
+                return [tag_dict['term'] for tag_dict in entry_dict['tags']]
         
         except KeyError:
             

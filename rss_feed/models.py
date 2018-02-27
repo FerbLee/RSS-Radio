@@ -150,4 +150,7 @@ class Tag(models.Model):
         
         return str(self.name)
     
+    @classmethod
+    def clean_name(cls,name):
     
+        return name.lower().strip()
