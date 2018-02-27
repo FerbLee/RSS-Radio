@@ -117,6 +117,7 @@ class Program(models.Model):
     #    return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 
+EPISODE_ATB_FROM_RSS = ['title','publication_date','summary','file','file_type','original_site']
 
 class Episode(models.Model):
     

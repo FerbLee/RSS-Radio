@@ -31,6 +31,53 @@ def get_parser_by_program(a_program):
         return None
 
 
+def create_image(image_url):
+    
+    creation_date = timezone.now()
+    original_image_name = os.path.basename(image_url)
+    image_name = creation_date.strftime("%d%H%M%S") + '-' + original_image_name.lower()
+    
+    opener = urllib.request.build_opener()
+    opener.addheaders = [('User-Agent','Mozilla/5.0')]
+    urllib.request.install_opener(opener)
+    image_file = urllib.request.urlretrieve(image_url)
+    
+    with open(image_file[0],'rb') as ifd: 
+        
+        new_image_instance = Image()
+        new_image_instance.path.save( image_name, File(ifd) )
+    
+        new_image_instance.creation_date = creation_date
+        new_image_instance.name = original_image_name
+        new_image_instance.alt_text = original_image_name.lower()
+        new_image_instance.original_url = image_url
+        
+        new_image_instance.save()
+    
+    return new_image_instance
+
+
+def get_tag_instance(name):
+    
+    clean_name = name.lower().strip()
+
+    tag_instance = Tag.objects.filter(name=clean_name)
+
+    if tag_instance.exists():
+        
+        tag_instance = tag_instance[0]
+        tag_instance.times_used += 1
+    
+    else:
+        
+        tag_instance = Tag(name=clean_name)
+
+    tag_instance.save()
+
+    return tag_instance
+
+
+
 class RSSLinkParser(object):
     
     
@@ -57,54 +104,7 @@ class RSSLinkParser(object):
         
         return datetime(a_time_struct.tm_year,a_time_struct.tm_mon,a_time_struct.tm_mday,a_time_struct.tm_hour,
                         a_time_struct.tm_min,a_time_struct.tm_sec,0,tzinfo=pytz.UTC)
-    
-
-    def create_image(self,image_url):
-        
-        creation_date = timezone.now()
-        original_image_name = os.path.basename(image_url)
-        image_name = creation_date.strftime("%d%H%M%S") + '-' + original_image_name.lower()
-        
-        opener = urllib.request.build_opener()
-        opener.addheaders = [('User-Agent','Mozilla/5.0')]
-        urllib.request.install_opener(opener)
-        image_file = urllib.request.urlretrieve(image_url)
-        
-        with open(image_file[0],'rb') as ifd: 
-            
-            new_image_instance = Image()
-            new_image_instance.path.save( image_name, File(ifd) )
-        
-            new_image_instance.creation_date = creation_date
-            new_image_instance.name = original_image_name
-            new_image_instance.alt_text = original_image_name.lower()
-            new_image_instance.original_url = image_url
-            
-            new_image_instance.save()
-        
-        return new_image_instance
-    
-    
-    def get_tag_instance(self,name):
-        
-        clean_name = name.lower().strip()
-    
-        tag_instance = Tag.objects.filter(name=clean_name)
-
-        if tag_instance.exists():
-            
-            tag_instance = tag_instance[0]
-            tag_instance.times_used += 1
-        
-        else:
-            
-            tag_instance = Tag(name=clean_name)
- 
-        tag_instance.save()
- 
-        return tag_instance
-    
-    
+       
     
     def get_program_image_url_from_feed_dict(self,feed_dict):
         
@@ -157,7 +157,7 @@ class RSSLinkParser(object):
             # 2. Create new program instance
             new_program = self.parse_program(feed_dict)
             # 3. Create image instance and add to program
-            new_program.image = self.create_image(self.get_program_image_url_from_feed_dict(feed_dict))
+            new_program.image = create_image(self.get_program_image_url_from_feed_dict(feed_dict))
         
         except KeyError:
             
@@ -171,7 +171,7 @@ class RSSLinkParser(object):
         
         for tag_name in program_tag_list:
             
-            tag_instance = self.get_tag_instance(tag_name)
+            tag_instance = get_tag_instance(tag_name)
             tag_instance.programs.add(new_program) 
         
         
@@ -188,7 +188,7 @@ class RSSLinkParser(object):
             try:
                 
                 image_url = self.get_episode_image_url_from_entry_dict(entry_dict)
-                new_episode.image = self.create_image(image_url)
+                new_episode.image = create_image(image_url)
             
             except KeyError:
             
@@ -200,7 +200,7 @@ class RSSLinkParser(object):
             
             for tag_name in episode_tag_list:
             
-                tag_instance = self.get_tag_instance(tag_name)
+                tag_instance = get_tag_instance(tag_name)
                 tag_instance.episodes.add(new_episode) 
         
         
