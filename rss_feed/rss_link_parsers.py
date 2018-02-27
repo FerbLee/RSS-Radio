@@ -220,7 +220,7 @@ class RSSLinkParser(object):
 class ParserIvoox(RSSLinkParser): 
     
     # Overrides superclass method.
-    def get_episode_tag_names_from_entry_dict(self,_):
+    def get_episode_tag_names_from_entry_dict(self,_,clean):
     
         # No tags in episode entry for this feed type
         return []
@@ -271,7 +271,7 @@ class ParserIvoox(RSSLinkParser):
 class ParserRadioco(RSSLinkParser):
     
     # Overrides superclass method.
-    def get_episode_tag_names_from_entry_dict(self,_):
+    def get_episode_tag_names_from_entry_dict(self,_,clean):
     
         # No tags in episode entry for this feed type
         return []

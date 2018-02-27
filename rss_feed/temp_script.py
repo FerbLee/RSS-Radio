@@ -10,7 +10,7 @@ from rss_feed.models import PROGRAM_ATB_FROM_RSS,EPISODE_ATB_FROM_RSS
 import feedparser
 
 
-def ud_update_tags(entity_old,new_tags_name_list):
+def ud_update_tags_program(entity_old,new_tags_name_list):
 
     old_tags = entity_old.tag_set.all()
     new_tags_name_set = set(new_tags_name_list)
@@ -20,7 +20,6 @@ def ud_update_tags(entity_old,new_tags_name_list):
       
         if a_tag.name not in new_tags_name_set:
             
-            print(a_tag.name)
             a_tag.programs.remove(entity_old)
             a_tag.times_used -= 1
             a_tag.save()
@@ -39,14 +38,47 @@ def ud_update_tags(entity_old,new_tags_name_list):
     return change
     
 
+def ud_update_tags_episode(entity_old,new_tags_name_list):
+
+    old_tags = entity_old.tag_set.all()
+    new_tags_name_set = set(new_tags_name_list)
+    change = False
+    
+    for a_tag in old_tags:
+      
+        if a_tag.name not in new_tags_name_set:
+            
+            a_tag.episodes.remove(entity_old)
+            a_tag.times_used -= 1
+            a_tag.save()
+            change = True
+        
+        else:
+            
+            new_tags_name_set.remove(a_tag.name)
+            
+    for tag_name in new_tags_name_set:
+        
+        a_tag = get_tag_instance(tag_name)
+        a_tag.episodes.add(entity_old)
+        change = True
+    
+    return change
+
+
+def ud_update_tags(entity_old,new_tags_name_list):
+    
+    if type(entity_old) == Program:
+        
+        return ud_update_tags_program(entity_old, new_tags_name_list)
+    
+    return ud_update_tags_episode(entity_old, new_tags_name_list)
 
 
 def ud_update_program_episode(entity_old,entity_new,it_keys,image_url_new,tags_name_list):
 
     eo_dict = entity_old.__dict__
     en_dict = entity_new.__dict__
-    
-    #it_keys = PROGRAM_ATB_FROM_RSS
     
     # Check update attributes
     change = False
@@ -66,17 +98,18 @@ def ud_update_program_episode(entity_old,entity_new,it_keys,image_url_new,tags_n
     # Save attributes if changed
     if change:
         entity_old.save() 
-        print(str(type(entity_old)) + ' ' + entity_old.name + ' attributes UPDATED')
+        print(str(type(entity_old)) + ' ' + str(entity_old) + ' attributes UPDATED')
         
     # Check update tags (needs to be done after saving due to many-to-many rel)
     change_tags = ud_update_tags(entity_old,tags_name_list)
         
     if change_tags:
-        print(str(type(entity_old)) + ' ' + entity_old.name + ' tags UPDATED')
+        print(str(type(entity_old)) + ' ' + str(entity_old) + ' tags UPDATED')
         
     elif not (change or change_tags):
-        print('Program ' + entity_old.name + ' nothing to do')
+        print(str(type(entity_old)) + ' '  + str(entity_old) + ' nothing to do')
 
+    return entity_old
 
 
 def ud_create_episode_rss():
@@ -99,9 +132,18 @@ def ud_iterate_episode_table(a_program,entry_list,rss_parser=None):
         else:
             episode_old_qs = Episode.objects.filter(program_id=a_program,title=episode_new.title,
                                                     original_site=episode_new.original_site)
+        
+        try:
+            updated_image_url = rss_parser.get_episode_image_url_from_entry_dict(an_entry)  
+        except KeyError:
+            updated_image_url = None
+            
+        updated_tag_names = rss_parser.get_episode_tag_names_from_entry_dict(an_entry,clean=True)
+        
         if episode_old_qs.exists():
-            #Update_episode
-            pass
+       
+            ud_update_program_episode(episode_old_qs[0],episode_new,EPISODE_ATB_FROM_RSS,updated_image_url,updated_tag_names)
+            
         else:
             #Create_new_episode
             pass
@@ -125,9 +167,13 @@ def ud_iterate_program_table():
         updated_image_url = parser.get_program_image_url_from_feed_dict(feed_dict)   
         updated_tag_names = parser.get_program_tag_names_from_feed_dict(feed_dict,clean=True)
         
-        ud_update_program_episode(a_program,updated_program,PROGRAM_ATB_FROM_RSS,updated_image_url,updated_tag_names)
-            
-         
+        updated_program = ud_update_program_episode(a_program,updated_program,PROGRAM_ATB_FROM_RSS,updated_image_url,
+                                                    updated_tag_names)
+        
+        entry_list = parser.get_entry_list(feed_dict)
+        
+        ud_iterate_episode_table(updated_program,entry_list,parser)
+        
          
 
 def main():
