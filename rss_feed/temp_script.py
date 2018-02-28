@@ -112,10 +112,6 @@ def ud_update_program_episode(entity_old,entity_new,it_keys,image_url_new,tags_n
     return entity_old
 
 
-def ud_create_episode_rss():
-    
-    pass
-
 
 def ud_iterate_episode_table(a_program,entry_list,rss_parser=None):
     
@@ -133,22 +129,25 @@ def ud_iterate_episode_table(a_program,entry_list,rss_parser=None):
             episode_old_qs = Episode.objects.filter(program_id=a_program,title=episode_new.title,
                                                     original_site=episode_new.original_site)
         
-        try:
-            updated_image_url = rss_parser.get_episode_image_url_from_entry_dict(an_entry)  
-        except KeyError:
-            updated_image_url = None
-            
-        updated_tag_names = rss_parser.get_episode_tag_names_from_entry_dict(an_entry,clean=True)
-        
         if episode_old_qs.exists():
        
-            ud_update_program_episode(episode_old_qs[0],episode_new,EPISODE_ATB_FROM_RSS,updated_image_url,updated_tag_names)
+            try:
+                updated_image_url = rss_parser.get_episode_image_url_from_entry_dict(an_entry)  
+            except KeyError:
+                updated_image_url = None
+                
+            updated_tag_names = rss_parser.get_episode_tag_names_from_entry_dict(an_entry,clean=True)
+            
+            ud_update_program_episode(episode_old_qs[0],episode_new,EPISODE_ATB_FROM_RSS,updated_image_url,
+                                      updated_tag_names)
             
         else:
-            #Create_new_episode
-            pass
-        
-        
+            
+            try:
+                new_episode = rss_parser.save_single_episode(an_entry,a_program)
+                print(str(type(new_episode)) + ' ' + new_episode.title + ' was CREATED')
+            except KeyError:
+                continue
         
 
 

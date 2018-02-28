@@ -156,6 +156,32 @@ class RSSLinkParser(object):
         
         pass
     
+    
+    def save_single_episode(self,entry_dict,program):
+        
+        # parse_episode - raises key error  
+        new_episode = self.parse_episode(entry_dict, program)
+        
+        try:
+            
+            image_url = self.get_episode_image_url_from_entry_dict(entry_dict)
+            new_episode.image = create_image(image_url)
+        
+        except KeyError:
+        
+            new_episode.image = Image.get_default_program_image()
+        
+        new_episode.save()
+    
+        episode_tag_list = self.get_episode_tag_names_from_entry_dict(entry_dict,clean=True)
+        
+        for tag_name in episode_tag_list:
+        
+            tag_instance = get_tag_instance(tag_name)
+            tag_instance.episodes.add(new_episode) 
+        
+        return new_episode
+        
 
     def parse_and_save(self):
         
@@ -190,29 +216,10 @@ class RSSLinkParser(object):
         for entry_dict in entry_list:
     
             try:
-                new_episode = self.parse_episode(entry_dict, new_program)
+                self.save_single_episode(entry_dict,new_program)
             except KeyError:
                 continue
             
-            try:
-                
-                image_url = self.get_episode_image_url_from_entry_dict(entry_dict)
-                new_episode.image = create_image(image_url)
-            
-            except KeyError:
-            
-                new_episode.image = Image.get_default_program_image()
-            
-            new_episode.save()
-        
-            episode_tag_list = self.get_episode_tag_names_from_entry_dict(entry_dict)
-            
-            for tag_name in episode_tag_list:
-            
-                tag_instance = get_tag_instance(tag_name)
-                tag_instance.episodes.add(new_episode) 
-        
-        
         return True
  
  
@@ -220,7 +227,7 @@ class RSSLinkParser(object):
 class ParserIvoox(RSSLinkParser): 
     
     # Overrides superclass method.
-    def get_episode_tag_names_from_entry_dict(self,_,clean):
+    def get_episode_tag_names_from_entry_dict(self,_,clean=False):
     
         # No tags in episode entry for this feed type
         return []
@@ -271,7 +278,7 @@ class ParserIvoox(RSSLinkParser):
 class ParserRadioco(RSSLinkParser):
     
     # Overrides superclass method.
-    def get_episode_tag_names_from_entry_dict(self,_,clean):
+    def get_episode_tag_names_from_entry_dict(self,_,clean=False):
     
         # No tags in episode entry for this feed type
         return []
