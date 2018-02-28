@@ -11,6 +11,7 @@ from celery import shared_task
 
 @shared_task
 def add(x, y):
+    
     return x + y
 
 @shared_task
@@ -19,3 +20,4 @@ def update_rss_info_daemon():
     from rss_feed.update_rss_daemon import ud_iterate_program_table
     
     ud_iterate_program_table()
+    
