@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rss_feed.apps.RSSFeedConfig',
     'bootstrap4',
     'django_celery_results',
-    'rss_feed.update_daemon',
+    'rss_feed.celery_endpoints',
     'django_celery_beat',
 ]
 
