@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load bootstrap4 %}
+
 <head>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}"> !-->
@@ -7,7 +8,12 @@
 <link rel="stylesheet" href="{% static 'css/index_grid.css' %}" type='text/css'/> 
 </head>
 
-<div class="input-header">
+
+{% if user.is_authenticated %}
+    
+    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+    
+    <div class="input-header">
 
 	<div class="jumbotron text-center" id="add-link-header">
 	
@@ -20,7 +26,12 @@
 	      	<input type="text" class="form-control" size="50" placeholder="RSS link" name="rss_link"/>
 	        <input type="submit" class="btn btn-default" value="Add Feed" >
 		</form>
+	
 	</div>
+	
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+{% endif %}
 	
 </div>
 <div class="grid-container">

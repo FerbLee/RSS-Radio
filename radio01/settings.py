@@ -107,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+LOGIN_REDIRECT_URL = '/rss_feed/'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 

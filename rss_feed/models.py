@@ -5,10 +5,11 @@ from django.conf import settings
 import os
 from datetime import datetime
 import pytz
+from django.contrib.auth.models import User
 
 default_time = datetime(1,1,1,0,0,0,0,tzinfo=pytz.UTC)
 
-#ML_DESCRIPTION = 300
+ML_DESCRIPTION = 300
 ML_NAME = 200
 ML_AUTHOR = 200 
 ML_TITLE = 200
@@ -89,6 +90,12 @@ class Image(models.Model):
     #    
     #    cls.default_program_image_creation()
         
+
+# Extends Django user class
+class CustomUser(User):
+    
+    descricion = TruncatingCharField(max_length=ML_DESCRIPTION,null=True)
+    avatar = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
         
 
 PROGRAM_ATB_FROM_RSS = ['name','author','description','original_site','author_email','language'] 
@@ -108,6 +115,8 @@ class Program(models.Model):
     category = models.CharField(choices=EXISTING_CATEGORIES,max_length=2,default='ou')
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    removed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -134,6 +143,7 @@ class Episode(models.Model):
     original_id = TruncatingCharField(max_length=ML_ORIGINAL_ID,null=True)
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
+    removed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^rss_feed/', include('rss_feed.urls')),
     url(r'^admin/', admin.site.urls),
+    url('^', include('django.contrib.auth.urls')),
 ]
