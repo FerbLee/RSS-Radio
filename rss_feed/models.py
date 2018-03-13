@@ -92,10 +92,12 @@ class Image(models.Model):
         
 
 # Extends Django user class
-class CustomUser(User):
+class UserProfile(models.Model):
     
-    descricion = TruncatingCharField(max_length=ML_DESCRIPTION,null=True)
-    avatar = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    description = TruncatingCharField(max_length=ML_DESCRIPTION,null=True)
+    location = TruncatingCharField(max_length=100,null=True)
+    avatar = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True, null=True)
         
 
 PROGRAM_ATB_FROM_RSS = ['name','author','description','original_site','author_email','language'] 
@@ -115,7 +117,7 @@ class Program(models.Model):
     category = models.CharField(choices=EXISTING_CATEGORIES,max_length=2,default='ou')
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     removed = models.BooleanField(default=False)
 
     def __str__(self):
