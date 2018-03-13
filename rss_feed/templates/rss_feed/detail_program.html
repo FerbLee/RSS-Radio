@@ -3,7 +3,7 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <p><b>Autor:</b>{{ program.author }}</p>
-<p><b>Engadido en:</b>{{ program.creation_date }}</p>
+<p><b>Engadido en </b>{{ program.creation_date }} <b>por</b> {{ program.owner.username }}</p>
 <p><b>Descrición:</b>{{ program.description }}</p>
 <p><b>RSS:</b><a href={{ program.rss_link }}>{{ program.rss_link }}</a></p>
 

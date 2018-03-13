@@ -81,10 +81,10 @@ def get_tag_instance(name):
 class RSSLinkParser(object):
     
     
-    def __init__(self,rss_link):
+    def __init__(self,rss_link,owner=None):
         
         self._link = rss_link  
-        
+        self._owner = owner
     
     def getLinkToAudio(self,dict_list):
         
@@ -198,7 +198,8 @@ class RSSLinkParser(object):
             
             return False
         
-        # 4. Save program
+        # 4. Add Owner and Save program
+        new_program.owner = self._owner
         new_program.save()
         
         # 5. Create/Get tag instances and add them to program

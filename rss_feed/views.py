@@ -38,9 +38,10 @@ class EpisodeDetailView(generic.DetailView):
 def addLink(request):
     
     link = request.POST.get("rss_link")
+    owner = request.user
     
-    known_parsers = {'podomatic':rlp.ParserPodomatic(link),'ivoox':rlp.ParserIvoox(link),
-                     'radioco':rlp.ParserRadioco(link)}
+    known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
+                     'radioco':rlp.ParserRadioco(link,owner)}
     
     new_program_added = False
     for key,strategy in known_parsers.items():
