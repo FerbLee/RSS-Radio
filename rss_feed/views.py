@@ -1,11 +1,12 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
-from .models import Episode, Program
+from .models import Episode, Program, Image
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login
-
+from .forms import SignUpForm 
+from astroid.__pkginfo__ import description
 
 class IndexView(generic.ListView):
     
@@ -80,4 +81,35 @@ def AuthView(request):
         # Return an 'invalid login' error message.
         pass
 
+
+
+def signup(request):
+    
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()  # load the profile instance created by the signal
+            user.userprofile.description = form.cleaned_data.get('description')
+            user.userprofile.location = form.cleaned_data.get('location')
+            
+            form.avatar = request.FILES.get('avatar')
+            if form.avatar != None:
+                avatar_img = Image()
+                avatar_img.path = form.avatar
+                avatar_img.save()
+                user.userprofile.avatar = avatar_img
+            
+            
+            user.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+        
+            return HttpResponseRedirect(reverse('rss_feed:index', args=()))
+    
+    else:
+        form = SignUpForm()
+        
+    return render(request, 'registration/signup.html', {'form': form})
 

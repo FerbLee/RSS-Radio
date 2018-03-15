@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+import rss_feed.views as core_views
 
 urlpatterns = [
     url(r'^rss_feed/', include('rss_feed.urls')),
     url(r'^admin/', admin.site.urls),
     url('^', include('django.contrib.auth.urls')),
+    url('^', core_views.signup, name='signup'),
 ]

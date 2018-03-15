@@ -11,7 +11,7 @@
 
 {% if user.is_authenticated %}
     
-    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+    <p>Logado coma {{ user.username }}</p>
     
     <div class="input-header">
 
@@ -30,7 +30,7 @@
 	</div>
 	
 {% else %}
-    <p>Welcome, new user. Please <a href="{% url 'login'%}"><strong>log in</strong></a>.</p>
+    <p>Benvido! Por favor, fai <a href="{% url 'login'%}"><strong>log in</strong></a>.</p>
 {% endif %}
 	
 </div>

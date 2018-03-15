@@ -6,6 +6,8 @@ import os
 from datetime import datetime
 import pytz
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 default_time = datetime(1,1,1,0,0,0,0,tzinfo=pytz.UTC)
 
@@ -98,7 +100,15 @@ class UserProfile(models.Model):
     description = TruncatingCharField(max_length=ML_DESCRIPTION,null=True)
     location = TruncatingCharField(max_length=100,null=True)
     avatar = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True, null=True)
-        
+
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+    instance.userprofile.save()
+
+
 
 PROGRAM_ATB_FROM_RSS = ['name','author','description','original_site','author_email','language'] 
 
