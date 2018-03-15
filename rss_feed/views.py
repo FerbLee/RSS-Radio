@@ -6,7 +6,8 @@ from .models import Episode, Program, Image
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login
 from .forms import SignUpForm 
-from astroid.__pkginfo__ import description
+from django.utils import timezone
+import os
 
 class IndexView(generic.ListView):
     
@@ -82,6 +83,29 @@ def AuthView(request):
         pass
 
 
+def create_avatar(avatar_url,username):
+
+#    try:
+        
+    if avatar_url != None:
+    
+        avatar_img = Image()
+        avatar_img.path = avatar_url
+        avatar_img.creation_date = timezone.now()
+        avatar_img.name = os.path.basename(avatar_url)
+        avatar_img.alt_text = username + '-avatar'
+        avatar_img.save()
+        
+        return avatar_img
+    
+#    else:
+#        raise Exception
+
+#    except Exception as e:
+
+    return Image.get_default_avatar()
+
+
 
 def signup(request):
     
@@ -94,12 +118,7 @@ def signup(request):
             user.userprofile.location = form.cleaned_data.get('location')
             
             form.avatar = request.FILES.get('avatar')
-            if form.avatar != None:
-                avatar_img = Image()
-                avatar_img.path = form.avatar
-                avatar_img.save()
-                user.userprofile.avatar = avatar_img
-            
+            user.userprofile.avatar = create_avatar(form.avatar,user.username)
             
             user.save()
             raw_password = form.cleaned_data.get('password1')

@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
-default_time = datetime(1,1,1,0,0,0,0,tzinfo=pytz.UTC)
+default_time = datetime(1975,1,1,0,0,0,0,tzinfo=pytz.UTC)
 
 ML_DESCRIPTION = 300
 ML_NAME = 200
@@ -32,7 +32,7 @@ EXISTING_PARSERS = (IVOOX_TYPE,RADIOCO_TYPE,PODOMATIC_TYPE)
 DEFAULT_IMAGES_DIR = 'default'
 ABSOLUTE_DEFAULT_IMAGES_DIR = os.path.join(settings.MEDIA_ROOT,DEFAULT_IMAGES_DIR) 
 DEFAULT_IMAGE_PATH = os.path.join(DEFAULT_IMAGES_DIR,'program.jpg')
-#ABSOLUTE_DEFAULT_IMAGE_PATH = os.path.join(ABSOLUTE_DEFAULT_IMAGES_DIR,'program.jpg')
+DEFAULT_AVATAR_PATH = os.path.join(DEFAULT_IMAGES_DIR,'avatar.png')
 IMAGE_DIR = 'pictures'
 ABSOLUTE_IMAGE_DIR = os.path.join(settings.MEDIA_ROOT,IMAGE_DIR)
 
@@ -87,11 +87,33 @@ class Image(models.Model):
         
         return program_def_img[0]
         
-    #@classmethod
-    #def default_images_creation(cls):
-    #    
-    #    cls.default_program_image_creation()
         
+    @classmethod
+    def default_avatar_creation(cls):
+            
+        default_avatar_img = Image()
+        default_avatar_img.creation_date = timezone.now()
+        default_avatar_img.name = 'User Avatar default image'
+        default_avatar_img.alt_text = 'default-avatar'
+        default_avatar_img.path = DEFAULT_AVATAR_PATH
+        
+        default_avatar_img.save()
+        
+        return default_avatar_img
+    
+    
+    @classmethod
+    def get_default_avatar(cls):
+        
+        program_def_img = cls.objects.filter(path=DEFAULT_AVATAR_PATH).order_by('-creation_date')
+        
+        if not program_def_img:
+    
+            return cls.default_avatar_creation()
+        
+        return program_def_img[0]
+      
+      
 
 # Extends Django user class
 class UserProfile(models.Model):
