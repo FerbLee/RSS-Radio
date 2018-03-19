@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 import rss_feed.views as core_views
+from django.contrib.auth.views import logout
+from django.conf import settings
 
 urlpatterns = [
     url(r'^rss_feed/', include('rss_feed.urls')),
     url(r'^admin/', admin.site.urls),
     url('^', include('django.contrib.auth.urls')),
     url('^', core_views.signup, name='signup'),
+    url(r'^logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 ]

@@ -108,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LOGIN_REDIRECT_URL = '/rss_feed/'
+LOGOUT_REDIRECT_URL = '/rss_feed/'
 
 # Because we override the user class
 #AUTH_USER_MODEL = 'core.User'

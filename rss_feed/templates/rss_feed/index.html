@@ -11,7 +11,7 @@
 
 {% if user.is_authenticated %}
     
-    <p>Logado coma {{ user.username }}</p>
+    <p>Logado coma {{ user.username }}. <a href="{% url 'logout'%}"><b>log out</b></a> </p>
     
     <div class="input-header">
 
@@ -30,7 +30,7 @@
 	</div>
 	
 {% else %}
-    <p>Benvido! Por favor, fai <a href="{% url 'login'%}"><strong>log in</strong></a>.</p>
+    <p>Benvido! Por favor, fai <a href="{% url 'login'%}"><strong>log in</strong></a> ou <a href="{% url 'signup'%}"><strong>rexístrate</strong></a>.</p>
 {% endif %}
 	
 </div>
