@@ -22,7 +22,7 @@ from django.conf import settings
 urlpatterns = [
     url(r'^rss_feed/', include('rss_feed.urls')),
     url(r'^admin/', admin.site.urls),
-    url('^', include('django.contrib.auth.urls')),
-    url('^', core_views.signup, name='signup'),
-    url(r'^logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
+    url('^rss_feed/', include('django.contrib.auth.urls')),
+    url(r'^rss_feed/signup/$', core_views.signup, name='signup'),
+    url(r'^rss_feed/logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 ]

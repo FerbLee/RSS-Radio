@@ -5,7 +5,7 @@ from django.conf import settings
 import os
 from datetime import datetime
 import pytz
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
@@ -35,6 +35,8 @@ DEFAULT_IMAGE_PATH = os.path.join(DEFAULT_IMAGES_DIR,'program.jpg')
 DEFAULT_AVATAR_PATH = os.path.join(DEFAULT_IMAGES_DIR,'avatar.png')
 IMAGE_DIR = 'pictures'
 ABSOLUTE_IMAGE_DIR = os.path.join(settings.MEDIA_ROOT,IMAGE_DIR)
+
+DEFAULT_USER_GROUP = 'RSSF-RegularUser'
 
 # Create custom fields
 
@@ -126,8 +128,16 @@ class UserProfile(models.Model):
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
+    
     if created:
+        
+        # Add to default user group
+        qs_def_group = Group.objects.filter(name=DEFAULT_USER_GROUP)
+        if qs_def_group:
+            qs_def_group[0].user_set.add(instance)
+        
         UserProfile.objects.create(user=instance)
+    
     instance.userprofile.save()
 
 

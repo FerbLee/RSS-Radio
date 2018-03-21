@@ -42,15 +42,6 @@ class UserDetailView(generic.DetailView):
     model = User
     template_name = 'rss_feed/detail_user.html'
     
-    
-def get_user_id_by_username(username):
-    
-    qs_found_user = User.objects.filter(username='luigi')
-    
-    if qs_found_user:
-        return qs_found_user[0] 
-    
-    return None
 
 
 def addLink(request):
