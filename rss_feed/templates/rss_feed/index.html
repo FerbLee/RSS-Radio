@@ -11,7 +11,7 @@
 
 {% if user.is_authenticated %}
     
-    <p>Logado coma {{ user.username }}. <a href="{% url 'logout'%}"><b>log out</b></a> </p>
+    <p>Logado coma <a href="{% url 'rss_feed:detail_user' user.id%}"><b>{{ user.username }}</b></a>. <a href="{% url 'logout'%}"><b>log out</b></a> </p>
     
     <div class="input-header">
 

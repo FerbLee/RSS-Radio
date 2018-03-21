@@ -7,6 +7,7 @@ from rss_feed import rss_link_parsers as rlp
 from django.contrib.auth import authenticate, login
 from .forms import SignUpForm 
 from django.utils import timezone
+from django.contrib.auth.models import User
 import os
 
 class IndexView(generic.ListView):
@@ -35,6 +36,21 @@ class EpisodeDetailView(generic.DetailView):
     template_name = 'rss_feed/detail_episode.html'
 
 
+class UserDetailView(generic.DetailView):
+    
+    #Overrides model and template_name from superclass
+    model = User
+    template_name = 'rss_feed/detail_user.html'
+    
+    
+def get_user_id_by_username(username):
+    
+    qs_found_user = User.objects.filter(username='luigi')
+    
+    if qs_found_user:
+        return qs_found_user[0] 
+    
+    return None
 
 
 def addLink(request):
