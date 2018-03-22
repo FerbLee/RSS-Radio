@@ -9,6 +9,8 @@
 <p><b>Descrición:</b>{{ user.userprofile.description }}</p>
 <p><b>Avatar:</b> Not available</p>
 
-{% if user.is_authenticated %}
-	<p>Edit user</p>
+{% if request.user.is_authenticated %}
+	{% if request.user.id == user.id%}
+		<p>Edit</p>
+	{% endif %}
 {% endif %}
