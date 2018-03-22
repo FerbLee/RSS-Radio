@@ -1,0 +1,14 @@
+<h1>{{ user.username }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p><b>Name:</b>{{ user.first_name }} {{ user.last_name }}</p>
+<p><b>Engadido en </b>{{ user.date_joined }}
+<p><b>Contacto:</b>{{ user.email }}</p>
+<p><b>Localización:</b>{{ user.userprofile.location }}</p>
+<p><b>Descrición:</b>{{ user.userprofile.description }}</p>
+<p><b>Avatar:</b> Not available</p>
+
+{% if user.is_authenticated %}
+	<p>Edit user</p>
+{% endif %}
