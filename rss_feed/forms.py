@@ -17,3 +17,17 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',
                   'location','description','avatar')
+
+
+class EditUserForm(forms.ModelForm):
+    
+    location = forms.CharField(label='Location',max_length=100,required=False)
+    description = forms.CharField(label='Description',max_length=500,required=False)
+    avatar = forms.ImageField(required=False)
+
+    # Can't update username
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email','location','description','avatar')
+    
+        

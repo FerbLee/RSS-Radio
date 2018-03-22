@@ -9,8 +9,10 @@
 <p><b>Descrición:</b>{{ user.userprofile.description }}</p>
 <p><b>Avatar:</b> Not available</p>
 
+<p>
 {% if request.user.is_authenticated %}
 	{% if request.user.id == user.id%}
-		<p>Edit</p>
+		<a href="{% url 'rss_feed:edit_user'%}">Editar</a> 
 	{% endif %}
 {% endif %}
+<a href="{% url 'rss_feed:index'%}">Atrás</a></p>

@@ -1,14 +1,18 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect, render_to_response
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from .models import Episode, Program, Image
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login
-from .forms import SignUpForm 
+from .forms import SignUpForm, EditUserForm 
 from django.utils import timezone
 from django.contrib.auth.models import User
 import os
+from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+import email
+
 
 class IndexView(generic.ListView):
     
@@ -136,6 +140,39 @@ def signup(request):
     
     else:
         form = SignUpForm()
-        
+       
     return render(request, 'registration/signup.html', {'form': form})
 
+
+
+@login_required
+def user_edit(request):
+   
+    # This body will only run if the user is logged in
+    # and the current logged in user will be in request.user
+
+    if request.method == 'POST':
+        form = EditUserForm(request.POST,instance=request.user) 
+    
+        if form.is_valid(): 
+            print('Valid!')
+            #request.user = form.save()
+            #request.user.refresh_from_db()  # load the profile instance created by the signal
+            request.user.userprofile.description = form.cleaned_data.get('description')
+            request.user.userprofile.location = form.cleaned_data.get('location')
+            
+            form.avatar = request.FILES.get('avatar')
+            request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
+            
+            request.user.save()
+            print(request.user.username)
+            return HttpResponseRedirect(reverse('rss_feed:detail_user', args=(request.user.id,)))
+    
+    else:
+        form = EditUserForm()
+
+    print('AAAAA')
+    return render(request,'rss_feed/edit_user.html', {'form': form})
+    
+
+    #return render(request, 'registration/signup.html', {'form': SignUpForm()})  
