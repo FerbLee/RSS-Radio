@@ -10,8 +10,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import os
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
-import email
 
 
 class IndexView(generic.ListView):
@@ -153,25 +151,26 @@ def user_edit(request):
 
     if request.method == 'POST':
         form = EditUserForm(request.POST,instance=request.user) 
-    
+        
         if form.is_valid(): 
-            print('Valid!')
-            #request.user = form.save()
-            #request.user.refresh_from_db()  # load the profile instance created by the signal
+
             request.user.userprofile.description = form.cleaned_data.get('description')
             request.user.userprofile.location = form.cleaned_data.get('location')
             
             form.avatar = request.FILES.get('avatar')
-            request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
+            if form.avatar != None:
+                request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
             
             request.user.save()
-            print(request.user.username)
             return HttpResponseRedirect(reverse('rss_feed:detail_user', args=(request.user.id,)))
     
     else:
-        form = EditUserForm()
+        form = EditUserForm(initial={'location':request.user.userprofile.location,
+                                     'description':request.user.userprofile.description,
+                                     'first_name':request.user.first_name,
+                                     'last_name':request.user.last_name,
+                                     'email':request.user.email})
 
-    print('AAAAA')
     return render(request,'rss_feed/edit_user.html', {'form': form})
     
 
