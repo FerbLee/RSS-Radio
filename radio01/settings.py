@@ -151,5 +151,5 @@ CELERYBEAT_OPTS="--schedule=celerybeat-schedule"
 
 
 # Image Directory
-MEDIA_ROOT = '/home/fer/eclipse-workspace/RSS-Radio/media'
+MEDIA_ROOT = '/home/fer/eclipse-workspace/RSS-Radio/media/'
 MEDIA_URL = '/media/'

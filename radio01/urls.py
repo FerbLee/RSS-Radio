@@ -18,6 +18,8 @@ from django.contrib import admin
 import rss_feed.views as core_views
 from django.contrib.auth.views import logout
 from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^rss_feed/', include('rss_feed.urls')),
@@ -26,3 +28,6 @@ urlpatterns = [
     url(r'^rss_feed/signup/$', core_views.signup, name='signup'),
     url(r'^rss_feed/logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 ]
+
+#urlpatterns +=  staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns +=  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

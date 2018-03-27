@@ -92,16 +92,16 @@ def AuthView(request):
         pass
 
 
-def create_avatar(avatar_url,username):
+def create_avatar(avatar_in_memory_instance,username):
 
 #    try:
         
-    if avatar_url != None:
+    if avatar_in_memory_instance != None:
     
         avatar_img = Image()
-        avatar_img.path = avatar_url
+        avatar_img.path = avatar_in_memory_instance
         avatar_img.creation_date = timezone.now()
-        avatar_img.name = os.path.basename(avatar_url)
+        avatar_img.name = os.path.basename(avatar_in_memory_instance._name)
         avatar_img.alt_text = username + '-avatar'
         avatar_img.save()
         
@@ -127,6 +127,7 @@ def signup(request):
             user.userprofile.location = form.cleaned_data.get('location')
             
             form.avatar = request.FILES.get('avatar')
+            print(form.avatar.__dict__)
             user.userprofile.avatar = create_avatar(form.avatar,user.username)
             
             user.save()
