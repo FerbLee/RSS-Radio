@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'rss_feed.celery_endpoints',
     'django_celery_beat',
+    'jquery',
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js" />
+{% endblock %}
+
 {% block content %}
 
 <h3>Edit {{ user.username }} data:</h3>
@@ -6,15 +11,58 @@
     {% csrf_token %}
     {% for field in form %}
       <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
+      	{% if field.name == 'avatar'%}
+      		
+      		<div class='avatar'>
+      		
+      			{{ field.label_tag }}<br>
+      			{{ field }}
+	      		<!--  <input type="file" id="files" />-->
+	      		
+				<output id="list"></output>
+	      		
+	      		<script type="text/javascript">
+	      		
+					if (window.FileReader) {
+				      
+						function handleFileSelect(evt) {
+					        var files = evt.target.files;
+					        var f = files[0];
+					        var reader = new FileReader();
+							
+					          reader.onload = (function(theFile) {
+					            return function(e) {
+					              document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" width="100"/>'].join('');
+					            };
+					          })(f);
+					    
+					          reader.readAsDataURL(f);
+					      }
+					 
+					} else {
+					  alert('This browser does not support FileReader');
+					}
+				    
+				    <!-- document.getElementById('files').addEventListener('change', handleFileSelect, false); -->
+				    {{field}}.addEventListener('change', handleFileSelect, false);
+				    	
+			    </script>
+	
+				<!--  {{ field.label_tag }}<br>
+		      	<p><img src="{{ user.userprofile.avatar.path.url }}"></p>
+		      	{{ field }}-->
+	    	</div>
+      	{% else %}
+	        {{ field.label_tag }}<br>
+	        {{ field }}
+	        {% if field.help_text %}
+	          <small style="color: grey">{{ field.help_text }}</small>
+	        {% endif %}
+	        {% for error in field.errors %}
+	          <p style="color: red">{{ error }}</p>
+	        {% endfor %}
+	     {% endif %}
+	  </p>
     {% endfor %}
     <button type="submit">Actualizar</button> <a href="{% url 'rss_feed:detail_user' user.id%}">Cancelar</a></p>
   </form>
