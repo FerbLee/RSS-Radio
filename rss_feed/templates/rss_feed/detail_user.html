@@ -8,7 +8,7 @@
 <p><b>Localización:</b>{{ user.userprofile.location }}</p>
 <p><b>Descrición:</b>{{ user.userprofile.description }}</p>
 <p><b>Avatar:</b></p>
-<p><img src="{{ user.userprofile.avatar.path.url }}"><p>
+<p><img src="{{ user.userprofile.avatar.path.url }}" width='200'><p>
 
 <p>
 {% if request.user.is_authenticated %}

@@ -23,6 +23,9 @@ ML_TAG = 50
 EXISTING_CATEGORIES = (('re','revista'),('hu','humor'),('in','informativo'),('te','tertulia'),('en','entretemento'),
                        ('di','divulgativo'),('ou','outros'))
 
+EXISTING_BCMETHODS = (('fm','Radio FM/AM'),('in','Radio Internet'),('di','Radio Digital'),
+                      ('pc','Podcasting Channel'),('tv','TV Channel'),('ot','Others'))
+
 IVOOX_TYPE = ('iv','ivoox')
 RADIOCO_TYPE = ('ra','radioco')
 PODOMATIC_TYPE = ('po','podomatic')
@@ -208,3 +211,32 @@ class Tag(models.Model):
     def clean_name(cls,name):
     
         return name.lower().strip()
+    
+
+class Station(models.Model):
+
+    name = TruncatingCharField(max_length=ML_NAME)
+    description = models.TextField(blank=True)
+    broadcasting_method = models.CharField(choices=EXISTING_BCMETHODS,max_length=2,default='fm')
+    broadcasting_area = TruncatingCharField(max_length=200,null=True)
+    broadcasting_frequency = TruncatingCharField(max_length=50,null=True)
+    streaming_link = models.URLField()
+    profile_img = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='profile_img')
+    logo = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='logo')
+    programs = models.ManyToManyField(Program,through='Emission')
+    admins = models.ManyToManyField(User,related_name='admins')
+    followers = models.ManyToManyField(User,related_name='followers')
+    
+    def __str__(self):
+        
+        return str(self.name)
+    
+    
+class Emission(models.Model):
+    
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    station =  models.ForeignKey(Station, on_delete=models.CASCADE)
+    emission_time = TruncatingCharField(max_length=100,null=True)
+    periodicity = TruncatingCharField(max_length=100,null=True)
+    
+        
