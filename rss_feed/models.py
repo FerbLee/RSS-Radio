@@ -20,8 +20,7 @@ ML_TYPE = 40
 ML_ORIGINAL_ID = 200
 ML_TAG = 50
 
-EXISTING_CATEGORIES = (('re','revista'),('hu','humor'),('in','informativo'),('te','tertulia'),('en','entretemento'),
-                       ('di','divulgativo'),('ou','outros'))
+EXISTING_VOTE_TYPES = (('lk','like'),('dl','dislike'))
 
 EXISTING_BCMETHODS = (('fm','Radio FM/AM'),('in','Radio Internet'),('di','Radio Digital'),
                       ('pc','Podcasting Channel'),('tv','TV Channel'),('ot','Others'))
@@ -159,11 +158,14 @@ class Program(models.Model):
     rss_link = models.URLField()
     rss_link_type = models.CharField(choices=EXISTING_PARSERS,max_length=2,default='ra')
     rating = models.PositiveSmallIntegerField(default=50,validators=[MaxValueValidator(100), MinValueValidator(0)])
-    category = models.CharField(choices=EXISTING_CATEGORIES,max_length=2,default='ou')
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     removed = models.BooleanField(default=False)
+    popularity = models.FloatField(default=0)
+    subscribers = models.ManyToManyField(User,related_name='subscribers')
+    admins = models.ManyToManyField(User,related_name='program_admins')
+    
 
     def __str__(self):
         return self.name
@@ -191,9 +193,17 @@ class Episode(models.Model):
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
     removed = models.BooleanField(default=False)
+    voters = models.ManyToManyField(User,through='Vote')
 
     def __str__(self):
         return self.title
+
+
+class Vote(models.Model):
+    
+    episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
+    user =  models.ForeignKey(User, on_delete=models.CASCADE)
+    type = models.CharField(choices=EXISTING_VOTE_TYPES,max_length=2)
 
 
 class Tag(models.Model):
@@ -224,7 +234,7 @@ class Station(models.Model):
     profile_img = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='profile_img')
     logo = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='logo')
     programs = models.ManyToManyField(Program,through='Emission')
-    admins = models.ManyToManyField(User,related_name='admins')
+    admins = models.ManyToManyField(User,related_name='station_admins')
     followers = models.ManyToManyField(User,related_name='followers')
     
     def __str__(self):
