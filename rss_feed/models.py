@@ -193,7 +193,8 @@ class Episode(models.Model):
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
     removed = models.BooleanField(default=False)
-    voters = models.ManyToManyField(User,through='Vote')
+    votes = models.ManyToManyField(User,through='Vote',related_name='votes')
+    comments = models.ManyToManyField(User,through='Comment',related_name='comments')
 
     def __str__(self):
         return self.title
@@ -202,8 +203,16 @@ class Episode(models.Model):
 class Vote(models.Model):
     
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
-    user =  models.ForeignKey(User, on_delete=models.CASCADE)
+    user =  models.ForeignKey(User, on_delete=models.CASCADE,related_name='voters')
     type = models.CharField(choices=EXISTING_VOTE_TYPES,max_length=2)
+
+
+class Comment(models.Model):
+    
+    episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
+    user =  models.ForeignKey(User, on_delete=models.CASCADE,related_name='commenters')
+    publication_date = models.DateTimeField(default=default_time) 
+    text = models.TextField()
 
 
 class Tag(models.Model):
@@ -248,5 +257,7 @@ class Emission(models.Model):
     station =  models.ForeignKey(Station, on_delete=models.CASCADE)
     emission_time = TruncatingCharField(max_length=100,null=True)
     periodicity = TruncatingCharField(max_length=100,null=True)
+
+
+
     
-        
