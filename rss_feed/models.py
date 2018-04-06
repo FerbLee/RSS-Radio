@@ -20,6 +20,8 @@ ML_TYPE = 40
 ML_ORIGINAL_ID = 200
 ML_TAG = 50
 
+EXISTING_SHARING_OPTS = (('tf','totally_free'),('af','ask_first'),('ns','no_share'))
+
 EXISTING_VOTE_TYPES = (('lk','like'),('dl','dislike'))
 
 EXISTING_BCMETHODS = (('fm','Radio FM/AM'),('in','Radio Internet'),('di','Radio Digital'),
@@ -163,6 +165,7 @@ class Program(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     removed = models.BooleanField(default=False)
     popularity = models.FloatField(default=0)
+    sharing_options = models.CharField(choices=EXISTING_SHARING_OPTS,max_length=2,default='ra')
     subscribers = models.ManyToManyField(User,related_name='subscribers')
     admins = models.ManyToManyField(User,related_name='program_admins')
     
