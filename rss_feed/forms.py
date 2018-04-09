@@ -6,21 +6,38 @@ Created on 15 Mar 2018
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
 
 
 class CountableWidget(forms.widgets.Textarea):
     
     class Media:
-        js = (
-            'javascript/Countable.js',
-            'javascript/countable-field.js'
-        )
+        js = ('javascript/Countable.js','javascript/countable-field.js')
     
-    def render(self, name, value, attrs=None):
+    
+    def render(self, name, value, attrs=None, **kwargs):
         
-        #final_attrs = self.build_attrs(attrs)
         final_attrs = self.build_attrs(self.attrs, attrs)
 
+        if not isinstance(final_attrs.get('data-min-count'), int):
+            final_attrs['data-min-count'] = 'false'
+        if not isinstance(final_attrs.get('data-max-count'), int):
+            final_attrs['data-max-count'] = 'false'
+
+        output = super(CountableWidget, self).render(name, value, final_attrs, **kwargs)
+        output += self.get_word_count_template(final_attrs)
+        return mark_safe(output)
+    
+    
+    @staticmethod
+    def get_word_count_template(attrs):
+        return (
+                 '<span class="text-count" id="%(id)s_counter">Word count: '
+                 '<span class="text-count-current">0</span></span>\r\n'
+                 '<script type="text/javascript">var countableField = new CountableField("%(id)s")</script>\n'
+               ) % {'id': attrs.get('id')}
+               
+        '''
         output = super(CountableWidget, self).render(name, value, final_attrs)
         output += """<span class="text-count" id="%(id)s_counter">Word count: <span class="text-count-current">0</span></span>""" \
           % {'id': final_attrs.get('id'),
@@ -32,7 +49,7 @@ class CountableWidget(forms.widgets.Textarea):
                 var countableField = new CountableField("%(id)s")
             </script>
             """ % {'id': final_attrs.get('id')}
-
+        '''
 
 class ImageFieldDisplay(forms.widgets.FileInput):
     
@@ -44,7 +61,7 @@ class ImageFieldDisplay(forms.widgets.FileInput):
     def render(self, name, value, attrs=None):
         final_attrs = self.build_attrs(attrs)
         # New Django
-        #final_attrs = self.build_attrs(self.attrs, attrs)
+        final_attrs = self.build_attrs(self.attrs, attrs)
         output = super(ImageFieldDisplay, self).render(name, value, final_attrs)
         output += """<span class="image-display" id="%(id)s_image_d">Word count: <span class="text-count-current">0</span></span>""" \
           % {'id': final_attrs.get('id'),
@@ -70,10 +87,8 @@ class EditUserForm(forms.ModelForm):
     #description = forms.CharField(label='Description',max_length=500,required=False)
 
     cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
-    description = forms.CharField(label='Description',widget=cw,required=False)
-    print(cw.media)
-    print('AAAAAA')
-    print(cw.__dict__)
+    description = forms.CharField(label='Description',widget=CountableWidget,required=False)
+    print (cw.media)
     
     avatar = forms.ImageField(required=False)
 

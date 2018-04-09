@@ -5,7 +5,8 @@ function CountableField(field_id) {
         var minCount = textarea.getAttribute("data-min-count");
         var maxCount = textarea.getAttribute("data-max-count");
 
-        Countable.live(textarea, updateFieldWordCount);
+        //Countable.live(textarea, updateFieldWordCount);
+        Countable.on(textarea, updateFieldWordCount);
     }
 
     function updateFieldWordCount(counter) {

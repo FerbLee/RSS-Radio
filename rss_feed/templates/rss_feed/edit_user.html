@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
 <h3>Edit {{ user.username }} data:</h3>
   <form method="post" action='' enctype='multipart/form-data' >
     {% csrf_token %}
