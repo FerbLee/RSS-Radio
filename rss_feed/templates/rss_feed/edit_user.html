@@ -3,7 +3,7 @@
 <h3>Edit {{ user.username }} data:</h3>
   <form method="post" action='' enctype='multipart/form-data' >
     {% csrf_token %}
-    {% for field in form %}
+    {% for field in form_atb %}
       <p>
       	{% if field.name == 'avatar'%}
       		
@@ -25,7 +25,22 @@
 	        {% endfor %}
 	     {% endif %}
 	  </p>
-    {% endfor %}
+	  {% endfor %}
+	
+	<div id='password_field'>
+    	{% for field in form_pass %}
+    		<p>
+    		{{ field.label_tag }}<br>
+	        {{ field }}
+	        {% if field.help_text %}
+	          <small style="color: grey">{{ field.help_text }}</small>
+	        {% endif %}
+	        {% for error in field.errors %}
+	          <p style="color: red">{{ error }}</p>
+	        {% endfor %}
+    		</p>
+    	{% endfor %}
+    </div>
     <button type="submit">Actualizar</button> <a href="{% url 'rss_feed:detail_user' user.id%}">Cancelar</a></p>
   </form>
 {% endblock %}

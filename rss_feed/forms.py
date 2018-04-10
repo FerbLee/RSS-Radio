@@ -4,7 +4,7 @@ Created on 15 Mar 2018
 @author: fer
 '''
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 
@@ -97,4 +97,4 @@ class EditUserForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name', 'email','location','description','avatar')
 
-        
+
