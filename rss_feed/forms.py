@@ -70,7 +70,9 @@ class SignUpForm(UserCreationForm):
     
     location = forms.CharField(label='Location',max_length=100,required=False)
     description = forms.CharField(label='Description',max_length=500,required=False)
-    avatar = forms.ImageField(required=False)
+    
+    ifd = ImageFieldDisplay()
+    avatar = forms.ImageField(label='Avatar',widget=ifd,required=False)
 
     class Meta:
         model = User
