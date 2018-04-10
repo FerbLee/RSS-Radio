@@ -37,19 +37,7 @@ class CountableWidget(forms.widgets.Textarea):
                  '<script type="text/javascript">var countableField = new CountableField("%(id)s")</script>\n'
                ) % {'id': attrs.get('id')}
                
-        '''
-        output = super(CountableWidget, self).render(name, value, final_attrs)
-        output += """<span class="text-count" id="%(id)s_counter">Word count: <span class="text-count-current">0</span></span>""" \
-          % {'id': final_attrs.get('id'),
-             'min_count': final_attrs.get('text_count_min' or 'false'),
-             'max_count': final_attrs.get('text_count_max' or 'false')}
 
-        js = """
-            <script type="text/javascript">
-                var countableField = new CountableField("%(id)s")
-            </script>
-            """ % {'id': final_attrs.get('id')}
-        '''
 
 class ImageFieldDisplay(forms.widgets.FileInput):
     
@@ -57,16 +45,25 @@ class ImageFieldDisplay(forms.widgets.FileInput):
         
         js = ('javascript/HandleFileSelect.js')
 
-    
-    def render(self, name, value, attrs=None):
-        final_attrs = self.build_attrs(attrs)
-        # New Django
+
+    def render(self, name, value, attrs=None, **kwargs):
+        
         final_attrs = self.build_attrs(self.attrs, attrs)
-        output = super(ImageFieldDisplay, self).render(name, value, final_attrs)
-        output += """<span class="image-display" id="%(id)s_image_d">Word count: <span class="text-count-current">0</span></span>""" \
-          % {'id': final_attrs.get('id'),
-             'min_count': final_attrs.get('text_count_min' or 'false'),
-             'max_count': final_attrs.get('text_count_max' or 'false')}
+
+        output = super(ImageFieldDisplay, self).render(name, value, final_attrs, **kwargs)
+        output += self.get_image_preview_template(final_attrs)
+        return mark_safe(output)
+    
+    
+    @staticmethod
+    def get_image_preview_template(attrs):
+        return (
+                 '<span class="img-prev" id="%(id)s_img-prev"></span>\r\n'
+                 '<output id="list"></output>'
+                 '<script type="text/javascript">'
+                 'document.getElementById("%(id)s").addEventListener("change", handleFileSelect, false);'                       
+                 '</script>\n'
+               ) % {'id': attrs.get('id')}
 
 
 class SignUpForm(UserCreationForm):
@@ -87,10 +84,11 @@ class EditUserForm(forms.ModelForm):
     #description = forms.CharField(label='Description',max_length=500,required=False)
 
     cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
-    description = forms.CharField(label='Description',widget=CountableWidget,required=False)
-    print (cw.media)
+    description = forms.CharField(label='Description',widget=cw,required=False)
     
-    avatar = forms.ImageField(required=False)
+    ifd = ImageFieldDisplay()
+    avatar = forms.ImageField(label='Avatar',widget=ifd,required=False)
+
 
     # Can't update username
     class Meta:

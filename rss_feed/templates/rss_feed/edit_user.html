@@ -10,27 +10,9 @@
       		<div class='avatar'>
       		
       			{{ field.label_tag }}<br>
+      			<p><img src="{{ user.userprofile.avatar.path.url }}" width='200'><p>
       			{{ field }}
-	      		<!--  <input type="file" id="files" />-->
-	      		
-				<output id="list"></output>
-	      		
-	      		<script type="text/javascript">
-	      		
-					if (window.FileReader) {
-				     
-					 
-					} else {
-					  alert('This browser does not support FileReader');
-					}
-				    
-				    <!-- document.getElementById('files').addEventListener('change', handleFileSelect, false); -->
-				    	
-			    </script>
-	
-				<!--  {{ field.label_tag }}<br>
-		      	<p><img src="{{ user.userprofile.avatar.path.url }}"></p>
-		      	{{ field }}-->
+      			
 	    	</div>
       	{% else %}
 	        {{ field.label_tag }}<br>

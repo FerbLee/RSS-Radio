@@ -5,7 +5,7 @@ function handleFileSelect(evt) {
 	
       reader.onload = (function(theFile) {
         return function(e) {
-          document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" width="100"/>'].join('');
+          document.getElementById('list').innerHTML = ['<p>New Image:</p>','<img src="', e.target.result,'" title="', theFile.name, '" width="200"/>'].join('');
         };
       })(f);
 
