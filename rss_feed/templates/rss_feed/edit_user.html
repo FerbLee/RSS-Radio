@@ -1,46 +1,74 @@
 {% extends 'base.html' %}
 {% block content %}
 <h3>Edit {{ user.username }} data:</h3>
-  <form method="post" action='' enctype='multipart/form-data' >
-    {% csrf_token %}
-    {% for field in form_atb %}
-      <p>
-      	{% if field.name == 'avatar'%}
-      		
-      		<div class='avatar'>
-      		
-      			{{ field.label_tag }}<br>
-      			<p><img src="{{ user.userprofile.avatar.path.url }}" width='200'><p>
-      			{{ field }}
-      			
-	    	</div>
-      	{% else %}
-	        {{ field.label_tag }}<br>
-	        {{ field }}
-	        {% if field.help_text %}
-	          <small style="color: grey">{{ field.help_text }}</small>
-	        {% endif %}
-	        {% for error in field.errors %}
-	          <p style="color: red">{{ error }}</p>
-	        {% endfor %}
-	     {% endif %}
-	  </p>
-	  {% endfor %}
+<form method="post" id="atbs-form" action='' enctype='multipart/form-data' >
+   	{% csrf_token %}
+   	{% for field in form_atb %}
+     	<p>
+     		{% if field.name == 'avatar'%}
+     		
+     			<div class='avatar'>
+     		
+     				{{ field.label_tag }}<br>
+     				<p><img src="{{ user.userprofile.avatar.path.url }}" width='200'><p>
+     				{{ field }}
+     			
+    		</div>
+     		{% else %}
+        	{{ field.label_tag }}<br>
+        	{{ field }}
+        	{% if field.help_text %}
+          	<small style="color: grey">{{ field.help_text }}</small>
+        	{% endif %}
+        	{% for error in field.errors %}
+          		<p style="color: red">{{ error }}</p>
+        	{% endfor %}
+     	{% endif %}
+  	</p>
+  	{% endfor %}
+	<p><button type="button" onclick="asd(1)" id="change-password" value="Change Password">Change Password</button></p>
 	
-	<div id='password_field'>
-    	{% for field in form_pass %}
-    		<p>
-    		{{ field.label_tag }}<br>
-	        {{ field }}
-	        {% if field.help_text %}
-	          <small style="color: grey">{{ field.help_text }}</small>
-	        {% endif %}
-	        {% for error in field.errors %}
-	          <p style="color: red">{{ error }}</p>
-	        {% endfor %}
-    		</p>
-    	{% endfor %}
-    </div>
-    <button type="submit">Actualizar</button> <a href="{% url 'rss_feed:detail_user' user.id%}">Cancelar</a></p>
-  </form>
+	<div id="password-form" >
+		<p><button type="button" onclick="asd(0)" id="cancel-change-password" value="Cancel Change Password">Cancel Password Change</button></p>
+	   	{% for field in form_pass %}
+	   		{% if field.name != 'ignore' %}
+		   		<p>
+		   		{{ field.label_tag }}<br>
+		        {{ field }}
+		        {% if field.help_text %}
+		          <small style="color: grey">{{ field.help_text }}</small>
+		        {% endif %}
+		        {% for error in field.errors %}
+		          <p style="color: red">{{ error }}</p>
+		        {% endfor %}
+		   		</p>
+		   	{% else %}
+		   		{{ field|default:"True" }} 
+	   		{% endif %}
+	   	{% endfor %}
+	</div>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.getElementById("password-form").style.display = "none";
+		};
+	
+	  	function asd(a) {
+	    	if (a == 1) {
+	      		document.getElementById("password-form").style.display = "block";
+	    	} else {
+	      		document.getElementById("password-form").style.display = "none";
+	    	}
+	  	}
+	  	
+	  	submitForms = function(){
+	  	    document.getElementById("atbs-form").submit();
+	  	    document.getElementById("password-form").submit();
+	  	}
+	</script>
+   <button type="submit">Actualizar</button> <a href="{% url 'rss_feed:detail_user' user.id%}">Cancelar</a>
+</form>
+
 {% endblock %}
+
+
+

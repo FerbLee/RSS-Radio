@@ -98,3 +98,8 @@ class EditUserForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email','location','description','avatar')
 
 
+class CustomChangePasswordForm(PasswordChangeForm):
+    
+    ignore = forms.BooleanField(required=False)
+    
+    
