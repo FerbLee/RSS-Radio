@@ -171,6 +171,8 @@ def user_edit(request):
                     if form.avatar != None:
                         request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
                     
+                    request.user.save()
+                        
                     return HttpResponseRedirect(reverse('rss_feed:detail_user', args=(request.user.id,)))
                 
             else:
@@ -193,7 +195,7 @@ def user_edit(request):
                 else:
                     
                     return render(request,'rss_feed/edit_user.html',{'form_atb': form,'form_pass':formp,
-                                                                     'form_ignore_p':formi,'password_show':True})
+                                                                     'form_ignore_p':formi,'password_show':1})
     
     else:
         form = EditUserForm(prefix='form_atb',
@@ -206,5 +208,5 @@ def user_edit(request):
         formi = IgnorePasswordEditForm(prefix='form_ignore_p',initial={'ignore':True})
 
     return render(request,'rss_feed/edit_user.html',{'form_atb': form,'form_pass':formp,'form_ignore_p':formi,
-                                                     'password_show':False})
+                                                     'password_show':0})
      

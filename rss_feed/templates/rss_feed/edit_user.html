@@ -28,7 +28,6 @@
   	{% endfor %}
   	<div id="ignore-form">
 		{{ form_ignore_p.ignore }}
-		{{ password_show.auto_id }}
 	</div>
 	<p><button type="button" onclick="asd(1)" id="change-password" value="Change Password">Change Password</button></p>
 	
@@ -51,7 +50,12 @@
 	</div>
 	<script type="text/javascript">
 		window.onload = function() {
-			document.getElementById("password-form").style.display = "none";
+			
+			if ({{ password_show }} == 1) {
+				document.getElementById("password-form").style.display = "block";
+			} else {
+				document.getElementById("password-form").style.display = "none";
+			}
 		};
 	
 	  	function asd(a) {
