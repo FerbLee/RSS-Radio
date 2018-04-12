@@ -5,7 +5,7 @@ from django.views import generic
 from .models import Episode, Program, Image
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
-from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm
+from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm
 from django.utils import timezone
 from django.contrib.auth.models import User
 import os
@@ -156,27 +156,44 @@ def user_edit(request):
         
         form = EditUserForm(request.POST,instance=request.user,prefix='form_atb') 
         formp = CustomChangePasswordForm(user=request.user,data=request.POST,prefix='form_pass')
-        print(formp.fields['ignore'].__dict__)
+        formi = IgnorePasswordEditForm(request.POST,prefix='form_ignore_p')
         
-        if form.is_valid() and (formp.is_valid() or formp.ignore):
-
-            request.user.userprofile.description = form.cleaned_data.get('description')
-            request.user.userprofile.location = form.cleaned_data.get('location')
+        if formi.is_valid():
             
-            form.avatar = request.FILES.get('avatar')
-            if form.avatar != None:
-                request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
-            
-            print (formp.ignore)
-            if not formp.ignore:
+            if formi.cleaned_data.get('ignore'):
                 
-                request.user.save()
-                user = formp.save()
-                update_session_auth_hash(request, user)  # Important!
-                messages.success(request, 'Your password was successfully updated!')
+                if form.is_valid():
+               
+                    request.user.userprofile.description = form.cleaned_data.get('description')
+                    request.user.userprofile.location = form.cleaned_data.get('location')
+                    
+                    form.avatar = request.FILES.get('avatar')
+                    if form.avatar != None:
+                        request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
+                    
+                    return HttpResponseRedirect(reverse('rss_feed:detail_user', args=(request.user.id,)))
+                
+            else:
+                if form.is_valid() and formp.is_valid():
+                    
+                    request.user.userprofile.description = form.cleaned_data.get('description')
+                    request.user.userprofile.location = form.cleaned_data.get('location')
+                    
+                    form.avatar = request.FILES.get('avatar')
+                    if form.avatar != None:
+                        request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
+                    
+                    request.user.save()
+                    user = formp.save()
+                    update_session_auth_hash(request, user)  # Important!
+                    messages.success(request, 'Your password was successfully updated!')
             
-            return HttpResponseRedirect(reverse('rss_feed:detail_user', args=(request.user.id,)))
-    
+                    return HttpResponseRedirect(reverse('rss_feed:detail_user', args=(request.user.id,)))
+                
+                else:
+                    
+                    return render(request,'rss_feed/edit_user.html',{'form_atb': form,'form_pass':formp,
+                                                                     'form_ignore_p':formi,'password_show':True})
     
     else:
         form = EditUserForm(prefix='form_atb',
@@ -185,7 +202,9 @@ def user_edit(request):
                                      'first_name':request.user.first_name,
                                      'last_name':request.user.last_name,
                                      'email':request.user.email})
-        formp = CustomChangePasswordForm(user=request.user,prefix='form_pass',initial={'ignore':True})
+        formp = CustomChangePasswordForm(user=request.user,prefix='form_pass')
+        formi = IgnorePasswordEditForm(prefix='form_ignore_p',initial={'ignore':True})
 
-    return render(request,'rss_feed/edit_user.html', {'form_atb': form,'form_pass':formp})
+    return render(request,'rss_feed/edit_user.html',{'form_atb': form,'form_pass':formp,'form_ignore_p':formi,
+                                                     'password_show':False})
      

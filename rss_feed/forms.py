@@ -7,6 +7,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
+from django.forms.widgets import HiddenInput
 
 
 class CountableWidget(forms.widgets.Textarea):
@@ -100,6 +101,16 @@ class EditUserForm(forms.ModelForm):
 
 class CustomChangePasswordForm(PasswordChangeForm):
     
-    ignore = forms.BooleanField(required=False)
+    old_password = forms.CharField(label="Old password",widget=forms.PasswordInput,required=False)
+    new_password1 = forms.CharField(label="New password",widget=forms.PasswordInput,required=False)
+    new_password2 = forms.CharField(label="New password confirmation",widget=forms.PasswordInput,required=False)
+     
+
+class IgnorePasswordEditForm(forms.ModelForm):
     
+    ignore = forms.BooleanField(required=False,widget=HiddenInput)
+
+    class Meta:
+        model = User
+        fields = ('ignore',) 
     

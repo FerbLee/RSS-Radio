@@ -26,25 +26,27 @@
      	{% endif %}
   	</p>
   	{% endfor %}
+  	<div id="ignore-form">
+		{{ form_ignore_p.ignore }}
+		{{ password_show.auto_id }}
+	</div>
 	<p><button type="button" onclick="asd(1)" id="change-password" value="Change Password">Change Password</button></p>
 	
 	<div id="password-form" >
 		<p><button type="button" onclick="asd(0)" id="cancel-change-password" value="Cancel Change Password">Cancel Password Change</button></p>
 	   	{% for field in form_pass %}
-	   		{% if field.name != 'ignore' %}
-		   		<p>
-		   		{{ field.label_tag }}<br>
-		        {{ field }}
-		        {% if field.help_text %}
-		          <small style="color: grey">{{ field.help_text }}</small>
-		        {% endif %}
-		        {% for error in field.errors %}
-		          <p style="color: red">{{ error }}</p>
-		        {% endfor %}
-		   		</p>
-		   	{% else %}
-		   		{{ field|default:"True" }} 
-	   		{% endif %}
+	   		
+	   		<p>
+	   		{{ field.label_tag }}<br>
+	        {{ field }}
+	        {% if field.help_text %}
+	          <small style="color: grey">{{ field.help_text }}</small>
+	        {% endif %}
+	        {% for error in field.errors %}
+	          <p style="color: red">{{ error }}</p>
+	        {% endfor %}
+	   		</p>
+		  
 	   	{% endfor %}
 	</div>
 	<script type="text/javascript">
@@ -55,15 +57,15 @@
 	  	function asd(a) {
 	    	if (a == 1) {
 	      		document.getElementById("password-form").style.display = "block";
+	      		document.getElementById('id_form_ignore_p-ignore').checked = false;
+	      		document.getElementById('id_form_ignore_p-ignore').value = false;
 	    	} else {
 	      		document.getElementById("password-form").style.display = "none";
+	      		document.getElementById('id_form_ignore_p-ignore').checked = true;
+	      		document.getElementById('id_form_ignore_p-ignore').value = true;
 	    	}
 	  	}
 	  	
-	  	submitForms = function(){
-	  	    document.getElementById("atbs-form").submit();
-	  	    document.getElementById("password-form").submit();
-	  	}
 	</script>
    <button type="submit">Actualizar</button> <a href="{% url 'rss_feed:detail_user' user.id%}">Cancelar</a>
 </form>
