@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h3>Edit {{ user.username }} data:</h3>
-<form method="post" id="atbs-form" action='' enctype='multipart/form-data' >
+<form method="post" action='' enctype='multipart/form-data' >
    	{% csrf_token %}
    	{% for field in form_atb %}
      	<p>
@@ -15,15 +15,15 @@
      			
     		</div>
      		{% else %}
-        	{{ field.label_tag }}<br>
-        	{{ field }}
-        	{% if field.help_text %}
-          	<small style="color: grey">{{ field.help_text }}</small>
-        	{% endif %}
-        	{% for error in field.errors %}
-          		<p style="color: red">{{ error }}</p>
-        	{% endfor %}
-     	{% endif %}
+	        	{{ field.label_tag }}<br>
+	        	{{ field }}
+	        	{% if field.help_text %}
+	          		<small style="color: grey">{{ field.help_text }}</small>
+	        	{% endif %}
+        		{% for error in field.errors %}
+          			<p style="color: red">{{ error }}</p>
+        		{% endfor %}
+     		{% endif %}
   	</p>
   	{% endfor %}
   	<div id="ignore-form">

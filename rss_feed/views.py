@@ -129,7 +129,6 @@ def signup(request):
             user.userprofile.location = form.cleaned_data.get('location')
             
             form.avatar = request.FILES.get('avatar')
-            print(form.avatar.__dict__)
             user.userprofile.avatar = create_avatar(form.avatar,user.username)
             
             user.save()
@@ -144,6 +143,18 @@ def signup(request):
        
     return render(request, 'registration/signup.html', {'form': form})
 
+
+def user_atb_form_handler(req,user_atb_form,avatar_key='avatar'):
+
+    req.user.userprofile.description = user_atb_form.cleaned_data.get('description')
+    req.user.userprofile.location = user_atb_form.cleaned_data.get('location')
+        
+    user_atb_form.avatar = req.FILES.get(avatar_key)
+
+    if user_atb_form.avatar != None:
+        req.user.userprofile.avatar = create_avatar(user_atb_form.avatar,req.user.username)
+    
+    req.user.save()
 
 
 @login_required
@@ -164,28 +175,15 @@ def user_edit(request):
                 
                 if form.is_valid():
                
-                    request.user.userprofile.description = form.cleaned_data.get('description')
-                    request.user.userprofile.location = form.cleaned_data.get('location')
-                    
-                    form.avatar = request.FILES.get('avatar')
-                    if form.avatar != None:
-                        request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
-                    
-                    request.user.save()
-                        
+                    user_atb_form_handler(request,form,'form_atb-avatar')
+   
                     return HttpResponseRedirect(reverse('rss_feed:detail_user', args=(request.user.id,)))
                 
             else:
                 if form.is_valid() and formp.is_valid():
                     
-                    request.user.userprofile.description = form.cleaned_data.get('description')
-                    request.user.userprofile.location = form.cleaned_data.get('location')
+                    user_atb_form_handler(request,form,'form_atb-avatar')
                     
-                    form.avatar = request.FILES.get('avatar')
-                    if form.avatar != None:
-                        request.user.userprofile.avatar = create_avatar(form.avatar,request.user.username)
-                    
-                    request.user.save()
                     user = formp.save()
                     update_session_auth_hash(request, user)  # Important!
                     messages.success(request, 'Your password was successfully updated!')
