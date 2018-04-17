@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'radio01.urls'
@@ -117,11 +119,7 @@ LOGOUT_REDIRECT_URL = '/rss_feed/'
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
 
 USE_L10N = True
 
@@ -154,3 +152,13 @@ CELERYBEAT_OPTS="--schedule=celerybeat-schedule"
 # Image Directory
 MEDIA_ROOT = '/home/fer/eclipse-workspace/RSS-Radio/media/'
 MEDIA_URL = '/media/'
+
+# Translation
+USE_I18N = True
+LOCALE_PATHS=('/locale/',)
+LANGUAGES = (
+    ('en-us', _('English')),
+    ('gl', _('Galician')),
+    ('es-es', _('Spanish')),
+)
+LANGUAGE_CODE = 'en-us'

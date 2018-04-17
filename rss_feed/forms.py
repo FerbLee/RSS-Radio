@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
-
+from django.utils.translation import ugettext as _
 
 class CountableWidget(forms.widgets.Textarea):
     
@@ -69,11 +69,11 @@ class ImageFieldDisplay(forms.widgets.FileInput):
 
 class SignUpForm(UserCreationForm):
     
-    location = forms.CharField(label='Location',max_length=100,required=False)
-    description = forms.CharField(label='Description',max_length=500,required=False)
+    location = forms.CharField(label=_('Location'),max_length=100,required=False)
+    description = forms.CharField(label=_('Description'),max_length=500,required=False)
     
     ifd = ImageFieldDisplay()
-    avatar = forms.ImageField(label='Avatar',widget=ifd,required=False)
+    avatar = forms.ImageField(label=_('Avatar'),widget=ifd,required=False)
 
     class Meta:
         model = User
@@ -87,10 +87,10 @@ class EditUserForm(forms.ModelForm):
     #description = forms.CharField(label='Description',max_length=500,required=False)
 
     cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
-    description = forms.CharField(label='Description',widget=cw,required=False)
+    description = forms.CharField(label=_('Description'),widget=cw,required=False)
     
     ifd = ImageFieldDisplay()
-    avatar = forms.ImageField(label='Avatar',widget=ifd,required=False)
+    avatar = forms.ImageField(label=_('Avatar'),widget=ifd,required=False)
 
 
     # Can't update username
@@ -101,9 +101,9 @@ class EditUserForm(forms.ModelForm):
 
 class CustomChangePasswordForm(PasswordChangeForm):
     
-    old_password = forms.CharField(label="Old password",widget=forms.PasswordInput,required=False)
-    new_password1 = forms.CharField(label="New password",widget=forms.PasswordInput,required=False)
-    new_password2 = forms.CharField(label="New password confirmation",widget=forms.PasswordInput,required=False)
+    old_password = forms.CharField(label=_("Old password"),widget=forms.PasswordInput,required=False)
+    new_password1 = forms.CharField(label=_("New password"),widget=forms.PasswordInput,required=False)
+    new_password2 = forms.CharField(label=_("New password confirmation"),widget=forms.PasswordInput,required=False)
      
 
 class IgnorePasswordEditForm(forms.ModelForm):
