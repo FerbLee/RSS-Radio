@@ -18,13 +18,30 @@ from django.template import RequestContext
 class IndexView(generic.ListView):
     
     template_name = 'rss_feed/index.html'
-    context_object_name = 'program_list'
+    #context_object_name = 'episode_list'
 
-    def get_queryset(self):
+    def get_queryset_episodes(self):
         
-        """List of added programs"""
-        return Program.objects.all()
+        """Latest Episodes"""
+        episodes = Episode.objects.order_by('-publication_date')[0:4]
+        return episodes
 
+
+    def get_queryset_programs(self):
+        
+        programs = Program.objects.order_by('-popularity')[0:4]
+        return programs
+    
+    def get_queryset(self):
+        return self.get_queryset_episodes()
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['episode_list'] = self.get_queryset_episodes()
+        context['program_list'] = self.get_queryset_programs()
+        return context
+    
 
 class ProgramDetailView(generic.DetailView):
     

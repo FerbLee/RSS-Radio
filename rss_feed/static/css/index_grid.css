@@ -1,15 +1,37 @@
 .input-header{
 	grid-column: span 12;
 }
-  
- .grid-container{
-   display: grid;
-   grid-template-columns: auto auto auto;
-   grid-gap: 50px 100px;
- }
  
  .grid-item{
  	border: 1px solid rgba(0, 0, 0, 0.8);
  	text-align: center;
  	padding: 20px;
  }
+ 
+.grid-container{
+   	display: grid;
+   	grid-template-columns: [col1-start]auto [col2-start]auto [col3-start]auto [col4-start]auto ;
+   	grid-gap: 20px;
+}
+
+/* Pattern styles */
+.index-container {
+  display: table;
+  width: 100%;
+}
+
+.left-side{
+	/* background-color: #ff9e2c; */
+	position: absolute;
+	left: 0px;
+	width: 75%;
+	margin-left: 10px;
+}
+
+.right-side {
+  /* background-color: #b6701e; */
+  position: absolute;
+  right: -25px;
+  width: 25%;
+}
+
