@@ -10,7 +10,7 @@
  
 .grid-container{
    	display: grid;
-   	grid-template-columns: [col1-start]auto [col2-start]auto [col3-start]auto [col4-start]auto ;
+   	grid-template-columns: [col1-start]1fr [col2-start]1fr [col3-start]1fr [col4-start]1fr ;
    	grid-gap: 20px;
 }
 
@@ -34,4 +34,5 @@
   right: -25px;
   width: 25%;
 }
+
 

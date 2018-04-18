@@ -29,7 +29,7 @@ class IndexView(generic.ListView):
 
     def get_queryset_programs(self):
         
-        programs = Program.objects.order_by('-popularity')[0:4]
+        programs = Program.objects.order_by('-popularity')[4:]
         return programs
     
     def get_queryset(self):

@@ -68,7 +68,6 @@ class Image(models.Model):
         
         return str(self.path)
     
-    
     @classmethod
     def default_program_image_creation(cls):
             

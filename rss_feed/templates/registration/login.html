@@ -1,38 +1,43 @@
-{% extends "base.html" %}
 
-{% block content %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'css/company.css' %}" type='text/css'/>
+</head>
 
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+	<p>{% trans "Your username and password didn't match. Please try again." %}</p>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+    	<p>{% trans "Your account doesn't have access to this page. To proceed,
+    		please login with an account that has access." %}</p>
     {% else %}
-    <p>Please login to see this page.</p>
+    	<p>{% trans "Please login to see this page." %}</p>
     {% endif %}
 {% endif %}
 
 <form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
+	{% csrf_token %}
+	<table>
+		<tr>
+	    	<td>{{ form.username.label_tag }}</td>
+	    	<td>{{ form.username }}</td>
+		</tr>
+		<tr>
+	    	<td>{{ form.password.label_tag }}</td>
+	    	<td>{{ form.password }}</td>
+		</tr>
+	</table>
 
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
+	<input type="submit" value="login" />
+	<input type="hidden" name="next" value="{{ next }}" />
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
-{% endblock %}
+<p><a href="{% url 'password_reset' %}">{% trans "Lost password?" %}</a></p>
+<p>{% trans "Not an user?"%} <a href="{% url 'signup' %}"> <b>sign up</b></a></p>

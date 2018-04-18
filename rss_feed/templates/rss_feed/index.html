@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load i18n %}
+{% block content %}
 
 {% trans "Add New Content" as newcontent %}
+{% trans "See more" as seemore %}
+
 {% if request.user.is_authenticated %}
 	<a href="{% url 'rss_feed:add_content' %}" class="button">{{ newcontent }}</a>
 {% else %}
@@ -18,8 +20,9 @@
 			   
 			    {% for episode in episode_list %}
 			        <div class="grid-item" >
+			        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
 			        	<img src="{{ episode.image.path.url }}" width='100'>
-			        	<p><a href="{% url 'rss_feed:detail_episode' episode.id %}">{{ episode.title }}</a></p>
+			        	<p>{{ episode.title }}</p></a>
 			        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
 			        </div>
 			    {% endfor %}
@@ -29,7 +32,7 @@
 			{% endif %}
 		
 		</div>
-		
+		<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 		<div class="section-title" id="program-title"><b>{% trans "Popular programs" %}</b></div>
 		
 		<div class="grid-container">
@@ -38,8 +41,9 @@
 			   
 			    {% for program in program_list %}
 			        <div class="grid-item" >
+			        	<a href="{% url 'rss_feed:detail_program' program.id %}">
 			        	<img src="{{ program.image.path.url }}" width='100'>
-			        	<p><a href="{% url 'rss_feed:detail_program' program.id %}">{{ program.name }}</a></p>
+			        	<p>{{ program.name }}</p></a>
 			        </div>
 			    {% endfor %}
 			    
@@ -47,6 +51,7 @@
 			    <p>{% trans "No programs found" %}</p>
 			{% endif %}
 		</div>
+		<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 	</div>
 	<div class="right-side">
 		<div id="station-title"><b>{% trans "Stations" %}</b></div>
@@ -66,5 +71,5 @@
 		</div>
 	</div>
 </div>
-	
+
 {% endblock %}

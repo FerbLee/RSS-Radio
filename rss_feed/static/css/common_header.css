@@ -1,0 +1,30 @@
+/* Pattern styles */
+.base-container {
+  display: grid;
+  width: 100%;
+}
+
+.base-block-content{
+ 	position: relative;
+    top: 20px;
+}
+
+.common-header-container {
+  display: grid;
+  grid-template-columns: [col1-start]60% [col2-start]auto [col3-start]auto;
+}
+
+.header-user{
+	grid-column: col1-start;
+ 	padding: 20px;
+}
+
+.header-search{
+	grid-column: col2-start;
+ 	padding: 20px;
+}
+
+.header-lan{
+	grid-column: col3-start;
+ 	padding: 20px;
+}
