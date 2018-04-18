@@ -9,51 +9,49 @@
 <link rel="stylesheet" href="{% static 'css/index_grid.css' %}" type='text/css'/> 
 </head>
 
-<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}" />
-    <select name="language">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Go" />
-</form>
-
-{% if user.is_authenticated %}
-    
-    <p>{% trans "Logged as" %}<a href="{% url 'rss_feed:detail_user' user.id%}"><b> {{ user.username }}</b></a>.  
-    <a href="{% url 'logout'%}"><b>{% trans "Log out" %}</b></a> </p>
-    
-    <div class="input-header">
-
-	<div class="jumbotron text-center" id="add-link-header">
-	
-		<h1>{% trans "RSS Parser" %}</h1>
-		<meta charset="utf-8">
-  		<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-		<form class="form-inline" action="{% url 'rss_feed:addLink'%}" method="POST">
+<div id="common-header">
+	<div id="lan-form">
+		<form action="{% url 'set_language' %}" method="post">
 			{% csrf_token %}
-	      	<input type="text" class="form-control" size="50" placeholder="{% blocktrans %}RSS link{% endblocktrans %}" 
-	      	name="rss_link"/>
-	        <input type="submit" class="btn btn-default" value="{% blocktrans %}Add Feed{% endblocktrans %}" >
+		    <input name="next" type="hidden" value="{{ redirect_to }}" />
+		    <select name="language">
+		    	{% get_current_language as LANGUAGE_CODE %}
+		        {% get_available_languages as LANGUAGES %}
+		        {% get_language_info_list for LANGUAGES as languages %}
+		        {% for language in languages %}
+		            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+		                {{ language.name_local }} ({{ language.code }})
+		            </option>
+		        {% endfor %}
+		    </select>
+		    <input type="submit" value="Go" />
 		</form>
-	
 	</div>
-	
-{% else %}
-    <p>
-    	{% trans "Welcome, please" %} <a href="{% url 'login'%}"><strong> {% trans "log in" %} </strong>
-    	</a> {% trans "or" %} <a href="{% url 'signup'%}"><strong>{% trans "sign up" %}</strong></a>.
-    </p>
-{% endif %}
-	
+	<div id="head-search">
+		<form class="form-inline" action="" method="POST">
+			{% csrf_token %}
+			<input type="text" class="form-control" size="30" name="search"/>
+		   	<input type="submit" class="btn btn-default" value="{% blocktrans %}Search{% endblocktrans %}" >
+		</form>
+	</div>
+
+	<div id="head-user">
+		{% if user.is_authenticated %}
+		    
+		    <p>{% trans "Logged as" %}<a href="{% url 'rss_feed:detail_user' user.id%}"><b> {{ user.username }}</b></a>.  
+		    <a href="{% url 'logout'%}"><b>{% trans "Log out" %}</b></a> </p>
+		   
+			
+		{% else %}
+		    <p>
+		    	{% trans "Welcome, please" %} <a href="{% url 'login'%}"><strong> {% trans "log in" %} </strong>
+		    	</a> {% trans "or" %} <a href="{% url 'signup'%}"><strong>{% trans "sign up" %}</strong></a>.
+		    </p>
+		{% endif %}
+	</div>
+
 </div>
+
 <div class="grid-container">
 	{% if program_list %}
 	   

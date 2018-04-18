@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1> Usuario: {{ user.username }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -17,3 +19,4 @@
 	{% endif %}
 {% endif %}
 <a href="{% url 'rss_feed:index'%}">Atrás</a></p>
+{% endblock %}

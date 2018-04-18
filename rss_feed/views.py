@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext as _
-
+from django.template import RequestContext
 
 class IndexView(generic.ListView):
     
@@ -31,7 +31,6 @@ class ProgramDetailView(generic.DetailView):
     #Overrides model and template_name from superclass
     model = Program
     template_name = 'rss_feed/detail_program.html'
-
         
 
 class EpisodeDetailView(generic.DetailView):
@@ -45,8 +44,7 @@ class UserDetailView(generic.DetailView):
     
     #Overrides model and template_name from superclass
     model = User
-    template_name = 'rss_feed/detail_user.html'
-    
+    template_name = 'rss_feed/detail_user.html'    
 
 
 def addLink(request):
