@@ -13,6 +13,31 @@
 
 <div class="index-container">
 	<div class="left-side">
+		
+		{% if request.user.is_authenticated %}
+			<div  class="section-title" id="station-title"><b>{% trans "Your subscriptions" %}</b></div>
+			<div class="grid-container">
+			
+				{% if user_subs %}
+			   
+				    {% for episode in user_subs %}
+				        <div class="grid-item" >
+				        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
+				        	<img src="{{ episode.image.path.url }}" width='100'>
+				        	<p>{{ episode.title }}</p></a>
+				        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
+				        </div>
+				    {% endfor %}
+				    
+				{% else %}
+				    <p>{% trans "No subscriptions" %}</p>
+				{% endif %}
+			
+			</div>
+			<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+		
+		{% endif %}
+	
 		<div  class="section-title" id="station-title"><b>{% trans "Latest episodes" %}</b></div>
 		<div class="grid-container">
 			
@@ -53,8 +78,26 @@
 		</div>
 		<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 	</div>
+	
 	<div class="right-side">
-		<div id="station-title"><b>{% trans "Stations" %}</b></div>
+		{% if request.user.is_authenticated %}
+			<div id="station-title-auth"><b>{% trans "Your favourite stations" %}</b></div>
+			<div class="vertical-grid-auth">
+				{% if user_stations %}
+			   	
+				   {% for station in user_stations %}
+				       <div class="station-item" >
+				       	<img src="{{ station.logo.path.url }}" width='20'>
+				       	<a href="{% url 'rss_feed:detail_station' station.id %}">{{ station.name }}</a>
+				       </div>
+				   {% endfor %}
+				{% else %}
+				    <p>{% trans "No favourite stations" %}</p>
+				{% endif %}
+			</div>
+		{% endif %}
+	
+		<div id="station-title"><b>{% trans "All Stations" %}</b></div>
 		<div class="vertical-grid">
 			{% if station_list %}
 		   

@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect, render_to_resp
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
-from .models import Episode, Program, Image
+from .models import Episode, Program, Image, Station
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm
@@ -33,13 +33,34 @@ class IndexView(generic.ListView):
         return programs
     
     def get_queryset(self):
+        
         return self.get_queryset_episodes()
+    
+    def get_queryset_stations(self):
+        
+        stations = Station.objects.all()
+        return stations
+    
+    def get_queryset_user_subscriptions(self):
+        
+        return Episode.objects.none()
+    
+    def get_queryset_user_stations(self):
+        
+        if self.request.user.is_authenticated():
+            return self.request.user.followers.order_by('name')
+        
+        return Station.objects.none()
     
     def get_context_data(self, **kwargs):
         
         context = super(IndexView, self).get_context_data(**kwargs)
         context['episode_list'] = self.get_queryset_episodes()
         context['program_list'] = self.get_queryset_programs()
+        context['station_list'] = self.get_queryset_stations()
+        context['user_subs']    = self.get_queryset_user_subscriptions()
+        context['user_stations'] = self.get_queryset_user_stations()
+        
         return context
     
 

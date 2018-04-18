@@ -22,9 +22,9 @@
 			{% if request.user.is_authenticated %}
 			    
 			    <p>{% trans "Logged as" %}
-			    <a href="{% url 'rss_feed:detail_user' request.user.id%}"><b> {{ request.user.username }}</b></a>.  
+			    <a href="{% url 'rss_feed:detail_user' request.user.id%}"><b> {{ request.user.username }}</b></a>  
 			    <img src="{{ request.user.userprofile.avatar.path.url }}" width='30'>
-			    <a href="{% url 'logout'%}"><b>{% trans "Log out" %}</b></a> </p>
+			    <a href="{% url 'logout'%}"><b>{% trans "Log out" %}</b></a>.</p>
 			   
 				
 			{% else %}
