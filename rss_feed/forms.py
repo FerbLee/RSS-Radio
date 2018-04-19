@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
 from django.utils.translation import ugettext as _
-from .models import Station
+from .models import Station,EXISTING_BCMETHODS
 
 class CountableWidget(forms.widgets.Textarea):
     
@@ -143,15 +143,19 @@ class AddStationForm(forms.ModelForm):
     profile_img = forms.ImageField(label=_('Profile Image'),widget=ImageFieldDisplay(),required=False)
     logo = forms.ImageField(label=_('Logo'),widget=ImageFieldDisplay(),required=False)
 
-    broadcasting_method = forms.CharField(label=_('Media'),max_length=200)
-    broadcasting_area = forms.CharField(label=_('Area'),max_length=200)
-    broadcasting_frequency = forms.CharField(label=_('Frequency'),max_length=200)
-    streaming_link = forms.URLField(label=_('Streaming Link'))
+    broadcasting_method = forms.ChoiceField(label=_('Media'),choices = EXISTING_BCMETHODS)
+    broadcasting_area = forms.CharField(label=_('Area'),max_length=200,required=False)
+    broadcasting_frequency = forms.CharField(label=_('Frequency'),max_length=200,required=False)
+    streaming_link = forms.URLField(label=_('Streaming Link'),required=False)
     
     class Meta:
         model = Station
         fields = ('name', 'logo', 'profile_img','broadcasting_method','broadcasting_area','broadcasting_frequency',
                   'streaming_link','description')
+    
+    
+    
+    
     
     
     

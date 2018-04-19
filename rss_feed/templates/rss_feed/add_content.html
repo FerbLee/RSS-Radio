@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %} 
+  <!--  <div class="input-header">
+
+	<div class="jumbotron text-center" id="add-link-header">
+	
+		<h1>{% trans "RSS Parser" %}</h1>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+		<form class="form-inline" action="{% url 'rss_feed:addLink'%}" method="POST">
+			{% csrf_token %}
+	      	<input type="text" class="form-control" size="50" placeholder="{% blocktrans %}RSS link{% endblocktrans %}" 
+	      	name="rss_link"/>
+	        <input type="submit" class="btn btn-default" value="{% blocktrans %}Add Feed{% endblocktrans %}" >
+		</form>
+	
+	</div>
+	</div -->
+
+<h3>Add New Content:</h3>
+
+<div id='addnc_station'>
+	<p>New station: </p>
+	<form method="post" id='add_station' action='' enctype='multipart/form-data' >
+		
+		{% csrf_token %}
+	   	{% for field in form_station %}
+	     	<p>
+	     		{% if field.name == 'logo' or field.name == 'profile_img' %}
+	     			
+	     			{% if field.name == 'logo' %}
+	     				<div class='station_logo'>
+	     			{% else %}
+	     				<div class='station_profile_img'>
+	     			{% endif %}
+     					
+     						{{ field.label_tag }}<br>
+     						{{ field }}
+	     			
+	    				</div>
+	     		{% else %}
+		        	{{ field.label_tag }}<br>
+		        	{{ field }}
+		        	{% if field.help_text %}
+		          		<small style="color: grey">{{ field.help_text }}</small>
+		        	{% endif %}
+	        		{% for error in field.errors %}
+	          			<p style="color: red">{{ error }}</p>
+	        		{% endfor %}
+	     		{% endif %}
+	  	</p>
+	  	{% endfor %}
+	   <button type="submit">{% trans "Send" %}</button> <a href="{% url 'rss_feed:index'%}">{% trans "Cancel" %}</a>
+	</form>
+</div>
+
+{% endblock %}

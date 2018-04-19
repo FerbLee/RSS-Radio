@@ -123,6 +123,30 @@ def create_avatar(avatar_in_memory_instance,username):
     return Image.get_default_avatar()
 
 
+def create_logo(avatar_in_memory_instance,username):
+
+#    try:
+        
+    if avatar_in_memory_instance != None:
+    
+        avatar_img = Image()
+        avatar_img.path = avatar_in_memory_instance
+        avatar_img.creation_date = timezone.now()
+        avatar_img.name = os.path.basename(avatar_in_memory_instance._name)
+        avatar_img.alt_text = username + '-logo'
+        avatar_img.save()
+        
+        return avatar_img
+    
+#    else:
+#        raise Exception
+
+#    except Exception as e:
+
+    return Image.get_default_avatar()
+
+
+
 
 def signup(request):
     
@@ -253,8 +277,29 @@ def add_content(request):
         
         form_station = AddStationForm(request.POST,prefix='form_station') 
         
-        return HttpResponseRedirect(reverse('rss_feed:index', args=()))
+        if form_station.is_valid():
+            
+            station = Station()
+            station.name = form_station.cleaned_data.get('name')
+            
+            form_station.logo = request.FILES.get('logo')
+            station.logo = create_logo(form_station.logo,station.name)
+            
+            form_station.profile_img = request.FILES.get('profile_img')
+            station.logo = create_logo(form_station.profile_img,station.name)
+            
+            station.broadcasting_method = form_station.cleaned_data.get('broadcasting_method')
+            station.broadcasting_area = form_station.cleaned_data.get('broadcasting_area')
+            station.broadcasting_frequency = form_station.cleaned_data.get('broadcasting_frequency')
+            station.streaming_link = form_station.cleaned_data.get('streaming_link')
+            station.description = form_station.cleaned_data.get('description')
+            
+            station.save()
+
+            return HttpResponseRedirect(reverse('rss_feed:index', args=()))
 
     else:
+        
         form_station = AddStationForm(request.POST,prefix='form_station') 
-        return render(request, 'rss_feed/add_content.html', {'form_station': form_station})
+    
+    return render(request, 'rss_feed/add_content.html', {'form_station': form_station})

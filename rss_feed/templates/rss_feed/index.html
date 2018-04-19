@@ -86,7 +86,7 @@
 				   {% for station in user_stations %}
 				       <div class="station-item" >
 				       	<img src="{{ station.logo.path.url }}" width='20'>
-				       	<a href="{% url 'rss_feed:detail_station' station.id %}">{{ station.name }}</a>
+				       	<a href="{% url 'rss_feed:unknown'%}">{{ station.name }}</a>
 				       </div>
 				   {% endfor %}
 				{% else %}
@@ -102,7 +102,7 @@
 			   {% for station in station_list %}
 			       <div class="station-item" >
 			       	<img src="{{ station.logo.path.url }}" width='20'>
-			       	<a href="{% url 'rss_feed:detail_station' station.id %}">{{ station.name }}</a>
+			       	<a href="{% url 'rss_feed:unknown' %}">{{ station.name }}</a>
 			       </div>
 			   {% endfor %}
 			    
