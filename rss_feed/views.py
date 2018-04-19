@@ -14,6 +14,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext as _
 from django.template import RequestContext
+from rss_feed.forms import AddProgramForm
 
 class IndexView(generic.ListView):
     
@@ -238,8 +239,8 @@ def user_edit(request):
     return render(request,'rss_feed/edit_user.html',{'form_atb': form,'form_pass':formp,'form_ignore_p':formi,
                                                      'password_show':0})
      
-
-def addLink(request):
+@login_required
+def addLink2(request):
     
     link = request.POST.get("rss_link")
     owner = request.user
@@ -271,35 +272,115 @@ def addLink(request):
 
 
 @login_required
+def addLink(request):
+    
+    if request.method == 'POST':
+        
+        form_rss = AddProgramForm(request.POST,prefix='form_rss') 
+        
+        if form_rss.is_valid():
+        
+            link = form_rss.cleaned_data.get("rss_link")
+            owner = request.user
+        
+            known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
+                             'radioco':rlp.ParserRadioco(link,owner)}
+        
+            new_program_added = False
+        
+            for key,strategy in known_parsers.items():
+        
+                if key in link.lower():
+                    new_program_added = strategy.parse_and_save() 
+        
+            if not new_program_added:
+                
+                print('Could not identify parser per link. Trying with all of them')
+                
+                for key,strategy in known_parsers.items():
+                    
+                    if strategy.parse_and_save():
+                        new_program_added = True
+                        break;
+            
+            if not new_program_added:
+                print('ERROR IN PARSING. PROGRAM NOT ADDED')
+          
+            return HttpResponseRedirect(reverse('rss_feed:index', args=()))
+
+    else:
+        
+        form_rss = AddProgramForm(request.POST,prefix='form_rss') 
+    
+    return render(request, 'rss_feed/add_content.html', {'form_rss': form_rss})
+
+
+@login_required
 def add_content(request):
     
     if request.method == 'POST':
         
         form_station = AddStationForm(request.POST,prefix='form_station') 
+        form_rss = AddProgramForm(request.POST,prefix='form_rss')
         
         if form_station.is_valid():
             
             station = Station()
             station.name = form_station.cleaned_data.get('name')
             
-            form_station.logo = request.FILES.get('logo')
+            form_station.logo = request.FILES.get('form_station-logo')
             station.logo = create_logo(form_station.logo,station.name)
             
-            form_station.profile_img = request.FILES.get('profile_img')
-            station.logo = create_logo(form_station.profile_img,station.name)
+            form_station.profile_img = request.FILES.get('form_station-profile_img')
+            station.profile_img = create_logo(form_station.profile_img,station.name)
             
             station.broadcasting_method = form_station.cleaned_data.get('broadcasting_method')
             station.broadcasting_area = form_station.cleaned_data.get('broadcasting_area')
             station.broadcasting_frequency = form_station.cleaned_data.get('broadcasting_frequency')
             station.streaming_link = form_station.cleaned_data.get('streaming_link')
             station.description = form_station.cleaned_data.get('description')
+            station.save()
             
+            station.admins.add(request.user)
+            station.followers.add(request.user)
             station.save()
 
             return HttpResponseRedirect(reverse('rss_feed:index', args=()))
+        
+        elif form_rss.is_valid():
+
+            link = form_rss.cleaned_data.get("rss_link")
+            owner = request.user
+        
+            known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
+                             'radioco':rlp.ParserRadioco(link,owner)}
+        
+            new_program_added = False
+        
+            for key,strategy in known_parsers.items():
+        
+                if key in link.lower():
+                    new_program_added = strategy.parse_and_save() 
+        
+            if not new_program_added:
+                
+                print('Could not identify parser per link. Trying with all of them')
+                
+                for key,strategy in known_parsers.items():
+                    
+                    if strategy.parse_and_save():
+                        new_program_added = True
+                        break;
+            
+            if not new_program_added:
+                print('ERROR IN PARSING. PROGRAM NOT ADDED')
+          
+            return HttpResponseRedirect(reverse('rss_feed:index', args=()))
+
 
     else:
         
         form_station = AddStationForm(request.POST,prefix='form_station') 
+        form_rss = AddProgramForm(request.POST,prefix='form_rss')
     
-    return render(request, 'rss_feed/add_content.html', {'form_station': form_station})
+    return render(request, 'rss_feed/add_content.html', {'form_station': form_station,'form_rss': form_rss})

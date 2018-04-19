@@ -21,8 +21,32 @@
 
 <h3>Add New Content:</h3>
 
+<div id='addnc_link'>
+	<p>{% trans "New Program:" %}</p>
+	<form method="post" id='add_link' action="" enctype='multipart/form-data' >
+		
+		{% csrf_token %}
+	   	{% for field in form_rss %}
+	     	<p>
+        	{{ field.label_tag }}<br>
+        	{{ field }}
+        	{% if field.help_text %}
+          		<small style="color: grey">{{ field.help_text }}</small>
+        	{% endif %}
+       		{% for error in field.errors %}
+         			<p style="color: red">{{ error }}</p>
+       		{% endfor %}
+	  		</p>
+	  	{% endfor %}
+	  	
+		<button type="submit">{% trans "Send" %}</button> <a href="{% url 'rss_feed:index'%}">{% trans "Cancel" %}</a>
+	</form>
+</div>
+
+
+
 <div id='addnc_station'>
-	<p>New station: </p>
+	<p>{% trans "New Station:" %}</p>
 	<form method="post" id='add_station' action='' enctype='multipart/form-data' >
 		
 		{% csrf_token %}

@@ -244,9 +244,11 @@ class Station(models.Model):
     streaming_link = models.URLField()
     profile_img = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='profile_img')
     logo = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='logo')
+    website = models.URLField(default=None,null=True)
     programs = models.ManyToManyField(Program,through='Emission')
     admins = models.ManyToManyField(User,related_name='station_admins')
     followers = models.ManyToManyField(User,related_name='followers')
+    
     
     def __str__(self):
         

@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
 from django.utils.translation import ugettext as _
-from .models import Station,EXISTING_BCMETHODS
+from .models import Station,Program,EXISTING_BCMETHODS
 
 class CountableWidget(forms.widgets.Textarea):
     
@@ -132,6 +132,16 @@ class IgnorePasswordEditForm(forms.ModelForm):
         model = User
         fields = ('ignore',) 
 
+
+class AddProgramForm(forms.ModelForm):
+
+    rss_link = forms.URLField(label=_('RSS Link'))
+    station = forms.ChoiceField(label=_('Station'),choices = (('cc',_('Community Channel')),),required=False)
+    
+    class Meta:
+        model = Program
+        fields = ('rss_link','station')
+    
 
 class AddStationForm(forms.ModelForm):
     
