@@ -28,13 +28,13 @@
 				        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
 				        </div>
 				    {% endfor %}
-				    
+				    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 				{% else %}
 				    <p>{% trans "No subscriptions" %}</p>
 				{% endif %}
 			
 			</div>
-			<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+			
 		
 		{% endif %}
 	
@@ -51,13 +51,12 @@
 			        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
 			        </div>
 			    {% endfor %}
-			    
+			    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 			{% else %}
 			    <p>{% trans "No episodes found" %}</p>
 			{% endif %}
 		
 		</div>
-		<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 		<div class="section-title" id="program-title"><b>{% trans "Popular programs" %}</b></div>
 		
 		<div class="grid-container">
@@ -71,12 +70,11 @@
 			        	<p>{{ program.name }}</p></a>
 			        </div>
 			    {% endfor %}
-			    
+				<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>    
 			{% else %}
 			    <p>{% trans "No programs found" %}</p>
 			{% endif %}
 		</div>
-		<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 	</div>
 	
 	<div class="right-side">

@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
 from django.utils.translation import ugettext as _
+from .models import Station
 
 class CountableWidget(forms.widgets.Textarea):
     
@@ -58,11 +59,28 @@ class ImageFieldDisplay(forms.widgets.FileInput):
     
     @staticmethod
     def get_image_preview_template(attrs):
+        print( attrs.get('id'))
         return (
                  '<span class="img-prev" id="%(id)s_img-prev"></span>\r\n'
-                 '<output id="list"></output>'
+                 #'<output id="list"></output>'
+                 '<output id="%(id)s-display"></output>'
                  '<script type="text/javascript">'
-                 'document.getElementById("%(id)s").addEventListener("change", handleFileSelect, false);'                       
+        
+                    'function handleFileSelect2(evt) {'
+                        'var files = evt.target.files;'
+                        'var f = files[0];'
+                        'var reader = new FileReader();'
+    
+                        'reader.onload = (function(theFile) {'
+                            'return function(e) {'
+                                'document.getElementById("%(id)s-display").innerHTML = [\'<p>New Image:</p>\',\'<img src="\', e.target.result,\'" title="\', theFile.name, \'" width="200"/>\'].join(\'\');'
+                            '};'
+                        '})(f);'
+
+                        'reader.readAsDataURL(f);'
+                        '}'
+            
+                 '    document.getElementById("%(id)s").addEventListener("change",handleFileSelect2, false);'                       
                  '</script>\n'
                ) % {'id': attrs.get('id')}
 
@@ -113,4 +131,27 @@ class IgnorePasswordEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('ignore',) 
+
+
+class AddStationForm(forms.ModelForm):
+    
+    name = forms.CharField(label=_('Name'),max_length=200)
+
+    cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
+    description = forms.CharField(label=_('Description'),max_length=500,widget=cw,required=False)
+    
+    profile_img = forms.ImageField(label=_('Profile Image'),widget=ImageFieldDisplay(),required=False)
+    logo = forms.ImageField(label=_('Logo'),widget=ImageFieldDisplay(),required=False)
+
+    broadcasting_method = forms.CharField(label=_('Media'),max_length=200)
+    broadcasting_area = forms.CharField(label=_('Area'),max_length=200)
+    broadcasting_frequency = forms.CharField(label=_('Frequency'),max_length=200)
+    streaming_link = forms.URLField(label=_('Streaming Link'))
+    
+    class Meta:
+        model = Station
+        fields = ('name', 'logo', 'profile_img','broadcasting_method','broadcasting_area','broadcasting_frequency',
+                  'streaming_link','description')
+    
+    
     

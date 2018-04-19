@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^episode/(?P<pk>[0-9]+)/$', views.EpisodeDetailView.as_view(), name='detail_episode'),
     url(r'^user/(?P<pk>[0-9]+)/$', views.UserDetailView.as_view(), name='detail_user'),
     url(r'^edit_user/$', views.user_edit,name='edit_user'),
-    url(r'^add_content/$', page_not_found,  kwargs={'exception': Exception('Page not Found')},name='add_content'),
+    url(r'^add_content/$', views.add_content,name='add_content'),
     url(r'^detail_station/$', page_not_found,  kwargs={'exception': Exception('Page not Found')},name='detail_station'),
     url(r'^unknown/$', page_not_found,  kwargs={'exception': Exception('Page not Found')},name='unknown'),]
 

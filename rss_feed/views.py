@@ -5,7 +5,7 @@ from django.views import generic
 from .models import Episode, Program, Image, Station
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
-from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm
+from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm
 from django.utils import timezone
 from django.contrib.auth.models import User
 import os
@@ -83,37 +83,6 @@ class UserDetailView(generic.DetailView):
     #Overrides model and template_name from superclass
     model = User
     template_name = 'rss_feed/detail_user.html'    
-
-
-def addLink(request):
-    
-    link = request.POST.get("rss_link")
-    owner = request.user
-    
-    known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
-                     'radioco':rlp.ParserRadioco(link,owner)}
-    
-    new_program_added = False
-    for key,strategy in known_parsers.items():
-    
-        if key in link.lower():
-            new_program_added = strategy.parse_and_save() 
-    
-    
-    if not new_program_added:
-        
-        print('Could not identify parser per link. Trying with all of them')
-        
-        for key,strategy in known_parsers.items():
-            
-            if strategy.parse_and_save():
-                new_program_added = True
-                break;
-    
-    if not new_program_added:
-        print('ERROR IN PARSING. PROGRAM NOT ADDED')
-          
-    return HttpResponseRedirect(reverse('rss_feed:index', args=()))
 
 
 
@@ -245,3 +214,47 @@ def user_edit(request):
     return render(request,'rss_feed/edit_user.html',{'form_atb': form,'form_pass':formp,'form_ignore_p':formi,
                                                      'password_show':0})
      
+
+def addLink(request):
+    
+    link = request.POST.get("rss_link")
+    owner = request.user
+    
+    known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
+                     'radioco':rlp.ParserRadioco(link,owner)}
+    
+    new_program_added = False
+    for key,strategy in known_parsers.items():
+    
+        if key in link.lower():
+            new_program_added = strategy.parse_and_save() 
+    
+    
+    if not new_program_added:
+        
+        print('Could not identify parser per link. Trying with all of them')
+        
+        for key,strategy in known_parsers.items():
+            
+            if strategy.parse_and_save():
+                new_program_added = True
+                break;
+    
+    if not new_program_added:
+        print('ERROR IN PARSING. PROGRAM NOT ADDED')
+          
+    return HttpResponseRedirect(reverse('rss_feed:index', args=()))
+
+
+@login_required
+def add_content(request):
+    
+    if request.method == 'POST':
+        
+        form_station = AddStationForm(request.POST,prefix='form_station') 
+        
+        return HttpResponseRedirect(reverse('rss_feed:index', args=()))
+
+    else:
+        form_station = AddStationForm(request.POST,prefix='form_station') 
+        return render(request, 'rss_feed/add_content.html', {'form_station': form_station})
