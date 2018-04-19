@@ -265,48 +265,6 @@ def user_edit(request):
                                                      'password_show':0})
      
 
-@login_required
-def addLink(request):
-    
-    if request.method == 'POST':
-        
-        form_rss = AddProgramForm(request.POST,prefix='form_rss') 
-        
-        if form_rss.is_valid():
-        
-            link = form_rss.cleaned_data.get("rss_link")
-            owner = request.user
-        
-            known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
-                             'radioco':rlp.ParserRadioco(link,owner)}
-        
-            new_program_added = False
-        
-            for key,strategy in known_parsers.items():
-        
-                if key in link.lower():
-                    new_program_added = strategy.parse_and_save() 
-        
-            if not new_program_added:
-                
-                print('Could not identify parser per link. Trying with all of them')
-                
-                for key,strategy in known_parsers.items():
-                    
-                    if strategy.parse_and_save():
-                        new_program_added = True
-                        break;
-            
-            if not new_program_added:
-                print('ERROR IN PARSING. PROGRAM NOT ADDED')
-          
-            return HttpResponseRedirect(reverse('rss_feed:index', args=()))
-
-    else:
-        
-        form_rss = AddProgramForm(request.POST,prefix='form_rss') 
-    
-    return render(request, 'rss_feed/add_content.html', {'form_rss': form_rss})
 
 
 @login_required
