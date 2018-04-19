@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+{% trans "See more" as seemore %}
+
+<p><img src="{{ station.profile_img.path.url }}" width='500'><p>
+<h1> <img src="{{ station.logo.path.url }}" width='100'> {% trans "Station:" %} {{ station.name }}</h1>
+
+<p><b>{% trans "Description:" %}</b> {{ station.description }}</p>
+<p><b>{% trans "Website:" %}</b> {{ station.website }}</p>
+<p><b>{% trans "Media:" %}</b> {{ station.broadcasting_method }}</p>
+<p><b>{% trans "Area:" %}</b> {{ station.broadcasting_area }}</p>
+<p><b>{% trans "Frequency:" %}</b> {{ station.broadcasting_frequency }}</p>
+<p><b>{% trans "Streaming:" %}</b> {{ station.streaming_link }}</p>
+
+<div  class="section-title" ><b>{% trans "Latest episodes:" %}</b></div>
+<div class="grid-container">
+
+	{% if episode_list %}
+   
+	    {% for episode in episode_list %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
+	        	<img src="{{ episode.image.path.url }}" width='100'>
+	        	<p>{{ episode.title }}</p></a>
+	        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
+	        </div>
+	    {% endfor %}
+	    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+	{% else %}
+	    <p>{% trans "No episodes" %}</p>
+	{% endif %}
+
+</div>
+
+<div  class="section-title" ><b>{% trans "Associated programs:" %}</b></div>
+<div class="grid-container">
+
+	{% if program_list %}
+   
+	    {% for program in program_list %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_program' program.id %}">
+	        	<img src="{{ program.image.path.url }}" width='100'>
+	        	<p>{{ program.name }}</p></a>
+	        </div>
+	    {% endfor %}
+	    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+	{% else %}
+	    <p>{% trans "No programs" %}</p>
+	{% endif %}
+
+</div>
+
+
+<div  class="section-title" ><b>{% trans "Followers:" %}</b></div>
+<div class="section">
+	{% if follower_list %}
+		{% for follower in follower_list %}
+		    <div class="follower-item" >
+		    	<p><a href="{% url 'rss_feed:detail_user' follower.id %}">
+		    		<img src="{{ follower.userprofile.avatar.path.url }}" width='40'>{{ follower.username }}</a></p> 
+		    </div>
+		{% endfor %}
+		<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+	{% else %}
+		<p>{% trans "No followers yet" %}</p>
+	{% endif %}		
+</div>
+
+
+<a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
+{% endblock %}

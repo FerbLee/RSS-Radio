@@ -157,11 +157,12 @@ class AddStationForm(forms.ModelForm):
     broadcasting_area = forms.CharField(label=_('Area'),max_length=200,required=False)
     broadcasting_frequency = forms.CharField(label=_('Frequency'),max_length=200,required=False)
     streaming_link = forms.URLField(label=_('Streaming Link'),required=False)
+    website = forms.URLField(label=_('Website'),required=False)
     
     class Meta:
         model = Station
         fields = ('name', 'logo', 'profile_img','broadcasting_method','broadcasting_area','broadcasting_frequency',
-                  'streaming_link','description')
+                  'streaming_link','description','website')
     
     
     

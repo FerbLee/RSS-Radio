@@ -81,11 +81,36 @@ class EpisodeDetailView(generic.DetailView):
 
 class UserDetailView(generic.DetailView):
     
-    #Overrides model and template_name from superclass
     model = User
     template_name = 'rss_feed/detail_user.html'    
 
 
+class StationDetailView(generic.DetailView):
+    
+    model = Station
+    template_name = 'rss_feed/detail_station.html'
+    
+    def get_queryset_episodes(self):
+        
+        return Episode.objects.none()
+    
+    def get_queryset_programs(self):
+        
+        return Program.objects.none()
+    
+    def get_queryset_followers(self):
+    
+        return self.object.followers.all()[0:7]
+    
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super(StationDetailView, self).get_context_data(**kwargs)
+        context['episode_list'] = self.get_queryset_episodes()
+        context['program_list'] = self.get_queryset_programs()
+        context['follower_list'] =self.get_queryset_followers()
+        
+        return context
 
 def AuthView(request):
     
@@ -239,37 +264,6 @@ def user_edit(request):
     return render(request,'rss_feed/edit_user.html',{'form_atb': form,'form_pass':formp,'form_ignore_p':formi,
                                                      'password_show':0})
      
-@login_required
-def addLink2(request):
-    
-    link = request.POST.get("rss_link")
-    owner = request.user
-    
-    known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
-                     'radioco':rlp.ParserRadioco(link,owner)}
-    
-    new_program_added = False
-    for key,strategy in known_parsers.items():
-    
-        if key in link.lower():
-            new_program_added = strategy.parse_and_save() 
-    
-    
-    if not new_program_added:
-        
-        print('Could not identify parser per link. Trying with all of them')
-        
-        for key,strategy in known_parsers.items():
-            
-            if strategy.parse_and_save():
-                new_program_added = True
-                break;
-    
-    if not new_program_added:
-        print('ERROR IN PARSING. PROGRAM NOT ADDED')
-          
-    return HttpResponseRedirect(reverse('rss_feed:index', args=()))
-
 
 @login_required
 def addLink(request):
