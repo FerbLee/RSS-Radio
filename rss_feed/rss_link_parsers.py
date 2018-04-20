@@ -169,7 +169,8 @@ class RSSLinkParser(object):
         
         except KeyError:
         
-            new_episode.image = Image.get_default_program_image()
+            #new_episode.image = Image.get_default_program_image()
+            new_episode.image = program.image
         
         new_episode.save()
     
