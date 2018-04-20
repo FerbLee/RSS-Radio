@@ -7,12 +7,34 @@
 <p><img src="{{ station.profile_img.path.url }}" width='500'><p>
 <h1> <img src="{{ station.logo.path.url }}" width='100'> {% trans "Station:" %} {{ station.name }}</h1>
 
+{% if request.user.is_authenticated %}
+	<div id="follow-button">
+	
+		{% if is_follower %}
+			 <form method="post" class="form-inline" action="{% url 'rss_feed:unfollow_station' station.id %}" >
+	 			{% csrf_token %}
+	 	 		<input type="submit" class="btn btn-default" value="Unfollow" >
+	 		</form>
+		{% else %}
+	 		<form method="post" class="form-inline" action="{% url 'rss_feed:follow_station' station.id %}" >
+	 			{% csrf_token %}
+	 	 		<input type="submit" class="btn btn-default" value="Follow" >
+	 		</form>
+	 	{% endif %}
+	</div>
+{% endif %}
+
 <p><b>{% trans "Description:" %}</b> {{ station.description }}</p>
 <p><b>{% trans "Website:" %}</b> {{ station.website }}</p>
 <p><b>{% trans "Media:" %}</b> {{ station.broadcasting_method }}</p>
 <p><b>{% trans "Area:" %}</b> {{ station.broadcasting_area }}</p>
 <p><b>{% trans "Frequency:" %}</b> {{ station.broadcasting_frequency }}</p>
-<p><b>{% trans "Streaming:" %}</b> {{ station.streaming_link }}</p>
+<p><b>{% trans "Streaming:" %}</b> </p>
+
+<audio controls>
+  	<source src="{{ station.streaming_link }}" type="audio/mpeg">
+	{% trans "Your browser does not support the audio element." %}
+</audio>
 
 <div  class="section-title" ><b>{% trans "Latest episodes:" %}</b></div>
 <div class="grid-container">

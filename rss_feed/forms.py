@@ -85,37 +85,6 @@ class ImageFieldDisplay(forms.widgets.FileInput):
                ) % {'id': attrs.get('id')}
 
 
-class CustomSelector(forms.widgets.Select):
-    
-    def render(self, name, value, attrs=None, **kwargs):
-        
-        final_attrs = self.build_attrs(self.attrs, attrs)
-
-        output = super(CustomSelector, self).render(name, value, final_attrs, **kwargs)
-        output += self.get_filtered_fields(final_attrs)
-        return mark_safe(output)
-    
-    
-    @staticmethod
-    def get_filtered_fields(attrs):
-
-        return (
-                '<span class="custom-select" id="%(id)s_custom-select"></span>\r\n'
-                '<script type="text/javascript">'
-                    'function bcMethodFilter() {'
-                        'var e = document.getElementById("%(id)s");'
-                        'var bc_method = e.options[e.selectedIndex].value;'
-                        'if (bc_method == "fm") {'
-                            'document.getElementById("bc-area").style.display = "none";'
-                        '}'
-                    '};'   
-                
-                    'document.getElementById("%(id)s").addEventListener("onchange",bcMethodFilter, false);'                       
-                '</script>\n'
-               ) % {'id': attrs.get('id')}
-
-
-
 class SignUpForm(UserCreationForm):
     
     location = forms.CharField(label=_('Location'),max_length=100,required=False)
@@ -195,8 +164,6 @@ class AddStationForm(forms.ModelForm):
         model = Station
         fields = ('name', 'logo', 'profile_img','broadcasting_method','broadcasting_area','broadcasting_frequency',
                   'streaming_link','description','website')
-    
-    
     
     
     

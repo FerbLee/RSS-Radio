@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^edit_user/$', views.user_edit,name='edit_user'),
     url(r'^add_content/$', views.add_content,name='add_content'),
     url(r'^station/(?P<pk>[0-9]+)/$', views.StationDetailView.as_view(),name='detail_station'),
+    url('^follow-station/(?P<pk>[0-9]+)/$', views.follow_station, name='follow_station'),
+    url('^unfollow-station/(?P<pk>[0-9]+)/$', views.unfollow_station, name='unfollow_station'),
     url(r'^unknown/$', page_not_found,  kwargs={'exception': Exception('Page not Found')},name='unknown'),]
 
 #urlpatterns +=  staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

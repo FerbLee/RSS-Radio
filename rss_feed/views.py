@@ -102,15 +102,45 @@ class StationDetailView(generic.DetailView):
     
         return self.object.followers.all()[0:7]
     
+    def get_user_is_follower(self):
+    
+        return True if self.object.followers.filter(pk=self.request.user.id) else False
     
     def get_context_data(self, **kwargs):
         
         context = super(StationDetailView, self).get_context_data(**kwargs)
         context['episode_list'] = self.get_queryset_episodes()
         context['program_list'] = self.get_queryset_programs()
-        context['follower_list'] =self.get_queryset_followers()
+        context['follower_list'] = self.get_queryset_followers()
+        context['is_follower'] = self.get_user_is_follower()
         
         return context
+
+
+@login_required
+def follow_station(request,**kwargs):
+    
+    new_follower = request.user
+    
+    station = Station.objects.filter(pk=kwargs['pk'])
+    if station:
+        station = station[0]
+        station.followers.add(new_follower)
+
+    return HttpResponseRedirect(reverse('rss_feed:detail_station' , args=(station.id,)))
+
+@login_required
+def unfollow_station(request,**kwargs):
+    
+    ex_follower = request.user
+    
+    station = Station.objects.filter(pk=kwargs['pk'])
+    if station:
+        station = station[0]
+        station.followers.remove(ex_follower)
+
+    return HttpResponseRedirect(reverse('rss_feed:detail_station', args=(station.id,)))
+
 
 def AuthView(request):
     
