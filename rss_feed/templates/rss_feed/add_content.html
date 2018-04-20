@@ -56,10 +56,27 @@
      						{{ field }}
 	     			
 	    				</div>
+	    		
 	    		{% elif field.name == 'broadcasting_method' %}
+
 	    			{{ field.label_tag }}<br>
 		        	{{ field }}
+	    		
+	    		{% elif field.name == 'broadcasting_area' %}
 	    			
+	    			<div id='bc-area'>
+	    				{{ field.label_tag }}<br>
+		        		{{ field }}
+	    			</div>
+	    		
+	    		{% elif field.name == 'broadcasting_frequency' %}
+	    		
+	    			<div id='bc-freq'>
+	    				{{ field.label_tag }}<br>
+		        		{{ field }}
+	    			</div>
+	    		
+	    		
 	     		{% else %}
 		        	{{ field.label_tag }}<br>
 		        	{{ field }}
@@ -100,7 +117,20 @@
     		}
     };
   	
-  	
+    function bcMethodFilter(bcm_id) {
+        var e = document.getElementById(bcm_id);
+        var bc_method = e.options[e.selectedIndex].value;
+       
+        if (bc_method == "fm" || bc_method == "di" || bc_method == "tv") {
+            document.getElementById("bc-area").style.display = "block";
+            document.getElementById("bc-freq").style.display = "block";
+        } else {
+            document.getElementById("bc-area").style.display = "none";
+            document.getElementById("bc-freq").style.display = "none";
+        }
+    };  
+
+    
 </script>
 
 {% endblock %}

@@ -43,9 +43,9 @@ class CountableWidget(forms.widgets.Textarea):
 
 class ImageFieldDisplay(forms.widgets.FileInput):
     
-    class Media():
-        
-        js = ('javascript/HandleFileSelect.js')
+    #class Media():
+    #    
+    #    js = ('javascript/HandleFileSelect.js')
 
 
     def render(self, name, value, attrs=None, **kwargs):
@@ -59,7 +59,7 @@ class ImageFieldDisplay(forms.widgets.FileInput):
     
     @staticmethod
     def get_image_preview_template(attrs):
-        print( attrs.get('id'))
+
         return (
                  '<span class="img-prev" id="%(id)s_img-prev"></span>\r\n'
                  #'<output id="list"></output>'
@@ -83,6 +83,37 @@ class ImageFieldDisplay(forms.widgets.FileInput):
                  '    document.getElementById("%(id)s").addEventListener("change",handleFileSelect2, false);'                       
                  '</script>\n'
                ) % {'id': attrs.get('id')}
+
+
+class CustomSelector(forms.widgets.Select):
+    
+    def render(self, name, value, attrs=None, **kwargs):
+        
+        final_attrs = self.build_attrs(self.attrs, attrs)
+
+        output = super(CustomSelector, self).render(name, value, final_attrs, **kwargs)
+        output += self.get_filtered_fields(final_attrs)
+        return mark_safe(output)
+    
+    
+    @staticmethod
+    def get_filtered_fields(attrs):
+
+        return (
+                '<span class="custom-select" id="%(id)s_custom-select"></span>\r\n'
+                '<script type="text/javascript">'
+                    'function bcMethodFilter() {'
+                        'var e = document.getElementById("%(id)s");'
+                        'var bc_method = e.options[e.selectedIndex].value;'
+                        'if (bc_method == "fm") {'
+                            'document.getElementById("bc-area").style.display = "none";'
+                        '}'
+                    '};'   
+                
+                    'document.getElementById("%(id)s").addEventListener("onchange",bcMethodFilter, false);'                       
+                '</script>\n'
+               ) % {'id': attrs.get('id')}
+
 
 
 class SignUpForm(UserCreationForm):
@@ -152,8 +183,9 @@ class AddStationForm(forms.ModelForm):
     
     profile_img = forms.ImageField(label=_('Profile Image'),widget=ImageFieldDisplay(),required=False)
     logo = forms.ImageField(label=_('Logo'),widget=ImageFieldDisplay(),required=False)
-
-    broadcasting_method = forms.ChoiceField(label=_('Media'),choices = EXISTING_BCMETHODS)
+                
+    broadcasting_method = forms.ChoiceField(label=_('Media'),widget=forms.Select(attrs = {'onchange' : "bcMethodFilter('id_form_station-broadcasting_method');"}),choices = EXISTING_BCMETHODS)
+    
     broadcasting_area = forms.CharField(label=_('Area'),max_length=200,required=False)
     broadcasting_frequency = forms.CharField(label=_('Frequency'),max_length=200,required=False)
     streaming_link = forms.URLField(label=_('Streaming Link'),required=False)
