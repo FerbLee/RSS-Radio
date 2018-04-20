@@ -48,7 +48,12 @@
 		  
 	   	{% endfor %}
 	</div>
-	<script type="text/javascript">
+	  	
+	</script>
+   <button type="submit">Actualizar</button> <a href="{% url 'rss_feed:detail_user' user.id%}">Cancelar</a>
+</form>
+
+<script type="text/javascript">
 		window.onload = function() {
 			
 			if ({{ password_show }} == 1) {
@@ -68,11 +73,7 @@
 	      		document.getElementById('id_form_ignore_p-ignore').checked = true;
 	      		document.getElementById('id_form_ignore_p-ignore').value = true;
 	    	}
-	  	}
-	  	
-	</script>
-   <button type="submit">Actualizar</button> <a href="{% url 'rss_feed:detail_user' user.id%}">Cancelar</a>
-</form>
+	  	};
 
 {% endblock %}
 
