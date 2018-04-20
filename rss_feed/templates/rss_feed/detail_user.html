@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
-<h1> Usuario: {{ user.username }}</h1>
+<h1> {% trans "User:" %} {{ user.username }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<p><b>Nome:</b>{{ user.first_name }} {{ user.last_name }}</p>
-<p><b>Engadido en </b>{{ user.date_joined }}
-<p><b>Contacto:</b>{{ user.email }}</p>
-<p><b>Localización:</b>{{ user.userprofile.location }}</p>
-<p><b>Descrición:</b>{{ user.userprofile.description }}</p>
-<p><b>Avatar:</b></p>
+<p><b>{% trans "Name:" %}:</b> {{ user.first_name }} {{ user.last_name }}</p>
+<p><b>{% trans "Joined on:" %}</b> {{ user.date_joined }}
+<p><b>{% trans "Contact:" %}</b> {{ user.email }}</p>
+<p><b>{% trans "Location:" %}</b> {{ user.userprofile.location }}</p>
+<p><b>{% trans "Description:" %}</b> {{ user.userprofile.description }}</p>
+<p><b>{% trans "Avatar:" %}</b></p>
 <p><img src="{{ user.userprofile.avatar.path.url }}" width='200'><p>
 
 <p>
 {% if request.user.is_authenticated %}
 	{% if request.user.id == user.id%}
-		<a href="{% url 'rss_feed:edit_user'%}">Editar</a> 
+		<a href="{% url 'rss_feed:edit_user'%}">{% trans "Edit" %}</a> 
 	{% endif %}
 {% endif %}
-<a href="{% url 'rss_feed:index'%}">Atrás</a></p>
+  <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
 {% endblock %}
