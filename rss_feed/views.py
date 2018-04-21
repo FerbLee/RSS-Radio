@@ -15,6 +15,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext as _
 from django.template import RequestContext
 from rss_feed.forms import AddProgramForm
+from numba.tests.test_flow_control import ifelse_usecase1
 
 class IndexView(generic.ListView):
     
@@ -160,6 +161,43 @@ class UserDetailView(generic.DetailView):
     template_name = 'rss_feed/detail_user.html'    
 
 
+    def get_followed_stations(self,nof_results):
+        
+        return self.object.followers.all()[0:nof_results]
+    
+
+    def get_subscriptions(self,nof_results):
+        
+        return self.object.subscribers.all()[0:nof_results]
+    
+    
+    def get_owned_programs(self,nof_results):
+
+        if self.request.user.is_authenticated():
+            return (self.request.user.program_set.all() | self.request.user.program_admins.all())[0:nof_results]
+        else:
+            return Program.objects.none()
+    
+    
+    def get_owned_stations(self,nof_results):
+
+        if self.request.user.is_authenticated():
+            return self.request.user.station_admins.all()[0:nof_results]
+        else:
+            return Program.objects.none()
+    
+
+    def get_context_data(self, **kwargs):
+        
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        context['follow_stations'] = self.get_followed_stations(nof_results=4)
+        context['subscriptions'] = self.get_subscriptions(nof_results=4)
+        context['owned_programs'] = self.get_owned_programs(nof_results=4)
+        context['owned_stations'] = self.get_owned_stations(nof_results=4)
+        
+        return context
+
+
 class StationDetailView(generic.DetailView):
     
     model = Station
@@ -178,8 +216,12 @@ class StationDetailView(generic.DetailView):
         return self.object.followers.all()[0:7]
     
     def get_user_is_follower(self):
+        
+        if self.request.user.is_authenticated():
+            return self.request.user.followers.filter(pk=self.object.id)
+        
+        return User.objects.none()
     
-        return self.request.user.followers.filter(pk=self.object.id)
     
     def get_context_data(self, **kwargs):
         

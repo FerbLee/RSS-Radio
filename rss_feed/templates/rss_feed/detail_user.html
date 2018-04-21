@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
+<p><img src="{{ user.userprofile.avatar.path.url }}" width='200'><p>
 <h1> {% trans "User:" %} {{ user.username }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -10,8 +11,91 @@
 <p><b>{% trans "Contact:" %}</b> {{ user.email }}</p>
 <p><b>{% trans "Location:" %}</b> {{ user.userprofile.location }}</p>
 <p><b>{% trans "Description:" %}</b> {{ user.userprofile.description }}</p>
-<p><b>{% trans "Avatar:" %}</b></p>
-<p><img src="{{ user.userprofile.avatar.path.url }}" width='200'><p>
+
+<div  class="section-title"><b>{% trans "Subscribed to:" %}</b></div>
+<div class="grid-container">
+
+	{% if subscriptions %}
+   
+	    {% for program in subscriptions %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_program' program.id %}">
+	        	<img src="{{ program.image.path.url }}" width='100'>
+	        	<p>{{ program.name }}</p></a>
+	        </div>
+	    {% endfor %}
+	    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+	{% else %}
+	    <p>{% trans "No subscriptions" %}</p>
+	{% endif %}
+
+</div>
+
+
+<div  class="section-title"><b>{% trans "Followed stations:" %}</b></div>
+<div class="grid-container">
+
+	{% if follow_stations %}
+   
+	    {% for station in follow_stations %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_station' station.id %}">
+	        	<img src="{{ station.logo.path.url }}" width='100'>
+	        	<p>{{ station.name }}</p></a>
+	        </div>
+	    {% endfor %}
+	    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+	{% else %}
+	    <p>{% trans "No stations followed" %}</p>
+	{% endif %}
+
+</div>
+
+{% if request.user.is_authenticated %}
+	{% if request.user.id == user.id%}
+		<h3> {% trans "Your own content:" %}</h3>
+		<div  class="section-title"><b>{% trans "Your programs:" %}</b></div>
+		<div class="grid-container">
+		
+			{% if owned_programs %}
+		   
+			    {% for program in owned_programs %}
+			        <div class="grid-item" >
+			        	<a href="{% url 'rss_feed:detail_program' program.id %}">
+			        	<img src="{{ program.image.path.url }}" width='100'>
+			        	<p>{{ program.name }}</p></a>
+			        </div>
+			    {% endfor %}
+			    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+			{% else %}
+			    <p>{% trans "No owned programs" %}</p>
+			{% endif %}
+
+		</div>
+		
+		<div  class="section-title"><b>{% trans "Your stations:" %}</b></div>
+		<div class="grid-container">
+		
+			{% if owned_stations %}
+		   
+			    {% for station in owned_stations %}
+			        <div class="grid-item" >
+			        	<a href="{% url 'rss_feed:detail_station' station.id %}">
+			        	<img src="{{ station.logo.path.url }}" width='100'>
+			        	<p>{{ station.name }}</p></a>
+			        </div>
+			    {% endfor %}
+			    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+			{% else %}
+			    <p>{% trans "No owned stations" %}</p>
+			{% endif %}
+
+		</div>
+		
+	{% endif %}
+{% endif %}
+
+
 
 <p>
 {% if request.user.is_authenticated %}
