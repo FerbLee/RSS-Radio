@@ -1,6 +1,27 @@
-<h1>{{ program.name }}</h1>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% trans "See more" as seemore %}
+
+<h1> <img src="{{ program.image.path.url }}" width='100'> {% trans "Program:" %} {{ program.name }}</h1>
+
+{% if request.user.is_authenticated %}
+	<div id="subscribe-button">
+	
+		{% if is_subscriber %}
+			 <form method="post" class="form-inline" action="{% url 'rss_feed:unsubscribe_program' program.id %}" >
+	 			{% csrf_token %}
+	 	 		<input type="submit" class="btn btn-default" value="{% blocktrans %}Unsubscribe{% endblocktrans %}">
+	 		</form>
+		{% else %}
+	 		<form method="post" class="form-inline" action="{% url 'rss_feed:subscribe_program' program.id %}" >
+	 			{% csrf_token %}
+	 	 		<input type="submit" class="btn btn-default" value="{% blocktrans %}Subscribe{% endblocktrans %}" >
+	 		</form>
+	 	{% endif %}
+	</div>
+{% endif %}
 
 <p><b>Autor:</b>{{ program.author }}</p>
 
@@ -18,4 +39,6 @@
 {% endfor %}
 </ul>
 
+<a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
+{% endblock %}
 

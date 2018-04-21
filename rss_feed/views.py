@@ -21,30 +21,40 @@ class IndexView(generic.ListView):
     template_name = 'rss_feed/index.html'
     #context_object_name = 'episode_list'
 
-    def get_queryset_episodes(self):
+    def get_queryset_episodes(self,nof_results):
         
         """Latest Episodes"""
-        episodes = Episode.objects.order_by('-publication_date')[0:4]
+        episodes = Episode.objects.order_by('-publication_date')[0:nof_results]
         return episodes
 
 
-    def get_queryset_programs(self):
+    def get_queryset_programs(self,nof_results):
         
-        programs = Program.objects.order_by('-popularity')[4:]
+        programs = Program.objects.order_by('-popularity')[0:nof_results]
         return programs
     
     def get_queryset(self):
         
-        return self.get_queryset_episodes()
+        nof_results = 4
+        return self.get_queryset_episodes(nof_results)
     
     def get_queryset_stations(self):
         
         stations = Station.objects.all()
         return stations
     
-    def get_queryset_user_subscriptions(self):
+    def get_queryset_user_subscriptions(self,nof_results):
         
-        return Episode.objects.none()
+        # Very inneficient. To be corrected        
+        subs_programs = self.request.user.subscribers.all()
+        subs_episodes = Episode.objects.none()
+        
+        for program in subs_programs:
+            
+            subs_episodes = program.episode_set.all()|subs_episodes
+        
+        return subs_episodes.order_by('-publication_date')[0:nof_results]
+            
     
     def get_queryset_user_stations(self):
         
@@ -55,11 +65,13 @@ class IndexView(generic.ListView):
     
     def get_context_data(self, **kwargs):
         
+        nof_results=4
+        
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['episode_list'] = self.get_queryset_episodes()
-        context['program_list'] = self.get_queryset_programs()
+        context['episode_list'] = self.get_queryset_episodes(nof_results)
+        context['program_list'] = self.get_queryset_programs(nof_results)
         context['station_list'] = self.get_queryset_stations()
-        context['user_subs']    = self.get_queryset_user_subscriptions()
+        context['user_subs']    = self.get_queryset_user_subscriptions(nof_results)
         context['user_stations'] = self.get_queryset_user_stations()
         
         return context
@@ -70,7 +82,45 @@ class ProgramDetailView(generic.DetailView):
     #Overrides model and template_name from superclass
     model = Program
     template_name = 'rss_feed/detail_program.html'
+    
+    
+    def get_user_is_subscriber(self):
+    
+        return self.request.user.subscribers.filter(pk=self.object.id)
+
+    def get_context_data(self, **kwargs):
         
+        context = super(ProgramDetailView, self).get_context_data(**kwargs)
+        context['is_subscriber'] = self.get_user_is_subscriber()
+
+        return context
+
+
+@login_required
+def subscribe_program(request,**kwargs):
+    
+    new_subscriber = request.user
+    program = Program.objects.filter(pk=kwargs['pk'])
+    
+    if program:
+        program = program[0]
+        program.subscribers.add(new_subscriber)
+
+    return HttpResponseRedirect(reverse('rss_feed:detail_program' , args=(program.id,)))
+
+@login_required
+def unsubscribe_program(request,**kwargs):
+    
+    ex_subscriber = request.user
+    program = Program.objects.filter(pk=kwargs['pk'])
+    
+    if program:
+        program = program[0]
+        program.subscribers.remove(ex_subscriber)
+
+    return HttpResponseRedirect(reverse('rss_feed:detail_program' , args=(program.id,)))
+
+
 
 class EpisodeDetailView(generic.DetailView):
     

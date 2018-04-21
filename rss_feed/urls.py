@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^station/(?P<pk>[0-9]+)/$', views.StationDetailView.as_view(),name='detail_station'),
     url('^follow-station/(?P<pk>[0-9]+)/$', views.follow_station, name='follow_station'),
     url('^unfollow-station/(?P<pk>[0-9]+)/$', views.unfollow_station, name='unfollow_station'),
+    url('^subscribe-program/(?P<pk>[0-9]+)/$', views.subscribe_program, name='subscribe_program'),
+    url('^unsubscribe-program/(?P<pk>[0-9]+)/$', views.unsubscribe_program, name='unsubscribe_program'),
     url(r'^unknown/$', page_not_found,  kwargs={'exception': Exception('Page not Found')},name='unknown'),]
 
 #urlpatterns +=  staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
