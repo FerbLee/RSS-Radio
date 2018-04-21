@@ -35,8 +35,7 @@ class IndexView(generic.ListView):
     
     def get_queryset(self):
         
-        nof_results = 4
-        return self.get_queryset_episodes(nof_results)
+        return Episode.objects.none()
     
     def get_queryset_stations(self):
         
@@ -45,16 +44,20 @@ class IndexView(generic.ListView):
     
     def get_queryset_user_subscriptions(self,nof_results):
         
-        # Very inneficient. To be corrected        
-        subs_programs = self.request.user.subscribers.all()
-        subs_episodes = Episode.objects.none()
-        
-        for program in subs_programs:
+        # Very inneficient. To be corrected
+        if self.request.user.is_authenticated():
+                    
+            subs_programs = self.request.user.subscribers.all()
+            subs_episodes = Episode.objects.none()
             
-            subs_episodes = program.episode_set.all()|subs_episodes
-        
-        return subs_episodes.order_by('-publication_date')[0:nof_results]
+            for program in subs_programs:
+                
+                subs_episodes = program.episode_set.all()|subs_episodes
             
+            return subs_episodes.order_by('-publication_date')[0:nof_results]
+                
+        return Episode.objects.none()
+    
     
     def get_queryset_user_stations(self):
         
@@ -86,7 +89,10 @@ class ProgramDetailView(generic.DetailView):
     
     def get_user_is_subscriber(self):
     
-        return self.request.user.subscribers.filter(pk=self.object.id)
+        if self.request.user.is_authenticated():
+            return self.request.user.subscribers.filter(pk=self.object.id)
+        else:
+            return Episode.objects.none()
 
     def get_context_data(self, **kwargs):
         
