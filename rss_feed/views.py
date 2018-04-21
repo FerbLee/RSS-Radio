@@ -104,7 +104,7 @@ class StationDetailView(generic.DetailView):
     
     def get_user_is_follower(self):
     
-        return True if self.object.followers.filter(pk=self.request.user.id) else False
+        return self.request.user.followers.filter(pk=self.object.id)
     
     def get_context_data(self, **kwargs):
         
