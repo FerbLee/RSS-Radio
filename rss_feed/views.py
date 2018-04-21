@@ -93,12 +93,31 @@ class ProgramDetailView(generic.DetailView):
             return self.request.user.subscribers.filter(pk=self.object.id)
         else:
             return Episode.objects.none()
+        
+        
+    def get_episode_short_list(self,nof_results):
+        
+        return self.object.episode_set.order_by('-publication_date')[0:nof_results]
+
+
+    def get_related_stations(self,nof_results):
+        
+        return self.object.emission_set.all()[0:nof_results]
+    
+
+    def get_subscribers(self):
+        
+        return self.object.subscribers.all()
+    
 
     def get_context_data(self, **kwargs):
         
         context = super(ProgramDetailView, self).get_context_data(**kwargs)
         context['is_subscriber'] = self.get_user_is_subscriber()
-
+        context['episode_short_list'] = self.get_episode_short_list(nof_results=8)
+        context['related_stations'] = self.get_related_stations(nof_results=4)
+        context['subscribers'] = self.get_subscribers()
+        
         return context
 
 
