@@ -23,21 +23,39 @@
 	</div>
 {% endif %}
 
-<p><b>Autor:</b>{{ program.author }}</p>
-
-<p><b>Engadido en </b>{{ program.creation_date }} <b>por</b> 
+<p><b>{% trans "Author:" %}</b> {{ program.author }}</p>
+<p><b>{% trans "Added on:" %}</b> {{ program.creation_date }} <b> {% trans "by" %} </b> 
 	<a href="{% url 'rss_feed:detail_user' program.owner.id%}"><b>{{ program.owner.username }}</b></a></p>
+<p><b>{% trans "Language:" %}</b> {{ program.language }} <b>{% trans "Rating:" %}</b> {{ program.rating }}% </p>
 
-<p><b>Descrición:</b>{{ program.description }}</p>
-<p><b>RSS:</b><a href={{ program.rss_link }}>{{ program.rss_link }}</a></p>
+<p><b>{% trans "Categories:" %}</b> 
+	{% for category in program.tag_set.all %}
+		<a href="{% url 'rss_feed:unknown' %}"> {{ category }}</a> 
+	{% endfor %}
+</p>
 
-<h3>Episodios:</h3>
+<p><b>{% trans "Description:" %}</b> {{ program.description }}</p>
+<p><b>{% trans "Site:" %} </b><a href={{ program.original_site }}>{{ program.original_site }}</a></p>
 
-<ul>
-{% for episode in program.episode_set.all %}
-    <li><a href="{% url 'rss_feed:detail_episode' episode.id %}">{{ episode.title }}</a></li>
-{% endfor %}
-</ul>
+<div  class="section-title" id="station-title"><b>{% trans "Episodes" %}</b></div>
+<div class="grid-container">
+
+	{% if program.episode_set.all %}
+	    {% for episode in program.episode_set.all %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
+	        	<img src="{{ episode.image.path.url }}" width='100'>
+	        	<p>{{ episode.title }}</p></a>
+	        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
+	        </div>
+	    {% endfor %}
+	    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
+	{% else %}
+	    <p>{% trans "No episodes" %}</p>
+	{% endif %}
+
+</div>
+
 
 <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
 {% endblock %}
