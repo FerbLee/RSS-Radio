@@ -1,8 +1,47 @@
-<h1>{{ episode.title }}</h1>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% trans "See more" as seemore %}
 
-<p><b>Publicado en:</b>{{ episode.publication_date }}</p>
-<p><b>Resumo:</b>{{ episode.summary }}</p>
-<p><b>Ficheiro:</b><a href={{ episode.file }}>{{ episode.file }}</a></p>
+<h3> <img src="{{ episode.program.image.path.url }}" width='50'> {% trans "Program:" %} 
+	<a href="{% url 'rss_feed:detail_program' episode.program.id %}"> {{ episode.program.name }}</a></h3>
+<h1> <img src="{{ episode.image.path.url }}" width='100'> {% trans "Episode:" %} {{ episode.title }}</h1>
 
+{% if request.user.is_authenticated %}
+	<div id="like-button">
+	
+		{% if episode_voted %}
+			 <form method="post" class="form-inline" action="" >
+	 			{% csrf_token %}
+	 	 		<input type="submit" class="btn btn-default" value="{% blocktrans %}Dislike{% endblocktrans %}">
+	 		</form>
+		{% else %}
+	 		<form method="post" class="form-inline" action="" >
+	 			{% csrf_token %}
+	 	 		<input type="submit" class="btn btn-default" value="{% blocktrans %}Like{% endblocktrans %}" >
+	 		</form>
+	 	{% endif %}
+	</div>
+{% endif %}
+
+<p><b>{% trans "Likes:" %}</b> {{ episode.up_votes }} <b>{% trans "Dislikes:" %}</b> {{ episode.down_votes }}
+	<b>{% trans "Downloads:" %}</b> {{ episode.downloads }}</p>
+<p><b>{% trans "Published on:" %}</b> {{ episode.publication_date }}</p>
+
+<audio controls>
+	<source src="{{ episode.file }}" type="{{ episode.file_type }}"/>
+	{% trans "Your browser does not support the audio element." %}
+</audio>
+
+<p><b>{% trans "Categories:" %}</b> 
+	{% for category in program.tag_set.all %}
+		<a href="{% url 'rss_feed:unknown' %}"> {{ category }}</a> 
+	{% endfor %}
+</p>
+
+
+<p><b>{% trans "Summary:" %}</b> {{ episode.summary }} </p>
+
+<p><a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
+{% endblock %}
