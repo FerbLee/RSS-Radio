@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
 from django.utils.translation import ugettext as _
-from .models import Station,Program,EXISTING_BCMETHODS
+from .models import Station,Program,EXISTING_BCMETHODS,Comment
 
 class CountableWidget(forms.widgets.Textarea):
     
@@ -164,8 +164,29 @@ class AddStationForm(forms.ModelForm):
         model = Station
         fields = ('name', 'logo', 'profile_img','broadcasting_method','broadcasting_area','broadcasting_frequency',
                   'streaming_link','description','website')
+
+
+class CommentForm(forms.ModelForm):
+    
+    cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
+    text = forms.CharField(label=_('Text'),max_length=500,widget=cw,required=False)
     
     
+    def save(self, user, episode, commit=True, *args, **kwargs):
+        
+        comment = super(CommentForm, self).save(commit=False, *args, **kwargs)
+        comment.user = user
+        comment.episode = episode
+        
+        if commit:
+            comment.save()
+        
+        return comment
+        
+        
+    class Meta:
+        model = Comment
+        fields = ('text',)
     
     
     

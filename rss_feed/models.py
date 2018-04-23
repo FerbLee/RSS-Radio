@@ -227,7 +227,7 @@ class Comment(models.Model):
     
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
     user =  models.ForeignKey(User, on_delete=models.CASCADE,related_name='commenters')
-    publication_date = models.DateTimeField(default=default_time) 
+    publication_date = models.DateTimeField(auto_now_add=True) 
     text = models.TextField()
 
 

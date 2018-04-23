@@ -1,11 +1,11 @@
 from django.shortcuts import get_object_or_404, render, redirect, render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.urls import reverse
 from django.views import generic
 from .models import Episode, Program, Image, Station, Vote, EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
-from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm
+from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm,CommentForm
 from django.utils import timezone
 from django.contrib.auth.models import User
 import os
@@ -16,6 +16,7 @@ from django.utils.translation import ugettext as _
 from django.template import RequestContext
 from rss_feed.forms import AddProgramForm
 from django.utils import timezone
+
 
 class IndexView(generic.ListView):
     
@@ -148,11 +149,17 @@ def unsubscribe_program(request,**kwargs):
 
 
 
-class EpisodeDetailView(generic.DetailView):
+class EpisodeDetailView(generic.edit.FormMixin,generic.DetailView):
     
     #Overrides model and template_name from superclass
     model = Episode
+    form_class = CommentForm
     template_name = 'rss_feed/detail_episode.html'
+
+    
+    def get_success_url(self):
+        
+        return reverse('rss_feed:detail_episode', kwargs={'pk': self.object.id})
 
     
     def get_user_vote_type(self):
@@ -176,8 +183,30 @@ class EpisodeDetailView(generic.DetailView):
         context['upvotes'] = self.object.vote_set.filter(type=LIKE_VOTE[0]).count()
         context['downvotes'] = self.object.vote_set.filter(type=DISLIKE_VOTE[0]).count()
         context['user_vote_type'] = self.get_user_vote_type()
+        context['comment_form'] = CommentForm(initial={'episode': self.object,'user':self.request.user})
         
         return context
+
+
+    def post(self, request, *args, **kwargs):
+        
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        
+        self.object = self.get_object()
+        form = self.get_form()
+        
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+    
+    
+    def form_valid(self, form):
+        
+        form.save(user=self.request.user,episode=self.object)
+        return super(EpisodeDetailView, self).form_valid(form)
+
 
 
 @login_required
