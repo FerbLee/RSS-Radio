@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect, render_to_resp
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
-from .models import Episode, Program, Image, Station, Vote, EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE
+from .models import Episode, Program, Image, Station, Vote, EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm
@@ -155,11 +155,27 @@ class EpisodeDetailView(generic.DetailView):
     template_name = 'rss_feed/detail_episode.html'
 
     
+    def get_user_vote_type(self):
+    
+        if self.request.user.is_authenticated():
+            vote = self.request.user.voters.filter(episode_id=self.object.id)
+            if vote:
+                vote = vote[0]
+                return vote.type 
+                    
+        return NEUTRAL_VOTE[0]
+     
+    
+    
     def get_context_data(self, **kwargs):
         
         context = super(EpisodeDetailView, self).get_context_data(**kwargs)
+        context['like_type'] = LIKE_VOTE[0]
+        context['dislike_type'] = DISLIKE_VOTE[0]
+        context['neutral_type'] = NEUTRAL_VOTE[0]
         context['upvotes'] = self.object.vote_set.filter(type=LIKE_VOTE[0]).count()
         context['downvotes'] = self.object.vote_set.filter(type=DISLIKE_VOTE[0]).count()
+        context['user_vote_type'] = self.get_user_vote_type()
         
         return context
 
@@ -179,7 +195,6 @@ def vote_episode(request,**kwargs):
         
         print("Unknown vote type " + str(kwargs['type']))
         return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(kwargs['pk'],)))   
-                
     
     if episode:
         
@@ -187,18 +202,14 @@ def vote_episode(request,**kwargs):
         vote =  episode.vote_set.filter(user_id=request.user.id)
         
         if vote:
-            
             vote = vote[0]
             vote.refresh_from_db() 
             if vote.type != new_vote_type:                 
                 vote.type = new_vote_type
                 vote.date = timezone.now()
-                vote.save()
-            
+                vote.save()            
         else: 
             episode.vote_set.create(type=kwargs['type'],date=timezone.now(),user=request.user)
-
-        
 
     return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(kwargs['pk'],)))
 
