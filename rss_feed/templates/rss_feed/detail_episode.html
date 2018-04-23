@@ -25,7 +25,8 @@
 	</div>
 {% endif %}
 
-<p><b>{% trans "Likes:" %}</b> {{ episode.up_votes }} <b>{% trans "Dislikes:" %}</b> {{ episode.down_votes }}
+<p><b>{% trans "Likes:" %}</b> {{ upvotes }} 
+	<b>{% trans "Dislikes:" %}</b> {{ downvotes}}
 	<b>{% trans "Downloads:" %}</b> {{ episode.downloads }}</p>
 <p><b>{% trans "Published on:" %}</b> {{ episode.publication_date }}</p>
 

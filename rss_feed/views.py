@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect, render_to_resp
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
-from .models import Episode, Program, Image, Station
+from .models import Episode, Program, Image, Station, Vote, EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm
@@ -15,7 +15,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext as _
 from django.template import RequestContext
 from rss_feed.forms import AddProgramForm
-from numba.tests.test_flow_control import ifelse_usecase1
+from django.utils import timezone
 
 class IndexView(generic.ListView):
     
@@ -153,6 +153,51 @@ class EpisodeDetailView(generic.DetailView):
     #Overrides model and template_name from superclass
     model = Episode
     template_name = 'rss_feed/detail_episode.html'
+
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super(EpisodeDetailView, self).get_context_data(**kwargs)
+        context['upvotes'] = self.object.vote_set.filter(type=LIKE_VOTE[0]).count()
+        context['downvotes'] = self.object.vote_set.filter(type=DISLIKE_VOTE[0]).count()
+        
+        return context
+
+
+@login_required
+def like_episode(request,**kwargs):
+        
+    episode = Episode.objects.filter(pk=kwargs['pk'])
+    new_vote_type = None
+    
+    for evt in EXISTING_VOTE_TYPES:
+        if  kwargs['type'] == evt[0]:
+            new_vote_type = kwargs['type']
+            break;
+    
+    if new_vote_type == None:
+        
+        print("Unknown vote type " + str(kwargs['type']))
+        return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(episode.id,)))   
+                
+    
+    if episode:
+        
+        vote =  episode.vote_set.filter(pk=request.user.id)
+        
+        if vote:
+            vote = vote[0]
+            if vote.type != new_vote_type:                 
+                vote.type = new_vote_type
+                vote.date = timezone.now()
+                vote.save()
+            
+        else: 
+            episode.vote_set.create(type=kwargs['type'],date=timezone.now(),user=request.user)
+
+        
+
+    return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(episode.id,)))
 
 
 class UserDetailView(generic.DetailView):

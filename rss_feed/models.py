@@ -22,7 +22,10 @@ ML_TAG = 50
 
 EXISTING_SHARING_OPTS = (('tf','totally_free'),('af','ask_first'),('ns','no_share'))
 
-EXISTING_VOTE_TYPES = (('lk','like'),('dl','dislike'))
+LIKE_VOTE = ('lk','like')
+DISLIKE_VOTE = ('dl','dislike')
+NEUTRAL_VOTE = ('ne','neutral')
+EXISTING_VOTE_TYPES = (LIKE_VOTE,DISLIKE_VOTE,NEUTRAL_VOTE)
 
 EXISTING_BCMETHODS = (('fm','Radio FM/AM'),('in','Radio Internet'),('di','Radio Digital'),
                       ('pc','Podcasting Channel'),('tv','TV Channel'),('ot','Others'))
@@ -189,8 +192,8 @@ class Episode(models.Model):
     file = models.URLField()
     file_type = TruncatingCharField(max_length=ML_TYPE,null=True)
     downloads = models.BigIntegerField(default=0)
-    up_votes = models.BigIntegerField(default=0)
-    down_votes = models.BigIntegerField(default=0)
+    #up_votes = models.BigIntegerField(default=0)
+    #down_votes = models.BigIntegerField(default=0)
     original_id = TruncatingCharField(max_length=ML_ORIGINAL_ID,null=True)
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
@@ -201,12 +204,23 @@ class Episode(models.Model):
     def __str__(self):
         return self.title
 
+    
+    def get_upvote_number(self):
+        
+        self.vote_set.filter(type=LIKE_VOTE[0]).count()
+    
+    
+    def get_downvote_number(self):
+        
+        self.vote_set.filter(type=DISLIKE_VOTE[0]).count()
+
 
 class Vote(models.Model):
     
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
     user =  models.ForeignKey(User, on_delete=models.CASCADE,related_name='voters')
     type = models.CharField(choices=EXISTING_VOTE_TYPES,max_length=2)
+    date =  models.DateTimeField(default=default_time)
 
 
 class Comment(models.Model):
