@@ -165,7 +165,7 @@ class EpisodeDetailView(generic.DetailView):
 
 
 @login_required
-def like_episode(request,**kwargs):
+def vote_episode(request,**kwargs):
         
     episode = Episode.objects.filter(pk=kwargs['pk'])
     new_vote_type = None
@@ -178,15 +178,18 @@ def like_episode(request,**kwargs):
     if new_vote_type == None:
         
         print("Unknown vote type " + str(kwargs['type']))
-        return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(episode.id,)))   
+        return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(kwargs['pk'],)))   
                 
     
     if episode:
         
-        vote =  episode.vote_set.filter(pk=request.user.id)
+        episode = episode[0]
+        vote =  episode.vote_set.filter(user_id=request.user.id)
         
         if vote:
+            
             vote = vote[0]
+            vote.refresh_from_db() 
             if vote.type != new_vote_type:                 
                 vote.type = new_vote_type
                 vote.date = timezone.now()
@@ -197,7 +200,7 @@ def like_episode(request,**kwargs):
 
         
 
-    return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(episode.id,)))
+    return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(kwargs['pk'],)))
 
 
 class UserDetailView(generic.DetailView):

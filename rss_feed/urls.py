@@ -27,6 +27,7 @@ urlpatterns = [
     url('^unfollow-station/(?P<pk>[0-9]+)/$', views.unfollow_station, name='unfollow_station'),
     url('^subscribe-program/(?P<pk>[0-9]+)/$', views.subscribe_program, name='subscribe_program'),
     url('^unsubscribe-program/(?P<pk>[0-9]+)/$', views.unsubscribe_program, name='unsubscribe_program'),
+    url('^vote-episode/(?P<pk>[0-9]+)/(?P<type>[\w-]+)$', views.vote_episode, name='vote_episode'),
     url(r'^unknown/$', page_not_found,  kwargs={'exception': Exception('Page not Found')},name='unknown'),]
 
 #urlpatterns +=  staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
