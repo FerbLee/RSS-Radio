@@ -66,22 +66,34 @@
 	{% endfor %}
 </p>
 
-<p><b>{% trans "Summary:" %}</b> {{ episode.summary|safe }} </b></p>
+<p><b>{% trans "Summary:" %}</b> {{ episode.summary|safe }} </p>
 
 <div class='comment-section'>
 
 	{% if episode.comment_set.all %}
-		<p><b>{% trans "Comments:" %}</b></b></p>
+		<p><h3>{% trans "Comments:" %}</h3></p>
 
 		{% for comment in episode.comment_set.all %}
 			<div class="single-comment">
 				
-				<p><a href="{% url 'rss_feed:detail_user' comment.user.id %}">
-					<img src="{{ comment.user.userprofile.avatar.path.url }}" width='50'/> 
-					{{comment.user.username}} </a> {% trans "at" %} {{comment.publication_date}}</p>
+				<p><b>{% trans "Comment:" %}</b></b></p>
+				{% if comment.removed %}
+					<p> {% trans "This comment was removed by the author" %} </p>
+				{% else %}
+					<p><a href="{% url 'rss_feed:detail_user' comment.user.id %}">
+						<img src="{{ comment.user.userprofile.avatar.path.url }}" width='50'/> 
+						{{comment.user.username}} </a> {% trans "at" %} {{comment.publication_date}}</p>
 				
-				{{comment.text}}
-			
+					{% if request.user.is_authenticated %}
+						{% if request.user.id == comment.user.id %}
+							<form method="post" class="form-inline" action="{% url 'rss_feed:delete_comment' episode.id comment.id %}" >
+					 			{% csrf_token %}
+					 	 		<input type="submit" class="btn btn-default" value="{% blocktrans %}Delete{% endblocktrans %}">
+				 			</form>
+			 			{% endif %}
+			 		{% endif %}
+			 		{{comment.text}}
+			 	{% endif %}	
 			</div>
 		
 		{% endfor %}

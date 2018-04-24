@@ -2,7 +2,8 @@ from django.shortcuts import get_object_or_404, render, redirect, render_to_resp
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.urls import reverse
 from django.views import generic
-from .models import Episode, Program, Image, Station, Vote, EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE
+from .models import Episode, Program, Image, Station, Vote, Comment
+from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm,CommentForm
@@ -171,7 +172,6 @@ class EpisodeDetailView(generic.edit.FormMixin,generic.DetailView):
                 return vote.type 
                     
         return NEUTRAL_VOTE[0]
-     
     
     
     def get_context_data(self, **kwargs):
@@ -208,6 +208,28 @@ class EpisodeDetailView(generic.edit.FormMixin,generic.DetailView):
         return super(EpisodeDetailView, self).form_valid(form)
 
 
+@login_required
+def delete_comment(request,**kwargs):
+    
+    if request.user.is_authenticated():    
+   
+        comment = Comment.objects.filter(pk=kwargs['cpk'])
+    
+        if comment: 
+            
+            comment = comment[0]
+            if request.user.id == comment.user.id :
+                
+                comment.removed = True
+                comment.save()
+
+            else:
+                
+                print("Non authorised comment deletion attempted by user " + str(request.user.id) + 
+                      " " + request.user.username)
+    
+    return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(kwargs['epk'],))) 
+    
 
 @login_required
 def vote_episode(request,**kwargs):
