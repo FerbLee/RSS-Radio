@@ -90,7 +90,11 @@
 	{% endif %}		
 </div>
 
-
-<a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
+{% if request.user.is_authenticated %}
+	{% if request.user.id == program.owner.id %}
+		<a href="{% url 'rss_feed:edit_program' program.id %}">{% trans "Edit" %}</a> 
+	{% endif %}
+{% endif %}
+  <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
 {% endblock %}
 

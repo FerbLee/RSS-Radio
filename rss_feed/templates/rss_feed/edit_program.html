@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+
+<h1> {% trans "Edit" %} </h1>
+<h3><img src="{{ program.image.path.url }}" width='100'> {% trans "Program:" %} {{ program.name }}</h3>
+
+{% if form %}
+	<form method="post" action='' enctype='multipart/form-data' >
+	   	
+	   	{% csrf_token %}
+	   	<p><b>{{ form.rss_link.label }}</b> {{ form.rss_link }}</p>
+		<p><b>{{ form.sharing_options.label }}</b> {{  form.sharing_options }}</p>
+		
+		<button type="submit">{% trans "Update" %}</button> 
+		<a href="{% url 'rss_feed:detail_program' program.id%}">   {% trans "Cancel" %}</a>
+	</form>
+{% endif %}
+
+{% endblock %}

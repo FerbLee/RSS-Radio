@@ -82,7 +82,16 @@ class IndexView(generic.ListView):
         context['user_stations'] = self.get_queryset_user_stations()
         
         return context
+
+
+def check_user_is_program_admin(user,program):
     
+    if user.is_authenticated():
+        #return user.station_admins.filter(pk=program.id) 
+        return program.owner == user
+    
+    return User.objects.none()
+
 
 class ProgramDetailView(generic.DetailView):
     
@@ -624,7 +633,7 @@ def station_edit(request,**kwargs):
     if station:    
         station=station[0]
     else:
-        print('Error in station_edit view, unknown station pk')
+        print('Error in station_edit view, unknown station pk ' + str(kwargs['pk']))
         return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
 
     if not check_user_is_station_admin(request.user,station):
@@ -673,5 +682,40 @@ def station_edit(request,**kwargs):
 
     return render(request,'rss_feed/edit_station.html',{'station':station,'form_station': form_station})
     
+
+
+@login_required
+def program_edit(request,**kwargs):
+
+    program = Program.objects.filter(pk=kwargs['pk'])
     
+    if program:    
+        program=program[0]
+    else:
+        print('Error in program_edit view, unknown program pk ' + str(kwargs['pk']))
+        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        
+    if not check_user_is_program_admin(request.user,program):
+        print('Error in program_edit view, user has no permissions to edit')
+        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+
+    if request.method == 'POST':
+        
+        form = AddProgramForm(request.POST) 
+        
+        if form.is_valid():
+            
+            program.rss_link = form.cleaned_data.get("rss_link")
+            program.sharing_options = form.cleaned_data.get('sharing_options')
+            program.save()
+            
+            return HttpResponseRedirect(reverse('rss_feed:detail_program', args=(program.id,)))
+            
+    else:
+        form= AddProgramForm(initial={'rss_link': program.rss_link,
+                                       'sharing_options': program.sharing_options})
+
+
+    return render(request,'rss_feed/edit_program.html',{'program':program,'form': form})
+            
     

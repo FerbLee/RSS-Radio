@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^user/(?P<pk>[0-9]+)/$', views.UserDetailView.as_view(), name='detail_user'),
     url(r'^edit_user/$', views.user_edit,name='edit_user'),
     url(r'^edit_station/(?P<pk>[0-9]+)/$', views.station_edit,name='edit_station'),
+    url(r'^edit_program/(?P<pk>[0-9]+)/$', views.program_edit,name='edit_program'),
     url(r'^add_content/$', views.add_content,name='add_content'),
     url(r'^station/(?P<pk>[0-9]+)/$', views.StationDetailView.as_view(),name='detail_station'),
     url('^follow-station/(?P<pk>[0-9]+)/$', views.follow_station, name='follow_station'),
