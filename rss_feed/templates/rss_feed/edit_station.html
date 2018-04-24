@@ -18,7 +18,7 @@
 	     				{{ field }}
 	     			
 	    			</div>
-	    		{%else%} {% if field.name == 'profile_img' %}
+	    		{% elif field.name == 'profile_img' %}
 	    		
 	     			<div class='profile_img'>
 	     		
@@ -26,6 +26,25 @@
 	     				<p><img src="{{ station.profile_img.path.url }}" width='400'><p>
 	     				{{ field }}
 	     			
+	    			</div>
+	    		
+	    		{% elif field.name == 'broadcasting_method' %}
+
+	    			{{ field.label_tag }}<br>
+		        	{{ field }}
+	    		
+	    		{% elif field.name == 'broadcasting_area' %}
+	    			
+	    			<div id='bc-area'>
+	    				{{ field.label_tag }}<br>
+		        		{{ field }}
+	    			</div>
+	    		
+	    		{% elif field.name == 'broadcasting_frequency' %}
+	    		
+	    			<div id='bc-freq'>
+	    				{{ field.label_tag }}<br>
+		        		{{ field }}
 	    			</div>
 	    		
 	     		{% else %}
@@ -37,7 +56,7 @@
 	        		{% for error in field.errors %}
 	          			<p style="color: red">{{ error }}</p>
 	        		{% endfor %}
-	        	{% endif %}
+	        	
 	     		{% endif %}
 	  	</p>
 	  	{% endfor %}
@@ -47,6 +66,29 @@
 	</form>  	
   
 {% endif %}
+
+
+<script type="text/javascript">
+	window.onload = function() {
+	
+		bcMethodFilter('id_form_station-broadcasting_method');
+	};
+  	
+    function bcMethodFilter(bcm_id) {
+        var e = document.getElementById(bcm_id);
+        var bc_method = e.options[e.selectedIndex].value;
+       
+        if (bc_method == "fm" || bc_method == "di" || bc_method == "tv") {
+            document.getElementById("bc-area").style.display = "block";
+            document.getElementById("bc-freq").style.display = "block";
+        } else {
+            document.getElementById("bc-area").style.display = "none";
+            document.getElementById("bc-freq").style.display = "none";
+        }
+    };  
+
+    
+</script>
  
- {% endblock %}
+{% endblock %}
   	

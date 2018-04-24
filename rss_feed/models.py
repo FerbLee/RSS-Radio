@@ -27,8 +27,14 @@ DISLIKE_VOTE = ('dl','dislike')
 NEUTRAL_VOTE = ('ne','neutral')
 EXISTING_VOTE_TYPES = (LIKE_VOTE,DISLIKE_VOTE,NEUTRAL_VOTE)
 
-EXISTING_BCMETHODS = (('fm','Radio FM/AM'),('in','Radio Internet'),('di','Radio Digital'),
-                      ('pc','Podcasting Channel'),('tv','TV Channel'),('ot','Others'))
+BCM_FM = ('fm','Radio FM/AM')
+BCM_DIGITAL = ('di','Radio Digital')
+BCM_TV = ('tv','TV Channel')
+EXISTING_BCMETHODS = (BCM_FM, BCM_DIGITAL, BCM_TV, ('in','Radio Internet'),
+                      ('pc','Podcasting Channel'),('ot','Others'))
+
+
+
 
 IVOOX_TYPE = ('iv','ivoox')
 RADIOCO_TYPE = ('ra','radioco')
@@ -192,8 +198,6 @@ class Episode(models.Model):
     file = models.URLField()
     file_type = TruncatingCharField(max_length=ML_TYPE,null=True)
     downloads = models.BigIntegerField(default=0)
-    #up_votes = models.BigIntegerField(default=0)
-    #down_votes = models.BigIntegerField(default=0)
     original_id = TruncatingCharField(max_length=ML_ORIGINAL_ID,null=True)
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
@@ -260,10 +264,10 @@ class Station(models.Model):
     profile_img = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='profile_img')
     logo = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='logo')
     website = models.URLField(default=None,null=True)
+    location = TruncatingCharField(max_length=200,null=True)
     programs = models.ManyToManyField(Program,through='Emission')
     admins = models.ManyToManyField(User,related_name='station_admins')
     followers = models.ManyToManyField(User,related_name='followers')
-    
     
     def __str__(self):
         

@@ -17,6 +17,7 @@ from django.utils.translation import ugettext as _
 from django.template import RequestContext
 from rss_feed.forms import AddProgramForm
 from django.utils import timezone
+from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV
 
 
 class IndexView(generic.ListView):
@@ -340,6 +341,12 @@ class StationDetailView(generic.DetailView):
         
         return User.objects.none()
     
+    def apply_bc_specs(self):
+        
+        bc_apply_list = [BCM_DIGITAL[0],BCM_FM[0],BCM_TV[0]]
+        
+        return self.object.broadcasting_method in bc_apply_list
+ 
     
     def get_context_data(self, **kwargs):
         
@@ -349,6 +356,8 @@ class StationDetailView(generic.DetailView):
         context['follower_list'] = self.get_queryset_followers()
         context['is_follower'] = self.get_user_is_follower()
         context['is_admin'] = check_user_is_station_admin(self.request.user,self.object)
+        #context['bcm_type'] = self.object.broadcasting_method
+        context['apply_bc_specs'] = self.apply_bc_specs()
         
         return context
 
@@ -552,6 +561,7 @@ def add_content(request):
             form_station.profile_img = request.FILES.get('form_station-profile_img')
             station.profile_img = create_logo(form_station.profile_img,station.name)
             
+            station.location = form_station.cleaned_data.get('location')
             station.broadcasting_method = form_station.cleaned_data.get('broadcasting_method')
             station.broadcasting_area = form_station.cleaned_data.get('broadcasting_area')
             station.broadcasting_frequency = form_station.cleaned_data.get('broadcasting_frequency')
@@ -636,7 +646,8 @@ def station_edit(request,**kwargs):
             form_station.profile_img = request.FILES.get('form_station-profile_img')
             if form_station.profile_img != None:
                 station.profile_img = create_logo(form_station.profile_img,station.name)
-               
+            
+            station.location = form_station.cleaned_data.get('location')
             station.broadcasting_method = form_station.cleaned_data.get('broadcasting_method')
             station.broadcasting_area = form_station.cleaned_data.get('broadcasting_area')
             station.broadcasting_frequency = form_station.cleaned_data.get('broadcasting_frequency')

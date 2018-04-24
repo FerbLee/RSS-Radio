@@ -25,10 +25,16 @@
 {% endif %}
 <a href="{{station.website}}"><b>{% trans "Visit website" %}</b></a>
 
+<p><b>{% trans "Location:" %}</b> {{ station.location}}</p>
 <p><b>{% trans "Description:" %}</b> {{ station.description }}</p>
 <p><b>{% trans "Media:" %}</b> {{ station.broadcasting_method }}</p>
-<p><b>{% trans "Area:" %}</b> {{ station.broadcasting_area }}</p>
-<p><b>{% trans "Frequency:" %}</b> {{ station.broadcasting_frequency }}</p>
+
+{% if apply_bc_specs %}
+	<p><b>{% trans "Area:" %}</b> {{ station.broadcasting_area }}</p>
+	<p><b>{% trans "Frequency:" %}</b> {{ station.broadcasting_frequency }}</p>
+{% endif %}
+
+
 <p><b>{% trans "Streaming:" %}</b> </p>
 
 <audio controls>

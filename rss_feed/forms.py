@@ -149,7 +149,7 @@ class AddStationForm(forms.ModelForm):
 
     cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
     description = forms.CharField(label=_('Description'),max_length=500,widget=cw,required=False)
-    
+    location = forms.CharField(label=_('Location'),max_length=200,required=False)
     profile_img = forms.ImageField(label=_('Profile Image'),widget=ImageFieldDisplay(),required=False)
     logo = forms.ImageField(label=_('Logo'),widget=ImageFieldDisplay(),required=False)
                 
