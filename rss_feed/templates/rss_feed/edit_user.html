@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
-<h3>Edit {{ user.username }} data:</h3>
+
+<h3>{% trans "Edit" %} {{ user.username }} {% trans "data:" %}</h3>
 <form method="post" action='' enctype='multipart/form-data' >
    	{% csrf_token %}
    	{% for field in form_atb %}
@@ -50,7 +52,7 @@
 	</div>
 	  	
 	</script>
-   <button type="submit">Actualizar</button> <a href="{% url 'rss_feed:detail_user' user.id%}">Cancelar</a>
+   <button type="submit">{% trans "Update" %}</button> <a href="{% url 'rss_feed:detail_user' user.id%}">{% trans "Cancel" %}</a>
 </form>
 
 <script type="text/javascript">

@@ -23,9 +23,9 @@
 	 	{% endif %}
 	</div>
 {% endif %}
+<a href="{{station.website}}"><b>{% trans "Visit website" %}</b></a>
 
 <p><b>{% trans "Description:" %}</b> {{ station.description }}</p>
-<p><b>{% trans "Website:" %}</b> {{ station.website }}</p>
 <p><b>{% trans "Media:" %}</b> {{ station.broadcasting_method }}</p>
 <p><b>{% trans "Area:" %}</b> {{ station.broadcasting_area }}</p>
 <p><b>{% trans "Frequency:" %}</b> {{ station.broadcasting_frequency }}</p>
@@ -92,6 +92,12 @@
 </div>
 
 
-<a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
+<p>
+{% if request.user.is_authenticated %}
+	{% if is_admin %}
+		<a href="{% url 'rss_feed:edit_station' station.id %}">{% trans "Edit Profile" %}</a> 
+	{% endif %}
+{% endif %}
+  <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
 {% endblock %}
 

@@ -308,6 +308,14 @@ class UserDetailView(generic.DetailView):
         return context
 
 
+def check_user_is_station_admin(user,station):
+    
+    if user.is_authenticated():
+        return user.station_admins.filter(pk=station.id)
+    
+    return User.objects.none()
+
+
 class StationDetailView(generic.DetailView):
     
     model = Station
@@ -340,6 +348,7 @@ class StationDetailView(generic.DetailView):
         context['program_list'] = self.get_queryset_programs()
         context['follower_list'] = self.get_queryset_followers()
         context['is_follower'] = self.get_user_is_follower()
+        context['is_admin'] = check_user_is_station_admin(self.request.user,self.object)
         
         return context
 
@@ -548,6 +557,7 @@ def add_content(request):
             station.broadcasting_frequency = form_station.cleaned_data.get('broadcasting_frequency')
             station.streaming_link = form_station.cleaned_data.get('streaming_link')
             station.description = form_station.cleaned_data.get('description')
+            station.website = form_station.cleaned_data.get('website')
             station.save()
             
             station.admins.add(request.user)
@@ -593,3 +603,64 @@ def add_content(request):
         form_rss = AddProgramForm(request.POST,prefix='form_rss')
     
     return render(request, 'rss_feed/add_content.html', {'form_station': form_station,'form_rss': form_rss})
+
+
+
+@login_required
+def station_edit(request,**kwargs):
+
+    station = Station.objects.filter(pk=kwargs['pk'])
+    
+    if station:    
+        station=station[0]
+    else:
+        print('Error in station_edit view, unknown station pk')
+        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+
+    if not check_user_is_station_admin(request.user,station):
+        print('Error in station_edit view, user has no permissions to edit')
+        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+         
+    if request.method == 'POST':
+        
+        form_station = AddStationForm(request.POST,instance=request.user,prefix='form_station') 
+        
+        if form_station.is_valid():
+        
+            station.name = form_station.cleaned_data.get('name')
+            
+            form_station.logo = request.FILES.get('form_station-logo')
+            if form_station.logo != None:
+                station.logo = create_logo(form_station.logo,station.name)
+            
+            form_station.profile_img = request.FILES.get('form_station-profile_img')
+            if form_station.profile_img != None:
+                station.profile_img = create_logo(form_station.profile_img,station.name)
+               
+            station.broadcasting_method = form_station.cleaned_data.get('broadcasting_method')
+            station.broadcasting_area = form_station.cleaned_data.get('broadcasting_area')
+            station.broadcasting_frequency = form_station.cleaned_data.get('broadcasting_frequency')
+            station.streaming_link = form_station.cleaned_data.get('streaming_link')
+            station.description = form_station.cleaned_data.get('description')
+            station.website = form_station.cleaned_data.get('website')
+            station.save()
+            
+            return HttpResponseRedirect(reverse('rss_feed:detail_station', args=(station.id,)))
+    
+    else:
+        form_station = AddStationForm(prefix='form_station',
+                              initial={'name': station.name,
+                                       'logo': station.logo,
+                                       'profile_img': station.profile_img,
+                                       'broadcasting_method': station.broadcasting_method,
+                                       'broadcasting_area': station.broadcasting_area,
+                                       'broadcasting_frequency': station.broadcasting_frequency,
+                                       'streaming_link': station.streaming_link,
+                                       'description': station.description,
+                                       'website': station.website})
+
+
+    return render(request,'rss_feed/edit_station.html',{'station':station,'form_station': form_station})
+    
+    
+    

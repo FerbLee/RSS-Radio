@@ -169,7 +169,7 @@ class AddStationForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     
     cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
-    text = forms.CharField(label=_('Text'),max_length=500,widget=cw,required=False)
+    text = forms.CharField(label=_('Text'),max_length=500,widget=cw,required=True)
     
     
     def save(self, user, episode, commit=True, *args, **kwargs):

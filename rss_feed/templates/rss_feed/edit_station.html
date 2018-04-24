@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h3>{% trans "Edit" %} {{ station.name }} {% trans "data:" %}</h3>
+
+{% if form_station %}
+	<form method="post" action='' enctype='multipart/form-data' >
+	   	{% csrf_token %}
+	   	{% for field in form_station %}
+	     	<p>
+	     		{% if field.name == 'logo' %}
+	     		
+	     			<div class='logo'>
+	     		
+	     				{{ field.label_tag }}<br>
+	     				<p><img src="{{ station.logo.path.url }}" width='200'><p>
+	     				{{ field }}
+	     			
+	    			</div>
+	    		{%else%} {% if field.name == 'profile_img' %}
+	    		
+	     			<div class='profile_img'>
+	     		
+	     				{{ field.label_tag }}<br>
+	     				<p><img src="{{ station.profile_img.path.url }}" width='400'><p>
+	     				{{ field }}
+	     			
+	    			</div>
+	    		
+	     		{% else %}
+		        	{{ field.label_tag }}<br>
+		        	{{ field }}
+		        	{% if field.help_text %}
+		          		<small style="color: grey">{{ field.help_text }}</small>
+		        	{% endif %}
+	        		{% for error in field.errors %}
+	          			<p style="color: red">{{ error }}</p>
+	        		{% endfor %}
+	        	{% endif %}
+	     		{% endif %}
+	  	</p>
+	  	{% endfor %}
+	  	
+	   <button type="submit">{% trans "Update" %}</button> <a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Cancel" %}</a>
+	   
+	</form>  	
+  
+{% endif %}
+ 
+ {% endblock %}
+  	
