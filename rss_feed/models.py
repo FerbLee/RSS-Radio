@@ -229,6 +229,7 @@ class Comment(models.Model):
     user =  models.ForeignKey(User, on_delete=models.CASCADE,related_name='commenters')
     publication_date = models.DateTimeField(auto_now_add=True) 
     text = models.TextField()
+    removed = models.BooleanField(default=False)
 
 
 class Tag(models.Model):
