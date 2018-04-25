@@ -25,7 +25,13 @@
 
 <p><b>{% trans "Author:" %}</b> {{ program.author }}</p>
 <p><b>{% trans "Added on:" %}</b> {{ program.creation_date }} <b> {% trans "by" %} </b> 
-	<a href="{% url 'rss_feed:detail_user' program.owner.id%}"><b>{{ program.owner.username }}</b></a></p>
+	
+	{% if owner %}
+		<a href="{% url 'rss_feed:detail_user' owner.id%}"><b>{{ owner.username }}</b></a></p>
+	{% else%}
+		{% trans "unknown" %}
+	{% endif %}
+	
 <p><b>{% trans "Language:" %}</b> {{ program.language }} <b>{% trans "Rating:" %}</b> {{ program.rating }}% </p>
 
 <p><b>{% trans "Categories:" %}</b> 

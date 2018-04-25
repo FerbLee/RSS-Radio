@@ -8,6 +8,7 @@ import pytz
 from django.contrib.auth.models import User, Group
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.utils.translation import ugettext as _
 
 default_time = datetime(1975,1,1,0,0,0,0,tzinfo=pytz.UTC)
 
@@ -33,7 +34,9 @@ BCM_TV = ('tv','TV Channel')
 EXISTING_BCMETHODS = (BCM_FM, BCM_DIGITAL, BCM_TV, ('in','Radio Internet'),
                       ('pc','Podcasting Channel'),('ot','Others'))
 
-
+ADMT_OWNER = ('ow',_('Owner'))
+ADMT_ADMIN = ('ad',_('Admin'))
+EXISTING_ADMIN_TYPES = (ADMT_OWNER,ADMT_ADMIN)
 
 
 IVOOX_TYPE = ('iv','ivoox')
@@ -170,12 +173,12 @@ class Program(models.Model):
     rating = models.PositiveSmallIntegerField(default=50,validators=[MaxValueValidator(100), MinValueValidator(0)])
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    #owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     removed = models.BooleanField(default=False)
     popularity = models.FloatField(default=0)
     sharing_options = models.CharField(choices=EXISTING_SHARING_OPTS,max_length=2,default='ra')
     subscribers = models.ManyToManyField(User,related_name='subscribers')
-    admins = models.ManyToManyField(User,related_name='program_admins')
+    admins = models.ManyToManyField(User,through='ProgramAdmin',related_name='program_admins')
     
 
     def __str__(self):
@@ -184,6 +187,18 @@ class Program(models.Model):
     
     #def was_published_recently(self):
     #    return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+
+
+class ProgramAdmin(models.Model):
+    
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    user =  models.ForeignKey(User, on_delete=models.CASCADE,related_name='programs_admin')
+    type = models.CharField(choices=EXISTING_ADMIN_TYPES,max_length=2)
+    date =  models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return 'Program:' + str(self.program) + '-User:' + str(self.user) + '-' + str(self.type)
 
 
 EPISODE_ATB_FROM_RSS = ['title','publication_date','summary','file','file_type','original_site']
@@ -266,7 +281,7 @@ class Station(models.Model):
     website = models.URLField(default=None,null=True)
     location = TruncatingCharField(max_length=200,null=True)
     programs = models.ManyToManyField(Program,through='Emission')
-    admins = models.ManyToManyField(User,related_name='station_admins')
+    admins = models.ManyToManyField(User,through='StationAdmin',related_name='station_admins')
     followers = models.ManyToManyField(User,related_name='followers')
     
     def __str__(self):
@@ -282,5 +297,13 @@ class Emission(models.Model):
     periodicity = TruncatingCharField(max_length=100,null=True)
 
 
-
+class StationAdmin(models.Model):
     
+    station = models.ForeignKey(Station, on_delete=models.CASCADE)
+    user =  models.ForeignKey(User, on_delete=models.CASCADE,related_name='stations_admin')
+    type = models.CharField(choices=EXISTING_ADMIN_TYPES,max_length=2)
+    date =  models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return 'Station:' + str(self.station) + '-User:' + str(self.user) + '-' + str(self.type)
+   

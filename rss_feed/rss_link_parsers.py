@@ -7,7 +7,7 @@ Created on 20 Feb 2018
 from django.utils import timezone
 from django.core.files import File
 from .models import Episode, Program, Image, Tag
-from .models import IVOOX_TYPE,RADIOCO_TYPE,PODOMATIC_TYPE
+from .models import IVOOX_TYPE,RADIOCO_TYPE,PODOMATIC_TYPE,ADMT_OWNER
 from datetime import datetime
 import feedparser
 import pytz
@@ -199,9 +199,13 @@ class RSSLinkParser(object):
             
             return False
         
-        # 4. Add Owner and Save program
-        new_program.owner = self._owner
+        # 4.Save program
         new_program.save()
+        
+        
+        # Add owner
+        new_program.programadmin_set.create(user=self._owner,type=ADMT_OWNER[0])
+        
         
         # 5. Create/Get tag instances and add them to program
         program_tag_list = self.get_program_tag_names_from_feed_dict(feed_dict)

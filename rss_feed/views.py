@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.urls import reverse
 from django.views import generic
 from .models import Episode, Program, Image, Station, Vote, Comment
-from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE
+from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE,ADMT_OWNER
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm,CommentForm
@@ -87,8 +87,7 @@ class IndexView(generic.ListView):
 def check_user_is_program_admin(user,program):
     
     if user.is_authenticated():
-        #return user.station_admins.filter(pk=program.id) 
-        return program.owner == user
+        return user.stations_admin.filter(pk=program.id) 
     
     return User.objects.none()
 
@@ -122,6 +121,15 @@ class ProgramDetailView(generic.DetailView):
         
         return self.object.subscribers.all()
     
+    
+    def get_oldest_owner(self):
+        
+        owner = self.object.programadmin_set.filter(type=ADMT_OWNER[0]).order_by('date').prefetch_related('user')
+        if owner:
+            return owner[0].user
+        
+        return User.objects.none()
+        
 
     def get_context_data(self, **kwargs):
         
@@ -130,6 +138,7 @@ class ProgramDetailView(generic.DetailView):
         context['episode_short_list'] = self.get_episode_short_list(nof_results=8)
         context['related_stations'] = self.get_related_stations(nof_results=4)
         context['subscribers'] = self.get_subscribers()
+        context['owner'] = self.get_oldest_owner()
         
         return context
 
@@ -294,7 +303,9 @@ class UserDetailView(generic.DetailView):
     def get_owned_programs(self,nof_results):
 
         if self.request.user.is_authenticated():
-            return (self.request.user.program_set.all() | self.request.user.program_admins.all())[0:nof_results]
+            admin_qs = self.request.user.programs_admin.all().prefetch_related('program')[0:nof_results]
+            return [admin.program for admin in admin_qs]
+                
         else:
             return Program.objects.none()
     
@@ -302,7 +313,8 @@ class UserDetailView(generic.DetailView):
     def get_owned_stations(self,nof_results):
 
         if self.request.user.is_authenticated():
-            return self.request.user.station_admins.all()[0:nof_results]
+            admin_qs = self.request.user.stations_admin.all().prefetch_related('station')[0:nof_results]
+            return [admin.station for admin in admin_qs]
         else:
             return Program.objects.none()
     
@@ -579,7 +591,7 @@ def add_content(request):
             station.website = form_station.cleaned_data.get('website')
             station.save()
             
-            station.admins.add(request.user)
+            station.stationadmin_set.create(user=request.user,type=ADMT_OWNER[0])
             station.followers.add(request.user)
             station.save()
 
@@ -677,6 +689,7 @@ def station_edit(request,**kwargs):
                                        'broadcasting_frequency': station.broadcasting_frequency,
                                        'streaming_link': station.streaming_link,
                                        'description': station.description,
+                                       'location': station.location,
                                        'website': station.website})
 
 

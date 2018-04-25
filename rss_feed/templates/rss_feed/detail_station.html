@@ -23,7 +23,10 @@
 	 	{% endif %}
 	</div>
 {% endif %}
-<a href="{{station.website}}"><b>{% trans "Visit website" %}</b></a>
+
+{% if station.website  %} 
+	<a href="{{station.website}}"><b>{% trans "Visit website" %}</b></a>
+{% endif %} 
 
 <p><b>{% trans "Location:" %}</b> {{ station.location}}</p>
 <p><b>{% trans "Description:" %}</b> {{ station.description }}</p>
