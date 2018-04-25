@@ -739,4 +739,19 @@ def program_edit(request,**kwargs):
 
     return render(request,'rss_feed/edit_program.html',{'program':program,'form': form})
             
+@login_required
+def station_manage(request,**kwargs): 
+    
+    station = Station.objects.filter(pk=kwargs['pk'])
+    station = station[0]
+    return render(request,'rss_feed/manage_station.html',{'station':station,'form': None})
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
