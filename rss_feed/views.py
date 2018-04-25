@@ -169,6 +169,7 @@ def unsubscribe_program(request,**kwargs):
 
 
 
+
 class EpisodeDetailView(generic.edit.FormMixin,generic.DetailView):
     
     #Overrides model and template_name from superclass
@@ -193,6 +194,11 @@ class EpisodeDetailView(generic.edit.FormMixin,generic.DetailView):
         return NEUTRAL_VOTE[0]
     
     
+    def get_comments_sorted(self):
+    
+        return self.object.comment_set.order_by('publication_date')
+        
+    
     def get_context_data(self, **kwargs):
         
         context = super(EpisodeDetailView, self).get_context_data(**kwargs)
@@ -202,7 +208,9 @@ class EpisodeDetailView(generic.edit.FormMixin,generic.DetailView):
         context['upvotes'] = self.object.vote_set.filter(type=LIKE_VOTE[0]).count()
         context['downvotes'] = self.object.vote_set.filter(type=DISLIKE_VOTE[0]).count()
         context['user_vote_type'] = self.get_user_vote_type()
+        context['comment_sorted_set'] = self.get_comments_sorted()
         context['comment_form'] = CommentForm(initial={'episode': self.object,'user':self.request.user})
+        context['user_is_admin'] = self.object.check_user_is_admin(self.request.user)
         
         return context
 
@@ -237,7 +245,7 @@ def delete_comment(request,**kwargs):
         if comment: 
             
             comment = comment[0]
-            if request.user.id == comment.user.id :
+            if request.user.id == comment.user.id or comment.episode.check_user_is_admin(request.user):
                 
                 comment.removed = True
                 comment.save()

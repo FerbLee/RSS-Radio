@@ -73,7 +73,7 @@
 	{% if episode.comment_set.all %}
 		<p><h3>{% trans "Comments:" %}</h3></p>
 
-		{% for comment in episode.comment_set.all %}
+		{% for comment in comment_sorted_set %}
 			<div class="single-comment">
 				
 				<p><b>{% trans "Comment:" %}</b></b></p>
@@ -85,7 +85,7 @@
 						{{comment.user.username}} </a> {% trans "at" %} {{comment.publication_date}}</p>
 				
 					{% if request.user.is_authenticated %}
-						{% if request.user.id == comment.user.id %}
+						{% if request.user.id == comment.user.id or user_is_admin %}
 							<form method="post" class="form-inline" action="{% url 'rss_feed:delete_comment' episode.id comment.id %}" >
 					 			{% csrf_token %}
 					 	 		<input type="submit" class="btn btn-default" value="{% blocktrans %}Delete{% endblocktrans %}">

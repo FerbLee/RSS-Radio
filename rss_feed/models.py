@@ -234,6 +234,15 @@ class Episode(models.Model):
         self.vote_set.filter(type=DISLIKE_VOTE[0]).count()
 
 
+    def check_user_is_admin(self,user,adm_type=None):
+        
+        if adm_type == None:
+            return self.program.programadmin_set.filter(user_id=user.id)
+        else:
+            return self.program.programadmin_set.filter(user_id=user.id,type=adm_type)
+        
+
+
 class Vote(models.Model):
     
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
