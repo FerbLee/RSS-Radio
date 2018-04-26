@@ -336,13 +336,21 @@ class StationDetailView(generic.DetailView):
     model = Station
     template_name = 'rss_feed/detail_station.html'
     
-    def get_queryset_episodes(self):
+    def get_queryset_episodes(self,nof_results=4):    
+                    
+        subs_programs = self.object.programs.all()
+        subs_episodes = Episode.objects.none()
         
-        return Episode.objects.none()
+        for program in subs_programs:
+            
+            subs_episodes = program.episode_set.all()|subs_episodes
+        
+        return subs_episodes.order_by('-publication_date')[0:nof_results]
+                
     
-    def get_queryset_programs(self):
+    def get_queryset_programs(self,nof_results=8):
         
-        return Program.objects.none()
+        return self.object.programs.all()[0:nof_results]
     
     def get_queryset_followers(self):
     
