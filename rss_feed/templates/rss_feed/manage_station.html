@@ -4,6 +4,57 @@
 
 <h3>{{ station.name }} {% trans "management dashboard" %} </h3>
 
+<p><button type="button" onclick="asd(1)" id="add-program" 
+	value="{% blocktrans %}Manage Broadcast{% endblocktrans %}">{% trans "Manage Broadcast" %}</button>
+<button type="button" onclick="asd(2)" id="add-station" 
+	value="{% blocktrans %}Administration{% endblocktrans %}">{% trans "Administration" %}</button></p>
+
+<div class="bc-programs">
+
+</div>
+
+<div class="adm-users">
+
+</div>
+
+<script type="text/javascript">
+	window.onload = function() {
+	
+		document.getElementById("bc-programs").style.display = "block";
+		document.getElementById("adm-users").style.display = "none";
+
+	};
+
+  	function asd(a) {
+    	if (a == 1) {
+      		document.getElementById("bc-programs").style.display = "block";
+      		document.getElementById("adm-users").style.display = "none";
+    	} else if (a == 2) {
+      			document.getElementById("bc-programs").style.display = "none";
+      			document.getElementById("adm-users").style.display = "block";
+    		}else {
+      			document.getElementById("bc-programs").style.display = "none";
+      			document.getElementById("adm-users").style.display = "none";
+    		}
+    };
+  	
+    function bcMethodFilter(bcm_id) {
+        var e = document.getElementById(bcm_id);
+        var bc_method = e.options[e.selectedIndex].value;
+       
+        if (bc_method == "fm" || bc_method == "di" || bc_method == "tv") {
+            document.getElementById("bc-area").style.display = "block";
+            document.getElementById("bc-freq").style.display = "block";
+        } else {
+            document.getElementById("bc-area").style.display = "none";
+            document.getElementById("bc-freq").style.display = "none";
+        }
+    };  
+
+    
+</script>
+
+
 
 <a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Cancel" %}</a>
 {% endblock %}

@@ -97,7 +97,7 @@
 </div>
 
 {% if request.user.is_authenticated %}
-	{% if request.user.id == program.owner.id %}
+	{% if is_admin %}
 		<a href="{% url 'rss_feed:edit_program' program.id %}">{% trans "Edit" %}</a> 
 	{% endif %}
 {% endif %}

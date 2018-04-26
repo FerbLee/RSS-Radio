@@ -84,14 +84,6 @@ class IndexView(generic.ListView):
         return context
 
 
-def check_user_is_program_admin(user,program):
-    
-    if user.is_authenticated():
-        return user.stations_admin.filter(pk=program.id) 
-    
-    return User.objects.none()
-
-
 class ProgramDetailView(generic.DetailView):
     
     #Overrides model and template_name from superclass
@@ -139,6 +131,7 @@ class ProgramDetailView(generic.DetailView):
         context['related_stations'] = self.get_related_stations(nof_results=4)
         context['subscribers'] = self.get_subscribers()
         context['owner'] = self.get_oldest_owner()
+        context['is_admin'] = self.object.check_user_is_admin(self.request.user)
         
         return context
 
@@ -716,7 +709,7 @@ def program_edit(request,**kwargs):
         print('Error in program_edit view, unknown program pk ' + str(kwargs['pk']))
         return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
         
-    if not check_user_is_program_admin(request.user,program):
+    if not program.check_user_is_admin(request.user):
         print('Error in program_edit view, user has no permissions to edit')
         return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
 

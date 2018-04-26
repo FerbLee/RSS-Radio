@@ -184,6 +184,15 @@ class Program(models.Model):
     def __str__(self):
         return self.name
 
+
+    def check_user_is_admin(self,user,adm_type=None):
+    
+        if adm_type == None:
+            return self.programadmin_set.filter(user_id=user.id)
+        else:
+            return self.programadmin_set.filter(user_id=user.id,type=adm_type)
+        
+        
     
     #def was_published_recently(self):
     #    return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
@@ -236,10 +245,7 @@ class Episode(models.Model):
 
     def check_user_is_admin(self,user,adm_type=None):
         
-        if adm_type == None:
-            return self.program.programadmin_set.filter(user_id=user.id)
-        else:
-            return self.program.programadmin_set.filter(user_id=user.id,type=adm_type)
+        self.program.check_user_is_admin(user,adm_type)
         
 
 
