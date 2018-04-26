@@ -331,14 +331,6 @@ class UserDetailView(generic.DetailView):
         return context
 
 
-def check_user_is_station_admin(user,station):
-    
-    if user.is_authenticated():
-        return user.station_admins.filter(pk=station.id)
-    
-    return User.objects.none()
-
-
 class StationDetailView(generic.DetailView):
     
     model = Station
@@ -377,7 +369,7 @@ class StationDetailView(generic.DetailView):
         context['program_list'] = self.get_queryset_programs()
         context['follower_list'] = self.get_queryset_followers()
         context['is_follower'] = self.get_user_is_follower()
-        context['is_admin'] = check_user_is_station_admin(self.request.user,self.object)
+        context['is_admin'] = self.object.check_user_is_admin(self.request.user)
         #context['bcm_type'] = self.object.broadcasting_method
         context['apply_bc_specs'] = self.apply_bc_specs()
         
@@ -649,7 +641,7 @@ def station_edit(request,**kwargs):
         print('Error in station_edit view, unknown station pk ' + str(kwargs['pk']))
         return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
 
-    if not check_user_is_station_admin(request.user,station):
+    if not station.check_user_is_admin(request.user):
         print('Error in station_edit view, user has no permissions to edit')
         return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
          

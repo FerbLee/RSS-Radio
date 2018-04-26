@@ -304,6 +304,17 @@ class Station(models.Model):
         return str(self.name)
     
     
+    def check_user_is_admin(self,user,adm_type=None):
+    
+        if adm_type == None:
+            return user.stations_admin.filter(station_id=self.id)
+        else:
+            return user.stations_admin.filter(station_id=self.id,type=adm_type)
+        
+        
+
+    
+    
 class Emission(models.Model):
     
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
