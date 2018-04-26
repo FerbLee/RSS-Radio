@@ -15,7 +15,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext as _
 from django.template import RequestContext
-from rss_feed.forms import AddProgramForm
+from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV
 
@@ -106,7 +106,7 @@ class ProgramDetailView(generic.DetailView):
 
     def get_related_stations(self,nof_results):
         
-        return self.object.emission_set.all()[0:nof_results]
+        return self.object.broadcast_set.all()[0:nof_results]
     
 
     def get_subscribers(self):
@@ -723,17 +723,61 @@ def program_edit(request,**kwargs):
 
 
     return render(request,'rss_feed/edit_program.html',{'program':program,'form': form})
+   
+
+
+class ManageStationView(generic.DetailView):
+    
+    model = Station
+    template_name = 'rss_feed/manage_station.html'
+    
+    
+    def get_queryset_broadcasts(self):
+        
+        return self.object.broadcast_set.all().prefetch_related('program')
+        
+    
+    def get_queryset_admins(self):
+    
+        return self.object.stationadmin_set.all().prefetch_related('user')
+ 
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super(ManageStationView, self).get_context_data(**kwargs)
+        context['broadcast_list'] = self.get_queryset_broadcasts()
+        context['admin_list'] = self.get_queryset_admins()
+        context['is_admin'] = self.object.check_user_is_admin(self.request.user)
+        context['add_broadcast_form'] = AddBroadcastForm()
+         
+        return context
+
             
 @login_required
-def station_manage(request,**kwargs): 
+def add_broadcast(request,**kwargs): 
     
     station = Station.objects.filter(pk=kwargs['pk'])
-    station = station[0]
-    return render(request,'rss_feed/manage_station.html',{'station':station,'form': None})
     
+    if station:
+        station = station[0]
+    else: 
+        print('Error in add_broadcast view, unknown station pk ' + str(kwargs['pk']))
+        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
     
+    if request.method == 'POST':
+        
+        form = AddBroadcastForm(request.POST)
+        
+        if form.is_valid():
+      
+            program = form.cleaned_data.get('program')
+            schedule = form.cleaned_data.get('schedule')
+            station.broadcast_set.create(program=program,schedule_details=schedule)
     
+    return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
     
+
+
     
     
     

@@ -295,7 +295,7 @@ class Station(models.Model):
     logo = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='logo')
     website = models.URLField(default=None,null=True)
     location = TruncatingCharField(max_length=200,null=True)
-    programs = models.ManyToManyField(Program,through='Emission')
+    programs = models.ManyToManyField(Program,through='Broadcast')
     admins = models.ManyToManyField(User,through='StationAdmin',related_name='station_admins')
     followers = models.ManyToManyField(User,related_name='followers')
     
@@ -315,12 +315,11 @@ class Station(models.Model):
 
     
     
-class Emission(models.Model):
+class Broadcast(models.Model):
     
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     station =  models.ForeignKey(Station, on_delete=models.CASCADE)
-    emission_time = TruncatingCharField(max_length=100,null=True)
-    periodicity = TruncatingCharField(max_length=100,null=True)
+    schedule_details = TruncatingCharField(max_length=100,null=True)
 
 
 class StationAdmin(models.Model):

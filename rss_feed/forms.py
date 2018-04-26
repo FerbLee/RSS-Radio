@@ -9,7 +9,8 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
 from django.utils.translation import ugettext as _
-from .models import Station,Program,EXISTING_BCMETHODS,Comment,EXISTING_SHARING_OPTS
+from .models import Station,Program,Broadcast,EXISTING_BCMETHODS,Comment,EXISTING_SHARING_OPTS
+import pickle
 
 class CountableWidget(forms.widgets.Textarea):
     
@@ -189,9 +190,19 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('text',)
     
- 
 
- 
- 
+
+
+class AddBroadcastForm(forms.ModelForm):
     
+    program = forms.ModelChoiceField(label=_('Program'),queryset=Program.objects.all())
+    schedule = forms.CharField(label=_('Broadcast Schedule'),max_length=100)
+    
+    class Meta:
+        
+        model = Broadcast
+        fields = ('program','schedule')
+        
+        
+        
     
