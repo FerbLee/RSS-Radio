@@ -321,6 +321,10 @@ class Broadcast(models.Model):
     station =  models.ForeignKey(Station, on_delete=models.CASCADE)
     schedule_details = TruncatingCharField(max_length=100,null=True)
 
+    def __str_(self):
+        
+        return 'Program:' + str(self.program) + "-Station:" + str(self.station)
+
 
 class StationAdmin(models.Model):
     

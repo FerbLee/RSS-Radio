@@ -106,7 +106,9 @@ class ProgramDetailView(generic.DetailView):
 
     def get_related_stations(self,nof_results):
         
-        return self.object.broadcast_set.all()[0:nof_results]
+        bc_qs = self.object.broadcast_set.all().prefetch_related('station')
+        
+        return [bc.station for bc in bc_qs][0:nof_results]
     
 
     def get_subscribers(self):
@@ -772,6 +774,11 @@ def add_broadcast(request,**kwargs):
         print('Error in add_broadcast view, unknown station pk ' + str(kwargs['pk']))
         return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
     
+    if not station.check_user_is_admin(request.user):
+        print('Error in program_edit view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
+              ' has no permissions to edit')
+        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+    
     if request.method == 'POST':
         
         form = AddBroadcastForm(request.POST)
@@ -786,7 +793,31 @@ def add_broadcast(request,**kwargs):
     
 
 
+@login_required
+def delete_broadcast(request,**kwargs): 
     
+    station = Station.objects.filter(pk=kwargs['spk'])
+    
+    if station:
+        station = station[0]
+    else: 
+        print('Error in add_broadcast view, unknown station pk ' + str(kwargs['spk']))
+        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+    
+    if not station.check_user_is_admin(request.user):
+        print('Error in program_edit view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
+              ' has no permissions to edit')
+        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+    
+    if request.method == 'POST':
+      
+        bc_qs = station.broadcast_set.filter(program_id=kwargs['ppk'])
+        
+        for broadcast in bc_qs:
+            
+            broadcast.delete()
+    
+    return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
     
     
     
