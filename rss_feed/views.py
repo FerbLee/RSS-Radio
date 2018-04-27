@@ -18,6 +18,7 @@ from django.template import RequestContext
 from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV
+from django.http.response import HttpResponseNotFound
 
 
 class IndexView(generic.ListView):
@@ -249,6 +250,7 @@ def delete_comment(request,**kwargs):
                 
                 print("Non authorised comment deletion attempted by user " + str(request.user.id) + 
                       " " + request.user.username)
+                return HttpResponseForbidden()
     
     return HttpResponseRedirect(reverse('rss_feed:detail_episode' , args=(kwargs['epk'],))) 
     
@@ -649,11 +651,11 @@ def station_edit(request,**kwargs):
         station=station[0]
     else:
         print('Error in station_edit view, unknown station pk ' + str(kwargs['pk']))
-        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        return HttpResponseNotFound()
 
     if not station.check_user_is_admin(request.user):
         print('Error in station_edit view, user has no permissions to edit')
-        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        return HttpResponseForbidden()
          
     if request.method == 'POST':
         
@@ -709,11 +711,11 @@ def program_edit(request,**kwargs):
         program=program[0]
     else:
         print('Error in program_edit view, unknown program pk ' + str(kwargs['pk']))
-        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        return HttpResponseNotFound()
         
     if not program.check_user_is_admin(request.user):
         print('Error in program_edit view, user has no permissions to edit')
-        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        return HttpResponseForbidden()
 
     if request.method == 'POST':
         
@@ -750,8 +752,8 @@ class ManageStationView(generic.DetailView):
     def get_queryset_admins(self):
     
         return self.object.stationadmin_set.all().prefetch_related('user')
- 
-    
+
+        
     def get_context_data(self, **kwargs):
         
         context = super(ManageStationView, self).get_context_data(**kwargs)
@@ -761,6 +763,21 @@ class ManageStationView(generic.DetailView):
         context['add_broadcast_form'] = AddBroadcastForm()
          
         return context
+    
+    
+    def get(self, request, **kwargs):
+        
+        if self.request.user.is_authenticated():
+        
+            self.object = self.get_object()
+        
+            if self.object.check_user_is_admin(self.request.user):
+                
+                context = self.get_context_data(object=self.object)
+                return self.render_to_response(context)  
+             
+        return HttpResponseForbidden()    
+    
 
             
 @login_required
@@ -772,12 +789,12 @@ def add_broadcast(request,**kwargs):
         station = station[0]
     else: 
         print('Error in add_broadcast view, unknown station pk ' + str(kwargs['pk']))
-        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        return HttpResponseNotFound()
     
     if not station.check_user_is_admin(request.user):
         print('Error in program_edit view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
               ' has no permissions to edit')
-        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        return HttpResponseForbidden() 
     
     if request.method == 'POST':
         
@@ -802,12 +819,12 @@ def delete_broadcast(request,**kwargs):
         station = station[0]
     else: 
         print('Error in add_broadcast view, unknown station pk ' + str(kwargs['spk']))
-        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        return HttpResponseNotFound()
     
     if not station.check_user_is_admin(request.user):
         print('Error in program_edit view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
               ' has no permissions to edit')
-        return HttpResponseRedirect(reverse('rss_feed:unknown', args=()))
+        return HttpResponseForbidden()
     
     if request.method == 'POST':
       
