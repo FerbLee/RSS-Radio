@@ -28,3 +28,11 @@
 	grid-column: col3-start;
  	padding: 20px;
 }
+
+
+
+.delete-menu {
+    width: 70%;
+    max-height:40%;
+    overflow: auto;
+}

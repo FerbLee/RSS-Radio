@@ -19,22 +19,21 @@
 	
 	
 	<h3>Programs currently broadcasted</h3>
-	<ul>
+	<form method="post" class="form-inline" action="{% url 'rss_feed:delete_broadcast' station.id %}">
+	<div class="delete-menu"><nav><ul>
+	{% csrf_token %}
 	{%  for broadcast in broadcast_list %}
-	
+		
 		<p>
-		<form method="post" class="form-inline" action="{% url 'rss_feed:delete_broadcast' station.id broadcast.program.id %}">
-			{% csrf_token %}
+			<input type="checkbox" value="{{broadcast.id}}" name="remove-{{broadcast.id}}">
 			<img src="{{ broadcast.program.image.path.url }}" width='40'> {{ broadcast.program.name }} - 
-			{{ broadcast.schedule_details }}
-			<input type="submit" value="{% blocktrans %}Delete{% endblocktrans %}">
-		</form>
+			{{ broadcast.schedule_details }}		
 		</p>
 	{% endfor %}
-	</ul>
-	
+	</ul></nav></div>
+	<input type="submit" value="{% blocktrans %}Delete{% endblocktrans %}">
+	</form>
 </div>
-
 <div id="adm-users">
  <p>Space for adm-users</p>
 </div>
@@ -65,6 +64,6 @@
 </script>
 
 
-
-<a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Back" %}</a>
+<p></p>
+<p><a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Back" %}</a></p>
 {% endblock %}

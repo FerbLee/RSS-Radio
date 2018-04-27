@@ -198,11 +198,11 @@ class Select2Widget(forms.widgets.Select):
         final_attrs = self.build_attrs(self.attrs, attrs)
         final_attrs['opts'] = self.choices
         #output = super(Select2Widget, self).render(name, value, final_attrs, **kwargs)
-        output = self.get_image_preview_template(final_attrs)
+        output = self.get_rich_select(final_attrs)
         return mark_safe(output)
     
     @staticmethod
-    def get_image_preview_template(attrs):
+    def get_rich_select(attrs):
         
         choice_list = attrs.get('opts')
        
@@ -232,25 +232,22 @@ class AddBroadcastForm(forms.ModelForm):
     def __init__(self,*args, **kwargs):
         
         try:
-            pqs = kwargs['program_qs']
-            kwargs = {}
+            pqs = kwargs.pop('program_qs')
         except KeyError:
             pqs = Program.objects.all()
             
         super(AddBroadcastForm, self).__init__(*args, **kwargs)
         self.fields['program'] = forms.ModelChoiceField(label=_('Program'),queryset=pqs ,widget=Select2Widget)
         self.fields['schedule_details'] = forms.CharField(label=_('Broadcast Schedule'),max_length=100)
-
-    #program = forms.ModelChoiceField(label=_('Program'),queryset=Program.objects.all(),widget=Select2Widget)
-    #program = forms.ModelChoiceField(label=_('Program'),queryset=Program.objects.all())
-    
     
     
     class Meta:
         
         model = Broadcast
         fields = ('program','schedule_details')
-        
-        
+
+
+
+   
         
     

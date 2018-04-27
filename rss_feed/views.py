@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect, render_to_resp
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.urls import reverse
 from django.views import generic
-from .models import Episode, Program, Image, Station, Vote, Comment
+from .models import Episode, Program, Image, Station, Vote, Comment, Broadcast
 from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE,ADMT_OWNER
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
@@ -746,7 +746,7 @@ class ManageStationView(generic.DetailView):
     
     def get_queryset_broadcasts(self):
         
-        return self.object.broadcast_set.all().prefetch_related('program')
+        return self.object.broadcast_set.order_by('program__name').prefetch_related('program')
         
     
     def get_queryset_admins(self):
@@ -772,9 +772,10 @@ class ManageStationView(generic.DetailView):
         context['is_admin'] = self.object.check_user_is_admin(self.request.user)
         
         kwargs = {"program_qs":self.get_elegible_programs()}
+        
         bc_form = AddBroadcastForm(**kwargs)
-
         context['add_broadcast_form'] = bc_form
+        
          
         return context
     
@@ -812,8 +813,7 @@ def add_broadcast(request,**kwargs):
     
     if request.method == 'POST':
         
-        kwargs = {"program_qs":Program.objects.all()}
-        form = AddBroadcastForm(request.POST,**kwargs)
+        form = AddBroadcastForm(request.POST)
         
         if form.is_valid():
       
@@ -827,12 +827,11 @@ def add_broadcast(request,**kwargs):
     
     return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
     
-
-
+    
 @login_required
 def delete_broadcast(request,**kwargs): 
     
-    station = Station.objects.filter(pk=kwargs['spk'])
+    station = Station.objects.filter(pk=kwargs['pk'])
     
     if station:
         station = station[0]
@@ -845,17 +844,13 @@ def delete_broadcast(request,**kwargs):
               ' has no permissions to edit')
         return HttpResponseForbidden()
     
-    if request.method == 'POST':
-      
-        bc_qs = station.broadcast_set.filter(program_id=kwargs['ppk'])
+    remove_prefix = 'remove-'
+    for key in request.POST.keys():
         
-        for broadcast in bc_qs:
-            
-            broadcast.delete()
+        if remove_prefix in key:
+            Broadcast.objects.filter(pk=request.POST.get(key)).delete() 
     
     return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
-    
-    
     
     
     
