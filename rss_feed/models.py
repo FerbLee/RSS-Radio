@@ -21,7 +21,10 @@ ML_TYPE = 40
 ML_ORIGINAL_ID = 200
 ML_TAG = 50
 
-EXISTING_SHARING_OPTS = (('tf','totally_free'),('af','ask_first'),('ns','no_share'))
+SH_TF = ('tf','totally_free')
+SH_AF = ('af','ask_first')
+SHAREABLE_OPTIONS = [SH_TF,SH_AF]
+EXISTING_SHARING_OPTS = (SH_TF,SH_AF,('ns','no_share'))
 
 LIKE_VOTE = ('lk','like')
 DISLIKE_VOTE = ('dl','dislike')
@@ -176,7 +179,7 @@ class Program(models.Model):
     #owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     removed = models.BooleanField(default=False)
     popularity = models.FloatField(default=0)
-    sharing_options = models.CharField(choices=EXISTING_SHARING_OPTS,max_length=2,default='ra')
+    sharing_options = models.CharField(choices=EXISTING_SHARING_OPTS,max_length=2,default=SH_TF[0])
     subscribers = models.ManyToManyField(User,related_name='subscribers')
     admins = models.ManyToManyField(User,through='ProgramAdmin',related_name='program_admins')
     

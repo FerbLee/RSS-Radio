@@ -17,9 +17,9 @@ from django.utils.translation import ugettext as _
 from django.template import RequestContext
 from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
-from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV
+from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS
 from django.http.response import HttpResponseNotFound
-
+from django.db.models import Q
 
 class IndexView(generic.ListView):
     
@@ -753,6 +753,16 @@ class ManageStationView(generic.DetailView):
     
         return self.object.stationadmin_set.all().prefetch_related('user')
 
+    
+    def get_elegible_programs(self):
+        
+        sh_group = [x[0] for x in SHAREABLE_OPTIONS]
+        
+        shareable_programs = Program.objects.filter(sharing_options__in=sh_group)
+        already_in_station = self.object.programs.all()
+        
+        return shareable_programs.difference(already_in_station)
+    
         
     def get_context_data(self, **kwargs):
         
@@ -760,7 +770,11 @@ class ManageStationView(generic.DetailView):
         context['broadcast_list'] = self.get_queryset_broadcasts()
         context['admin_list'] = self.get_queryset_admins()
         context['is_admin'] = self.object.check_user_is_admin(self.request.user)
-        context['add_broadcast_form'] = AddBroadcastForm()
+        
+        kwargs = {"program_qs":self.get_elegible_programs()}
+        bc_form = AddBroadcastForm(**kwargs)
+
+        context['add_broadcast_form'] = bc_form
          
         return context
     
@@ -798,13 +812,18 @@ def add_broadcast(request,**kwargs):
     
     if request.method == 'POST':
         
-        form = AddBroadcastForm(request.POST)
+        kwargs = {"program_qs":Program.objects.all()}
+        form = AddBroadcastForm(request.POST,**kwargs)
         
         if form.is_valid():
       
             program = form.cleaned_data.get('program')
-            schedule = form.cleaned_data.get('schedule')
+            schedule = form.cleaned_data.get('schedule_details')
             station.broadcast_set.create(program=program,schedule_details=schedule)
+        
+        else:
+            print('ERROR')
+            print(form.errors)
     
     return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
     
