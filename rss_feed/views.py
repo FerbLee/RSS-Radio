@@ -373,6 +373,12 @@ class StationDetailView(generic.DetailView):
         
         return self.object.broadcasting_method in bc_apply_list
  
+    def get_user_is_admin(self):
+        
+        if self.request.user.is_authenticated():
+            return self.object.check_user_is_admin(self.request.user)
+        else:
+            return User.objects.none()
     
     def get_context_data(self, **kwargs):
         
@@ -381,7 +387,7 @@ class StationDetailView(generic.DetailView):
         context['program_list'] = self.get_queryset_programs()
         context['follower_list'] = self.get_queryset_followers()
         context['is_follower'] = self.get_user_is_follower()
-        context['is_admin'] = self.object.check_user_is_admin(self.request.user)
+        context['is_admin'] = self.get_user_is_admin()
         #context['bcm_type'] = self.object.broadcasting_method
         context['apply_bc_specs'] = self.apply_bc_specs()
         
