@@ -850,12 +850,25 @@ def delete_broadcast(request,**kwargs):
               ' has no permissions to edit')
         return HttpResponseForbidden()
     
-    remove_prefix = 'remove-'
-    for key in request.POST.keys():
-        
-        if remove_prefix in key:
-            Broadcast.objects.filter(pk=request.POST.get(key)).delete() 
-    
+    selected_prefix = 'check-'
+    schedule_field_prefix = 'schedule-'
+
+    if 'bcremove' in request.POST.keys():
+        print("REMOVE")
+        for key in request.POST.keys():
+            if selected_prefix in key:
+                Broadcast.objects.filter(pk=request.POST.get(key)).delete()
+    else: 
+        print("UPDATE")
+        for key in request.POST.keys():
+            if selected_prefix in key:
+                bc_id = request.POST.get(key)
+                bcqs = Broadcast.objects.filter(pk=bc_id)
+                if bcqs:
+                    bc=bcqs[0]
+                    bc.schedule_details = request.POST.get(schedule_field_prefix + str(bc_id)) 
+                    bc.save()
+                    
     return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
     
     

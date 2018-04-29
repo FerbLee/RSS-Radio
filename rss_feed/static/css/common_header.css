@@ -36,3 +36,8 @@
     max-height:40%;
     overflow: auto;
 }
+
+table{border: 0px solid;} 
+.highlight td {background: LightBlue;}
+
+
