@@ -879,12 +879,7 @@ class AdminStationView(generic.DetailView):
     model = Station
     template_name = 'rss_feed/admin_station.html'
     
-    
-    def get_queryset_broadcasts(self):
         
-        return self.object.broadcast_set.order_by('program__name').prefetch_related('program')
-        
-    
     def get_queryset_admins(self):
     
         return self.object.stationadmin_set.all().prefetch_related('user')
