@@ -6,7 +6,7 @@ from .models import Episode, Program, Image, Station, Vote, Comment, Broadcast
 from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE,ADMT_OWNER
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
-from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm,CommentForm
+from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm,CommentForm,AddAdminForm
 from django.utils import timezone
 from django.contrib.auth.models import User
 import os
@@ -17,9 +17,10 @@ from django.utils.translation import ugettext as _
 from django.template import RequestContext
 from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
-from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS
+from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
+    ADMT_ADMIN
 from django.http.response import HttpResponseNotFound
-from django.db.models import Q
+
 
 class IndexView(generic.ListView):
     
@@ -842,6 +843,161 @@ def delete_broadcast(request,**kwargs):
     if station:
         station = station[0]
     else: 
+        print('Error in delete_broadcast view, unknown station pk ' + str(kwargs['spk']))
+        return HttpResponseNotFound()
+    
+    if not station.check_user_is_admin(request.user):
+        print('Error in delete_broadcast view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
+              ' has no permissions to edit')
+        return HttpResponseForbidden()
+    
+    selected_prefix = 'check-'
+    schedule_field_prefix = 'schedule-'
+
+    if 'bcremove' in request.POST.keys():
+        print("REMOVE")
+        for key in request.POST.keys():
+            if selected_prefix in key:
+                Broadcast.objects.filter(pk=request.POST.get(key)).delete()
+    else: 
+        print("UPDATE")
+        for key in request.POST.keys():
+            if selected_prefix in key:
+                bc_id = request.POST.get(key)
+                bcqs = Broadcast.objects.filter(pk=bc_id)
+                if bcqs:
+                    bc=bcqs[0]
+                    bc.schedule_details = request.POST.get(schedule_field_prefix + str(bc_id)) 
+                    bc.save()
+                    
+    return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
+    
+    
+
+class AdminStationView(generic.DetailView):
+    
+    model = Station
+    template_name = 'rss_feed/admin_station.html'
+    
+    
+    def get_queryset_broadcasts(self):
+        
+        return self.object.broadcast_set.order_by('program__name').prefetch_related('program')
+        
+    
+    def get_queryset_admins(self):
+    
+        return self.object.stationadmin_set.all().prefetch_related('user')
+
+    
+    def get_elegible_users(self):
+        
+        sh_group = [x[0] for x in SHAREABLE_OPTIONS]
+        
+        shareable_programs = Program.objects.filter(sharing_options__in=sh_group)
+        already_in_station = self.object.programs.all()
+        
+        return shareable_programs.difference(already_in_station)
+    
+        
+    def get_context_data(self, **kwargs):
+        
+        context = super(AdminStationView, self).get_context_data(**kwargs)
+        context['admin_list'] = self.get_queryset_admins()
+        context['is_admin'] = self.object.check_user_is_admin(self.request.user)
+        
+        kwargs = {"admin_qs":self.get_elegible_users()}
+        admin_form = AddAdminForm(**kwargs)
+        context['add_admin_form'] = admin_form
+        
+         
+        return context
+    
+    
+    def get(self, request, **kwargs):
+        
+        if self.request.user.is_authenticated():
+        
+            self.object = self.get_object()
+        
+            if self.object.check_user_is_admin(self.request.user):
+                
+                context = self.get_context_data(object=self.object)
+                return self.render_to_response(context)  
+             
+        return HttpResponseForbidden()    
+    
+
+
+
+@login_required
+def add_admin(request,**kwargs): 
+    
+    view_display_name = 'add_admin'
+    entity_pk = kwargs['pk']
+    
+    if  kwargs['type'] == Station.class_str_id():
+        
+        next_view = 'rss_feed:admin_station'
+        entity = Station.objects.filter(pk=entity_pk)
+    
+    elif kwargs['type'] == Program.class_str_id():
+       
+        next_view = 'rss_feed:admin_program'
+        entity = Program.objects.filter(pk=entity_pk) 
+
+    else:
+        
+        print('Error in' + view_display_name + ' view, invalid station or program pk ' + str(entity_pk))
+        return HttpResponseNotFound()
+        
+        
+    if entity:
+        entity = entity[0]
+    else: 
+        print('Error in ' + view_display_name + ' view, unknown station or program pk ' + str(entity_pk))
+        return HttpResponseNotFound()
+    
+    if not entity.check_user_is_admin(request.user):
+        print('Error in ' + view_display_name + ' view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
+              ' has no permissions to edit')
+        return HttpResponseForbidden() 
+    
+    if request.method == 'POST':
+        
+        form = AddAdminForm(request.POST)
+        
+        if form.is_valid():
+      
+            new_admin = form.cleaned_data.get('admin')
+            
+            #Check if owner
+            if entity.check_user_is_admin(request.user,ADMT_OWNER[0]):
+                new_admin_type = form.cleaned_data.get('admin_type')
+            else:
+                new_admin_type = ADMT_ADMIN[0]
+                
+            if kwargs['type'] == Station.class_str_id():
+                entity.stationadmin_set.create(user=new_admin,type=new_admin_type)
+            else:
+                entity.programadmin_set.create(user=new_admin,type=new_admin_type)
+        
+        else:
+            print('ERROR')
+            print(form.errors)
+    
+ 
+    return HttpResponseRedirect(reverse(next_view, args=(entity_pk,)))
+
+
+@login_required
+def edit_admin(request,**kwargs): 
+    
+    station = Station.objects.filter(pk=kwargs['pk'])
+    
+    if station:
+        station = station[0]
+    else: 
         print('Error in add_broadcast view, unknown station pk ' + str(kwargs['spk']))
         return HttpResponseNotFound()
     
@@ -870,6 +1026,7 @@ def delete_broadcast(request,**kwargs):
                     bc.save()
                     
     return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
-    
-    
-    
+
+
+
+

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h3>{{ station.name }} {% trans "management dashboard" %} </h3>
+
+<div class="dashboard-sections">
+<p><a href="{% url 'rss_feed:manage_station' station.id%}">{% trans "Broadcast management" %}</a><p>
+<div class="selected-section">{% trans "Administration" %}</div>
+</div>
+
+<div id="new-admin-section">	
+<h3>Add new Administrator</h3>
+	<form method="post" class="form-inline" action="{% url 'rss_feed:add_admin' station.id 'st' %}">
+		{% csrf_token %}
+		{{add_admin_form}}
+		<input type="submit" value="{% blocktrans %}Add{% endblocktrans %}">
+	</form>
+
+<script type="text/javascript">
+    
+    $(function(){
+        $("input[type='checkbox']").on('change', function() {
+            $(this).closest('tr').toggleClass("highlight", this.checked);
+        });
+    });
+
+</script>
+
+<p></p>
+<p><a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Back" %}</a></p>
+{% endblock %}

@@ -4,10 +4,11 @@
 
 <h3>{{ station.name }} {% trans "management dashboard" %} </h3>
 
-<p><button type="button" onclick="asd(1)" id="add-program" 
-	value="{% blocktrans %}Manage Broadcast{% endblocktrans %}">{% trans "Manage Broadcast" %}</button>
-<button type="button" onclick="asd(2)" id="add-station" 
-	value="{% blocktrans %}Administration{% endblocktrans %}">{% trans "Administration" %}</button></p>
+<div class="dashboard-sections">
+<div class="selected-section">{% trans "Broadcast management" %}</div>
+<p><a href="{% url 'rss_feed:admin_station' station.id%}">{% trans "Administration" %}</a><p>
+</div>
+
 
 <div id="bc-programs">
 	<h3>Add new program</h3>
@@ -20,51 +21,32 @@
 	<h3>{% trans "Programs currently broadcasted" %}</h3>
 	<form method="post" class="form-inline" action="{% url 'rss_feed:delete_broadcast' station.id %}">		
 			{% csrf_token %}
-			<table class="delete-menu">
+			<div id="delete-menu">
+			<table class="delete-menu-table">
+			<thead>
 			<tr><th>{% trans "Select" %}</th><th></th><th>{% trans "Program" %}</th><th>{% trans "Broadcast schedule" %}</th></tr>
-			{%  for broadcast in broadcast_list %}
-				
-				<tr><div class="delete-menu-single-line">		
-				
-					<td><input type="checkbox" id="cb-{{broadcast.id}}" 
-					value="{{broadcast.id}}" name="check-{{broadcast.id}}"></div></td>
-					<td><img src="{{ broadcast.program.image.path.url }}" width='40'> </td>
-					<td>{{ broadcast.program.name }}</td> 
-					<td><input type="text" name="schedule-{{broadcast.id}}"	value="{{ broadcast.schedule_details }}"></td> 		
-					
-				</div></tr>
-			{% endfor %}
+			</thead>
+    		<tbody>
+    		{% if broadcast_list %}
+	    		{%  for broadcast in broadcast_list %}
+					<tr>	
+						<td><input type="checkbox" id="cb-{{broadcast.id}}" value="{{broadcast.id}}" name="check-{{broadcast.id}}"></td>
+						<td><img src="{{ broadcast.program.image.path.url }}" width='40'> </td>
+						<td>{{ broadcast.program.name }}</td> 
+						<td><input type="text" name="schedule-{{broadcast.id}}"	value="{{ broadcast.schedule_details }}"></td> 
+					</tr>
+				{% endfor %}
+			{% endif %}
+			</tbody>
 		</table>
+		</div>
 		<p>Block actions</p> 
 		<input type="submit" name="bcremove" value="{% blocktrans %}Delete{% endblocktrans %}">
 		<input type="submit" name="bcupdate" value="{% blocktrans %}Update{% endblocktrans %}">
 	</form>
 </div>
-<div id="adm-users">
- <p>Space for adm-users</p>
-</div>
 
 <script type="text/javascript">
-	window.onload = function() {
-	
-		document.getElementById("bc-programs").style.display = "block";
-		document.getElementById("adm-users").style.display = "none";
-
-	};
-
-  	function asd(a) {
-    	if (a == 1) {
-      		document.getElementById("bc-programs").style.display = "block";
-      		document.getElementById("adm-users").style.display = "none";
-    	} else if (a == 2) {
-      			document.getElementById("bc-programs").style.display = "none";
-      			document.getElementById("adm-users").style.display = "block";
-    		}else {
-      			document.getElementById("bc-programs").style.display = "none";
-      			document.getElementById("adm-users").style.display = "none";
-    		}
-    };
-    
     
     $(function(){
         $("input[type='checkbox']").on('change', function() {
@@ -78,3 +60,5 @@
 <p></p>
 <p><a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Back" %}</a></p>
 {% endblock %}
+
+

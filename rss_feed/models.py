@@ -194,7 +194,11 @@ class Program(models.Model):
             return self.programadmin_set.filter(user_id=user.id)
         else:
             return self.programadmin_set.filter(user_id=user.id,type=adm_type)
+    
+    @classmethod
+    def class_str_id(cls):
         
+        return 'pr' 
         
     
     #def was_published_recently(self):
@@ -314,8 +318,10 @@ class Station(models.Model):
         else:
             return user.stations_admin.filter(station_id=self.id,type=adm_type)
         
+    @classmethod
+    def class_str_id(cls):
         
-
+        return 'st'
     
     
 class Broadcast(models.Model):
@@ -338,4 +344,5 @@ class StationAdmin(models.Model):
 
     def __str__(self):
         return 'Station:' + str(self.station) + '-User:' + str(self.user) + '-' + str(self.type)
+   
    

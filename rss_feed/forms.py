@@ -9,8 +9,8 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
 from django.utils.translation import ugettext as _
-from .models import Station,Program,Broadcast,EXISTING_BCMETHODS,Comment,EXISTING_SHARING_OPTS
-import pickle
+from .models import Station,Program,Broadcast,EXISTING_BCMETHODS,Comment,EXISTING_SHARING_OPTS,EXISTING_ADMIN_TYPES
+
 
 class CountableWidget(forms.widgets.Textarea):
     
@@ -248,6 +248,25 @@ class AddBroadcastForm(forms.ModelForm):
 
 
 
-   
+class AddAdminForm(forms.Form):
+    
+
+    def __init__(self,*args, **kwargs):
+        
+        try:
+            aqs = kwargs.pop('admin_qs')
+        except KeyError:
+            pqs = Program.objects.all()
+            
+        super(AddAdminForm, self).__init__(*args, **kwargs)
+        #self.fields['admin'] = forms.ModelChoiceField(label=_('Administrator'),queryset=aqs ,widget=Select2Widget)
+        self.fields['admin'] = forms.ModelChoiceField(label=_('Administrator'),queryset=User.objects.all())
+        self.fields['admin_type'] = forms.ChoiceField(label=_('Permissions'),choices = EXISTING_ADMIN_TYPES)
+    
+    
+    #class Meta:
+        
+    #    model = Broadcast
+    #    fields = ('admin','admin_type')
         
     
