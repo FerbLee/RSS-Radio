@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^delete_broadcast2(?P<pk>[0-9]+)/', views.delete_broadcast,name='delete_broadcast'),
     url(r'^add_admin/(?P<pk>[0-9]+)/(?P<type>[\w-]+)$', views.add_admin,name='add_admin'),
     url(r'^edit_admin/(?P<pk>[0-9]+)/(?P<type>[\w-]+)/', views.edit_admin,name='edit_admin'),
+    url(r'^delete_station/(?P<pk>[0-9]+)/$', page_not_found, name='delete_station'),
     url(r'^add_content/$', views.add_content,name='add_content'),
     url(r'^station/(?P<pk>[0-9]+)/$', views.StationDetailView.as_view(),name='detail_station'),
     url('^follow-station/(?P<pk>[0-9]+)/$', views.follow_station, name='follow_station'),

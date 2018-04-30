@@ -18,7 +18,7 @@ from django.template import RequestContext
 from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
-    ADMT_ADMIN, StationAdmin
+    ADMT_ADMIN, StationAdmin, ProgramAdmin
 from django.http.response import HttpResponseNotFound
 
 
@@ -896,7 +896,7 @@ class AdminStationView(generic.DetailView):
         
         context = super(AdminStationView, self).get_context_data(**kwargs)
         context['admin_list'] = self.get_queryset_admins()
-        context['is_admin'] = self.object.check_user_is_admin(self.request.user)
+        context['is_owner'] = self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0])
         context['station_class_id'] = Station.class_str_id()
         
         kwargs = {'admin_qs':self.get_elegible_users()}
@@ -1010,6 +1010,10 @@ def edit_admin(request,**kwargs):
             for key in request.POST.keys():
                 if selected_prefix in key:
                     StationAdmin.objects.filter(pk=request.POST.get(key)).delete()
+        else:
+            for key in request.POST.keys():
+                if selected_prefix in key:
+                    ProgramAdmin.objects.filter(pk=request.POST.get(key)).delete()
                 
     else: 
         print("UPDATE")
@@ -1022,7 +1026,16 @@ def edit_admin(request,**kwargs):
                         adm=admqs[0]
                         adm.type = request.POST.get(permission_field_prefix+ str(adm_id)) 
                         adm.save()
-                  
+        else:
+            for key in request.POST.keys():
+                if selected_prefix in key:
+                    adm_id = request.POST.get(key)
+                    admqs = ProgramAdmin.objects.filter(pk=adm_id)
+                    if admqs:
+                        adm=admqs[0]
+                        adm.type = request.POST.get(permission_field_prefix+ str(adm_id)) 
+                        adm.save()
+                        
     return HttpResponseRedirect(reverse(next_view, args=(entity.pk,)))
     
 

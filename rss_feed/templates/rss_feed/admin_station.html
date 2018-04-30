@@ -5,66 +5,93 @@
 <h3>{{ station.name }} {% trans "management dashboard" %} </h3>
 
 <div class="dashboard-sections">
-<p><a href="{% url 'rss_feed:manage_station' station.id%}">{% trans "Broadcast management" %}</a><p>
-<div class="selected-section">{% trans "Administration" %}</div>
+<p><a href="{% url 'rss_feed:manage_station' station.id%}">{% trans "Broadcast Management" %}</a></p>
+<p><div class="selected-section">{% trans "Administration" %}</div></p>
+<p><a href="{% url 'rss_feed:delete_station' station.id%}">{% trans "Delete Station" %}</a></p>
 </div>
 
-<div id="new-admin-section">	
-<h3>Add new Administrator</h3>
-	<form method="post" class="form-inline" action="{% url 'rss_feed:add_admin' station.id station_class_id %}">
-		{% csrf_token %}
-		{{add_admin_form}}
-		<input type="submit" value="{% blocktrans %}Add{% endblocktrans %}">
-	</form>
-</div>
-
-<div id="edit-admin-section">
-	
-	<h3>{% trans "Current administrators:" %}</h3>
-	<form method="post" class="form-inline" action="{% url 'rss_feed:edit_admin' station.id station_class_id%}">		
+{% if is_owner %}
+	<div id="new-admin-section">	
+	<h3>Add new Administrator</h3>
+		<form method="post" class="form-inline" action="{% url 'rss_feed:add_admin' station.id station_class_id %}">
 			{% csrf_token %}
-			<div id="delete-menu">
-			<table class="delete-menu-table">
-			<thead>
-			<tr><th>{% trans "Select" %}</th><th></th><th>{% trans "User" %}</th><th>{% trans "Permissions" %}</th></tr>
-			</thead>
-    		<tbody>
-    		{% if admin_list %}
-	    		{%  for admin in admin_list %}
-					<tr>	
-						{% if admin.type == owner_permissions.0 %}
-							<td></td>
-							<td><img src="{{ admin.user.userprofile.avatar.path.url }}" width='40'> </td>
-							<td>{{ admin.user.username }}</td> 
-							<td>{{owner_permissions.1}} {% trans "can't be edited" %}</td>
-						{% else %}
-							<td><input type="checkbox" id="cb-{{admin.id}}" value="{{admin.id}}" name="check-{{admin.id}}"></td>
-							<td><img src="{{ admin.user.userprofile.avatar.path.url }}" width='40'> </td>
-							<td>{{ admin.user.username }}</td>
-							<td><select name="permission-{{admin.id}}">
-								{% for key, value in permissions_available.items %}
-									{% if key == admin.type %}
-										<option selected="selected" value="{{key}}">{{value}}</option>
-									{% else %}
-										<option value="{{key}}">{{value}}</option>
-									{% endif %}
-								{% endfor %}
-							</select></td>
-						{% endif %} 
-					</tr>
-				{% endfor %}
-			{% endif %}
-			</tbody>
-		</table>
-		</div>
-		<p>Block actions</p> 
-		<input type="submit" name="adremove" value="{% blocktrans %}Remove{% endblocktrans %}">
-		<input type="submit" name="adupdate" value="{% blocktrans %}Update{% endblocktrans %}">
-	</form>
-</div>
-
-
-
+			{{add_admin_form}}
+			<input type="submit" value="{% blocktrans %}Add{% endblocktrans %}">
+		</form>
+	</div>
+	
+	<div id="edit-admin-section">
+		
+		<h3>{% trans "Current administrators:" %}</h3>
+		<form method="post" class="form-inline" action="{% url 'rss_feed:edit_admin' station.id station_class_id%}">		
+				{% csrf_token %}
+				<div id="delete-menu">
+				<table class="delete-menu-table">
+				<thead>
+				<tr><th>{% trans "Select" %}</th><th></th><th>{% trans "User" %}</th><th>{% trans "Permissions" %}</th></tr>
+				</thead>
+	    		<tbody>
+	    		{% if admin_list %}
+		    		{%  for admin in admin_list %}
+						<tr>
+							{% if admin.user == request.user %}
+							
+								<td><input type="checkbox" id="yourself" value="{{admin.id}}" name="check-{{admin.id}}"></td>
+								<td><img src="{{ admin.user.userprofile.avatar.path.url }}" width='40'> </td>
+								<td>{{ admin.user.username }}</td>
+								<td><select name="permission-{{admin.id}}">
+									{% for key, value in permissions_available.items %}
+										{% if key == admin.type %}
+											<option selected="selected" value="{{key}}">{{value}}</option>
+										{% else %}
+											<option value="{{key}}">{{value}}</option>
+										{% endif %}
+									{% endfor %}
+								</select> <span id="yourself">{% trans "Yourself" %}</span></td>	
+							
+							{% elif admin.type == owner_permissions.0 %}
+								<td></td>
+								<td><img src="{{ admin.user.userprofile.avatar.path.url }}" width='40'> </td>
+								<td>{{ admin.user.username }}</td> 
+								<td>{{owner_permissions.1}} {% trans "can't be edited" %}</td>
+							
+							{% else %}
+								<td><input type="checkbox" id="cb-{{admin.id}}" value="{{admin.id}}" name="check-{{admin.id}}"></td>
+								<td><img src="{{ admin.user.userprofile.avatar.path.url }}" width='40'> </td>
+								<td>{{ admin.user.username }}</td>
+								<td><select name="permission-{{admin.id}}">
+									{% for key, value in permissions_available.items %}
+										{% if key == admin.type %}
+											<option selected="selected" value="{{key}}">{{value}}</option>
+										{% else %}
+											<option value="{{key}}">{{value}}</option>
+										{% endif %}
+									{% endfor %}
+								</select></td>
+							{% endif %} 
+						</tr>
+					{% endfor %}
+				{% endif %}
+				</tbody>
+			</table>
+			</div>
+			<p>Block actions</p> 
+			<div id="disclaimer"></div>
+			<input type="submit" name="adremove" value="{% blocktrans %}Remove{% endblocktrans %}">
+			<input type="submit" name="adupdate" value="{% blocktrans %}Update{% endblocktrans %}">
+		</form>
+	</div>
+{%else%}
+	<b>{% trans "Only" %} {{owner_permissions.1}} {% trans " level users can access this view. You may contact the following users if you need an upgrade:" %} </br>
+ 	<ul>
+ 	{%  for admin in admin_list %}
+		{% if admin.type == owner_permissions.0 %}
+			<a href="{% url 'rss_feed:detail_user' admin.user_id %}">
+		    <img src="{{ admin.user.userprofile.avatar.path.url }}" width='40'>{{ admin.user.username }}</a></p> 	
+		{% endif %}
+	{% endfor %}
+	</ul>
+{% endif %}
 
 <script type="text/javascript">
     
@@ -74,6 +101,20 @@
         });
     });
 
+    function addDisclaimer(divid) {
+    	  document.getElementById(divid).innerHTML = "Hello World";
+    	}
+    
+    var checkbox = document.querySelector("input[id=yourself]");
+
+    checkbox.addEventListener( 'change', function() {
+        if(this.checked) {
+        	document.getElementById('disclaimer').innerHTML = "ATTENTION: You are about to change your own permissions for this station.";
+        } else {
+        	document.getElementById('disclaimer').innerHTML = "";
+        }
+    });
+    
 </script>
 
 <p></p>

@@ -5,8 +5,9 @@
 <h3>{{ station.name }} {% trans "management dashboard" %} </h3>
 
 <div class="dashboard-sections">
-<div class="selected-section">{% trans "Broadcast management" %}</div>
-<p><a href="{% url 'rss_feed:admin_station' station.id%}">{% trans "Administration" %}</a><p>
+<p><div class="selected-section">{% trans "Broadcast management" %}</div></p>
+<p><a href="{% url 'rss_feed:admin_station' station.id%}">{% trans "Administration" %}</a></p>
+<p><a href="{% url 'rss_feed:delete_station' station.id%}">{% trans "Delete Station" %}</a></p>
 </div>
 
 
