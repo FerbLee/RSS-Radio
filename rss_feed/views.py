@@ -18,7 +18,7 @@ from django.template import RequestContext
 from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
-    ADMT_ADMIN
+    ADMT_ADMIN, StationAdmin
 from django.http.response import HttpResponseNotFound
 
 
@@ -927,12 +927,8 @@ class AdminStationView(generic.DetailView):
         return HttpResponseForbidden()    
     
 
+def admin_validator(user,view_display_name,**kwargs):
 
-
-@login_required
-def add_admin(request,**kwargs): 
-    
-    view_display_name = 'add_admin'
     entity_pk = kwargs['pk']
     
     if  kwargs['type'] == Station.class_str_id():
@@ -950,17 +946,25 @@ def add_admin(request,**kwargs):
         print('Error in' + view_display_name + ' view, invalid station or program pk ' + str(entity_pk))
         return HttpResponseNotFound()
         
-        
     if entity:
         entity = entity[0]
     else: 
         print('Error in ' + view_display_name + ' view, unknown station or program pk ' + str(entity_pk))
         return HttpResponseNotFound()
     
-    if not entity.check_user_is_admin(request.user):
-        print('Error in ' + view_display_name + ' view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
+    if not entity.check_user_is_admin(user):
+        print('Error in ' + view_display_name + ' view, user ' + str(user.id) + '-' + str(user.username) + 
               ' has no permissions to edit')
         return HttpResponseForbidden() 
+
+    return (entity,next_view)
+
+
+@login_required
+def add_admin(request,**kwargs): 
+    
+    view_display_name = 'add_admin'
+    entity,next_view = admin_validator(request.user,view_display_name,**kwargs)
     
     if request.method == 'POST':
         
@@ -986,46 +990,41 @@ def add_admin(request,**kwargs):
             print(form.errors)
     
  
-    return HttpResponseRedirect(reverse(next_view, args=(entity_pk,)))
+    return HttpResponseRedirect(reverse(next_view, args=(entity.id,)))
 
 
 @login_required
 def edit_admin(request,**kwargs): 
     
-    station = Station.objects.filter(pk=kwargs['pk'])
-    
-    if station:
-        station = station[0]
-    else: 
-        print('Error in add_broadcast view, unknown station pk ' + str(kwargs['spk']))
-        return HttpResponseNotFound()
-    
-    if not station.check_user_is_admin(request.user):
-        print('Error in program_edit view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
-              ' has no permissions to edit')
-        return HttpResponseForbidden()
+    view_display_name = 'edit_admin'
+    entity,next_view = admin_validator(request.user,view_display_name,**kwargs)
     
     selected_prefix = 'check-'
-    schedule_field_prefix = 'schedule-'
+    permission_field_prefix = 'permission-'
 
-    if 'bcremove' in request.POST.keys():
+    print(request.POST.keys())
+
+    if 'adremove' in request.POST.keys():
         print("REMOVE")
-        for key in request.POST.keys():
-            if selected_prefix in key:
-                Broadcast.objects.filter(pk=request.POST.get(key)).delete()
+        if kwargs['type'] == Station.class_str_id():
+            for key in request.POST.keys():
+                if selected_prefix in key:
+                    StationAdmin.objects.filter(pk=request.POST.get(key)).delete()
+                
     else: 
         print("UPDATE")
-        for key in request.POST.keys():
-            if selected_prefix in key:
-                bc_id = request.POST.get(key)
-                bcqs = Broadcast.objects.filter(pk=bc_id)
-                if bcqs:
-                    bc=bcqs[0]
-                    bc.schedule_details = request.POST.get(schedule_field_prefix + str(bc_id)) 
-                    bc.save()
-                    
-    return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
-
+        if kwargs['type'] == Station.class_str_id():
+            for key in request.POST.keys():
+                if selected_prefix in key:
+                    adm_id = request.POST.get(key)
+                    admqs = StationAdmin.objects.filter(pk=adm_id)
+                    if admqs:
+                        adm=admqs[0]
+                        adm.type = request.POST.get(permission_field_prefix+ str(adm_id)) 
+                        adm.save()
+                  
+    return HttpResponseRedirect(reverse(next_view, args=(entity.pk,)))
+    
 
 
 
