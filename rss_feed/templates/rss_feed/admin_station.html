@@ -35,7 +35,21 @@
 						<td><input type="checkbox" id="cb-{{admin.id}}" value="{{admin.id}}" name="check-{{admin.id}}"></td>
 						<td><img src="{{ admin.user.userprofile.avatar.path.url }}" width='40'> </td>
 						<td>{{ admin.user.username }}</td> 
-						<td><select><option value='ow'>Owner</option><option value='ad'>Admin</option></select></td> 
+						<td>
+						{% if admin.type == owner_permissions.0 %}
+							{{owner_permissions.1}}
+						{% else %}
+							<select>
+								{% for key, value in permissions_available.items %}
+									{% if key == admin.type %}
+										<option selected="selected" value="{{key}}">{{value}}</option>
+									{% else %}
+										<option selected="selected" value="{{key}}">{{value}}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+						{% endif %}
+						</td> 
 					</tr>
 				{% endfor %}
 			{% endif %}

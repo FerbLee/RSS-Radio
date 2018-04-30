@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.urls import reverse
 from django.views import generic
 from .models import Episode, Program, Image, Station, Vote, Comment, Broadcast
-from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE,ADMT_OWNER
+from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE,ADMT_OWNER,EXISTING_ADMIN_TYPES
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm,CommentForm,AddAdminForm
@@ -882,7 +882,7 @@ class AdminStationView(generic.DetailView):
         
     def get_queryset_admins(self):
     
-        return self.object.stationadmin_set.all().prefetch_related('user')
+        return self.object.stationadmin_set.order_by('user__username').prefetch_related('user')
 
     
     def get_elegible_users(self):
@@ -902,10 +902,12 @@ class AdminStationView(generic.DetailView):
         kwargs = {'admin_qs':self.get_elegible_users()}
         #Check if not owner
         if not self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0]):
-            kwargs['choices_qs'] = (ADMT_ADMIN,)
-            
+            kwargs['choices_qs'] = (ADMT_ADMIN,)    
         admin_form = AddAdminForm(**kwargs)
         context['add_admin_form'] = admin_form
+        
+        context['permissions_available'] = dict(EXISTING_ADMIN_TYPES)
+        context['owner_permissions'] = ADMT_OWNER
         
          
         return context
