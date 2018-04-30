@@ -193,11 +193,15 @@ class CommentForm(forms.ModelForm):
 
 class Select2Widget(forms.widgets.Select):
     
+    def __init__(self,select_name,*args,**kwargs):
+        super(Select2Widget, self).__init__(*args,**kwargs)
+        self.select_name = select_name
+    
     def render(self, name, value, attrs=None, **kwargs):
         
         final_attrs = self.build_attrs(self.attrs, attrs)
         final_attrs['opts'] = self.choices
-        #output = super(Select2Widget, self).render(name, value, final_attrs, **kwargs)
+        final_attrs['select_name'] = self.select_name
         output = self.get_rich_select(final_attrs)
         return mark_safe(output)
     
@@ -214,7 +218,7 @@ class Select2Widget(forms.widgets.Select):
         options_str = ''.join(html_str)
         
         return (
-                 '<select name="program" required="" id="%(id)s" class="js-example-basic-single" >'
+                 '<select name="' + attrs.get('select_name') + '" required="" id="%(id)s" class="js-example-basic-single" >'
                  + options_str + 
                  '</select>\n'
                  '<script type="text/javascript">'                    
@@ -237,7 +241,7 @@ class AddBroadcastForm(forms.ModelForm):
             pqs = Program.objects.all()
             
         super(AddBroadcastForm, self).__init__(*args, **kwargs)
-        self.fields['program'] = forms.ModelChoiceField(label=_('Program'),queryset=pqs ,widget=Select2Widget)
+        self.fields['program'] = forms.ModelChoiceField(label=_('Program'),queryset=pqs ,widget=Select2Widget('program'))
         self.fields['schedule_details'] = forms.CharField(label=_('Broadcast Schedule'),max_length=100)
     
     
@@ -256,12 +260,16 @@ class AddAdminForm(forms.Form):
         try:
             aqs = kwargs.pop('admin_qs')
         except KeyError:
-            pqs = Program.objects.all()
+            aqs = User.objects.all()
+        
+        try:
+            cqs = kwargs.pop('choices_qs')
+        except KeyError:
+            cqs = EXISTING_ADMIN_TYPES
             
         super(AddAdminForm, self).__init__(*args, **kwargs)
-        #self.fields['admin'] = forms.ModelChoiceField(label=_('Administrator'),queryset=aqs ,widget=Select2Widget)
-        self.fields['admin'] = forms.ModelChoiceField(label=_('Administrator'),queryset=User.objects.all())
-        self.fields['admin_type'] = forms.ChoiceField(label=_('Permissions'),choices = EXISTING_ADMIN_TYPES)
+        self.fields['admin'] = forms.ModelChoiceField(label=_('Administrator'),queryset=aqs ,widget=Select2Widget('admin'))
+        self.fields['admin_type'] = forms.ChoiceField(label=_('Permissions'),choices = cqs)
     
     
     #class Meta:

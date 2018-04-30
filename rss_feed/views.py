@@ -892,12 +892,9 @@ class AdminStationView(generic.DetailView):
     
     def get_elegible_users(self):
         
-        sh_group = [x[0] for x in SHAREABLE_OPTIONS]
+        already_admins = self.object.admins.all()
         
-        shareable_programs = Program.objects.filter(sharing_options__in=sh_group)
-        already_in_station = self.object.programs.all()
-        
-        return shareable_programs.difference(already_in_station)
+        return User.objects.all().difference(already_admins).order_by('username')
     
         
     def get_context_data(self, **kwargs):
@@ -905,8 +902,13 @@ class AdminStationView(generic.DetailView):
         context = super(AdminStationView, self).get_context_data(**kwargs)
         context['admin_list'] = self.get_queryset_admins()
         context['is_admin'] = self.object.check_user_is_admin(self.request.user)
+        context['station_class_id'] = Station.class_str_id()
         
-        kwargs = {"admin_qs":self.get_elegible_users()}
+        kwargs = {'admin_qs':self.get_elegible_users()}
+        #Check if not owner
+        if not self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0]):
+            kwargs['choices_qs'] = (ADMT_ADMIN,)
+            
         admin_form = AddAdminForm(**kwargs)
         context['add_admin_form'] = admin_form
         
