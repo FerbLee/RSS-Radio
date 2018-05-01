@@ -17,6 +17,13 @@
 			{% csrf_token %}
 			{{add_admin_form}}
 			<input type="submit" value="{% blocktrans %}Add{% endblocktrans %}">
+			{% if messages %}
+				{% for message in messages%}
+			   		{% if 'success' in message.tags and 'add' in message.extra_tags %} 
+			   			<div class="success-messages">{{ message }}</div>
+			   		{% endif %}
+			    {% endfor %}
+			{% endif %}
 		</form>
 	</div>
 	
@@ -80,6 +87,15 @@
 			<input type="submit" name="adremove" value="{% blocktrans %}Remove{% endblocktrans %}">
 			<input type="submit" name="adupdate" value="{% blocktrans %}Update{% endblocktrans %}">
 		</form>
+		{% if messages %}
+			{% for message in messages%}
+		   		{% if 'success' in message.tags and 'edit' in message.extra_tags %} 
+		   			<div class="success-messages">{{ message }}</div>
+		   		{% elif 'error' in message.tags and 'edit' in message.extra_tags %} 
+		   			<div class="error-messages">{{ message }}</div>
+		   		{% endif %}
+		    {% endfor %}
+		{% endif %}
 	</div>
 {%else%}
 	<b>{% trans "Only" %} {{owner_permissions.1}} {% trans " level users can access this view. You may contact the following users if you need an upgrade:" %} </br>

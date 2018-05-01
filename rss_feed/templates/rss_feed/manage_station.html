@@ -17,7 +17,15 @@
 		{% csrf_token %}
 		{{add_broadcast_form}}
 		<input type="submit" value="{% blocktrans %}Add{% endblocktrans %}">
+		{% if messages %}
+			{% for message in messages%}
+		   		{% if 'success' in message.tags and 'add' in message.extra_tags %} 
+		   			<div class="success-messages">{{ message }}</div>
+		   		{% endif %}
+		    {% endfor %}
+		{% endif %}
 	</form>
+	
 	
 	<h3>{% trans "Programs currently broadcasted" %}</h3>
 	<form method="post" class="form-inline" action="{% url 'rss_feed:delete_broadcast' station.id %}">		
@@ -44,6 +52,15 @@
 		<p>Block actions</p> 
 		<input type="submit" name="bcremove" value="{% blocktrans %}Delete{% endblocktrans %}">
 		<input type="submit" name="bcupdate" value="{% blocktrans %}Update{% endblocktrans %}">
+		{% if messages %}
+			{% for message in messages%}
+		   		{% if 'success' in message.tags and 'edit' in message.extra_tags %} 
+		   			<div class="success-messages">{{ message }}</div>
+		   		{% elif 'error' in message.tags and 'edit' in message.extra_tags %} 
+		   			<div class="error-messages">{{ message }}</div>
+		   		{% endif %}
+		    {% endfor %}
+		{% endif %}
 	</form>
 </div>
 

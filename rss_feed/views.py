@@ -827,11 +827,13 @@ def add_broadcast(request,**kwargs):
             program = form.cleaned_data.get('program')
             schedule = form.cleaned_data.get('schedule_details')
             station.broadcast_set.create(program=program,schedule_details=schedule)
-        
+            messages.success(request, _('Program') + ' ' + program.name + ' ' + _('was successfully added!'),extra_tags='add')
+             
         else:
             print('ERROR')
             print(form.errors)
     
+        
     return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
     
     
@@ -853,23 +855,40 @@ def delete_broadcast(request,**kwargs):
     
     selected_prefix = 'check-'
     schedule_field_prefix = 'schedule-'
+    check_counter = 0
 
     if 'bcremove' in request.POST.keys():
         print("REMOVE")
         for key in request.POST.keys():
             if selected_prefix in key:
+                check_counter+=1
                 Broadcast.objects.filter(pk=request.POST.get(key)).delete()
+        
+        if check_counter==1:  
+            messages.success(request,str(check_counter) + ' ' + _('program was successfully removed.'),extra_tags='edit')      
+        elif check_counter > 1:
+            messages.success(request,str(check_counter) + ' ' + _('programs were successfully removed.'),extra_tags='edit')
+    
     else: 
         print("UPDATE")
         for key in request.POST.keys():
             if selected_prefix in key:
                 bc_id = request.POST.get(key)
                 bcqs = Broadcast.objects.filter(pk=bc_id)
+                check_counter+=1
                 if bcqs:
                     bc=bcqs[0]
                     bc.schedule_details = request.POST.get(schedule_field_prefix + str(bc_id)) 
                     bc.save()
-                    
+        
+        if check_counter==1:  
+            messages.success(request,str(check_counter) + ' ' + _('program was successfully updated.'),extra_tags='edit')      
+        elif check_counter > 1:
+            messages.success(request,str(check_counter) + ' ' + _('programs were successfully updated.'),extra_tags='edit')
+    
+    if check_counter == 0:
+        messages.error(request, _('No program was selected. Please, check the program lines in order to commit the changes.'),extra_tags='edit')                
+    
     return HttpResponseRedirect(reverse('rss_feed:manage_station', args=(station.id,)))
     
     
@@ -984,6 +1003,10 @@ def add_admin(request,**kwargs):
                 entity.stationadmin_set.create(user=new_admin,type=new_admin_type)
             else:
                 entity.programadmin_set.create(user=new_admin,type=new_admin_type)
+            
+            permission_dict = dict(EXISTING_ADMIN_TYPES)
+            messages.success(request, _('User') + ' ' + new_admin.username + ' ' + _('was successfully added as')+ ' ' + permission_dict[new_admin_type],
+                             extra_tags='add')
         
         else:
             print('ERROR')
@@ -1001,25 +1024,32 @@ def edit_admin(request,**kwargs):
     
     selected_prefix = 'check-'
     permission_field_prefix = 'permission-'
-
-    print(request.POST.keys())
+    check_counter = 0
 
     if 'adremove' in request.POST.keys():
         print("REMOVE")
         if kwargs['type'] == Station.class_str_id():
             for key in request.POST.keys():
                 if selected_prefix in key:
+                    check_counter += 1
                     StationAdmin.objects.filter(pk=request.POST.get(key)).delete()
         else:
             for key in request.POST.keys():
                 if selected_prefix in key:
+                    check_counter += 1
                     ProgramAdmin.objects.filter(pk=request.POST.get(key)).delete()
+        
+        if check_counter==1:  
+            messages.success(request,str(check_counter) + ' ' + _('admin was successfully removed.'),extra_tags='edit')      
+        elif check_counter > 1:
+            messages.success(request,str(check_counter) + ' ' + _('admin were successfully removed.'),extra_tags='edit')
                 
     else: 
         print("UPDATE")
         if kwargs['type'] == Station.class_str_id():
             for key in request.POST.keys():
                 if selected_prefix in key:
+                    check_counter += 1
                     adm_id = request.POST.get(key)
                     admqs = StationAdmin.objects.filter(pk=adm_id)
                     if admqs:
@@ -1029,13 +1059,22 @@ def edit_admin(request,**kwargs):
         else:
             for key in request.POST.keys():
                 if selected_prefix in key:
+                    check_counter += 1
                     adm_id = request.POST.get(key)
                     admqs = ProgramAdmin.objects.filter(pk=adm_id)
                     if admqs:
                         adm=admqs[0]
                         adm.type = request.POST.get(permission_field_prefix+ str(adm_id)) 
                         adm.save()
-                        
+        
+        if check_counter==1:  
+            messages.success(request,str(check_counter) + ' ' + _('admin was successfully updated.'),extra_tags='edit')      
+        elif check_counter > 1:
+            messages.success(request,str(check_counter) + ' ' + _('admin were successfully updated.'),extra_tags='edit')
+    
+    if check_counter == 0:
+        messages.error(request, _('No admin was selected. Please, check the admin lines in order to commit the changes.'),extra_tags='edit')                
+   
     return HttpResponseRedirect(reverse(next_view, args=(entity.pk,)))
     
 
