@@ -5,11 +5,13 @@
 <h3>{{ station.name }} {% trans "management dashboard" %} </h3>
 
 <div class="dashboard-sections">
+<p><a href="{% url 'rss_feed:edit_station' station.id %}">{% trans "Edit Profile" %}</a> </p>
 <p><a href="{% url 'rss_feed:manage_station' station.id%}">{% trans "Broadcast Management" %}</a></p>
 <p><div class="selected-section">{% trans "Administration" %}</div></p>
 <p><a href="{% url 'rss_feed:predelete_station' station.id%}">{% trans "Delete Station" %}</a></p>
 </div>
 
+<div class="dashboard-view">
 {% if is_owner %}
 	<div id="new-admin-section">	
 	<h3>Add new Administrator</h3>
@@ -98,7 +100,7 @@
 		{% endif %}
 	</div>
 {%else%}
-	<b>{% trans "Only" %} {{owner_permissions.1}} {% trans " level users can access this view. You may contact the following users if you need an upgrade:" %} </br>
+	<b>{% trans "Only" %} {{owner_permissions.1}} {% trans " level users can access this view. You may contact the following users if you need an upgrade:" %} </b>
  	<ul>
  	{%  for admin in admin_list %}
 		{% if admin.type == owner_permissions.0 %}
@@ -135,4 +137,5 @@
 
 <p></p>
 <p><a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Back" %}</a></p>
+</div>
 {% endblock %}

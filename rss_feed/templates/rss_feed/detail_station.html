@@ -104,12 +104,11 @@
 <p>
 {% if request.user.is_authenticated %}
 	{% if is_admin %}
-		<p>
-		<p><a href="{% url 'rss_feed:edit_station' station.id %}">{% trans "Edit" %}</a> </p>
-		<p><a href="{% url 'rss_feed:manage_station' station.id %}">{% trans "Manage" %}</a> </p>
+		
+		<p><a href="{% url 'rss_feed:edit_station' station.id %}">{% trans "Manage" %}</a> </p>
 		
 	{% endif %}
 {% endif %}
-  <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
+  <p><a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
 {% endblock %}
 

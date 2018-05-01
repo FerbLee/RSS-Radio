@@ -41,3 +41,19 @@ tbody {
 .highlight td {background: LightBlue;}
 
 
+.dashboard-sections {
+	/* background-color: #ff9e2c; */
+	position: absolute;
+	left: 0px;
+	width: 20%;
+	margin-left: 10px;
+}
+
+
+.dashboard-view {
+  /* background-color: #b6701e; */
+  position: absolute;
+  right: -25px;
+  width: 80%;
+}
+

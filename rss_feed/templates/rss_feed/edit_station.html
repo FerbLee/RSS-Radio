@@ -2,7 +2,17 @@
 {% load i18n %}
 {% block content %}
 
-<h3>{% trans "Edit" %} {{ station.name }} {% trans "data:" %}</h3>
+<h3>{{ station.name }} {% trans "management dashboard" %} </h3>
+
+<div class="dashboard-sections">
+<p><div class="selected-section">{% trans "Edit Profile" %}</a></div></p>
+<p><a href="{% url 'rss_feed:manage_station' station.id%}">{% trans "Broadcast Management" %}</a></p>
+<p><a href="{% url 'rss_feed:admin_station' station.id%}">{% trans "Administration" %}</a></p>
+<p><a href="{% url 'rss_feed:predelete_station' station.id%}">{% trans "Delete Station" %}</a></p>
+</div>
+
+<div class="dashboard-view">
+<h3>{% trans "Edit" %} {{ station.name }} {% trans "profile" %}</h3>
 
 {% if form_station %}
 	<form method="post" action='' enctype='multipart/form-data' >
@@ -68,7 +78,7 @@
   
 {% endif %}
 
-
+</div>
 <script type="text/javascript">
 	window.onload = function() {
 	

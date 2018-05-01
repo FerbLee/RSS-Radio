@@ -5,12 +5,13 @@
 <h3>{{ station.name }} {% trans "management dashboard" %} </h3>
 
 <div class="dashboard-sections">
+<p><a href="{% url 'rss_feed:edit_station' station.id %}">{% trans "Edit Profile" %}</a> </p>
 <p><div class="selected-section">{% trans "Broadcast management" %}</div></p>
 <p><a href="{% url 'rss_feed:admin_station' station.id%}">{% trans "Administration" %}</a></p>
 <p><a href="{% url 'rss_feed:predelete_station' station.id%}">{% trans "Delete Station" %}</a></p>
 </div>
 
-
+<div class="dashboard-view">
 <div id="bc-programs">
 	<h3>Add new program</h3>
 	<form method="post" class="form-inline" action="{% url 'rss_feed:add_broadcast' station.id %}">
@@ -77,6 +78,7 @@
 
 <p></p>
 <p><a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Back" %}</a></p>
+</div>
 {% endblock %}
 
 
