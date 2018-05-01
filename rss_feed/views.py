@@ -1076,7 +1076,72 @@ def edit_admin(request,**kwargs):
         messages.error(request, _('No admin was selected. Please, check the admin lines in order to commit the changes.'),extra_tags='edit')                
    
     return HttpResponseRedirect(reverse(next_view, args=(entity.pk,)))
+
+
+
+class DeleteStationPreview(generic.DetailView):
     
+    model = Station
+    template_name = 'rss_feed/predelete_station.html'
+    
+        
+    def get_queryset_admins(self):
+    
+        return self.object.stationadmin_set.order_by('user__username').prefetch_related('user')
+    
+        
+    def get_context_data(self, **kwargs):
+        
+        context = super(DeleteStationPreview, self).get_context_data(**kwargs)
+        context['admin_list'] = self.get_queryset_admins()
+        context['is_owner'] = self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0])
+        context['permissions_available'] = dict(EXISTING_ADMIN_TYPES)
+        context['owner_permissions'] = ADMT_OWNER
+        
+        return context
+    
+    
+    def get(self, request, **kwargs):
+        
+        if self.request.user.is_authenticated():
+        
+            self.object = self.get_object()
+        
+            if self.object.check_user_is_admin(self.request.user):
+                
+                context = self.get_context_data(object=self.object)
+                return self.render_to_response(context)  
+             
+        return HttpResponseForbidden()    
 
 
-
+@login_required
+def delete_station(request,**kwargs):
+    
+    station = Station.objects.filter(pk=kwargs['pk'])
+    view_display_name = 'delete_station'
+    
+    if station:
+        station = station[0]
+    else: 
+        print('Error in ' + view_display_name + ' view, unknown station pk ' + str(kwargs['pk']))
+        return HttpResponseNotFound()    
+    
+    if not station.check_user_is_admin(request.user,ADMT_OWNER[0]):
+        print('Error in ' + view_display_name + ' view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
+              ' has no permissions to edit')
+        return HttpResponseForbidden() 
+    
+    if request.method == 'POST':
+    
+        station.delete()
+        return HttpResponseRedirect(reverse('rss_feed:deleted', args=()))
+    
+   
+    
+def deleted_content(request,**kwargs):
+    
+    return render(request, 'rss_feed/deleted.html')
+    
+    
+    

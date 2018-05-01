@@ -7,7 +7,7 @@
 <div class="dashboard-sections">
 <p><a href="{% url 'rss_feed:manage_station' station.id%}">{% trans "Broadcast Management" %}</a></p>
 <p><div class="selected-section">{% trans "Administration" %}</div></p>
-<p><a href="{% url 'rss_feed:delete_station' station.id%}">{% trans "Delete Station" %}</a></p>
+<p><a href="{% url 'rss_feed:predelete_station' station.id%}">{% trans "Delete Station" %}</a></p>
 </div>
 
 {% if is_owner %}

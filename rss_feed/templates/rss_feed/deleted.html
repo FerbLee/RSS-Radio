@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h1>Your content was successfully deleted</h1>
+
+<a href="{% url 'rss_feed:index'%}"><b>{% trans "Accept" %}</b></a>
+
+{% endblock %}

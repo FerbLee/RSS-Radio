@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h3>{{ station.name }} {% trans "management dashboard" %} </h3>
+
+<div class="dashboard-sections">
+<p><a href="{% url 'rss_feed:manage_station' station.id%}">{% trans "Broadcast Management" %}</a></p>
+<p><a href="{% url 'rss_feed:admin_station' station.id%}">{% trans "Administration" %}</a></p>
+<p><div class="selected-section">{% trans "Delete Station" %}</div></p>
+</div>
+
+{% if is_owner %}
+	{% trans "You are about to delete the station"%} {{ station.name }}. {% trans "This action cannot be undone. Do you want to procceed anyway?" %}
+	<form method="post" class="form-inline" action="{% url 'rss_feed:delete_station' station.id%}" >
+		{% csrf_token %}
+	 	 <input type="submit" class="btn btn-default" value="{% blocktrans %}Accept{% endblocktrans %}">
+	 </form>
+{%else%}
+	<b>{% trans "Only" %} {{owner_permissions.1}} {% trans " level users can access this view. You may contact the following users if you need an upgrade:" %} </br>
+ 	<ul>
+ 	{%  for admin in admin_list %}
+		{% if admin.type == owner_permissions.0 %}
+			<a href="{% url 'rss_feed:detail_user' admin.user_id %}">
+		    <img src="{{ admin.user.userprofile.avatar.path.url }}" width='40'>{{ admin.user.username }}</a></p> 	
+		{% endif %}
+	{% endfor %}
+	</ul>
+{% endif %}
+
+
+{% endblock %}
