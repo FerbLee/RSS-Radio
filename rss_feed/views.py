@@ -607,7 +607,7 @@ def add_content(request):
             station.followers.add(request.user)
             station.save()
 
-            return HttpResponseRedirect(reverse('rss_feed:index', args=()))
+            return HttpResponseRedirect(reverse('rss_feed:detail_station', args=(station.id,)))
         
         elif form_rss.is_valid():
 
@@ -617,35 +617,49 @@ def add_content(request):
             known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
                              'radioco':rlp.ParserRadioco(link,owner)}
         
-            new_program_added = False
+            #new_program_added = False
+            new_program_added = None
         
             for key,strategy in known_parsers.items():
         
                 if key in link.lower():
                     new_program_added = strategy.parse_and_save() 
         
-            if not new_program_added:
-                
+            #if not new_program_added:
+            if new_program_added == None:  
+                  
                 print('Could not identify parser per link. Trying with all of them')
                 
                 for key,strategy in known_parsers.items():
                     
-                    if strategy.parse_and_save():
-                        new_program_added = True
+                    new_program_added = strategy.parse_and_save()
+                    if new_program_added != None:
                         break;
+                    
+                    #if strategy.parse_and_save():
+                    #    new_program_added = True
+                    #    break;
             
-            if not new_program_added:
+            #if not new_program_added:
+            if new_program_added == None:
                 print('ERROR IN PARSING. PROGRAM NOT ADDED')
-          
-            return HttpResponseRedirect(reverse('rss_feed:index', args=()))
-
+                return HttpResponseNotFound()
+            
+            # Save RSS non related atbs
+            new_program_added.website = form_rss.cleaned_data.get('website')
+            new_program_added.comment_options = form_rss.cleaned_data.get('comment_options')
+            new_program_added.sharing_options = form_rss.cleaned_data.get('sharing_options')
+            
+            new_program_added.save()
+            
+            return HttpResponseRedirect(reverse('rss_feed:detail_program', args=(new_program_added.id,)))
 
     else:
         
         form_station = AddStationForm(request.POST,prefix='form_station') 
         form_rss = AddProgramForm(request.POST,prefix='form_rss',initial={'sharing-options':SH_TF[0],'comment-options':CO_ENABLE[0]})
     
-    return render(request, 'rss_feed/add_content.html', {'form_station': form_station,'form_rss': form_rss})
+        return render(request, 'rss_feed/add_content.html', {'form_station': form_station,'form_rss': form_rss})
 
 
 

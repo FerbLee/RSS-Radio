@@ -197,7 +197,8 @@ class RSSLinkParser(object):
         
         except KeyError:
             
-            return False
+            #return False
+            return None
         
         # 4.Save program
         new_program.save()
@@ -226,8 +227,8 @@ class RSSLinkParser(object):
             except KeyError:
                 continue
             
-        return True
- 
+        #return True
+        return new_program
  
  
 class ParserIvoox(RSSLinkParser): 
