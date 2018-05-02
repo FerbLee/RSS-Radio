@@ -196,8 +196,7 @@ class RSSLinkParser(object):
             new_program.image = create_image(self.get_program_image_url_from_feed_dict(feed_dict))
         
         except KeyError:
-            
-            #return False
+
             return None
         
         # 4.Save program
@@ -227,7 +226,6 @@ class RSSLinkParser(object):
             except KeyError:
                 continue
             
-        #return True
         return new_program
  
  

@@ -617,7 +617,6 @@ def add_content(request):
             known_parsers = {'podomatic':rlp.ParserPodomatic(link,owner),'ivoox':rlp.ParserIvoox(link,owner),
                              'radioco':rlp.ParserRadioco(link,owner)}
         
-            #new_program_added = False
             new_program_added = None
         
             for key,strategy in known_parsers.items():
@@ -625,7 +624,6 @@ def add_content(request):
                 if key in link.lower():
                     new_program_added = strategy.parse_and_save() 
         
-            #if not new_program_added:
             if new_program_added == None:  
                   
                 print('Could not identify parser per link. Trying with all of them')
@@ -636,11 +634,6 @@ def add_content(request):
                     if new_program_added != None:
                         break;
                     
-                    #if strategy.parse_and_save():
-                    #    new_program_added = True
-                    #    break;
-            
-            #if not new_program_added:
             if new_program_added == None:
                 print('ERROR IN PARSING. PROGRAM NOT ADDED')
                 return HttpResponseNotFound()
@@ -746,13 +739,17 @@ def program_edit(request,**kwargs):
             
             program.rss_link = form.cleaned_data.get("rss_link")
             program.sharing_options = form.cleaned_data.get('sharing_options')
-            program.save()
+            program.website = form.cleaned_data.get('website')
+            program.comment_options = form.cleaned_data.get('comment_options')
+            program.save() 
             
             return HttpResponseRedirect(reverse('rss_feed:detail_program', args=(program.id,)))
             
     else:
         form= AddProgramForm(initial={'rss_link': program.rss_link,
-                                       'sharing_options': program.sharing_options})
+                                       'sharing_options': program.sharing_options,
+                                       'website':program.website,
+                                       'comment_options':program.comment_options})
 
 
     return render(request,'rss_feed/edit_program.html',{'program':program,'form': form})
