@@ -29,7 +29,7 @@ SH_TF = ('tf','share free')
 SH_AF = ('af','ask first')
 SH_NS = ('ns','no share')
 SHAREABLE_OPTIONS = [SH_TF,SH_AF]
-EXISTING_SHARING_OPTS = (SH_TF,SH_AF,('ns','no_share'))
+EXISTING_SHARING_OPTS = (SH_TF,SH_AF,SH_NS )
 
 LIKE_VOTE = ('lk','like')
 DISLIKE_VOTE = ('dl','dislike')

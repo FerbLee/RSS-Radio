@@ -28,7 +28,7 @@
 	</form>
 	
 	
-	<h3>{% trans "Programs currently broadcasted" %}</h3>
+	<h3>{% trans "Programs currently broadcasted:" %}</h3>
 	<form method="post" class="form-inline" action="{% url 'rss_feed:delete_broadcast' station.id %}">		
 			{% csrf_token %}
 			<div id="delete-menu">

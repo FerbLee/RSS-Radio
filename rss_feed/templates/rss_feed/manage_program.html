@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h3>{{ program.name }} {% trans "management dashboard" %} </h3>
+
+<div class="dashboard-sections">
+<p><a href="{% url 'rss_feed:edit_program' program.id %}">{% trans "Edit Profile" %}</a></p>
+<p><div class="selected-section">{% trans "Broadcast Management" %}</div></p>
+<p><a href="{% url 'rss_feed:admin_station' program.id%}">{% trans "Administration" %}</a></p>
+<p><a href="{% url 'rss_feed:predelete_station' program.id%}">{% trans "Delete Program" %}</a></p>
+</div>
+
+<div class="dashboard-view">
+<div id="bc-programs">
+	
+	<h3>{% trans "Broadcasting stations:" %}</h3>
+	<form method="post" class="form-inline" action="{% url 'rss_feed:program_delete_broadcast' program.id %}">		
+			{% csrf_token %}
+			<div id="delete-menu">
+			<table class="delete-menu-table">
+			<thead>
+			<tr><th>{% trans "Select" %}</th><th></th><th>{% trans "Station" %}</th><th>{% trans "Broadcast schedule" %}</th></tr>
+			</thead>
+    		<tbody>
+    		{% if broadcast_list %}
+	    		{%  for broadcast in broadcast_list %}
+					<tr>	
+						<td><input type="checkbox" id="cb-{{broadcast.id}}" value="{{broadcast.id}}" name="check-{{broadcast.id}}"></td>
+						<td><img src="{{ broadcast.station.logo.path.url }}" width='40'> </td>
+						<td>{{ broadcast.station.name }}</td> 
+						<td>{{broadcast.schedule_details }}</td> 
+					</tr>
+				{% endfor %}
+			{% endif %}
+			</tbody>
+		</table>
+		</div>
+		<p>Block actions</p> 
+		<input type="submit" name="bcremove" value="{% blocktrans %}Delete{% endblocktrans %}">
+		{% if messages %}
+			{% for message in messages%}
+		   		{% if 'success' in message.tags and 'edit' in message.extra_tags %} 
+		   			<div class="success-messages">{{ message }}</div>
+		   		{% elif 'error' in message.tags and 'edit' in message.extra_tags %} 
+		   			<div class="error-messages">{{ message }}</div>
+		   		{% endif %}
+		    {% endfor %}
+		{% endif %}
+	</form>
+</div>
+
+<script type="text/javascript">
+    
+    $(function(){
+        $("input[type='checkbox']").on('change', function() {
+            $(this).closest('tr').toggleClass("highlight", this.checked);
+        });
+    });
+
+</script>
+
+
+<p></p>
+<p><a href="{% url 'rss_feed:detail_program' program.id%}">{% trans "Back" %}</a></p>
+</div>
+{% endblock %}

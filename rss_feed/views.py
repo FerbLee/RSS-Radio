@@ -861,7 +861,7 @@ def delete_broadcast(request,**kwargs):
     if station:
         station = station[0]
     else: 
-        print('Error in delete_broadcast view, unknown station pk ' + str(kwargs['spk']))
+        print('Error in delete_broadcast view, unknown station pk ' + str(kwargs['pk']))
         return HttpResponseNotFound()
     
     if not station.check_user_is_admin(request.user):
@@ -1161,3 +1161,100 @@ def deleted_content(request,**kwargs):
     
     
     
+
+class ManageProgramView(generic.DetailView):
+    
+    model = Program
+    template_name = 'rss_feed/manage_program.html'
+    
+    
+    def get_queryset_broadcasts(self):
+        
+        return self.object.broadcast_set.order_by('station__name').prefetch_related('station')
+        
+    
+    def get_queryset_admins(self):
+    
+        return self.object.stationadmin_set.all().prefetch_related('user')
+
+    
+    def get_station_set(self):
+        
+        all_stations = Station.objects.all()
+        broadcasting_stations = self.object.station_set.all()
+        
+        return all_stations.difference(broadcasting_stations)
+    
+        
+    def get_context_data(self, **kwargs):
+        
+        context = super(ManageProgramView, self).get_context_data(**kwargs)
+        context['broadcast_list'] = self.get_queryset_broadcasts()
+        #context['admin_list'] = self.get_queryset_admins()
+        context['is_admin'] = self.object.check_user_is_admin(self.request.user)
+        
+        return context
+    
+    
+    def get(self, request, **kwargs):
+        
+        if self.request.user.is_authenticated():
+        
+            self.object = self.get_object()
+        
+            if self.object.check_user_is_admin(self.request.user):
+                
+                context = self.get_context_data(object=self.object)
+                return self.render_to_response(context)  
+             
+        return HttpResponseForbidden()    
+    
+
+@login_required
+def program_delete_broadcast(request,**kwargs): 
+    
+    program = Program.objects.filter(pk=kwargs['pk'])
+    view_display_name = 'program_delete_broadcast'
+    
+    if program:
+        program = program[0]
+    else: 
+        print('Error in ' + view_display_name + ' view, unknown station pk ' + str(kwargs['pk']))
+        return HttpResponseNotFound()
+    
+    if not program.check_user_is_admin(request.user):
+        print('Error in ' + view_display_name + ' view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
+              ' has no permissions to edit')
+        return HttpResponseForbidden()
+    
+    selected_prefix = 'check-'
+    check_counter = 0
+
+    for key in request.POST.keys():
+        
+        if selected_prefix in key:
+            check_counter+=1
+            Broadcast.objects.filter(pk=request.POST.get(key)).delete()
+        
+    if check_counter==1:  
+        messages.success(request,str(check_counter) + ' ' + _('station was successfully removed.'),extra_tags='edit')      
+    elif check_counter > 1:
+        messages.success(request,str(check_counter) + ' ' + _('stations were successfully removed.'),extra_tags='edit')
+    else:
+        messages.error(request, _('No program was selected. Please, check the program lines in order to commit the changes.'),
+                       extra_tags='edit')                
+    
+    return HttpResponseRedirect(reverse('rss_feed:manage_program', args=(program.id,)))
+
+
+
+
+
+
+
+
+
+
+
+
+

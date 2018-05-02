@@ -102,9 +102,9 @@
 
 {% if request.user.is_authenticated %}
 	{% if is_admin %}
-		<a href="{% url 'rss_feed:edit_program' program.id %}">{% trans "Edit" %}</a> 
+		<p><a href="{% url 'rss_feed:edit_program' program.id %}">{% trans "Manage" %}</a> </p>
 	{% endif %}
 {% endif %}
-  <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
+  <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a>
 {% endblock %}
 

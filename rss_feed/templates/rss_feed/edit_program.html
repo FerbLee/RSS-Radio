@@ -2,9 +2,17 @@
 {% load i18n %}
 {% block content %}
 
+<h3>{{ program.name }} {% trans "management dashboard" %} </h3>
 
-<h1> {% trans "Edit" %} </h1>
-<h3><img src="{{ program.image.path.url }}" width='100'> {% trans "Program:" %} {{ program.name }}</h3>
+<div class="dashboard-sections">
+<p><div class="selected-section">{% trans "Edit Profile" %}</div></p>
+<p><a href="{% url 'rss_feed:manage_program' program.id %}">{% trans "Broadcast Management" %}</a></p>
+<p><a href="{% url 'rss_feed:admin_station' program.id%}">{% trans "Administration" %}</a></p>
+<p><a href="{% url 'rss_feed:predelete_station' program.id%}">{% trans "Delete Program" %}</a></p>
+</div>
+
+<div class="dashboard-view">
+<h3>{% trans "Edit" %} {{ program.name }} {% trans "profile" %}</h3>
 
 {% if form %}
 	<form method="post" action='' enctype='multipart/form-data' >
@@ -19,5 +27,5 @@
 		<a href="{% url 'rss_feed:detail_program' program.id%}">   {% trans "Cancel" %}</a>
 	</form>
 {% endif %}
-
+</div>
 {% endblock %}

@@ -30,6 +30,9 @@
 }
 
 
+table {
+  border-collapse: separate;
+}
 
 tbody {
     width: 200%;
@@ -40,6 +43,14 @@ tbody {
 
 .highlight td {background: LightBlue;}
 
+
+td {
+  padding: 0px 10px;
+}
+
+th {
+  padding: 0px 10px;
+}
 
 .dashboard-sections {
 	/* background-color: #ff9e2c; */
