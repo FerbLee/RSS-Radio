@@ -18,7 +18,7 @@ from django.template import RequestContext
 from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
-    ADMT_ADMIN, StationAdmin, ProgramAdmin, CO_ENABLE, SH_TF
+    ADMT_ADMIN, StationAdmin, ProgramAdmin, CO_ENABLE, SH_TF, SH_AF
 from django.http.response import HttpResponseNotFound
 
 
@@ -208,6 +208,7 @@ class EpisodeDetailView(generic.edit.FormMixin,generic.DetailView):
         context['comment_sorted_set'] = self.get_comments_sorted()
         context['comment_form'] = CommentForm(initial={'episode': self.object,'user':self.request.user})
         context['user_is_admin'] = self.object.check_user_is_admin(self.request.user)
+        context['comments_allowed'] = self.object.check_comments_enabled()
         
         return context
 
@@ -837,8 +838,12 @@ def add_broadcast(request,**kwargs):
       
             program = form.cleaned_data.get('program')
             schedule = form.cleaned_data.get('schedule_details')
-            station.broadcast_set.create(program=program,schedule_details=schedule)
-            messages.success(request, _('Program') + ' ' + program.name + ' ' + _('was successfully added!'),extra_tags='add')
+            
+            if program.sharing_options == SH_AF[0]:
+                messages.success(request, _('Program') + ' ' + program.name + ' ' + _(' needs approval to be broadcasted. A request was sent.'),extra_tags='add')
+            elif program.sharing_options == SH_TF[0]:    
+                station.broadcast_set.create(program=program,schedule_details=schedule)
+                messages.success(request, _('Program') + ' ' + program.name + ' ' + _('was successfully added!'),extra_tags='add')
              
         else:
             print('ERROR')
@@ -1149,7 +1154,7 @@ def delete_station(request,**kwargs):
         return HttpResponseRedirect(reverse('rss_feed:deleted', args=()))
     
    
-    
+@login_required    
 def deleted_content(request,**kwargs):
     
     return render(request, 'rss_feed/deleted.html')

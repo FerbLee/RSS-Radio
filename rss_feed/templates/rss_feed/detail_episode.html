@@ -100,31 +100,38 @@
 		{% endfor %}
 	
 	{% else %}
-	
-		<p><b>{% trans "No comments yet" %}</b></b></p>
-	
+		
+		{% if comments_allowed %}
+			<p><b>{% trans "No comments yet" %}</b></b></p>
+		{% endif %}
 	{% endif %}
 	
 	{% if request.user.is_authenticated %}
-		
-		{% if comment_form %}
-			
-			<form method="post" action='' enctype='multipart/form-data' >
-				<p><b>{% trans "Leave a comment" %}</b></p>
-				{% csrf_token %}
+	
+		{% if comments_allowed %}
+	
+			{% if comment_form %}
 				
-				{% for field in comment_form %}
-		        	{{ field }}
-		        	{% if field.help_text %}
-		          		<small style="color: grey">{{ field.help_text }}</small>
-		        	{% endif %}
-	        		{% for error in field.errors %}
-	          			<p style="color: red">{{ error }}</p>
-	        		{% endfor %}
-				{% endfor %}
-				<button type="submit">{% trans "Publish" %}</button> 
-			</form>
+				<form method="post" action='' enctype='multipart/form-data' >
+					<p><b>{% trans "Leave a comment" %}</b></p>
+					{% csrf_token %}
+					
+					{% for field in comment_form %}
+			        	{{ field }}
+			        	{% if field.help_text %}
+			          		<small style="color: grey">{{ field.help_text }}</small>
+			        	{% endif %}
+		        		{% for error in field.errors %}
+		          			<p style="color: red">{{ error }}</p>
+		        		{% endfor %}
+					{% endfor %}
+					<button type="submit">{% trans "Publish" %}</button> 
+				</form>
+				
+			{% endif %}
 			
+		{% else %}
+			{% trans "Comments for this program have been disabled." %} 		
 		{% endif %}
 	
 	{% endif %}

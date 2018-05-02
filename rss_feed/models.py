@@ -25,8 +25,9 @@ CO_ENABLE = ('en','Enable')
 CO_DISABLE = ('di','Disable')
 EXISTING_COMMENT_OPTIONS = (CO_ENABLE,CO_DISABLE)
 
-SH_TF = ('tf','totally_free')
-SH_AF = ('af','ask_first')
+SH_TF = ('tf','share free')
+SH_AF = ('af','ask first')
+SH_NS = ('ns','no share')
 SHAREABLE_OPTIONS = [SH_TF,SH_AF]
 EXISTING_SHARING_OPTS = (SH_TF,SH_AF,('ns','no_share'))
 
@@ -257,7 +258,11 @@ class Episode(models.Model):
     def check_user_is_admin(self,user,adm_type=None):
         
         self.program.check_user_is_admin(user,adm_type)
+    
+    
+    def check_comments_enabled(self):
         
+        return self.program.comment_options == CO_ENABLE[0]
 
 
 class Vote(models.Model):
