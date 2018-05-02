@@ -18,7 +18,7 @@ from django.template import RequestContext
 from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
-    ADMT_ADMIN, StationAdmin, ProgramAdmin
+    ADMT_ADMIN, StationAdmin, ProgramAdmin, CO_ENABLE, SH_TF
 from django.http.response import HttpResponseNotFound
 
 
@@ -643,7 +643,7 @@ def add_content(request):
     else:
         
         form_station = AddStationForm(request.POST,prefix='form_station') 
-        form_rss = AddProgramForm(request.POST,prefix='form_rss')
+        form_rss = AddProgramForm(request.POST,prefix='form_rss',initial={'sharing-options':SH_TF[0],'comment-options':CO_ENABLE[0]})
     
     return render(request, 'rss_feed/add_content.html', {'form_station': form_station,'form_rss': form_rss})
 

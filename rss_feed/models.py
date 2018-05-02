@@ -21,6 +21,10 @@ ML_TYPE = 40
 ML_ORIGINAL_ID = 200
 ML_TAG = 50
 
+CO_ENABLE = ('en','Enable')
+CO_DISABLE = ('di','Disable')
+EXISTING_COMMENT_OPTIONS = (CO_ENABLE,CO_DISABLE)
+
 SH_TF = ('tf','totally_free')
 SH_AF = ('af','ask_first')
 SHAREABLE_OPTIONS = [SH_TF,SH_AF]
@@ -165,7 +169,6 @@ PROGRAM_ATB_FROM_RSS = ['name','author','description','original_site','author_em
 class Program(models.Model):
        
     name = TruncatingCharField(max_length=ML_NAME)
-    # Author (RSS link) ! = Owner (System user)
     author = TruncatingCharField(max_length=ML_AUTHOR ,null=True)
     author_email = models.EmailField(null=True)
     language = TruncatingCharField(max_length=10,null=True)
@@ -176,9 +179,10 @@ class Program(models.Model):
     rating = models.PositiveSmallIntegerField(default=50,validators=[MaxValueValidator(100), MinValueValidator(0)])
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
-    #owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    removed = models.BooleanField(default=False)
+    #removed = models.BooleanField(default=False)
     popularity = models.FloatField(default=0)
+    website = models.URLField(default=None,null=True)
+    comment_options = models.CharField(choices=EXISTING_COMMENT_OPTIONS ,max_length=2,default=CO_ENABLE[0])
     sharing_options = models.CharField(choices=EXISTING_SHARING_OPTS,max_length=2,default=SH_TF[0])
     subscribers = models.ManyToManyField(User,related_name='subscribers')
     admins = models.ManyToManyField(User,through='ProgramAdmin',related_name='program_admins')

@@ -10,6 +10,7 @@ from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
 from django.utils.translation import ugettext as _
 from .models import Station,Program,Broadcast,EXISTING_BCMETHODS,Comment,EXISTING_SHARING_OPTS,EXISTING_ADMIN_TYPES
+from rss_feed.models import EXISTING_COMMENT_OPTIONS
 
 
 class CountableWidget(forms.widgets.Textarea):
@@ -137,12 +138,14 @@ class IgnorePasswordEditForm(forms.ModelForm):
 class AddProgramForm(forms.ModelForm):
 
     rss_link = forms.URLField(label=_('RSS Link'))
-    station = forms.ChoiceField(label=_('Station'),choices = (('cc',_('Community Channel')),),required=False)
-    sharing_options = forms.ChoiceField(label=_('Sharing Mode'),choices=EXISTING_SHARING_OPTS)
+    #station = forms.ChoiceField(label=_('Station'),choices = (('cc',_('Community Channel')),),required=False)
+    sharing_options = forms.ChoiceField(label=_('Sharing mode'),choices=EXISTING_SHARING_OPTS,required=False)
+    comment_options = forms.ChoiceField(label=_('Enable episode comments'),choices=EXISTING_COMMENT_OPTIONS,required=False)
+    website = forms.URLField(label=_('Website'),required=False)
     
     class Meta:
         model = Program
-        fields = ('rss_link','station','sharing_options')
+        fields = ('rss_link','website','sharing_options','comment_options')
     
 
 class AddStationForm(forms.ModelForm):
