@@ -162,6 +162,7 @@ class UserProfile(models.Model):
     location = TruncatingCharField(max_length=100,null=True)
     avatar = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True, null=True)
 
+
     def delete(self):
         
         if not DEFAULT_IMAGES_DIR in self.avatar.path.path:
@@ -202,7 +203,6 @@ class Program(models.Model):
     rating = models.PositiveSmallIntegerField(default=50,validators=[MaxValueValidator(100), MinValueValidator(0)])
     original_site = models.URLField(null=True)
     image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
-    #removed = models.BooleanField(default=False)
     popularity = models.FloatField(default=0)
     website = models.URLField(default=None,null=True)
     comment_options = models.CharField(choices=EXISTING_COMMENT_OPTIONS ,max_length=2,default=CO_ENABLE[0])
@@ -227,6 +227,9 @@ class Program(models.Model):
         
         if not DEFAULT_IMAGES_DIR in self.image.path.path:
             self.image.delete()
+        
+        for tag in self.tag_set.all():
+            tag.decrease_times_used()
             
         return super(Program, self).delete()
     
@@ -249,8 +252,10 @@ class ProgramAdmin(models.Model):
     type = models.CharField(choices=EXISTING_ADMIN_TYPES,max_length=2)
     date =  models.DateTimeField(auto_now_add=True)
 
+
     def __str__(self):
         return 'Program:' + str(self.program) + '-User:' + str(self.user) + '-' + str(self.type)
+
 
 
 EPISODE_ATB_FROM_RSS = ['title','publication_date','summary','file','file_type','original_site']
@@ -294,6 +299,15 @@ class Episode(models.Model):
     def check_comments_enabled(self):
         
         return self.program.comment_options == CO_ENABLE[0]
+    
+    
+    def delete(self):
+                
+        for tag in self.tag_set.all():
+            tag.decrease_times_used()
+            
+        return super(Episode, self).delete()
+    
 
 
 class Vote(models.Model):
@@ -324,6 +338,19 @@ class Tag(models.Model):
         
         return str(self.name)
     
+    
+    def decrease_times_used(self,quantity=1):
+        
+        new_tu = self.times_used - quantity
+        
+        if new_tu < 0:
+            self.times_used = 0
+        else:
+            self.times_used = new_tu
+        
+        self.save()
+        
+        
     @classmethod
     def clean_name(cls,name):
     
