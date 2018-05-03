@@ -1361,11 +1361,21 @@ def delete_program(request,**kwargs):
         program.delete()
         return HttpResponseRedirect(reverse('rss_feed:deleted', args=()))
     
+    
+@login_required
+def search(request):
+
+    if request.method == 'POST':
+        return HttpResponseRedirect(reverse('rss_feed:search_results', args=()))
+    
 
 
+class SearchResultsView(generic.View):
+    
+    
+    def get(self, request, **kwargs):
 
-
-
+        return render(request, 'rss_feed/search_results.html')  
 
 
 

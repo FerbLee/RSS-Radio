@@ -11,21 +11,26 @@
 
 .common-header-container {
   display: grid;
-  grid-template-columns: [col1-start]60% [col2-start]auto [col3-start]auto;
+  grid-template-columns: [col1-start]20% [col2-start]30% [col3-start]auto [col4-start]auto;
 }
 
-.header-user{
+.header-return-index{
 	grid-column: col1-start;
  	padding: 20px;
 }
 
-.header-search{
+.header-user{
 	grid-column: col2-start;
  	padding: 20px;
 }
 
-.header-lan{
+.header-search{
 	grid-column: col3-start;
+ 	padding: 20px;
+}
+
+.header-lan{
+	grid-column: col4-start;
  	padding: 20px;
 }
 
