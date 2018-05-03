@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^manage_station/(?P<pk>[0-9]+)/$', views.ManageStationView.as_view(),name='manage_station'),
     url(r'^manage_program/(?P<pk>[0-9]+)/$', views.ManageProgramView.as_view(),name='manage_program'),
     url(r'^admin_station/(?P<pk>[0-9]+)/$', views.AdminStationView.as_view(),name='admin_station'),
+    url(r'^admin_program/(?P<pk>[0-9]+)/$', views.AdminProgramView.as_view(),name='admin_program'),
     url(r'^add_broadcast/(?P<pk>[0-9]+)/$', views.add_broadcast,name='add_broadcast'),
     url(r'^delete_broadcast2(?P<pk>[0-9]+)/', views.delete_broadcast,name='delete_broadcast'),
     url(r'^program_delete_broadcast(?P<pk>[0-9]+)/', views.program_delete_broadcast,name='program_delete_broadcast'),

@@ -961,6 +961,61 @@ class AdminStationView(generic.DetailView):
              
         return HttpResponseForbidden()    
     
+    
+    
+class AdminProgramView(generic.DetailView):
+    
+    model = Program
+    template_name = 'rss_feed/admin_program.html'
+    
+        
+    def get_queryset_admins(self):
+    
+        return self.object.programadmin_set.order_by('user__username').prefetch_related('user')
+
+    
+    def get_elegible_users(self):
+        
+        already_admins = self.object.admins.all()
+        
+        return User.objects.all().difference(already_admins).order_by('username')
+    
+        
+    def get_context_data(self, **kwargs):
+        
+        context = super(AdminProgramView, self).get_context_data(**kwargs)
+        context['admin_list'] = self.get_queryset_admins()
+        context['is_owner'] = self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0])
+        context['program_class_id'] = Program.class_str_id()
+        
+        kwargs = {'admin_qs':self.get_elegible_users()}
+        #Check if not owner
+        if not self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0]):
+            kwargs['choices_qs'] = (ADMT_ADMIN,)    
+        admin_form = AddAdminForm(**kwargs)
+        context['add_admin_form'] = admin_form
+        
+        context['permissions_available'] = dict(EXISTING_ADMIN_TYPES)
+        context['owner_permissions'] = ADMT_OWNER
+        
+         
+        return context
+    
+    
+    def get(self, request, **kwargs):
+        
+        if self.request.user.is_authenticated():
+        
+            self.object = self.get_object()
+        
+            if self.object.check_user_is_admin(self.request.user):
+                
+                context = self.get_context_data(object=self.object)
+                return self.render_to_response(context)  
+             
+        return HttpResponseForbidden()    
+    
+    
 
 def admin_validator(user,view_display_name,**kwargs):
 
