@@ -13,10 +13,11 @@
 
 <div class="dashboard-view">
 {% if is_owner %}
-	{% trans "You are about to delete the station"%} {{ station.name }}. {% trans "This action cannot be undone. Do you want to procceed anyway?" %}
+	{% trans "You are about to delete the station"%} {{ station.name }}. {% trans "This action cannot be undone. Do you want to proceed anyway?" %}
 	<form method="post" class="form-inline" action="{% url 'rss_feed:delete_station' station.id%}" >
 		{% csrf_token %}
 	 	 <input type="submit" class="btn btn-default" value="{% blocktrans %}Accept{% endblocktrans %}">
+	 	 <a href="{% url 'rss_feed:detail_station' station.id%}">{% trans "Cancel" %}</a>
 	 </form>
 {%else%}
 	<b>{% trans "Only" %} {{owner_permissions.1}} {% trans " level users can access this view. You may contact the following users if you need an upgrade:" %} </b>

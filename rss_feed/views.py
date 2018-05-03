@@ -938,7 +938,7 @@ class AdminStationView(generic.DetailView):
         #Check if not owner
         if not self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0]):
             kwargs['choices_qs'] = (ADMT_ADMIN,)    
-        admin_form = AddAdminForm(**kwargs)
+        admin_form = AddAdminForm(**kwargs,initial={'admin_type': ADMT_ADMIN[0]})
         context['add_admin_form'] = admin_form
         
         context['permissions_available'] = dict(EXISTING_ADMIN_TYPES)
@@ -992,7 +992,7 @@ class AdminProgramView(generic.DetailView):
         #Check if not owner
         if not self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0]):
             kwargs['choices_qs'] = (ADMT_ADMIN,)    
-        admin_form = AddAdminForm(**kwargs)
+        admin_form = AddAdminForm(**kwargs,initial={'admin_type': ADMT_ADMIN[0]})
         context['add_admin_form'] = admin_form
         
         context['permissions_available'] = dict(EXISTING_ADMIN_TYPES)
@@ -1303,7 +1303,64 @@ def program_delete_broadcast(request,**kwargs):
 
 
 
+class DeleteProgramPreview(generic.DetailView):
+    
+    model = Program
+    template_name = 'rss_feed/predelete_program.html'
+    
+        
+    def get_queryset_admins(self):
+    
+        return self.object.programadmin_set.order_by('user__username').prefetch_related('user')
+    
+        
+    def get_context_data(self, **kwargs):
+        
+        context = super(DeleteProgramPreview, self).get_context_data(**kwargs)
+        context['admin_list'] = self.get_queryset_admins()
+        context['is_owner'] = self.object.check_user_is_admin(self.request.user,ADMT_OWNER[0])
+        context['permissions_available'] = dict(EXISTING_ADMIN_TYPES)
+        context['owner_permissions'] = ADMT_OWNER
+        
+        return context
+    
+    
+    def get(self, request, **kwargs):
+        
+        if self.request.user.is_authenticated():
+        
+            self.object = self.get_object()
+        
+            if self.object.check_user_is_admin(self.request.user):
+                
+                context = self.get_context_data(object=self.object)
+                return self.render_to_response(context)  
+             
+        return HttpResponseForbidden()    
 
+
+@login_required
+def delete_program(request,**kwargs):
+    
+    program = Program.objects.filter(pk=kwargs['pk'])
+    view_display_name = 'delete_program'
+    
+    if program:
+        program = program[0]
+    else: 
+        print('Error in ' + view_display_name + ' view, unknown station pk ' + str(kwargs['pk']))
+        return HttpResponseNotFound()    
+    
+    if not program.check_user_is_admin(request.user,ADMT_OWNER[0]):
+        print('Error in ' + view_display_name + ' view, user ' + str(request.user.id) + '-' + str(request.user.username) + 
+              ' has no permissions to edit')
+        return HttpResponseForbidden() 
+    
+    if request.method == 'POST':
+    
+        #program.delete()
+        return HttpResponseRedirect(reverse('rss_feed:deleted', args=()))
+    
 
 
 
