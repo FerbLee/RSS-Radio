@@ -9,6 +9,7 @@ from django.contrib.auth.models import User, Group
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext as _
+from django.conf import settings
 
 default_time = datetime(1975,1,1,0,0,0,0,tzinfo=pytz.UTC)
 
@@ -84,9 +85,22 @@ class Image(models.Model):
     name = TruncatingCharField(max_length=ML_NAME,null=True)
     alt_text = TruncatingCharField(max_length=ML_NAME,default='Image')
     
+    
     def __str__(self):
         
         return str(self.path)
+    
+    
+    def delete(self):
+        
+        if not DEFAULT_IMAGES_DIR in self.path.path:
+            try:
+                os.remove(self.path.path)
+            except FileNotFoundError:
+                print('Image ' + self.path.path + ' not found for deletion. Removing DB entry anyway.')
+                
+        super(Image, self).delete() 
+    
     
     @classmethod
     def default_program_image_creation(cls):
@@ -138,7 +152,7 @@ class Image(models.Model):
         
         return program_def_img[0]
       
-      
+    
 
 # Extends Django user class
 class UserProfile(models.Model):
@@ -147,6 +161,14 @@ class UserProfile(models.Model):
     description = TruncatingCharField(max_length=ML_DESCRIPTION,null=True)
     location = TruncatingCharField(max_length=100,null=True)
     avatar = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True, null=True)
+
+    def delete(self):
+        
+        if not DEFAULT_IMAGES_DIR in self.avatar.path.path:
+            self.avatar.delete()
+            
+        return super(UserProfile, self).delete()
+
 
 
 @receiver(post_save, sender=User)
@@ -199,6 +221,15 @@ class Program(models.Model):
             return self.programadmin_set.filter(user_id=user.id)
         else:
             return self.programadmin_set.filter(user_id=user.id,type=adm_type)
+    
+    
+    def delete(self):
+        
+        if not DEFAULT_IMAGES_DIR in self.image.path.path:
+            self.image.delete()
+            
+        return super(Program, self).delete()
+    
     
     @classmethod
     def class_str_id(cls):
@@ -326,7 +357,19 @@ class Station(models.Model):
             return user.stations_admin.filter(station_id=self.id)
         else:
             return user.stations_admin.filter(station_id=self.id,type=adm_type)
+    
+    
+    def delete(self):
         
+        if not DEFAULT_IMAGES_DIR in self.logo.path.path:
+            self.logo.delete()
+        
+        if not DEFAULT_IMAGES_DIR in self.profile_img.path.path:
+            self.profile_img.delete()
+            
+        return super(Station, self).delete()
+    
+    
     @classmethod
     def class_str_id(cls):
         

@@ -1358,7 +1358,7 @@ def delete_program(request,**kwargs):
     
     if request.method == 'POST':
     
-        #program.delete()
+        program.delete()
         return HttpResponseRedirect(reverse('rss_feed:deleted', args=()))
     
 
