@@ -4,6 +4,19 @@
 
 <h2>Search results:</h2>
 
-
-
+<div  class="section-title" id="station-title"><b>{% trans "Found episodes:" %}</b></div>
+{% if episodes %}
+	<div class="grid-container">
+	{% for episode in episodes %}
+        <div class="grid-item" >
+        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
+        	<img src="{{ episode.image.path.url }}" width='100'>
+        	<p>{{ episode.title }}</p></a>
+        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
+        </div>
+	{% endfor %}
+	</div>
+{% else %}
+    <p>{% trans "No episodes" %}</p>
+{% endif %}
 {% endblock %}

@@ -44,15 +44,15 @@
 		</div>
 	
 		<div id="header-search">
-			<form class="form-inline" action="{% url 'rss_feed:search' %}" method="POST">
+			<form class="form-inline" action="{% url 'rss_feed:search_results' %}" method="post">
 				{% csrf_token %}
-				<input type="text" class="form-control" size="30" name="search"/>
+				{{search_form.text}}
 			   	<input type="submit" class="btn btn-default" value="{% blocktrans %}Search{% endblocktrans %}" >
 			</form>
 		</div>
 		
 		<div id="header-lan">
-			<form action="{% url 'set_language' %}" method="post">
+			<form class="form-inline" action="{% url 'set_language' %}" method="post">
 				{% csrf_token %}
 			    <input name="next" type="hidden" value="{{ redirect_to }}" />
 			    <select name="language">

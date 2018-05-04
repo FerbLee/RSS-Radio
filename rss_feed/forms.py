@@ -275,9 +275,13 @@ class AddAdminForm(forms.Form):
         self.fields['admin_type'] = forms.ChoiceField(label=_('Permissions'),choices = cqs)
     
     
-    #class Meta:
+
+class TextSearchForm(forms.Form):
+    
+    def __init__(self,*args, **kwargs):
+    
+        super(TextSearchForm, self).__init__(*args, **kwargs)
+        self.fields['text'] = forms.CharField(label=_('Search'),max_length=200)
         
-    #    model = Broadcast
-    #    fields = ('admin','admin_type')
-        
+
     

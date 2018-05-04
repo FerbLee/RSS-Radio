@@ -6,7 +6,8 @@ from .models import Episode, Program, Image, Station, Vote, Comment, Broadcast
 from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE,ADMT_OWNER,EXISTING_ADMIN_TYPES
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
-from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm,CommentForm,AddAdminForm
+from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm, \
+    CommentForm,AddAdminForm,TextSearchForm
 from django.utils import timezone
 from django.contrib.auth.models import User
 import os
@@ -20,7 +21,7 @@ from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
     ADMT_ADMIN, StationAdmin, ProgramAdmin, CO_ENABLE, SH_TF, SH_AF
 from django.http.response import HttpResponseNotFound
-
+from .search_view_functions import textbox_search_episode
 
 class IndexView(generic.ListView):
     
@@ -1360,22 +1361,44 @@ def delete_program(request,**kwargs):
     
         program.delete()
         return HttpResponseRedirect(reverse('rss_feed:deleted', args=()))
+
+
+def define_search_tool(request):
     
+    search_form = TextSearchForm()
     
-@login_required
+    return {
+        'search_form': search_form
+    }
+
+  
+    
 def search(request):
-
+    
     if request.method == 'POST':
-        return HttpResponseRedirect(reverse('rss_feed:search_results', args=()))
-    
+
+        form = TextSearchForm(request.POST)
+                
+        if form.is_valid():
+            
+            raw_string = form.cleaned_data.get('text')
+            
+            word_list = raw_string.split(' ')
+
+            episodes = textbox_search_episode(word_list)
+            
+            return render(request, 'rss_feed/search_results.html', {'episodes': episodes})    
+        
+        else:
+            print('ERROR')
+            print(form.errors)
+            return render(request, 'rss_feed/search_results.html', {'episodes': "ERROR"}) 
+        
+    return HttpResponseNotFound()   
+        
 
 
-class SearchResultsView(generic.View):
-    
-    
-    def get(self, request, **kwargs):
 
-        return render(request, 'rss_feed/search_results.html')  
 
 
 
