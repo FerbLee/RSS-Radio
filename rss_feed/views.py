@@ -21,7 +21,8 @@ from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
     ADMT_ADMIN, StationAdmin, ProgramAdmin, CO_ENABLE, SH_TF, SH_AF
 from django.http.response import HttpResponseNotFound
-from .search_view_functions import textbox_search_episode
+from .search_view_functions import textbox_search_episode, textbox_search_program, textbox_search_station, \
+    textbox_search_user
 
 class IndexView(generic.ListView):
     
@@ -1385,9 +1386,15 @@ def search(request):
             
             word_list = raw_string.split(' ')
 
-            episodes = textbox_search_episode(word_list)
+            episodes = textbox_search_episode(word_list)[0:8]
+            programs = textbox_search_program(word_list)[0:8]
+            stations = textbox_search_station(word_list)[0:8]
+            users = textbox_search_user(word_list)[0:8]
             
-            return render(request, 'rss_feed/search_results.html', {'episodes': episodes})    
+            return render(request, 'rss_feed/search_results.html', {'episodes': episodes,
+                                                                    'programs':programs,
+                                                                    'stations':stations,
+                                                                    'users':users})    
         
         else:
             print('ERROR')

@@ -4,7 +4,7 @@
 
 <h2>Search results:</h2>
 
-<div  class="section-title" id="station-title"><b>{% trans "Found episodes:" %}</b></div>
+<div  class="section-title"><b>{% trans "Found episodes:" %}</b></div>
 {% if episodes %}
 	<div class="grid-container">
 	{% for episode in episodes %}
@@ -19,4 +19,51 @@
 {% else %}
     <p>{% trans "No episodes" %}</p>
 {% endif %}
+
+<div  class="section-title" ><b>{% trans "Found programs:" %}</b></div>
+{% if programs %}
+	<div class="grid-container">
+	{% for program in programs %}
+        <div class="grid-item" >
+        	<a href="{% url 'rss_feed:detail_program' program.id %}">
+        	<img src="{{ program.image.path.url }}" width='100'>
+        	<p>{{ program.name }}</p></a>
+        </div>
+	{% endfor %}
+	</div>
+{% else %}
+    <p>{% trans "No programs" %}</p>
+{% endif %}
+
+<div  class="section-title" ><b>{% trans "Found stations:" %}</b></div>
+{% if stations %}
+	<div class="grid-container">
+	{% for station in stations %}
+        <div class="grid-item" >
+        	<a href="{% url 'rss_feed:detail_station' station.id %}">
+        	<img src="{{ station.logo.path.url }}" width='100'>
+        	<p>{{ station.name }}</p></a>
+        </div>
+	{% endfor %}
+	</div>
+{% else %}
+    <p>{% trans "No stations" %}</p>
+{% endif %}
+
+
+<div  class="section-title" ><b>{% trans "Found users:" %}</b></div>
+{% if users %}
+	<div class="grid-container">
+	{% for user in users %}
+        <div class="grid-item" >
+        	<a href="{% url 'rss_feed:detail_user' user.id %}">
+        	<img src="{{ user.userprofile.avatar.path.url }}" width='100'>
+        	<p>{{ user.username }}</p></a>
+        </div>
+	{% endfor %}
+	</div>
+{% else %}
+    <p>{% trans "No users" %}</p>
+{% endif %}
+
 {% endblock %}
