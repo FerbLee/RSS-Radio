@@ -16,6 +16,11 @@
         </div>
 	{% endfor %}
 	</div>
+	<span class="step-links">
+    {% if episodes.has_next %}
+        <a href="?epage={{ episodes.next_page_number }}">next</a>
+    {% endif %}
+    </span>
 {% else %}
     <p>{% trans "No episodes" %}</p>
 {% endif %}
@@ -31,6 +36,11 @@
         </div>
 	{% endfor %}
 	</div>
+	<span class="step-links">
+    {% if programs.has_next %}
+        <a href="?ppage={{ programs.next_page_number }}">next</a>
+    {% endif %}
+    </span>
 {% else %}
     <p>{% trans "No programs" %}</p>
 {% endif %}
@@ -46,6 +56,11 @@
         </div>
 	{% endfor %}
 	</div>
+	<span class="step-links">
+    {% if stations.has_next %}
+        <a href="?spage={{ stations.next_page_number }}">next</a>
+    {% endif %}
+    </span>
 {% else %}
     <p>{% trans "No stations" %}</p>
 {% endif %}
@@ -62,6 +77,11 @@
         </div>
 	{% endfor %}
 	</div>
+	<span class="step-links">
+    {% if users.has_next %}
+        <a href="?upage={{ users.next_page_number }}">next</a>
+    {% endif %}
+    </span>
 {% else %}
     <p>{% trans "No users" %}</p>
 {% endif %}

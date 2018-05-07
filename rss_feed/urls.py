@@ -46,7 +46,7 @@ urlpatterns = [
     url('^delete-comment/(?P<epk>[0-9]+)/(?P<cpk>[0-9]+)/$', views.delete_comment, name='delete_comment'),
     url('^deleted/', views.deleted_content, name='deleted'),
     url(r'^search_results/$', views.search,name='search_results'),
-    url(r'^search/$', views.search,name='search'),
+    #url(r'^search/$', views.search,name='search'),
     url(r'^unknown/$', page_not_found,  kwargs={'exception': Exception('Page not Found')},name='unknown'),]
 
 #urlpatterns +=  staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

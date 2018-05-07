@@ -23,6 +23,7 @@ from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
 from django.http.response import HttpResponseNotFound
 from .search_view_functions import textbox_search_episode, textbox_search_program, textbox_search_station, \
     textbox_search_user
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class IndexView(generic.ListView):
     
@@ -1376,30 +1377,27 @@ def define_search_tool(request):
     
 def search(request):
     
-    if request.method == 'POST':
+    if request.method == 'GET':
 
-        form = TextSearchForm(request.POST)
-                
+        form = TextSearchForm(request.GET)
+        epage = request.GET.get('epage')
+        ppage = request.GET.get('ppage')
+        spage = request.GET.get('spage')
+        upage = request.GET.get('upage')
+        
         if form.is_valid():
             
             raw_string = form.cleaned_data.get('text')
-            
             word_list = raw_string.split(' ')
-
-            episodes = textbox_search_episode(word_list)[0:8]
-            programs = textbox_search_program(word_list)[0:8]
-            stations = textbox_search_station(word_list)[0:8]
-            users = textbox_search_user(word_list)[0:8]
-            
-            return render(request, 'rss_feed/search_results.html', {'episodes': episodes,
-                                                                    'programs':programs,
-                                                                    'stations':stations,
-                                                                    'users':users})    
+            request.session['search_wordlist'] = word_list
         
         else:
-            print('ERROR')
-            print(form.errors)
-            return render(request, 'rss_feed/search_results.html', {'episodes': "ERROR"}) 
+            word_list = request.session['search_wordlist']
+            
+        return render(request, 'rss_feed/search_results.html', {'episodes': textbox_search_episode(word_list,epage),
+                                                                'programs':textbox_search_program(word_list,ppage),
+                                                                'stations':textbox_search_station(word_list,spage),
+                                                                'users':textbox_search_user(word_list,upage)})         
         
     return HttpResponseNotFound()   
         
