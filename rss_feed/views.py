@@ -1406,7 +1406,8 @@ def search(request):
                                                                 'programs':textbox_search_program(word_list,ppage,tag_search),
                                                                 'stations':textbox_search_station(word_list,spage),
                                                                 'users':textbox_search_user(word_list,upage),
-                                                                'all_tags':get_tag_cloud(40)})         
+                                                                'all_tags':get_tag_cloud(40),
+                                                                'keywords': ' '.join(word_list)})         
         
     return HttpResponseNotFound()   
         

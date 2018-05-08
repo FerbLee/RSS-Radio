@@ -36,7 +36,7 @@
 
 <p><b>{% trans "Categories:" %}</b> 
 	{% for category in program.tag_set.all %}
-		<a href="{% url 'rss_feed:unknown' %}"> {{ category }}</a> 
+		<a href="{% url 'rss_feed:search_results' %}?tag={{category.name}}"> {{ category }}</a> 
 	{% endfor %}
 </p>
 

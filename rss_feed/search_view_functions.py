@@ -51,7 +51,7 @@ def textbox_search_episode(word_list,page=1,search_tags=False):
         query_or = _aux_create_search_query(word_list)
         
         if search_tags:
-            vector = SearchVector('title','tag__name','summary')
+            vector = SearchVector(StringAgg('tag__name', delimiter=' '),'title','summary')
         else:
             vector = SearchVector('title','summary')
         
@@ -77,7 +77,7 @@ def textbox_search_program(word_list,page=1,search_tags=False):
         query_or = _aux_create_search_query(word_list)
         
         if search_tags:
-            vector = SearchVector('name',StringAgg('tag__name', delimiter=' '),'description')
+            vector = SearchVector(StringAgg('tag__name', delimiter=' '),'name','description')
         else:
             vector = SearchVector('name','description')
             
