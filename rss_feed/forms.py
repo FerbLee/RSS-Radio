@@ -282,6 +282,6 @@ class TextSearchForm(forms.Form):
     
         super(TextSearchForm, self).__init__(*args, **kwargs)
         self.fields['text'] = forms.CharField(label=_('Search'),max_length=200)
+           
         
-
-    
+        

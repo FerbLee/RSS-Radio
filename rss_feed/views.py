@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect, render_to_resp
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.urls import reverse
 from django.views import generic
-from .models import Episode, Program, Image, Station, Vote, Comment, Broadcast
+from .models import Episode, Program, Image, Station, Vote, Comment, Broadcast, Tag
 from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE,ADMT_OWNER,EXISTING_ADMIN_TYPES
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
@@ -22,8 +22,8 @@ from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
     ADMT_ADMIN, StationAdmin, ProgramAdmin, CO_ENABLE, SH_TF, SH_AF
 from django.http.response import HttpResponseNotFound
 from .search_view_functions import textbox_search_episode, textbox_search_program, textbox_search_station, \
-    textbox_search_user
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+    textbox_search_user,get_tag_cloud
+
 
 class IndexView(generic.ListView):
     
@@ -1384,6 +1384,8 @@ def search(request):
         ppage = request.GET.get('ppage')
         spage = request.GET.get('spage')
         upage = request.GET.get('upage')
+        tag = request.GET.get('tag')
+        tag_search = False
         
         if form.is_valid():
             
@@ -1392,12 +1394,19 @@ def search(request):
             request.session['search_wordlist'] = word_list
         
         else:
-            word_list = request.session['search_wordlist']
             
-        return render(request, 'rss_feed/search_results.html', {'episodes': textbox_search_episode(word_list,epage),
-                                                                'programs':textbox_search_program(word_list,ppage),
+            if tag :
+                word_list = [tag]
+                tag_search = True
+            else:
+                word_list = request.session['search_wordlist']
+                
+            
+        return render(request, 'rss_feed/search_results.html', {'episodes': textbox_search_episode(word_list,epage,tag_search),
+                                                                'programs':textbox_search_program(word_list,ppage,tag_search),
                                                                 'stations':textbox_search_station(word_list,spage),
-                                                                'users':textbox_search_user(word_list,upage)})         
+                                                                'users':textbox_search_user(word_list,upage),
+                                                                'all_tags':get_tag_cloud(40)})         
         
     return HttpResponseNotFound()   
         

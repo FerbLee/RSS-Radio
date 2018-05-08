@@ -22,7 +22,7 @@
 	<div class="common-header-container">
 		
 		<div id="header-return-index">
-			<h2><a href="{% url 'rss_feed:index' %}">RSS Radio</h2></a>
+			<h2><a class="header-link" href="{% url 'rss_feed:index' %}">RSS Radio</h2></a>
 		</div>
 		
 		
@@ -30,15 +30,15 @@
 			{% if request.user.is_authenticated %}
 			    
 			    <p>{% trans "Logged as" %}
-			    <a href="{% url 'rss_feed:detail_user' request.user.id%}"><b> {{ request.user.username }}</b></a>  
+			    <a class="header-link" href="{% url 'rss_feed:detail_user' request.user.id%}"><b> {{ request.user.username }}</b></a>  
 			    <img src="{{ request.user.userprofile.avatar.path.url }}" width='30'>
-			    <a href="{% url 'logout'%}"><b>{% trans "Log out" %}</b></a>.</p>
+			    <a class="header-link" href="{% url 'logout'%}"><b>{% trans "Log out" %}</b></a>.</p>
 			   
 				
 			{% else %}
 			    <p>
-			    	{% trans "Welcome, please" %} <a href="{% url 'login'%}"><strong> {% trans "log in" %} </strong>
-			    	</a> {% trans "or" %} <a href="{% url 'signup'%}"><strong>{% trans "sign up" %}</strong></a>.
+			    	{% trans "Welcome, please" %} <a class="header-link" href="{% url 'login'%}"><strong> {% trans "log in" %} </strong>
+			    	</a> {% trans "or" %} <a class="header-link" href="{% url 'signup'%}"><strong>{% trans "sign up" %}</strong></a>.
 			    </p>
 			{% endif %}
 		</div>
@@ -69,8 +69,6 @@
 			</form>
 		</div>
 	</div>	
-	
-	------------------------------------------
 	<div class="base-block-content">
 		{% block content %}
 		{% endblock %}

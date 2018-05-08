@@ -4,86 +4,97 @@
 
 <h2>Search results:</h2>
 
-<div  class="section-title"><b>{% trans "Found episodes:" %}</b></div>
-{% if episodes %}
-	<div class="grid-container">
-	{% for episode in episodes %}
-        <div class="grid-item" >
-        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
-        	<img src="{{ episode.image.path.url }}" width='100'>
-        	<p>{{ episode.title }}</p></a>
-        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
-        </div>
-	{% endfor %}
+<div class="index-container">
+	<div class="right-side-search">
+		<div class="tag-cloud">
+			{% for tag in all_tags %}
+				<a href="?tag={{tag.name}}" class="size-{{ tag.size }}">{{tag.name}}</a>
+			{% endfor %}
+		</div>
 	</div>
-	<span class="step-links">
-    {% if episodes.has_next %}
-        <a href="?epage={{ episodes.next_page_number }}">next</a>
-    {% endif %}
-    </span>
-{% else %}
-    <p>{% trans "No episodes" %}</p>
-{% endif %}
 
-<div  class="section-title" ><b>{% trans "Found programs:" %}</b></div>
-{% if programs %}
-	<div class="grid-container">
-	{% for program in programs %}
-        <div class="grid-item" >
-        	<a href="{% url 'rss_feed:detail_program' program.id %}">
-        	<img src="{{ program.image.path.url }}" width='100'>
-        	<p>{{ program.name }}</p></a>
-        </div>
-	{% endfor %}
-	</div>
-	<span class="step-links">
-    {% if programs.has_next %}
-        <a href="?ppage={{ programs.next_page_number }}">next</a>
-    {% endif %}
-    </span>
-{% else %}
-    <p>{% trans "No programs" %}</p>
-{% endif %}
-
-<div  class="section-title" ><b>{% trans "Found stations:" %}</b></div>
-{% if stations %}
-	<div class="grid-container">
-	{% for station in stations %}
-        <div class="grid-item" >
-        	<a href="{% url 'rss_feed:detail_station' station.id %}">
-        	<img src="{{ station.logo.path.url }}" width='100'>
-        	<p>{{ station.name }}</p></a>
-        </div>
-	{% endfor %}
-	</div>
-	<span class="step-links">
-    {% if stations.has_next %}
-        <a href="?spage={{ stations.next_page_number }}">next</a>
-    {% endif %}
-    </span>
-{% else %}
-    <p>{% trans "No stations" %}</p>
-{% endif %}
-
-
-<div  class="section-title" ><b>{% trans "Found users:" %}</b></div>
-{% if users %}
-	<div class="grid-container">
-	{% for user in users %}
-        <div class="grid-item" >
-        	<a href="{% url 'rss_feed:detail_user' user.id %}">
-        	<img src="{{ user.userprofile.avatar.path.url }}" width='100'>
-        	<p>{{ user.username }}</p></a>
-        </div>
-	{% endfor %}
-	</div>
-	<span class="step-links">
-    {% if users.has_next %}
-        <a href="?upage={{ users.next_page_number }}">next</a>
-    {% endif %}
-    </span>
-{% else %}
-    <p>{% trans "No users" %}</p>
-{% endif %}
-
+	<div class="left-side-search">
+	<div  class="section-title"><b>{% trans "Found episodes:" %}</b></div>
+	{% if episodes %}
+		<div class="grid-container">
+		{% for episode in episodes %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
+	        	<img src="{{ episode.image.path.url }}" width='100'>
+	        	<p>{{ episode.title }}</p></a>
+	        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
+	        </div>
+		{% endfor %}
+		</div>
+		<span class="step-links">
+	    {% if episodes.has_next %}
+	        <a href="?epage={{ episodes.next_page_number }}">next</a>
+	    {% endif %}
+	    </span>
+	{% else %}
+	    <p>{% trans "No episodes" %}</p>
+	{% endif %}
+	
+	<div  class="section-title" ><b>{% trans "Found programs:" %}</b></div>
+	{% if programs %}
+		<div class="grid-container">
+		{% for program in programs %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_program' program.id %}">
+	        	<img src="{{ program.image.path.url }}" width='100'>
+	        	<p>{{ program.name }}</p></a>
+	        </div>
+		{% endfor %}
+		</div>
+		<span class="step-links">
+	    {% if programs.has_next %}
+	        <a href="?ppage={{ programs.next_page_number }}">next</a>
+	    {% endif %}
+	    </span>
+	{% else %}
+	    <p>{% trans "No programs" %}</p>
+	{% endif %}
+	
+	<div  class="section-title" ><b>{% trans "Found stations:" %}</b></div>
+	{% if stations %}
+		<div class="grid-container">
+		{% for station in stations %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_station' station.id %}">
+	        	<img src="{{ station.logo.path.url }}" width='100'>
+	        	<p>{{ station.name }}</p></a>
+	        </div>
+		{% endfor %}
+		</div>
+		<span class="step-links">
+	    {% if stations.has_next %}
+	        <a href="?spage={{ stations.next_page_number }}">next</a>
+	    {% endif %}
+	    </span>
+	{% else %}
+	    <p>{% trans "No stations" %}</p>
+	{% endif %}
+	
+	
+	<div  class="section-title" ><b>{% trans "Found users:" %}</b></div>
+	{% if users %}
+		<div class="grid-container">
+		{% for user in users %}
+	        <div class="grid-item" >
+	        	<a href="{% url 'rss_feed:detail_user' user.id %}">
+	        	<img src="{{ user.userprofile.avatar.path.url }}" width='100'>
+	        	<p>{{ user.username }}</p></a>
+	        </div>
+		{% endfor %}
+		</div>
+		<span class="step-links">
+	    {% if users.has_next %}
+	        <a href="?upage={{ users.next_page_number }}">next</a>
+	    {% endif %}
+	    </span>
+	{% else %}
+	    <p>{% trans "No users" %}</p>
+	{% endif %}
+</div>
+</div>
 {% endblock %}

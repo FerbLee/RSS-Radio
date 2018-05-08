@@ -35,4 +35,19 @@
   width: 25%;
 }
 
+.left-side-search{
+	/* background-color: #ff9e2c; */
+	position: absolute;
+	left: 0px;
+	width: 70%;
+	margin-left: 10px;
+}
+
+.right-side-search {
+  /* background-color: #b6701e; */
+  position: absolute;
+  right: 0px;
+  width: 25%;
+  margin-right: 20px;
+}
 
