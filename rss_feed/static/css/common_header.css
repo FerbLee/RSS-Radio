@@ -10,7 +10,7 @@
 }
 
 .common-header-container {
-  background-color: Green;
+  background-color: #428bca;
   display: grid;
   grid-template-columns: [col1-start]20% [col2-start]30% [col3-start]auto [col4-start]auto;
 }
