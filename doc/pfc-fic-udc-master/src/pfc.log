@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.5.8)  8 MAY 2018 20:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.5.8)  8 MAY 2018 20:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1067,6 +1067,11 @@ Package babel Info: Redefining spanish shorthand "?
 \openout2 = `pfc_nota.aux'.
 
  (./pfc_nota.tex
+Underfull \hbox (badness 1783) in paragraph at lines 14--15
+[]\OT1/cmr/bx/n/12 Online ser-vice for pub-lish-ing ra-dio broad-cast-ing
+ []
+
+
 Underfull \hbox (badness 1484) in paragraph at lines 26--26
 []\OT1/cmr/bx/n/12 Fecha de
  []
@@ -2298,7 +2303,7 @@ Package babel Info: Redefining spanish shorthand "?
  <./images/photoplace.png>]
 No file pfc.gls.
 No file pfc.acr.
-No file pfc.bbl.
+(./pfc.bbl)
 LaTeX Info: Redefining \. on input line 110.
 LaTeX Info: Redefining \% on input line 110.
 Package babel Info: Redefining spanish shorthand <<
@@ -2325,7 +2330,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 110.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 110.
-[16
+ [16
 
 ]
 \openout2 = `pfc_licencia.aux'.
@@ -2418,9 +2423,9 @@ Package rerunfilecheck Info: File `pfc.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
  ) 
 Here is how much of TeX's memory you used:
- 19173 strings out of 494946
- 284301 string characters out of 6180982
- 471288 words of memory out of 5000000
+ 19175 strings out of 494946
+ 284317 string characters out of 6180982
+ 471441 words of memory out of 5000000
  21725 multiletter control sequences out of 15000+600000
  13845 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -2456,7 +2461,7 @@ cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on pfc.pdf (36 pages, 280634 bytes).
+Output written on pfc.pdf (36 pages, 281931 bytes).
 PDF statistics:
  328 PDF objects out of 1000 (max. 8388607)
  270 compressed objects within 3 object streams
