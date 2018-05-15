@@ -1,25 +1,97 @@
-\chapter[Tecnología]{
+\chapter[Tecnoloxías Utilizadas]{
   \label{chp:tecnologia}
-  Tecnología
+  Tecnoloxía
 }
 \minitoc
 \newpage
 
-La base tecnológica es el grupo de tecnologías sobre las que se apoya el
-software y su desarrollo. Constituyen una parte importante en el análisis
-del proyecto, puesto que, de su elección dependen otros factores tales como:
-curva de aprendizaje y facilidad de uso, soporte y evolución futura,
-documentación y comunidad, etc.
+Este capítulo contempla a base tecnolóxica utilizada na última versión do proxecto até a data
+de entrega desta memoria. Os conceptos listados nesta sección están suxeitos a posibles cambios
+por mor dos futuros traballos de actualización e despregue nun entorno de produción que se pretenden
+efectuar. 
 
-Este capítulo se centra en la última versión, a fecha de entrega de esta memoria,
-del programa. Es probable que algunas módulos aquí expuestos sean sustituidos
-por otros en futuras \glspl{iteracion} siguiendo el ciclo de vida del software.
+Á hora de elixir o uso destas ferramentas valorouse a súa natureza open source xa que se pretende que o
+resultado dispoña dunha licencia de software libre compatible coa definición da Free Software
+Foundation. 
+
+Tamén se valoraron, dado que nos capítulos anteriores insistiuse na importancia dos dispositivos móviles
+no consumo da radio a través de Internet, as posibilidades de ditas ferramentas de ofrecer un bo resultado
+en distintos dispositivos e distintas plataformas software. 
 
 
-\section{Base Tecnológica}
+\section{Linguaxes}
 
-A continuación se describen las tecnologías más importantes sobre las que
-se ha desarrollado el programa \textbf{\software}. El nexo común entre todas las 
-tecnologías expuestas es su capacidad multiplataforma y formar parte del ecosistema del
-software libre.
+\subsection{Python}
+
+Python é unha linguaxe de propósito xeral de alto nivel. Trátase dunha linguaxe interpretada polo que é necesario 
+ter un intérprete para executar o código. Ao ser o intérprete unha capa intermedia de software entre o programa
+e o sistema, Python é unha linguaxe fácilmente portable entre dispositivos de distinta natureza.
+
+A súa sintaxe baseada na indentación está pensada para favorecer a comprensión entre distintos desenvolvedores e 
+facilitar o mantemento do código. 
+
+O seu sistema de tipado implícito e a súa riqueza de bibliotecas para executar comandos de consola de xeito programático
+fan que sexa moitas veces descrito coma \say{unha linguaxe de scripting orientada a obxectos}\cite{python1}, o cal serve coma 
+mostra da súa flexibilidade, un dos motivos polo que foi elixida para este proxecto.
+
+\subsubsection{Anaconda}
+
+Anaconda é unha distribución de Python normalmente utilizada para fins estatísticos e de análise de datos. Inclúe tamé  
+
+
+
+
+\section{Django Framework}
+
+O proxecto Django nace no ano 2005 coma un conxunto de ferramentas Python para o desenvolmento web publicadas
+baixo licencia BSD. A motivación dos seus creadores, Simon Wilson e Adrian Holovaty, naquel tempo programadores
+nun medio periodístico, era a homoxeneización e a reutilización de código. Isto daba resposta á necesidade de reducir
+o alto custo que supón manter código ad-hoc para cada novo artigo ou función, especialmente nunha páxina que
+requira unha constante actualización de contidos coma a dun diario online. É por iso que se adoita utilizar o 
+termo \say{newsroom schedule} cando se fala da rapidez de desenvolvemento que permite o framework\cite{django1}.  
+
+Django ofrece un conxunto de bibliotecas que dan soporte ás mecánicas máis comúns do desenvolvemento
+web:
+
+\begin{itemize}
+	
+	\item Persistencia: Django permite crear a estrutura da base de datos sen necesidade de escribir SQL. Isto 
+	conséguese mediante a superclase Model da librería \say{db} de Django. Ao declarar unha clase de Python coma
+	extensión de \say{Model}, a biblioteca ocúpase automáticamente de manter a coherencia entre as súas instancias en 
+	memoria e as táboas da base de datos. 
+	
+	\item Peticións web: A lectura e a interpretación destas peticións son levadas a cabo polo conxunto de bibliotecas
+	de HTTP do framework, encapsulando as peticións e as respostas en obxectos para formar un estándar sinxelo e garantir
+	a correcta formación das mesmas.
+	
+	\item Enrutamento e Validación: O framework ofrece un estándar para asignar as distintas vistas definidas no código
+	ás URL's desexadas. Os posibles formularios presentes nesas vistas poden ser abstraídos en obxectos de Python 
+	simplificando a validación dos datos introducidos polos usuarios. A utilización destes sistemas é non obstante, 
+	opcional, puidendo o programador optar por utilizar sinxelos formularios HTML no caso de que isto axilizase 
+	o desenvolvemento.
+	
+	\item Sistema para embeber datos dinámicos no HTML: O chamado \say{template system} de Django marca uns procedementos
+	sinxelos para acceder aos datos xenerados no código. Tamén ofrece ferramentas para implementar certa lóxica
+	presentacional.
+	
+	\item Interface de administración nativa: Por defecto, este framework dispón dun panel de administración de acceso
+	reservado aos superusuarios que evita os accesos directos á base de datos no caso de que un administrador necesite
+	facer cambios manuais nos datos.
+	
+	\item Soporte por defecto para a autenticación e autorización: Django permite ao desenvolvedor invocar a clase 
+	nativa Usuario e efectuar con ela accións de rexistro, autenticación e concesión/revocación de permisos sen máis
+	programación. Se ben, como se explica máis adiante, neste proxecto extendeuse esa clase Usuario e creouse unha
+	xerarquía de permisos propia.
+
+\end{itemize}   
+
+
+Para este proxecto utilizouse concretamente Django 1.11, a versión estable máis avanzada no tempo en que se comezou o 
+traballo. Django sufriu unha actualización importante desde entón que rematou coa publicación de Django 2.0 en Decembro do pasado ano 2017. Estas dúas versións non son totalmente compatibles de modo que un upgrade implicaría cambios no 
+código. Porén, a Django Software Foundation, responsable do mantemento do framework, non prevee retirar o soporte á
+versión utilizada nun futuro próximo e a versión de Python utilizada sí é soportada por Django 2\cite{django2}. De modo que 
+se considerou suficiente a actualidade desta versión.    
+
+Ademáis do mencionado anteriormente, confiouse en Django para este proxecto coma un framework veterán utilizado en sitios
+populares coma Instagram, Disqus, Pinterest ou Open Knowledge Foundation.
 
