@@ -36,9 +36,37 @@ mostra da súa flexibilidade, un dos motivos polo que foi elixida para este prox
 
 \subsubsection{Anaconda}
 
-Anaconda é unha distribución de Python normalmente utilizada para fins estatísticos e de análise de datos. Inclúe tamé  
+Anaconda é unha distribución de Python, libre e de código aberto (licenza BSD), utilizada normalmente para análise estatística e machine learning. Inclúe, ademáis dunha completa instalación do intérprete de Python, un rico conxunto de librarías de uso común e o xestor de paquetes conda, sendo esas dúas últimas melloras o motivo primordial polo que foi a elección para este proxecto. Conda utiliza os paquetes da comunidade de Conda Forge \cite{anaconda1}
+
+Anaconda é responsabilidade de Anaconda Incorporated, antigo Continuum Analytics.
+
+A versión utilizada foi a Anaconda 4.4.0 de 64 bits para Python 3, a máis nova no momento de comezar o traballo. Inclúe o intérprete para Python versión 3.6.1.
 
 
+\subsection{HTML}
+
+HTML (acrónimo de HyperText Marckup Language) é a linguaxe estándar para a creación da estrutura das páxinas web. Os 
+elementos presentes na web declaranse mediante bloques representados por etiquetas(tags), de ahí que reciba o nome de
+\say{marckup language} (linguaxe de marcado). Estas etiquetas son interpretadas polos navegadores para renderizar o 
+contido da páxina\cite{html1}. Ao ser un estándar tan lonxevo, consolidado e popular, non se consideraron alternativas 
+para este proxecto.
+
+Dado á natureza multimedia da web realizada, utilizouse HTML5. Esta quinta revisión do estándar inclúe novas etiquetas 
+para o tratamento das imaxes e dos contidos de audio e vídeo sen necesidade de utilizar outras tecnoloxías complementarias, 
+simplificando así o desenvolvemento e o mantemento posterior do portal. Desde decembro do pasado ano 2017, a versión 5.2 é a última estable recomendada polo World Wide Web Consortium(W3C)\cite{html_w3c}.
+
+
+\subsection{CSS}
+
+CSS (Acrónimo de Cascading Style Sheets) ou \say{Follas de estilo} é unha linguaxe empregada para definir a estética dos elementos definidos anteriormente no código HTML: A súa cor, fonte, posición... Ao separar o estilo da estrutura, favorécese a reutilización de código xa que un mesmo ficheiro de CSS pode ser utilizado en diversas páxinas ao mesmo tempo. CSS permite tamén adaptar o contido das páxinas a dispositivos de distinto tamaño\cite{css_w3c}.
+
+\subsubsection{CSS Grid}
+
+O módulo de \say{Grid} úsase para definir un deseño de interface gráfica consistente nunha cuadrícula de dúas dimensións en CSS. Nun modelo deste tipo, declárase un conxunto de elementos no HTML coma pertencentes a un \say{grid container}(contedor da grella ou da cuadrícula) e, á súa vez, zonas fillas que se posicionarán dentro dese contedor dependendo das características coas que este último fose definido na folla de estilos.
+
+Unha cela nun contedor pode, á súa vez, consistir noutro contedor, permitindo así deseños asimétricos. O tamaño das celas pode ser fixo, relativo á páxina ou automático dependendo do contido da cela. Por todo o dito, este módulo proporciona un nivel de flexibilidade superior ao que poderíamos obter utilizando outras alternativas populares coma CSS Flexbox. 
+
+O nivel primeiro de CSS Grid non acadou aínda, na data de entrega desta memoria, o status de \say{recomendación} da  World Wide Web Consortium(W3C)\cite{css_grid_w3c}, porén, xa é soportado polas últimas versións dos navegadores máis populares\cite{css_grid_w3c2} polo que non se considerou un risco utilizalo neste proxecto.
 
 
 \section{Django Framework}
