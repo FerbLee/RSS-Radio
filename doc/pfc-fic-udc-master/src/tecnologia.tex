@@ -45,15 +45,25 @@ A versión utilizada foi a Anaconda 4.4.0 de 64 bits para Python 3, a máis nova
 
 \subsection{HTML}
 
-HTML (acrónimo de HyperText Marckup Language) é a linguaxe estándar para a creación da estrutura das páxinas web. Os 
-elementos presentes na web declaranse mediante bloques representados por etiquetas(tags), de ahí que reciba o nome de
-\say{marckup language} (linguaxe de marcado). Estas etiquetas son interpretadas polos navegadores para renderizar o 
-contido da páxina\cite{html1}. Ao ser un estándar tan lonxevo, consolidado e popular, non se consideraron alternativas 
-para este proxecto.
+HTML (acrónimo de HyperText Markup Language) é a linguaxe estándar para a creación da estrutura das páxinas web. Os 
+elementos presentes decláranse mediante bloques representados por etiquetas(tags), de ahí que reciba o nome de
+\say{markup language} (linguaxe de marcado). Estas etiquetas son interpretadas polos navegadores para renderizar os 
+contidos\cite{html1}. 
+
+A estrutura declarada no código HTML pode ser representada pola interface de DOM (Document Object Model). O DOM é unha árbore creada polo navegador ao cargar a páxina e é moi útil para acceder aos elementos da páxina de xeito programático, como veremos máis adiante.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7,keepaspectratio=true]{./images/DOM.png}
+	\caption{Exemplo de árbore HTML DOM\protect\cite{dom}}
+	\label{fig:img_DOM}
+\end{figure}
 
 Dado á natureza multimedia da web realizada, utilizouse HTML5. Esta quinta revisión do estándar inclúe novas etiquetas 
 para o tratamento das imaxes e dos contidos de audio e vídeo sen necesidade de utilizar outras tecnoloxías complementarias, 
 simplificando así o desenvolvemento e o mantemento posterior do portal. Desde decembro do pasado ano 2017, a versión 5.2 é a última estable recomendada polo World Wide Web Consortium(W3C)\cite{html_w3c}.
+
+Ao ser o uso de HTML un estándar tan lonxevo, consolidado e popular, non se consideraron alternativas para este proxecto.
 
 
 \subsection{CSS}
@@ -77,6 +87,17 @@ A pesares do seu nome, non garda relación algunha coa linguxe Java e serven a p
 Como se comentou no apartado \ref{python}, que sexa interpretada implica a necesidade dun intérprete para executar o código. Ese intérprete, comunmente chamado JavaScript Engine preséntase embebido nos navegadores web. Non obstante, non éxiste unha única implementación senón que distintos navegadores presentan distintas versións. Para o desenvolvemento deste proxecto utilizáronse os navegadores Mozilla Firefox 57.0.1 e Google Chrome 66.0, cuxos motores de JavaScript son SpiderMonkey e V8 respectivamente\cite{javascript1}, ambos os dous libres e de código aberto.
 
 Pese a que o seu uso nos navegadores continúa a ser a principal razón de ser desta linguaxe, tamén se utiliza a día de hoxe noutro tipo de produtos coma Node.js(para correr JavaScript no lado do servidor) ou Apache Couch DB (Para o manexo de bases de datos na nube)\cite{javascript2} 
+
+Ademáis do código en JavaScript puro, este proxecto tamén fai uso nalgunhas partes do código de funcións de jQuery.
+
+\subsubsection{jQuery}
+
+JQuery é unha biblioteca de JavaScript creada co fin de simplificar o \say{scripting} no lado do cliente. Trátase dunha ferramenta libre, publicada baixo licenza MIT e é mantida pola comunidade jQuery Team. No 2015, xa era empregada polo 63\% do Top Million Websites\cite{jquery}, incluindo sitios populares coma Netflix, Amazon ou Microsoft. O seu uso segue a ser moi xeralizado a día de hoxe.  
+
+Cunha API funcional e válida en gran parte dos navegadores web, evita moitos dos problemas de incompatibilidade que aparacen ao utilizar JavaScript puro e o código resultante adoita ser moito máis conciso, mellorando a súa comprensibilidade e o seu mantemento. Isto débese en grande medida pola súa expresión \say{selector} que facilita o acceso aos distintos elementos da árbore do HTML DOM (ver figura \ref{fig:img_DOM}). 
+
+A versión de jQuery utilizada foi a 2.1.4 por ser a máis actual incluida na biblioteca django-static-jquery-2.1.4\cite{dj-jquery} do framework utilizado (ver sección \ref{django}) ao comezo do desenvolvemento.
+
 
 
 \subsection{SQL}
@@ -157,3 +178,31 @@ código. Tendo en conta que a Django Software Foundation, responsable do manteme
 
 Ademáis do mencionado anteriormente, confiouse en Django para este proxecto pola súa madurez e pola súa popularidade, sendo  utilizado en sitios coma Instagram, Disqus, Pinterest ou Open Knowledge Foundation.
 
+\section{Bootstrap}
+
+\section{Software Empregado}
+
+\subsection{Apache HTTP server}
+
+\subsection{PostgreSQL}
+
+PostgreSQL é un sistema de xestión de bases de datos (SXBD) relacionais libre e de código aberto (Licenza PostgreSQL, permisiva) desenvolvido polo PostgreSQL Global Development Group. A linguaxe SQL soportada pretende ser o máis fiel posible ao estándar e as súas operacións cumpren coas regras ACID (Acrónimo inglés para Atomicidade, Consistencia, Aillamento e Durabilidade)\cite{postgres1}. A súa orixe remóntase a 1996, polo que existe unha grande dispoñibilidade de recursos de documentación. Ese feito unido á certa experiencia persoal no seu uso xa antes de comezar o proxecto foron valorados á hora de elixir este sistema.
+
+A versión utilizada é a 9.6-3 por ser a máis actual no momento de comezar o traballo. Para facer posible o acceso mediante Python, utilizouse o driver psycopg2 na súa versión 2.7.1
+
+
+\subsection{Eclipse}
+
+Eclipse é un IDE(Integrated Development Environment ou Entorno de Desenvolvemento Integrado), isto é, un aplicativo consistente nunha serie de ferramentas de desenvolvemento de software dispoñibles arredor dun editor de texto tales coma, por exemplo, unha consola de saida estándar e ferramentas para compilar e depurar código desde a interface proporcionada.
+
+É principalmente empregado nos proxectos de Java, C e C++, porén, dada a súa popularidade, existen extensións dispoñibles no seu propio \say{marketpace} que nos permiten utilizalo para outras linguaxes. No caso deste proxecto, ese plugin é PyDev, que proporciona as ferramentas necesarias para o desenvolvemento non só de proxectos de Python en xeral senón específicamente de Django.
+
+Outra extensión de Eclipse utilizada foi MIRAR NOME DE EXTENSION DE GIT
+
+Optouse pola versión de Eclipse máis nova no momento de comezar o traballo pese a que aínda non estaba dispoñible daquela nos repositorios do sistema operativo do equipo de desenvolvemento: Eclipse Oxygen 4.7.0. A versión de PyDev utilizada foi a 5.9.2. Valorouse PyCharm, un IDE específico para Python, coma alternativa; mais a versión de comunidade non tiña soporte para desenvolvemento específico de Django\cite{pycharm}.
+ 
+
+
+\subsection{GIT}
+
+\subsection{DIA}

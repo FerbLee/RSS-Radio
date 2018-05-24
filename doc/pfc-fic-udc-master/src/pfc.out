@@ -14,11 +14,18 @@
 \BOOKMARK [2][-]{subsection.4.1.5}{SQL}{section.4.1}% 14
 \BOOKMARK [2][-]{subsection.4.1.6}{XML}{section.4.1}% 15
 \BOOKMARK [1][-]{section.4.2}{Django Framework}{chapter.4}% 16
-\BOOKMARK [0][-]{chapter.5}{Dise\361o}{}% 17
-\BOOKMARK [1][-]{section.5.1}{Ciclo de vida}{chapter.5}% 18
-\BOOKMARK [0][-]{chapter.6}{Implementaci\363n}{}% 19
-\BOOKMARK [1][-]{section.6.1}{Organizaci\363n del c\363digo fuente}{chapter.6}% 20
-\BOOKMARK [0][-]{chapter.7}{Conclusiones}{}% 21
-\BOOKMARK [1][-]{section.7.1}{An\341lisis Econ\363mico}{chapter.7}% 22
-\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice}{}% 23
-\BOOKMARK [1][-]{section.Alph1.1}{PhotoPlace}{appendix.Alph1}% 24
+\BOOKMARK [1][-]{section.4.3}{Bootstrap}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.4}{Software Empregado}{chapter.4}% 18
+\BOOKMARK [2][-]{subsection.4.4.1}{Apache HTTP server}{section.4.4}% 19
+\BOOKMARK [2][-]{subsection.4.4.2}{PostgreSQL}{section.4.4}% 20
+\BOOKMARK [2][-]{subsection.4.4.3}{Eclipse}{section.4.4}% 21
+\BOOKMARK [2][-]{subsection.4.4.4}{GIT}{section.4.4}% 22
+\BOOKMARK [2][-]{subsection.4.4.5}{DIA}{section.4.4}% 23
+\BOOKMARK [0][-]{chapter.5}{Dise\361o}{}% 24
+\BOOKMARK [1][-]{section.5.1}{Ciclo de vida}{chapter.5}% 25
+\BOOKMARK [0][-]{chapter.6}{Implementaci\363n}{}% 26
+\BOOKMARK [1][-]{section.6.1}{Organizaci\363n del c\363digo fuente}{chapter.6}% 27
+\BOOKMARK [0][-]{chapter.7}{Conclusiones}{}% 28
+\BOOKMARK [1][-]{section.7.1}{An\341lisis Econ\363mico}{chapter.7}% 29
+\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice}{}% 30
+\BOOKMARK [1][-]{section.Alph1.1}{PhotoPlace}{appendix.Alph1}% 31
