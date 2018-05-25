@@ -19,13 +19,14 @@
 \contentsline {subsection}{\numberline {4.1.6}XML}{14}{subsection.4.1.6}
 \contentsline {subsubsection}{\numberline {4.1.6.1}RSS}{14}{subsubsection.4.1.6.1}
 \contentsline {section}{\numberline {4.2}Django Framework}{15}{section.4.2}
-\contentsline {section}{\numberline {4.3}Bootstrap}{16}{section.4.3}
-\contentsline {section}{\numberline {4.4}Software Empregado}{16}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Apache HTTP server}{16}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}PostgreSQL}{16}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Eclipse}{17}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}GIT}{17}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}DIA}{17}{subsection.4.4.5}
+\contentsline {section}{\numberline {4.3}Celery}{17}{section.4.3}
+\contentsline {section}{\numberline {4.4}Bootstrap}{17}{section.4.4}
+\contentsline {section}{\numberline {4.5}Software Empregado}{17}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Apache HTTP server}{17}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}PostgreSQL}{17}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Eclipse}{17}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}GIT}{18}{subsection.4.5.4}
+\contentsline {subsection}{\numberline {4.5.5}DIA}{18}{subsection.4.5.5}
 \contentsline {chapter}{\numberline {5}Dise\IeC {\~n}o}{19}{chapter.5}
 \contentsline {section}{\numberline {5.1}Ciclo de vida}{20}{section.5.1}
 \contentsline {chapter}{\numberline {6}Implementaci\IeC {\'o}n}{21}{chapter.6}
