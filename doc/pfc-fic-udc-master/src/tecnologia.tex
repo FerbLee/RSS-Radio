@@ -71,6 +71,7 @@ Ao ser o uso de HTML un estándar tan lonxevo, consolidado e popular, non se con
 CSS (Acrónimo de Cascading Style Sheets) ou \say{Follas de estilo} é unha linguaxe empregada para definir a estética dos elementos definidos anteriormente no código HTML: A súa cor, fonte, posición... Ao separar o estilo da estrutura, favorécese a reutilización de código xa que un mesmo ficheiro de CSS pode ser utilizado en diversas páxinas ao mesmo tempo. CSS permite tamén adaptar o contido das páxinas a dispositivos de distinto tamaño\cite{css_w3c}.
 
 \subsubsection{CSS Grid}
+\label{cssgrid}
 
 O módulo de \say{Grid} úsase para definir un deseño de interface gráfica consistente nunha cuadrícula de dúas dimensións en CSS. Nun modelo deste tipo, declárase un conxunto de elementos no HTML coma pertencentes a un \say{grid container}(contedor da grella ou da cuadrícula) e, á súa vez, zonas fillas que se posicionarán dentro dese contedor dependendo das características coas que este último fose definido na folla de estilos.
 
@@ -178,20 +179,42 @@ código. Tendo en conta que a Django Software Foundation, responsable do manteme
 
 Ademáis do mencionado anteriormente, confiouse en Django para este proxecto pola súa madurez e pola súa popularidade, sendo  utilizado en sitios coma Instagram, Disqus, Pinterest ou Open Knowledge Foundation.
 
+
 \section{Celery}
+
+Celery é unha cola de traballos asíncrona baseada na mensaxería distribuida (distributed message passing). Utilízase para distribuir traballos entre máquinas ou threads. Celery levanta un conxunto de procesos chamados \say{workers} nos que se executarán de xeito concurrente os diferentes traballos ou \say{tasks}. Eses workers consultan constantemente a cola de traballos para executar os traballos que podan estar pendentes\cite{celery}.
+
+Neste proxecto, utilizouse Celery para controlar a execución dos demos que corren no lado do servidor. Eses dous demos son: O encargado de actualizar a información do programa e os episodios e o encargado de calcular a popularidade dos programas. Utilizouse a versión de Celery 4.1, a máis actual no repositorio de Anaconda no momento de comezar o traballo.
+
+Django ofrece bibliotecas para traballar con Celery de xeito máis sinxelo, por exemplo, permitindolle gardar información na base de datos do proxectos e engadindo ferramentas de administración dos procesos de Celery ao menu de administración de Django. Utilizáronse as bibliotecas django\_celery\_results 1.0.1 e django-celery-beat 1.1.1
+
+Como xa se mencionou, Celery baséase na mensaxería, mais non inclúe un sistema de seu senón que lle hai que proporcionar un. Neste caso, optouse pola utilización de RabbitMQ (ver sección \ref{rabbit}), un dos recomendados na documentación de Celery.
+
+\section{RabbitMQ}
+\label{rabbit}
+
+RabbitMQ é un software de \say{message passing} tipo \say{broker} mensaxes. Isto é, un sistema onde diferentes aplicacións se conectan ao broker coa fin de enviar a ou lelos deste, funcionando o dito broker coma unha cola. As mensaxes enviadas á cola por un aplicativo permanecerán aí até que sexan lidos por outro aplicativo. Unha mensaxe pode ser calquera cousa, desde meta información dos procesos até texto plano\cite{rabbitmq}.
+
+Neste proxecto utilizouse a versión 3.6.10-1 por seres esta a máis actual dispoñible nos repositorios do Sistema Operativo no momento de comezar o traballo.
+
 
 \section{Bootstrap}
 
-\section{Software Empregado}
+Bootstrap é un framework libre e de código aberto (publicado baixo licenza MIT) para á construción de interfaces web. O Framework ofrece unha serie de modelos ou \say{templates}, cada unha cunha estrutura HTML, declaracións en CSS e, nalgúns casos, extensións javascript. O uso neste proxecto, dado que o aspecto xeral da páxina ven determinado polas CSS Grid (ver apartado \ref{cssgrid}), vese reducido a un modelo que controla a tipografía e as cores das fontes.   
 
-\subsection{Apache HTTP server}
+Neste proxecto, utilizouse Bootstrap a través da biblioteca de django-bootstrap4 para facilitar o seu uso desde os templates do framework de Django.
 
-\subsection{PostgreSQL}
+\section{Apache HTTP server}
+
+
+\section{PostgreSQL}
 
 PostgreSQL é un sistema de xestión de bases de datos (SXBD) relacionais libre e de código aberto (Licenza PostgreSQL, permisiva) desenvolvido polo PostgreSQL Global Development Group. A linguaxe SQL soportada pretende ser o máis fiel posible ao estándar e as súas operacións cumpren coas regras ACID (Acrónimo inglés para Atomicidade, Consistencia, Aillamento e Durabilidade)\cite{postgres1}. A súa orixe remóntase a 1996, polo que existe unha grande dispoñibilidade de recursos de documentación. Ese feito unido á certa experiencia persoal no seu uso xa antes de comezar o proxecto foron valorados á hora de elixir este sistema.
 
 A versión utilizada é a 9.6-3 por ser a máis actual no momento de comezar o traballo. Para facer posible o acceso mediante Python, utilizouse o driver psycopg2 na súa versión 2.7.1
 
+
+\section{Ferramentas de desenvolvemento}
 
 \subsection{Eclipse}
 \label{eclipse}
@@ -209,7 +232,7 @@ Optouse pola versión de Eclipse máis nova no momento de comezar o traballo pes
 \subsection{Git}
 \label{git}
 
-Git é un sistema de control de versións libre e open source (licenza GPL v2). Un sistema de control de versións utilízase para gardar os diferentes estados (versións) do código nas distintas fases de desenvolvemento. Permite a creación de ramas para a división do traballo e de etiquetas para marcar certos hitos no proceso. Estas versións pódense gardar no equipo local ou nun repositorio remoto. No caso de Git, manteñense copias tanto no repositorio coma nos equipos dos programadores, polo cal adoita calificarse coma un sistema de control de versións distribuido\cite{git}.
+Git é un sistema de control de versións libre e open source (licenza GPL v2). Un sistema de control de versións utilízase para gardar os diferentes estados (versións) do código nas distintas fases de desenvolvemento. Permite a creación de ramas para a división do traballo e de etiquetas para marcar certos hitos no proceso. Estas versións pódense gardar no equipo local ou nun repositorio remoto. No caso de Git, mantéñense copias tanto no repositorio coma nos equipos dos programadores, polo cal adoita calificarse coma un sistema de control de versións distribuido\cite{git}.
 
 Como se mencionou no apartado \ref{eclipse}, utilizouse sobre todo na súa implementación de EGit, mais as veces recurriuse ao paquete de sistema para realizar operacións sen necesidade de acceder a Eclipse. Neses casos, utilizouse a versión 2.9.5.
 
