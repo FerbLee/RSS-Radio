@@ -25,13 +25,14 @@
 \contentsline {subsection}{\numberline {4.5.1}Apache HTTP server}{17}{subsection.4.5.1}
 \contentsline {subsection}{\numberline {4.5.2}PostgreSQL}{17}{subsection.4.5.2}
 \contentsline {subsection}{\numberline {4.5.3}Eclipse}{17}{subsection.4.5.3}
-\contentsline {subsection}{\numberline {4.5.4}GIT}{18}{subsection.4.5.4}
-\contentsline {subsection}{\numberline {4.5.5}DIA}{18}{subsection.4.5.5}
-\contentsline {chapter}{\numberline {5}Dise\IeC {\~n}o}{19}{chapter.5}
-\contentsline {section}{\numberline {5.1}Ciclo de vida}{20}{section.5.1}
-\contentsline {chapter}{\numberline {6}Implementaci\IeC {\'o}n}{21}{chapter.6}
-\contentsline {section}{\numberline {6.1}Organizaci\IeC {\'o}n del c\IeC {\'o}digo fuente}{22}{section.6.1}
-\contentsline {chapter}{\numberline {7}Conclusiones}{23}{chapter.7}
-\contentsline {section}{\numberline {7.1}An\IeC {\'a}lisis Econ\IeC {\'o}mico}{24}{section.7.1}
-\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{25}{appendix.Alph1}
-\contentsline {section}{\numberline {A.1}PhotoPlace}{25}{section.Alph1.1}
+\contentsline {subsection}{\numberline {4.5.4}Git}{18}{subsection.4.5.4}
+\contentsline {subsubsection}{\numberline {4.5.4.1}GitHub}{18}{subsubsection.4.5.4.1}
+\contentsline {subsection}{\numberline {4.5.5}Dia}{18}{subsection.4.5.5}
+\contentsline {chapter}{\numberline {5}Dise\IeC {\~n}o}{21}{chapter.5}
+\contentsline {section}{\numberline {5.1}Ciclo de vida}{22}{section.5.1}
+\contentsline {chapter}{\numberline {6}Implementaci\IeC {\'o}n}{23}{chapter.6}
+\contentsline {section}{\numberline {6.1}Organizaci\IeC {\'o}n del c\IeC {\'o}digo fuente}{24}{section.6.1}
+\contentsline {chapter}{\numberline {7}Conclusiones}{25}{chapter.7}
+\contentsline {section}{\numberline {7.1}An\IeC {\'a}lisis Econ\IeC {\'o}mico}{26}{section.7.1}
+\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{27}{appendix.Alph1}
+\contentsline {section}{\numberline {A.1}PhotoPlace}{27}{section.Alph1.1}

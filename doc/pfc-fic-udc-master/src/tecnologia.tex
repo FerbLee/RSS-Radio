@@ -194,18 +194,35 @@ A versión utilizada é a 9.6-3 por ser a máis actual no momento de comezar o t
 
 
 \subsection{Eclipse}
+\label{eclipse}
 
 Eclipse é un IDE(Integrated Development Environment ou Entorno de Desenvolvemento Integrado), isto é, un aplicativo consistente nunha serie de ferramentas de desenvolvemento de software dispoñibles arredor dun editor de texto tales coma, por exemplo, unha consola de saida estándar e ferramentas para compilar e depurar código desde a interface proporcionada.
 
 É principalmente empregado nos proxectos de Java, C e C++, porén, dada a súa popularidade, existen extensións dispoñibles no seu propio \say{marketpace} que nos permiten utilizalo para outras linguaxes. No caso deste proxecto, ese plugin é PyDev, que proporciona as ferramentas necesarias para o desenvolvemento non só de proxectos de Python en xeral senón específicamente de Django.
 
-Outra extensión utilizada foi EGit na súa versión 4.8. Esta serve para manexar GIT (ver apartado \ref{git}) desde a interface gráfica de Eclipse. 
+Outra extensión utilizada foi EGit na súa versión 4.8. Esta serve para manexar o control de versións  desde a interface gráfica de Eclipse. Egit utiliza JGit, unha inplementación puramente Java do sistema Git (ver apartado \ref{git}).
 
 Optouse pola versión de Eclipse máis nova no momento de comezar o traballo pese a que aínda non estaba dispoñible daquela nos repositorios do sistema operativo do equipo de desenvolvemento: Eclipse Oxygen 4.7.0. A versión de PyDev utilizada foi a 5.9.2. Valorouse PyCharm, un IDE específico para Python, coma alternativa; mais a versión de comunidade non tiña soporte para desenvolvemento específico de Django\cite{pycharm}.
  
 
 
-\subsection{GIT}
+\subsection{Git}
 \label{git}
 
-\subsection{DIA}
+Git é un sistema de control de versións libre e open source (licenza GPL v2). Un sistema de control de versións utilízase para gardar os diferentes estados (versións) do código nas distintas fases de desenvolvemento. Permite a creación de ramas para a división do traballo e de etiquetas para marcar certos hitos no proceso. Estas versións pódense gardar no equipo local ou nun repositorio remoto. No caso de Git, manteñense copias tanto no repositorio coma nos equipos dos programadores, polo cal adoita calificarse coma un sistema de control de versións distribuido\cite{git}.
+
+Como se mencionou no apartado \ref{eclipse}, utilizouse sobre todo na súa implementación de EGit, mais as veces recurriuse ao paquete de sistema para realizar operacións sen necesidade de acceder a Eclipse. Neses casos, utilizouse a versión 2.9.5.
+
+Existen outros sistemas coma, por exemplo, Apache Subversion, pero elixiuse Git pola posibilidade de publicar o código en GitHub
+
+\subsubsection{GitHub}  
+
+GitHub é un servizo de hosting web para repositorios de control de versións. É moi popular para o desenvolvemento colaborativo de proxectos de código aberto. Neste proxecto, utilizouse ata o momento coma alternativa gratuita para obter un repositorio online pero, idealmente, tamén será utilizado para colaborar con outros desenvolvedores no futuro. 
+
+
+\subsection{Dia}
+
+Dia é un editor de Diagramas libre e de código aberto(Licenza GPL). Utilizaronse neste proxecto as súas extensións de UML para o diagrama de clases do sistema e a de Entidade Relación para o esquema de deseño da base de datos. A versión utilizada foi a 0.97.3.
+
+Consideráronse outros editores coma, por exemplo, Umbrello, pero a elección foi DIA por criterios de estética e comodidade de uso debido á súa interface sinxela.
+
