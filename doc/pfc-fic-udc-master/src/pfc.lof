@@ -1,7 +1,7 @@
 \select@language {spanish}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Introducci\IeC {\'o}n}{1}{chapter.1}
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Ouvintes de radio promedio diario do ano 2017 en Espa\IeC {\~n}a.\relax }}{2}{figure.caption.4}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Ouvintes de radio promedio diario do ano 2017 en Espa\IeC {\~n}a.\relax }}{3}{figure.caption.4}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Conceptos Previos}{5}{chapter.2}
 \addvspace {10\p@ }
@@ -9,12 +9,12 @@
 \addvspace {10\p@ }
 \contentsline {xchapter}{Tecnolox\IeC {\'\i }as Utilizadas}{9}{chapter.4}
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Exemplo de \IeC {\'a}rbore HTML DOM\cite {dom}\relax }}{11}{figure.caption.5}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Cota de mercado dos servidores no Top Million Busiest Sites (Netcraft, abril 2018)\relax }}{18}{figure.caption.6}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Cota de mercado dos servidores no Top million busiest sites (Netcraft, abril 2018)\relax }}{18}{figure.caption.6}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Dise\IeC {\~n}o}{21}{chapter.5}
+\contentsline {xchapter}{Dise\IeC {\~n}o}{23}{chapter.5}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementaci\IeC {\'o}n}{23}{chapter.6}
+\contentsline {xchapter}{Implementaci\IeC {\'o}n}{25}{chapter.6}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{25}{chapter.7}
+\contentsline {xchapter}{Conclusiones}{27}{chapter.7}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Ap\IeC {\'e}ndice}{27}{appendix.Alph1}
+\contentsline {xchapter}{Ap\IeC {\'e}ndice}{29}{appendix.Alph1}

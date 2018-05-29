@@ -5,12 +5,18 @@
 \minitoc
 \newpage
 
+Nos últimos anos, Internet converteuse nunha peza clave para os medios de radiodifusión xa que permite un alcance global e o acceso baixo demanda aos contidos emitidos. Isto é especialmente interesante para as pequenas emisoras locais, a miúdo comunitarias, culturais e con orzamento limitado.
+
+A estas últimas está orientado este proxecto. Consiste nun punto de encontro en liña para promover contidos radiofónicos e favorecer a súa redifusión por parte de distintos medios de comunicación (Emisoras, canles de podcasting...) así coma o seu consumo directo por parte dos visitantes da web. Para o seu desenvolvemento, utilizouse Django 1.11, un framework web de Python, ferramentas HTML5, Javascript e CSS-grid. Tamén se utilizaron ferramentas de sindicación RSS para o acceso aos contidos de terceiros.
+
+Nesta memoria tratarase o proceso completo de desenvolvemento do proxecto desde as fases de análise e deseño até os detalles de implementación. Mencionaranse tamén as liñas de traballo que se pretenden seguir no futuro.
 
 \section{Marco do proxecto}
 
+
 A radiodifusión tradicional, entendendo esta coma a retransmisión de contidos de audio a través de ondas analóxicas, presenta a día de hoxe unha serie de limitacións. A máis importante, se cadra, é o feito de que a demanda de frecuencias é superior ao que o espectro radioeléctrico pode ofrecer. Cómpre, por iso, a existencia de unha autoridade que outorgue licenzas de emisión sendo ditas institucións, na nosa sociedade, a Secretaría de Estado de Telecomunicaciones y para la Sociedad de la Información e máis a Secretaría Xeral de Medios\cite{BOE}. Isto implica a imposibilidade de emitir contidos por parte de aqueles que ou ben non poidan facer fronte á inversión que unha licenza supón ou ben non lles fose outorgada.
 
-A medida que o acceso a Internet se fai máis cotián, a emisión por streaming eríxese coma solución aos problemas da radio en FM. A través deste medio, unha emisora pode emitir contidos sen necesidade de licenzas, acadando, ademáis, unha cobertura global de xeito centralizado, sen necesidade de emitir mediante cadeas de radio enlace, como é costume nas grandes emisoras en FM do Estado Español, coa inversión en infrastruturas que tal cousa require.
+A medida que o acceso a Internet se fai máis cotián, a emisión por streaming eríxese coma solución aos problemas da radio en FM. A través deste medio, unha emisora pode emitir contidos sen necesidade de licenzas, acadando, ademais, unha cobertura global de xeito centralizado, sen necesidade de emitir mediante cadeas de radio enlace, como é costume nas grandes emisoras en FM do Estado Español, coa inversión en infraestruturas que tal cousa require.
 
 Internet permite non só a emisión en directo mediante streaming, senón tamén o acceso a contidos baixo demanda co nacemento do podcasting a mediados da década dos 2000\cite{guardian}. A aparición de ferramentas de uso diario que permiten un acceso fácil a estes contidos está a afectar ao comportamento dos usuarios: Actualmente, un 7.5\% dos ouvintes escoitan a radio por Internet; aínda lonxe dos ouvintes de FM, porén máis do dobre dos de Onda Media\cite{EGM}.
 
@@ -25,7 +31,7 @@ Internet permite non só a emisión en directo mediante streaming, senón tamén
 
 Ao entender que os suxeitos que atopan dificultades para emitir por FM son a miúdo medios do chamado terceiro sector. É dicir: entidades pequenas, comunitarias, sen ánimo de lucro, independentes e con finalidade maioritariamente cultural e social\cite{fesp}. O impacto positivo na pluralidade informativa e no desenvolvemento da sociedade civil destes medios é explicitamente recoñecido pola UNESCO\cite{unesco}. 
 
-Se ben a emisión por streaming e o podcast se perfilan coma a alternativa nun futuro inmediato, tamén veñen acompañados de certa aura de incertidume. Hai que ter en conta que os intereses deste tipo de emisoras adoitan ser de ámbito local. Os eventos que unha radio comunitaria ten capacidade de cubrir rara vez son internacionais e os patrocinios aos que adoitan ter acceso son PEMEs da propia localidade na que se atope a emisora. 
+Se ben a emisión por streaming e o podcast se perfilan coma a alternativa nun futuro inmediato, tamén veñen acompañados de certa aura de incerteza. Hai que ter en conta que os intereses deste tipo de emisoras adoitan ser de ámbito local. Os eventos que unha radio comunitaria ten capacidade de cubrir rara vez son internacionais e os patrocinios aos que adoitan ter acceso son PEME's da propia localidade na que se atope a emisora. 
 
 Deste xeito, a vantanxe de de globalidade que ofrece Internet acaba por non ser tal mentres que, pola contra, a súa visibilidade si queda diluída pola numerosa oferta existente, esta si, a nivel global.
 
