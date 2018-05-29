@@ -200,11 +200,30 @@ Neste proxecto utilizouse a versión 3.6.10-1 por seres esta a máis actual disp
 
 \section{Bootstrap}
 
-Bootstrap é un framework libre e de código aberto (publicado baixo licenza MIT) para á construción de interfaces web. O Framework ofrece unha serie de modelos ou \say{templates}, cada unha cunha estrutura HTML, declaracións en CSS e, nalgúns casos, extensións javascript. O uso neste proxecto, dado que o aspecto xeral da páxina ven determinado polas CSS Grid (ver apartado \ref{cssgrid}), vese reducido a un modelo que controla a tipografía e as cores das fontes.   
+Bootstrap é un framework libre e de código aberto (publicado baixo licenza MIT) para á construción de interfaces web. O Framework ofrece unha serie de modelos ou \say{templates}, cada unha cunha estrutura HTML, declaracións en CSS e, nalgúns casos, extensións JavaScript.
 
-Neste proxecto, utilizouse Bootstrap a través da biblioteca de django-bootstrap4 para facilitar o seu uso desde os templates do framework de Django.
+Neste proxecto, utilizouse a través da biblioteca de django-bootstrap4 para facilitar o uso dos elementos da versión 4 de Bootstrap desde os templates do framework de Django.
 
 \section{Apache HTTP server}
+
+Apache é un proxecto colaborativo para o desenvolvemento dun servidor HTTP robusto, con cualidade suficiente para o seu uso comercial, libre e de código aberto (publicado baixo licenza Apache, versión 2.0\cite{apache}). Apache implementa o protocolo HTTP/1.1 (RFC2616) xunto con varias funcionalidades frecuentemente requeridas pola web coma a personalización das mensaxes de erro (incluso mensaxes que conteñan de CGI scripts), a posibilidade de redirección e declaración de \say{alias} para as URLs de xeito ilimitado ou tamén soporte para hosts virtuais.
+
+A pesar de que o seu dominio coma servidor máis utilizado decaeu nos últimos anos, segue a ser a opción libre máis popular, estando presente nun 36.34\% dos sitios web pertencentes ao \say{Top million busiest sites} segundo datos do mes de abril do presente ano 2018. Na actualidade é utilizado en sitios ben coñecidos coma o a páxina de novas da BBC, o sistema de pago PayPal ou a tenda de videoxogos online Steam\cite{netcraft}. Esta popularidade é a razón principal pola que se utilizou este software no proxecto.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6,keepaspectratio=true]{./images/apache_graph.png}
+	\caption{Cota de mercado dos servidores no Top Million Busiest Sites (Netcraft, abril 2018)}
+	\label{fig:img_netcraft}
+\end{figure}
+
+A versión utilizada foi Apache 2.4.27 por ser a máis actual no momento de comezar o traballo. Foi necesaria tamén a instalación das seguintes extensións:
+
+\begin{itemize}
+	\item Apache Portable Runtime (APR): Biblioteca que inclúe unha serie de API's para garantir o funcionamento de Apache sexa cal sexa a plataforma na que se execute. Utilizouse a versión 1.6.2 e a 1.6.0 da biblioteca complementaria APR-util. 
+	
+	\item mod\_wsgi: Módulo de Apache que poporciona unha WSGI (Web Server Gateway Interface), necesaria para albergar aplicativos web baseados en Python. Utilizouse a versión 4.5.17.
+\end{itemize}
 
 
 \section{PostgreSQL}
@@ -249,3 +268,6 @@ Dia é un editor de Diagramas libre e de código aberto(Licenza GPL). Utilizaron
 
 Consideráronse outros editores coma, por exemplo, Umbrello, pero a elección foi DIA por criterios de estética e comodidade de uso debido á súa interface sinxela.
 
+\subsection{Fedora}
+
+\subsection{TexStudio}
