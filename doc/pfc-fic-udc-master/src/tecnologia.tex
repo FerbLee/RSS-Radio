@@ -10,6 +10,14 @@ Neste capítulo, presentanse as linguaxes, ferramentas e frameworks utilizados n
 Tamén se valoraron, dado que nos capítulos anteriores se insistiu na importancia dos dispositivos móbiles, no consumo da radio a través de Internet, as posibilidades de ditas ferramentas de ofrecer un bo resultado en distintos dispositivos e distintas plataformas software. 
 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.55,keepaspectratio=true]{./images/diagrama_tech.png}
+	\caption{Diagrama de interacción de tecnoloxías.}
+	\label{fig:img_diagrama_tech}
+\end{figure}
+
+
 \section{Linguaxes}
 
 \subsection{Python}
@@ -41,9 +49,9 @@ elementos presentes decláranse mediante bloques representados por etiquetas(tag
 \say{markup language} (linguaxe de marcado). Estas etiquetas son interpretadas polos navegadores para renderizar os 
 contidos\cite{html1}. 
 
-A estrutura declarada no código HTML pode ser representada pola interface de DOM (Document Object Model). O DOM é unha árbore creada polo navegador ao cargar a páxina e é moi útil para acceder aos elementos da páxina de xeito programático, como veremos máis adiante.
+A estrutura declarada no código HTML pode ser representada pola interface de DOM (Document Object Model), como se amosa na figura \ref{fig:img_DOM}. O DOM é unha árbore creada polo navegador ao cargar a páxina e é moi útil para acceder aos elementos da páxina de xeito programático, como veremos máis adiante.
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7,keepaspectratio=true]{./images/DOM.png}
 	\caption{Exemplo de árbore HTML DOM\protect\cite{dom}}
@@ -190,7 +198,7 @@ Neste proxecto utilizouse a versión 3.6.10-1 por seres esta a máis actual disp
 
 \section{Bootstrap}
 
-Bootstrap é un framework libre e de código aberto (publicado baixo licenza MIT) para á construción de interfaces web. O Framework ofrece unha serie de modelos ou \say{templates}, cada unha cunha estrutura HTML, declaracións en CSS e, nalgúns casos, extensións JavaScript.
+Bootstrap é un framework libre e de código aberto (publicado baixo licenza MIT) para a construción de interfaces web. O Framework ofrece unha serie de modelos ou \say{templates}, cada unha cunha estrutura HTML, declaracións en CSS e, nalgúns casos, extensións JavaScript.
 
 Neste proxecto, utilizouse a través da biblioteca de django-bootstrap4 para facilitar o uso dos elementos da versión 4 de Bootstrap desde os templates do framework de Django.
 
@@ -198,9 +206,9 @@ Neste proxecto, utilizouse a través da biblioteca de django-bootstrap4 para fac
 
 Apache é un proxecto colaborativo para o desenvolvemento dun servidor HTTP robusto, con cualidade suficiente para o seu uso comercial, libre e de código aberto (publicado baixo licenza Apache, versión 2.0\cite{apache}). Apache implementa o protocolo HTTP/1.1 (RFC2616) xunto con varias funcionalidades frecuentemente requiridas pola web coma a personalización das mensaxes de erro (incluso mensaxes que conteñan de CGI scripts), a posibilidade de redirección e declaración de \say{alias} para as URLs de xeito ilimitado ou tamén soporte para hosts virtuais.
 
-A pesar de que o seu dominio coma servidor máis utilizado decaeu nos últimos anos, segue a ser a opción libre máis popular, estando presente nun 36.34\% dos sitios web pertencentes ao \say{Top million busiest sites} segundo datos do mes de abril do presente ano 2018. Na actualidade é utilizado en sitios ben coñecidos coma o a páxina de novas da BBC, o sistema de pago PayPal ou a tenda de videoxogos en liña Steam\cite{netcraft}. Esta popularidade é a razón principal pola que se utilizou este software no proxecto.
+A pesar de que o seu dominio coma servidor máis utilizado decaeu nos últimos anos, segue a ser a opción libre máis popular, estando presente nun 36.34\% dos sitios web pertencentes ao \say{Top million busiest sites} segundo datos do mes de abril do presente ano 2018 (ver figura \ref{fig:img_netcraft}). Na actualidade é utilizado en sitios ben coñecidos coma o a páxina de novas da BBC, o sistema de pago PayPal ou a tenda de videoxogos en liña Steam\cite{netcraft}. Esta popularidade é a razón principal pola que se utilizou este software no proxecto.
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6,keepaspectratio=true]{./images/apache_graph.png}
 	\caption{Cota de mercado dos servidores no Top million busiest sites (Netcraft, abril 2018)}
