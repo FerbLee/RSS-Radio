@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.5.8)  30 MAY 2018 21:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.5.8)  31 MAY 2018 13:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2105,38 +2105,43 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 78.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 78.
-LaTeX Info: Redefining \. on input line 83.
-LaTeX Info: Redefining \% on input line 83.
+LaTeX Info: Redefining \. on input line 84.
+LaTeX Info: Redefining \% on input line 84.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 84.
 pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.83 
-      [11 <./images/radioco.png>])
+l.84 
+      [11 <./images/radioco.png>]
+Overfull \hbox (18.90749pt too wide) in paragraph at lines 89--118
+ [][] 
+ []
+
+)
 LaTeX Info: Redefining \. on input line 92.
 LaTeX Info: Redefining \% on input line 92.
 Package babel Info: Redefining spanish shorthand <<
@@ -2223,7 +2228,7 @@ l.6 \newpage
 
 
 
-] <./images/diagrama_tech.png, id=439, 746.79pt x 392.46625pt>
+] <./images/diagrama_tech.png, id=440, 746.79pt x 392.46625pt>
 File: ./images/diagrama_tech.png Graphic file (type png)
 
 <use ./images/diagrama_tech.png>
@@ -2298,7 +2303,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 45.
 
-<./images/DOM.png, id=447, 487.8225pt x 266.9975pt>
+<./images/DOM.png, id=448, 487.8225pt x 266.9975pt>
 File: ./images/DOM.png Graphic file (type png)
  <use ./images/DOM.png>
 Package pdftex.def Info: ./images/DOM.png used on input line 56.
@@ -2618,7 +2623,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 205.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 205.
- <./images/apache_graph.png, id=528, 737.75626pt x 327.2225pt>
+ <./images/apache_graph.png, id=529, 737.75626pt x 327.2225pt>
 File: ./images/apache_graph.png Graphic file (type png)
 
 <use ./images/apache_graph.png>
@@ -3242,7 +3247,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 13.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 13.
-<./images/photoplace.png, id=614, 1026.83624pt x 514.92375pt>
+<./images/photoplace.png, id=615, 1026.83624pt x 514.92375pt>
 File: ./images/photoplace.png Graphic file (type png)
 
 <use ./images/photoplace.png>
@@ -3512,14 +3517,14 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
 Package rerunfilecheck Info: File `pfc.out' has not changed.
 (rerunfilecheck)             Checksum: FA0BD6AD9ED4EED973BB5050A8348BE2;2555.
 Package rerunfilecheck Info: File `pfc.brf' has not changed.
-(rerunfilecheck)             Checksum: FBE70A5A16DBA9C8B43305680AA3B23A;1785.
+(rerunfilecheck)             Checksum: D8A3548310936567F129E203E10E6624;1785.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
  ) 
 Here is how much of TeX's memory you used:
- 19408 strings out of 494946
- 289894 string characters out of 6180982
- 479605 words of memory out of 5000000
- 21833 multiletter control sequences out of 15000+600000
+ 19412 strings out of 494946
+ 289952 string characters out of 6180982
+ 479690 words of memory out of 5000000
+ 21835 multiletter control sequences out of 15000+600000
  14197 words of font info for 51 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  53i,13n,79p,1965b,671s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3574,10 +3579,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on pfc.pdf (59 pages, 1647700 bytes).
+Output written on pfc.pdf (59 pages, 1648868 bytes).
 PDF statistics:
- 830 PDF objects out of 1000 (max. 8388607)
- 726 compressed objects within 8 object streams
- 148 named destinations out of 1000 (max. 500000)
+ 831 PDF objects out of 1000 (max. 8388607)
+ 727 compressed objects within 8 object streams
+ 149 named destinations out of 1000 (max. 500000)
  395 words of extra memory for PDF output out of 10000 (max. 10000000)
 
