@@ -13,7 +13,7 @@ import feedparser
 import pytz
 import urllib
 import os
-
+import re
 
 def get_parser_by_program(a_program):
     
@@ -29,6 +29,14 @@ def get_parser_by_program(a_program):
     else:
         print('No known parser')
         return None
+
+
+def find_image_in_html(html_code):
+    
+    pat = re.compile (r'<img [^>]*src="([^"]+)')
+    img = pat.findall(html_code)
+    
+    return img
 
 
 def create_image(image_url):
@@ -157,6 +165,10 @@ class RSSLinkParser(object):
         pass
     
     
+    def get_summary(self,entry_dict):
+        
+        return entry_dict['summary']
+    
     def save_single_episode(self,entry_dict,program):
         
         # parse_episode - raises key error  
@@ -168,9 +180,13 @@ class RSSLinkParser(object):
             new_episode.image = create_image(image_url)
         
         except KeyError:
-        
-            #new_episode.image = Image.get_default_program_image()
-            new_episode.image = program.image
+            
+            try:
+                image_url = find_image_in_html(self.get_summary(entry_dict))[0]
+                new_episode.image = create_image(image_url)
+                
+            except:
+                new_episode.image = program.image
         
         new_episode.save()
     
@@ -268,7 +284,7 @@ class ParserIvoox(RSSLinkParser):
         new_episode.program = a_program
 
         new_episode.title = entry_dict['title']
-        new_episode.summary = entry_dict['summary']
+        new_episode.summary = self.get_summary(entry_dict)
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()
@@ -313,7 +329,7 @@ class ParserRadioco(RSSLinkParser):
         new_episode.program = a_program
         
         new_episode.title = entry_dict['title']
-        new_episode.summary = entry_dict['summary']
+        new_episode.summary = self.get_summary(entry_dict)
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()
@@ -351,13 +367,18 @@ class ParserPodomatic(RSSLinkParser):
         return new_program
     
     
+    def get_summary(self, entry_dict):
+        
+        return entry_dict['content'][0]['value'] 
+    
+    
     def parse_episode(self,entry_dict,a_program):
         
         new_episode = Episode()
         
         new_episode.program = a_program        
         new_episode.title = entry_dict['title']
-        new_episode.summary = entry_dict['content'][0]['value']
+        new_episode.summary = self.get_summary(entry_dict)
         new_episode.publication_date = self.process_episode_date(entry_dict['published_parsed'])
         new_episode.file,new_episode.file_type = self.getLinkToAudio(entry_dict['links'])
         new_episode.insertion_date = timezone.now()

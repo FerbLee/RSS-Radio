@@ -90,7 +90,7 @@ def ud_update_program_episode(entity_old,entity_new,it_keys,image_url_new,tags_n
             change = True
 
     # Check updated image
-    if entity_old.image.original_url != image_url_new:
+    if entity_old.image.original_url != image_url_new and image_url_new != None:
         
         entity_old.image = create_image(image_url_new)
         change = True
