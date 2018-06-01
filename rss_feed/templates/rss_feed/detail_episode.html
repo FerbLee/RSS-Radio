@@ -50,15 +50,21 @@
 	</div>
 {% endif %}
 
-<p><b>{% trans "Likes:" %}</b> {{ upvotes }} 
-	<b>{% trans "Dislikes:" %}</b> {{ downvotes}}
-	<b>{% trans "Downloads:" %}</b> {{ episode.downloads }}</p>
+<b>{% trans "Likes:" %}</b> {{ upvotes }} 
+<b>{% trans "Dislikes:" %}</b> {{ downvotes}}
+<b>{% trans "Downloads:" %}</b> <span id="download_count"> {{ episode.downloads }} </span>
+
 <p><b>{% trans "Published on:" %}</b> {{ episode.publication_date }}</p>
 
-<audio controls>
+<audio controls id="player" data-epid="{{episode.id}}">
 	<source src="{{ episode.file }}" type="{{ episode.file_type }}"/>
 	{% trans "Your browser does not support the audio element." %}
 </audio>
+
+<button id="download" data-epid="{{episode.id}}" class="btn btn-primary" type="button">
+Download
+</button>
+
 
 <p><b>{% trans "Categories:" %}</b> 
 	{% for category in episode.tag_set.all %}

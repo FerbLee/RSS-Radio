@@ -23,7 +23,7 @@ from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
 from django.http.response import HttpResponseNotFound
 from .search_view_functions import textbox_search_episode, textbox_search_program, textbox_search_station, \
     textbox_search_user,get_tag_cloud
-
+from django.http import HttpResponse
 
 class IndexView(generic.ListView):
     
@@ -1413,8 +1413,38 @@ def search(request):
         
 
 
+def download(request):
+    
+    ep_id = None
+    if request.method == 'GET':
+        ep_id = request.GET['episode_id']
 
-
-
+    downloads = 0
+    
+    if ep_id:
+        
+        already_downloaded = False
+        try:
+            listened_ep = list(request.session['listened_episodes'])
+        except KeyError:
+            listened_ep = []
+        
+        if ep_id in listened_ep:
+            already_downloaded = True  
+        
+        ep = Episode.objects.get(id=int(ep_id))
+        
+        if ep:
+            
+            if already_downloaded:
+                return HttpResponse(ep.downloads)
+            
+            downloads = ep.downloads + 1
+            ep.downloads =  downloads
+            ep.save()
+            listened_ep.append(ep_id)
+            request.session['listened_episodes'] = listened_ep
+            
+    return HttpResponse(downloads)
 
 

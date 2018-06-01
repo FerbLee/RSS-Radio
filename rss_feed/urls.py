@@ -46,6 +46,7 @@ urlpatterns = [
     url(r'^delete-comment/(?P<epk>[0-9]+)/(?P<cpk>[0-9]+)/$', views.delete_comment, name='delete_comment'),
     url(r'^deleted/', views.deleted_content, name='deleted'),
     url(r'^search_results/$', views.search,name='search_results'),
+    url(r'^download/$', views.download,name='download'),
     #url(r'^search/$', views.search,name='search'),
     url(r'^unknown/$', page_not_found,  kwargs={'exception': Exception('Page not Found')},name='unknown'),]
 
