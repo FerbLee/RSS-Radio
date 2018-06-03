@@ -283,17 +283,17 @@ class Episode(models.Model):
     
     def get_upvote_number(self):
         
-        self.vote_set.filter(type=LIKE_VOTE[0]).count()
+        return self.vote_set.filter(type=LIKE_VOTE[0]).count()
     
     
     def get_downvote_number(self):
         
-        self.vote_set.filter(type=DISLIKE_VOTE[0]).count()
+        return self.vote_set.filter(type=DISLIKE_VOTE[0]).count()
 
 
     def check_user_is_admin(self,user,adm_type=None):
         
-        self.program.check_user_is_admin(user,adm_type)
+        return self.program.check_user_is_admin(user,adm_type)
     
     
     def check_comments_enabled(self):
