@@ -1398,9 +1398,10 @@ def search(request):
             if tag :
                 word_list = [tag]
                 tag_search = True
+                
             else:
                 word_list = request.session['search_wordlist']
-                
+        
             
         return render(request, 'rss_feed/search_results.html', {'episodes': textbox_search_episode(word_list,epage,tag_search),
                                                                 'programs':textbox_search_program(word_list,ppage,tag_search),

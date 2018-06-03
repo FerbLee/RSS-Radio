@@ -20,4 +20,11 @@ def update_rss_info_daemon():
     from rss_feed.update_rss_daemon import ud_iterate_program_table
     
     ud_iterate_program_table()
+
+
+@shared_task
+def update_popularity_rating_daemon():
     
+    from rss_feed.update_popularity_daemon import update_pop_rating_all_programs
+    
+    update_pop_rating_all_programs()    
