@@ -186,4 +186,58 @@ def get_tag_cloud(size,categories=10):
     return ts_list
     
 
+def get_paginated_subs(user,page=1,ps=PAGE_SIZE):
+                
+    subs_programs = user.subscribers.all()
+    subs_episodes = Episode.objects.none()
+    
+    for program in subs_programs:
+        
+        subs_episodes = program.episode_set.all()|subs_episodes
+    
+    result_qs = subs_episodes.order_by('-publication_date')
+    
+    return _aux_paginator_creation(result_qs,page,ps)    
+ 
 
+def get_paginated_pop_programs(page=1,ps=PAGE_SIZE):
+    
+    result_qs = Program.objects.order_by('-popularity')
+    return _aux_paginator_creation(result_qs,page,ps)  
+    
+    
+def get_paginated_latest_episodes(page=1,ps=PAGE_SIZE):   
+    
+    result_qs = Episode.objects.order_by('-publication_date')
+    return _aux_paginator_creation(result_qs,page,ps)
+
+
+def get_paginated_stations(user=None,page=1,ps=PAGE_SIZE):
+    
+    if user == None:
+        result_qs = Station.objects.all()
+    else:
+        result_qs = user.followers.order_by('name')
+    
+    return _aux_paginator_creation(result_qs,page,ps)
+    
+
+def get_paginated_program_episodes(program,page=1,ps=PAGE_SIZE):
+    
+    result_qs = program.episode_set.order_by('-publication_date')
+    return _aux_paginator_creation(result_qs,page,ps)
+
+
+def get_paginated_program_stations(program,page=1,ps=PAGE_SIZE):
+    
+    bc_qs = program.broadcast_set.order_by('station__id').prefetch_related('station')
+    #result_qs = [bc.station for bc in bc_qs]
+    result_qs = bc_qs
+    return _aux_paginator_creation(result_qs,page,ps)
+
+
+def get_paginated_program_subscribers(program,page=1,ps=PAGE_SIZE):
+    
+    result_qs = program.subscribers.order_by('username')
+    return _aux_paginator_creation(result_qs,page,ps)
+    

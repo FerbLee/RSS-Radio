@@ -5,7 +5,12 @@
 {% trans "See more" as seemore %}
 
 <h1> <img src="{{ program.image.path.url }}" width='100'> {% trans "Program:" %} {{ program.name }}</h1>
-
+{% if request.user.is_authenticated %}
+	{% if is_admin %}
+		<p><a href="{% url 'rss_feed:edit_program' program.id %}">{% trans "Manage" %}</a> </p>
+	{% endif %}
+{% endif %}
+<p></p>
 {% if request.user.is_authenticated %}
 	<div id="subscribe-button">
 	
@@ -46,7 +51,7 @@
 {% if program.website %} 
 	<p><b>{% trans "Website:" %} </b><a href="{{ program.website }}">{{ program.website }}</a></p>
 {% endif %}
-
+<p></p>
 <div  class="section-title" ><b>{% trans "Episodes" %}</b></div>
 <div class="grid-container">
 
@@ -59,52 +64,74 @@
 	        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
 	        </div>
 	    {% endfor %}
-	    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 	{% else %}
 	    <p>{% trans "No episodes" %}</p>
 	{% endif %}
 
 </div>
-
+<span class="step-links">
+	{% if episode_short_list.has_previous %}
+        <a href="?sub_page={{ subscribers.number }}&ep_page={{ episode_short_list.previous_page_number}}&station_page={{ related_stations.number }}">
+        {% trans "previous" %}</a>
+    {% endif %}
+    {% if episode_short_list.has_next %}
+        <a href="?sub_page={{ subscribers.number }}&ep_page={{ episode_short_list.next_page_number}}&station_page={{ related_stations.number }}">
+        {% trans "next" %}</a>
+    {% endif %}
+</span>
+<p></p>
 <div  class="section-title" ><b>{% trans "Broadcasted in:" %}</b></div>
 <div class="grid-container">
 
 	{% if related_stations %}
-	    {% for station in related_stations %}
+	    {% for bc in related_stations %}
 	        <div class="grid-item" >
-	        	<a href="{% url 'rss_feed:detail_station' station.id %}">
-	        	<img src="{{ station.logo.path.url }}" width='100'>
-	        	<p>{{ station.name }}</p></a>
+	        	<a href="{% url 'rss_feed:detail_station' bc.station.id %}">
+	        	<img src="{{ bc.station.logo.path.url }}" width='100'>
+	        	<p>{{ bc.station.name }}</p></a>
 	        </div>
 	    {% endfor %}
-	    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 	{% else %}
 	    <p>{% trans "No stations" %}</p>
 	{% endif %}
 
 </div>
-
-
+<span class="step-links">
+	{% if related_stations.has_previous %}
+        <a href="?sub_page={{ subscribers.number }}&ep_page={{ episode_short_list.number}}&station_page={{ related_stations.previous_page_number }}">
+        {% trans "previous" %}</a>
+    {% endif %}
+    {% if related_stations.has_next %}
+        <a href="?sub_page={{ subscribers.number }}&ep_page={{ episode_short_list.number}}&station_page={{ related_stations.next_page_number }}">
+        {% trans "next" %}</a>
+    {% endif %}
+</span>
+<p></p>
 <div  class="section-title" ><b>{% trans "Subscribers:" %}</b></div>
-<div class="section">
+<div>
 	{% if subscribers %}
 		{% for sub_user in subscribers %}
-		    <div class="follower-item" >
-		    	<p><a href="{% url 'rss_feed:detail_user' sub_user.id %}">
-		    		<img src="{{ sub_user.userprofile.avatar.path.url }}" width='40'>{{ sub_user.username }}</a></p> 
-		    </div>
+		    <span class="follower-item" >
+		    	<a href="{% url 'rss_feed:detail_user' sub_user.id %}">
+		    		<img src="{{ sub_user.userprofile.avatar.path.url }}" width='40'>{{ sub_user.username }}</a>
+		    </span>
 		{% endfor %}
-		<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 	{% else %}
 		<p>{% trans "No subscribers yet" %}</p>
 	{% endif %}		
 </div>
+<span class="step-links">
+	{% if subscribers.has_previous %}
+        <a href="?sub_page={{ subscribers.previous_page_number }}&ep_page={{ episode_short_list.number}}&station_page={{ related_stations.number }}">
+        {% trans "previous" %}</a>
+    {% endif %}
+    {% if subscribers.has_next %}
+        <a href="?sub_page={{ subscribers.next_page_number }}&ep_page={{ episode_short_list.number}}&station_page={{ related_stations.number }}">
+        {% trans "next" %}</a>
+    {% endif %}
+</span>
 
-{% if request.user.is_authenticated %}
-	{% if is_admin %}
-		<p><a href="{% url 'rss_feed:edit_program' program.id %}">{% trans "Manage" %}</a> </p>
-	{% endif %}
-{% endif %}
-  <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a>
+<p></p>
+ <p><a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
 {% endblock %}
 

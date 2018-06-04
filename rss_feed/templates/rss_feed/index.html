@@ -28,12 +28,21 @@
 				        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
 				        </div>
 				    {% endfor %}
-				    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 				{% else %}
 				    <p>{% trans "No subscriptions" %}</p>
 				{% endif %}
 			
 			</div>
+			<span class="step-links">
+				{% if user_subs.has_previous %}
+			        <a href="?subs_page={{ user_subs.previous_page_number }}&p_page={{ program_list.number }}&ep_page={{ episode_list.number}}&s_page={{ station_list.number }}&us_page={{ user_stations.number }}">
+			        {% trans "previous" %}</a>
+			    {% endif %}
+			    {% if user_subs.has_next %}
+			        <a href="?subs_page={{ user_subs.next_page_number }}&p_page={{ program_list.number }}&ep_page={{ episode_list.number }}&s_page={{ station_list.number }}&us_page={{ user_stations.number }}">
+			        {% trans "next" %}</a>
+			    {% endif %}
+	 		</span>
 			
 		
 		{% endif %}
@@ -51,12 +60,22 @@
 			        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
 			        </div>
 			    {% endfor %}
-			    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 			{% else %}
 			    <p>{% trans "No episodes found" %}</p>
 			{% endif %}
 		
 		</div>
+		<span class="step-links">
+			{% if episode_list.has_previous %}
+		        <a href="?ep_page={{ episode_list.previous_page_number }}&p_page={{ program_list.number }}&subs_page={{ user_subs.number }}&s_page={{ station_list.number }}&us_page={{ user_stations.number }}">
+		        {% trans "previous" %}</a>
+		    {% endif %}
+		    {% if episode_list.has_next %}
+		        <a href="?ep_page={{ episode_list.next_page_number }}&p_page={{ program_list.number }}&subs_page={{ user_subs.number }}&s_page={{ station_list.number }}&us_page={{ user_stations.number }}">
+		        {% trans "next" %}</a>
+		    {% endif %}
+ 		 </span>
+		
 		<div class="section-title" id="program-title"><b>{% trans "Popular programs" %}</b></div>
 		
 		<div class="grid-container">
@@ -70,13 +89,21 @@
 			        	<p>{{ program.name }}</p></a>
 			        </div>
 			    {% endfor %}
-				<a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>    
 			{% else %}
 			    <p>{% trans "No programs found" %}</p>
 			{% endif %}
 		</div>
+		<span class="step-links">
+		{% if program_list.has_previous %}
+	        <a href="?p_page={{ program_list.previous_page_number }}&ep_page={{ episode_list.number }}&subs_page={{ user_subs.number }}&s_page={{ station_list.number }}&us_page={{ user_stations.number }}">
+	        {% trans "previous" %}</a>
+	    {% endif %}
+	    {% if program_list.has_next %}
+	        <a href="?p_page={{ program_list.next_page_number }}&ep_page={{ episode_list.number }}&subs_page={{ user_subs.number }}&s_page={{ station_list.number }}&us_page={{ user_stations.number }}">
+	        {% trans "next" %}</a>
+	    {% endif %}
+	 </span>   
 	</div>
-	
 	<div class="right-side">
 		{% if request.user.is_authenticated %}
 			<div id="station-title-auth"><b>{% trans "Your favourite stations" %}</b></div>
@@ -93,6 +120,17 @@
 				    <p>{% trans "No favourite stations" %}</p>
 				{% endif %}
 			</div>
+			<span class="step-links">
+				{% if user_stations.has_previous %}
+			        <a href="?subs_page={{ user_subs.number }}&p_page={{ program_list.number }}&ep_page={{ episode_list.number}}&s_page={{ station_list.number }}&us_page={{ user_stations.previous_page_number }}">
+			        {% trans "previous" %}</a>
+			    {% endif %}
+			    {% if user_stations.has_next %}
+			        <a href="?subs_page={{ user_subs.number }}&p_page={{ program_list.number }}&ep_page={{ episode_list.number }}&s_page={{ station_list.number }}&us_page={{ user_stations.next_page_number }}">
+			        {% trans "next" %}</a>
+			    {% endif %}
+	 		</span>
+			
 		{% endif %}
 	
 		<div id="station-title"><b>{% trans "All Stations" %}</b></div>
@@ -110,6 +148,16 @@
 			    <p>{% trans "No stations found" %}</p>
 			{% endif %}
 		</div>
+		<span class="step-links">
+			{% if station_list.has_previous %}
+		        <a href="?subs_page={{ user_subs.number }}&p_page={{ program_list.number }}&ep_page={{ episode_list.number}}&s_page={{ station_list.previous_page_number }}&us_page={{ user_stations.number }}">
+		        {% trans "previous" %}</a>
+		    {% endif %}
+		    {% if station_list.has_next %}
+		        <a href="?subs_page={{ user_subs.number }}&p_page={{ program_list.number }}&ep_page={{ episode_list.number }}&s_page={{ station_list.next_page_number }}&us_page={{ user_stations.number }}">
+		        {% trans "next" %}</a>
+		    {% endif %}
+ 		</span>
 	</div>
 </div>
 

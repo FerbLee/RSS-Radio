@@ -22,69 +22,87 @@ from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
     ADMT_ADMIN, StationAdmin, ProgramAdmin, CO_ENABLE, SH_TF, SH_AF
 from django.http.response import HttpResponseNotFound
 from .search_view_functions import textbox_search_episode, textbox_search_program, textbox_search_station, \
-    textbox_search_user,get_tag_cloud
+    textbox_search_user,get_tag_cloud,get_paginated_latest_episodes,get_paginated_pop_programs, \
+    get_paginated_stations, get_paginated_subs,get_paginated_program_subscribers,get_paginated_program_episodes, \
+    get_paginated_program_stations
 from django.http import HttpResponse
 
 class IndexView(generic.ListView):
     
     template_name = 'rss_feed/index.html'
-    #context_object_name = 'episode_list'
-
-    def get_queryset_episodes(self,nof_results):
-        
-        """Latest Episodes"""
-        episodes = Episode.objects.order_by('-publication_date')[0:nof_results]
-        return episodes
-
-
-    def get_queryset_programs(self,nof_results):
-        
-        programs = Program.objects.order_by('-popularity')[0:nof_results]
-        return programs
+    
     
     def get_queryset(self):
         
         return Episode.objects.none()
     
-    def get_queryset_stations(self):
-        
-        stations = Station.objects.all()
-        return stations
     
-    def get_queryset_user_subscriptions(self,nof_results):
+    def get_queryset_user_subscriptions(self,subs_page,nof_results):
         
         # Very inneficient. To be corrected
         if self.request.user.is_authenticated():
-                    
-            subs_programs = self.request.user.subscribers.all()
-            subs_episodes = Episode.objects.none()
             
-            for program in subs_programs:
-                
-                subs_episodes = program.episode_set.all()|subs_episodes
+            subs_page = self.request.GET.get('subs_page')
             
-            return subs_episodes.order_by('-publication_date')[0:nof_results]
-                
+            if not subs_page:         
+                subs_page = 1
+
+            return get_paginated_subs(self.request.user,page=subs_page,ps=nof_results)
+
+
         return Episode.objects.none()
     
     
-    def get_queryset_user_stations(self):
+    def get_queryset_user_stations(self,us_page,nof_results):
         
         if self.request.user.is_authenticated():
-            return self.request.user.followers.order_by('name')
+            return get_paginated_stations(user=self.request.user,page=us_page,ps=nof_results)
         
         return Station.objects.none()
     
+    
     def get_context_data(self, **kwargs):
         
-        nof_results=4
-        
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['episode_list'] = self.get_queryset_episodes(nof_results)
-        context['program_list'] = self.get_queryset_programs(nof_results)
-        context['station_list'] = self.get_queryset_stations()
-        context['user_subs']    = self.get_queryset_user_subscriptions(nof_results)
-        context['user_stations'] = self.get_queryset_user_stations()
+        
+        nof_results=4
+        nof_results_stations = 15
+        
+        subs_page = self.request.GET.get('subs_page')
+        if subs_page:
+            context['subs_page'] = subs_page
+        else:
+            subs_page = 1
+        
+        ep_page = self.request.GET.get('ep_page')
+        if ep_page:
+            context['ep_page'] = ep_page
+        else:
+            ep_page = 1
+            
+        p_page = self.request.GET.get('p_page')
+        if p_page:
+            context['p_page'] = p_page
+        else:
+            p_page = 1
+            
+        s_page = self.request.GET.get('s_page')
+        if s_page:
+            context['s_page'] = s_page
+        else:
+            s_page = 1
+        
+        us_page = self.request.GET.get('us_page')
+        if us_page:
+            context['us_page'] = us_page
+        else:
+            us_page = 1
+        
+        context['episode_list'] = get_paginated_latest_episodes(page=ep_page,ps=nof_results)
+        context['program_list'] = get_paginated_pop_programs(page=p_page,ps=nof_results)
+        context['station_list'] = get_paginated_stations(page=s_page,ps=nof_results_stations)
+        context['user_subs']    = self.get_queryset_user_subscriptions(subs_page,nof_results)
+        context['user_stations'] = self.get_queryset_user_stations(us_page,nof_results_stations)
         
         return context
 
@@ -103,23 +121,6 @@ class ProgramDetailView(generic.DetailView):
         else:
             return Episode.objects.none()
         
-        
-    def get_episode_short_list(self,nof_results):
-        
-        return self.object.episode_set.order_by('-publication_date')[0:nof_results]
-
-
-    def get_related_stations(self,nof_results):
-        
-        bc_qs = self.object.broadcast_set.all().prefetch_related('station')
-        
-        return [bc.station for bc in bc_qs][0:nof_results]
-    
-
-    def get_subscribers(self):
-        
-        return self.object.subscribers.all()
-    
     
     def get_oldest_owner(self):
         
@@ -133,10 +134,30 @@ class ProgramDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         
         context = super(ProgramDetailView, self).get_context_data(**kwargs)
+        
+        station_page = self.request.GET.get('station_page')
+        if station_page:
+            context['station_page'] = station_page
+        else:
+            station_page = 1
+        
+        ep_page = self.request.GET.get('ep_page')
+        if ep_page:
+            context['ep_page'] = ep_page
+        else:
+            ep_page = 1
+        
+        sub_page = self.request.GET.get('sub_page')
+        if sub_page:
+            context['sub_page'] = sub_page
+        else:
+            sub_page = 1
+        
+        
         context['is_subscriber'] = self.get_user_is_subscriber()
-        context['episode_short_list'] = self.get_episode_short_list(nof_results=8)
-        context['related_stations'] = self.get_related_stations(nof_results=4)
-        context['subscribers'] = self.get_subscribers()
+        context['episode_short_list'] = get_paginated_program_episodes(self.object,page=ep_page,ps=8)
+        context['related_stations'] = get_paginated_program_stations(self.object,page=station_page,ps=4)
+        context['subscribers'] = get_paginated_program_subscribers(self.object,page=sub_page,ps=10)
         context['owner'] = self.get_oldest_owner()
         context['is_admin'] = self.object.check_user_is_admin(self.request.user)
         
