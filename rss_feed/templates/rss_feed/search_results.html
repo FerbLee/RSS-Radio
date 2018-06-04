@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 
-<h2>Search results for: {{keywords}}</h2> 
+<h2>{% trans "Search results for:"%} {{keywords}}</h2> 
 
 <div class="index-container">
 	<div class="right-side-search">
@@ -27,8 +27,11 @@
 		{% endfor %}
 		</div>
 		<span class="step-links">
+		{% if episodes.has_previous %}
+	        <a href="?epage={{ episodes.previous_page_number }}">{% trans "previous" %}</a>
+	    {% endif %}
 	    {% if episodes.has_next %}
-	        <a href="?epage={{ episodes.next_page_number }}">next</a>
+	        <a href="?epage={{ episodes.next_page_number }}">{% trans "next" %}</a>
 	    {% endif %}
 	    </span>
 	{% else %}
@@ -47,8 +50,11 @@
 		{% endfor %}
 		</div>
 		<span class="step-links">
+		{% if program.has_previous %}
+	        <a href="?ppage={{ programs.previous_page_number }}">{% trans "previous" %}</a>
+	    {% endif %}
 	    {% if programs.has_next %}
-	        <a href="?ppage={{ programs.next_page_number }}">next</a>
+	        <a href="?ppage={{ programs.next_page_number }}">{% trans "next" %}</a>
 	    {% endif %}
 	    </span>
 	{% else %}
@@ -67,8 +73,11 @@
 		{% endfor %}
 		</div>
 		<span class="step-links">
+		{% if stations.has_previous %}
+	        <a href="?spage={{ stations.previous_page_number }}">{% trans "previous" %}</a>
+	    {% endif %}
 	    {% if stations.has_next %}
-	        <a href="?spage={{ stations.next_page_number }}">next</a>
+	        <a href="?spage={{ stations.next_page_number }}">{% trans "next" %}</a>
 	    {% endif %}
 	    </span>
 	{% else %}
@@ -88,8 +97,11 @@
 		{% endfor %}
 		</div>
 		<span class="step-links">
+		{% if users.has_previous %}
+	        <a href="?upage={{ users.previous_page_number }}">{% trans "previous" %}</a>
+	    {% endif %}
 	    {% if users.has_next %}
-	        <a href="?upage={{ users.next_page_number }}">next</a>
+	        <a href="?upage={{ users.next_page_number }}">{% trans "next"%}</a>
 	    {% endif %}
 	    </span>
 	{% else %}
