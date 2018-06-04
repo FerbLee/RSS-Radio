@@ -1398,6 +1398,7 @@ def search(request):
             if tag :
                 word_list = [tag]
                 tag_search = True
+                request.session['search_wordlist'] = word_list
                 
             else:
                 word_list = request.session['search_wordlist']
