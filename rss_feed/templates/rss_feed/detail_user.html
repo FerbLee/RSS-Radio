@@ -3,6 +3,11 @@
 {% block content %}
 <p><img src="{{ user.userprofile.avatar.path.url }}" width='200'><p>
 <h1> {% trans "User:" %} {{ user.username }}</h1>
+{% if request.user.is_authenticated %}
+	{% if request.user.id == user.id%}
+		<a href="{% url 'rss_feed:edit_user'%}">{% trans "Edit" %}</a> 
+	{% endif %}
+{% endif %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -31,6 +36,17 @@
 
 </div>
 
+<span class="step-links">
+	{% if subscriptions.has_previous %}
+        <a href="?s_page={{ follow_stations.number}}&p_page={{ subscriptions.previous_page_number }}&os_page={{ owned_stations.number }}&op_page={{ owned_programs.number }}">
+        {% trans "previous" %}</a>
+    {% endif %}
+    {% if subscriptions.has_next %}
+        <a href="?s_page={{ follow_stations.number }}&p_page={{ subscriptions.next_page_number }}&os_page={{ owned_stations.number }}&op_page={{ owned_programs.number }}">
+        {% trans "next" %}</a>
+    {% endif %}
+</span>
+<p></p>
 
 <div  class="section-title"><b>{% trans "Followed stations:" %}</b></div>
 <div class="grid-container">
@@ -44,12 +60,23 @@
 	        	<p>{{ station.name }}</p></a>
 	        </div>
 	    {% endfor %}
-	    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 	{% else %}
 	    <p>{% trans "No stations followed" %}</p>
 	{% endif %}
 
 </div>
+
+<span class="step-links">
+	{% if follow_stations.has_previous %}
+        <a href="?s_page={{ follow_stations.previous_page_number}}&p_page={{ subscriptions.number }}&os_page={{ owned_stations.number }}&op_page={{ owned_programs.number }}">
+        {% trans "previous" %}</a>
+    {% endif %}
+    {% if follow_stations.has_next %}
+        <a href="?s_page={{ follow_stations.next_page_number }}&p_page={{ subscriptions.number }}&os_page={{ owned_stations.number }}&op_page={{ owned_programs.number }}">
+        {% trans "next" %}</a>
+    {% endif %}
+</span>
+<p></p>
 
 {% if request.user.is_authenticated %}
 	{% if request.user.id == user.id%}
@@ -59,51 +86,62 @@
 		
 			{% if owned_programs %}
 		   
-			    {% for program in owned_programs %}
+			    {% for program_adm in owned_programs %}
 			        <div class="grid-item" >
-			        	<a href="{% url 'rss_feed:detail_program' program.id %}">
-			        	<img src="{{ program.image.path.url }}" width='100'>
-			        	<p>{{ program.name }}</p></a>
+			        	<a href="{% url 'rss_feed:detail_program' program_adm.program.id %}">
+			        	<img src="{{ program_adm.program.image.path.url }}" width='100'>
+			        	<p>{{ program_adm.program.name }}</p></a>
 			        </div>
 			    {% endfor %}
-			    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 			{% else %}
 			    <p>{% trans "No owned programs" %}</p>
 			{% endif %}
 
 		</div>
-		
+		<span class="step-links">
+			{% if owned_programs.has_previous %}
+		        <a href="?s_page={{ follow_stations.number}}&p_page={{ subscriptions.number }}&os_page={{ owned_stations.number }}&op_page={{ owned_programs.previous_page_number }}">
+		        {% trans "previous" %}</a>
+		    {% endif %}
+		    {% if owned_programs.has_next %}
+		        <a href="?s_page={{ follow_stations.number }}&p_page={{ subscriptions.number }}&os_page={{ owned_stations.number }}&op_page={{ owned_programs.next_page_number }}">
+		        {% trans "next" %}</a>
+		    {% endif %}
+		</span>
+		<p></p>
 		<div  class="section-title"><b>{% trans "Your stations:" %}</b></div>
 		<div class="grid-container">
 		
 			{% if owned_stations %}
 		   
-			    {% for station in owned_stations %}
+			    {% for station_adm in owned_stations %}
 			        <div class="grid-item" >
-			        	<a href="{% url 'rss_feed:detail_station' station.id %}">
-			        	<img src="{{ station.logo.path.url }}" width='100'>
-			        	<p>{{ station.name }}</p></a>
+			        	<a href="{% url 'rss_feed:detail_station' station_adm.station.id %}">
+			        	<img src="{{ station_adm.station.logo.path.url }}" width='100'>
+			        	<p>{{ station_adm.station.name }}</p></a>
 			        </div>
 			    {% endfor %}
-			    <a href="{% url 'rss_feed:unknown' %}" class="button">{{ seemore }}</a>
 			{% else %}
 			    <p>{% trans "No owned stations" %}</p>
 			{% endif %}
 
 		</div>
-		
+		<span class="step-links">
+			{% if owned_stations.has_previous %}
+		        <a href="?s_page={{ follow_stations.number}}&p_page={{ subscriptions.number }}&os_page={{ owned_stations.previous_page_number }}&op_page={{ owned_programs.number }}">
+		        {% trans "previous" %}</a>
+		    {% endif %}
+		    {% if owned_stations.has_next %}
+		        <a href="?s_page={{ follow_stations.number }}&p_page={{ subscriptions.number }}&os_page={{ owned_stations.next_page_number }}&op_page={{ owned_programs.number }}">
+		        {% trans "next" %}</a>
+		    {% endif %}
+		</span>
 	{% endif %}
 {% endif %}
 
 
-
-<p>
-{% if request.user.is_authenticated %}
-	{% if request.user.id == user.id%}
-		<a href="{% url 'rss_feed:edit_user'%}">{% trans "Edit" %}</a> 
-	{% endif %}
-{% endif %}
-  <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
+<p></p>
+<p><a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a></p>
 {% endblock %}
 
 

@@ -240,4 +240,53 @@ def get_paginated_program_subscribers(program,page=1,ps=PAGE_SIZE):
     
     result_qs = program.subscribers.order_by('username')
     return _aux_paginator_creation(result_qs,page,ps)
+
+
+def get_paginated_station_latest_episodes(station,page=1,ps=PAGE_SIZE): 
     
+        subs_programs = station.programs.all()
+        subs_episodes = Episode.objects.none()
+        
+        for program in subs_programs:
+            
+            subs_episodes = program.episode_set.all()|subs_episodes
+        
+        result_qs = subs_episodes.order_by('-publication_date')
+        return _aux_paginator_creation(result_qs,page,ps)
+ 
+ 
+def get_paginated_station_programs(station,page=1,ps=PAGE_SIZE): 
+     
+        result_qs = station.programs.order_by('id')
+        return _aux_paginator_creation(result_qs,page,ps)
+    
+    
+def get_paginated_station_followers(station,page=1,ps=PAGE_SIZE): 
+       
+        result_qs = station.followers.order_by('id')
+        return _aux_paginator_creation(result_qs,page,ps)
+        
+
+def get_paginated_user_sub_programs(user,page=1,ps=PAGE_SIZE):
+        
+    result_qs = user.subscribers.order_by('id')
+    return _aux_paginator_creation(result_qs,page,ps)
+
+
+def get_paginated_user_foll_stations(user,page=1,ps=PAGE_SIZE):
+    
+    result_qs = user.followers.order_by('id')
+    return _aux_paginator_creation(result_qs,page,ps)
+
+    
+def get_paginated_user_adm_programs(user,page=1,ps=PAGE_SIZE):
+    
+    result_qs = user.programs_admin.order_by('program__id').prefetch_related('program')
+    return _aux_paginator_creation(result_qs,page,ps)
+
+    
+def get_paginated_user_adm_stations(user,page=1,ps=PAGE_SIZE):    
+        
+    result_qs = user.stations_admin.order_by('station__id').prefetch_related('station')
+    return _aux_paginator_creation(result_qs,page,ps)
+
