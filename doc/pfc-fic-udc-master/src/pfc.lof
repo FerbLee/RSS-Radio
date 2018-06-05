@@ -20,10 +20,13 @@
 \addvspace {10\p@ }
 \contentsline {xchapter}{Plan de Proyecto}{31}{chapter.5}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Dise\IeC {\~n}o}{33}{chapter.6}
+\contentsline {xchapter}{Dese\IeC {\~n}o}{33}{chapter.6}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagrama Entidade-Relaci\IeC {\'o}n da Base de Datos.\relax }}{35}{figure.caption.15}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama de clases do paquete models.\relax }}{36}{figure.caption.16}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Patr\IeC {\'o}n Estratexia utilizado para o procesamento de RSS.\relax }}{37}{figure.caption.17}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementaci\IeC {\'o}n}{35}{chapter.7}
+\contentsline {xchapter}{Implementaci\IeC {\'o}n}{39}{chapter.7}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{37}{chapter.8}
+\contentsline {xchapter}{Conclusiones}{41}{chapter.8}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Ap\IeC {\'e}ndice}{39}{appendix.Alph1}
+\contentsline {xchapter}{Ap\IeC {\'e}ndice}{43}{appendix.Alph1}

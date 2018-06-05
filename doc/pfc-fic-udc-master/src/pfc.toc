@@ -28,7 +28,7 @@
 \contentsline {subsection}{\numberline {4.1.7}JSON}{22}{subsection.4.1.7}
 \contentsline {subsection}{\numberline {4.1.8}LaTeX}{23}{subsection.4.1.8}
 \contentsline {section}{\numberline {4.2}Django Framework}{23}{section.4.2}
-\contentsline {section}{\numberline {4.3}Celery}{24}{section.4.3}
+\contentsline {section}{\numberline {4.3}Celery}{25}{section.4.3}
 \contentsline {section}{\numberline {4.4}RabbitMQ}{25}{section.4.4}
 \contentsline {section}{\numberline {4.5}Bootstrap}{25}{section.4.5}
 \contentsline {section}{\numberline {4.6}Ajax}{26}{section.4.6}
@@ -43,11 +43,12 @@
 \contentsline {subsection}{\numberline {4.9.5}TeXstudio}{29}{subsection.4.9.5}
 \contentsline {chapter}{\numberline {5}Plan de Proyecto}{31}{chapter.5}
 \contentsline {section}{\numberline {5.1}An\IeC {\'a}lisis de Viabilidad}{32}{section.5.1}
-\contentsline {chapter}{\numberline {6}Dise\IeC {\~n}o}{33}{chapter.6}
-\contentsline {section}{\numberline {6.1}Ciclo de vida}{34}{section.6.1}
-\contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{35}{chapter.7}
-\contentsline {section}{\numberline {7.1}Organizaci\IeC {\'o}n del c\IeC {\'o}digo fuente}{36}{section.7.1}
-\contentsline {chapter}{\numberline {8}Conclusiones}{37}{chapter.8}
-\contentsline {section}{\numberline {8.1}An\IeC {\'a}lisis Econ\IeC {\'o}mico}{38}{section.8.1}
-\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{39}{appendix.Alph1}
-\contentsline {section}{\numberline {A.1}PhotoPlace}{39}{section.Alph1.1}
+\contentsline {chapter}{\numberline {6}Dese\IeC {\~n}o}{33}{chapter.6}
+\contentsline {section}{\numberline {6.1}Modelo de datos}{34}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Os usuarios}{34}{subsection.6.1.1}
+\contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{39}{chapter.7}
+\contentsline {section}{\numberline {7.1}Organizaci\IeC {\'o}n del c\IeC {\'o}digo fuente}{40}{section.7.1}
+\contentsline {chapter}{\numberline {8}Conclusiones}{41}{chapter.8}
+\contentsline {section}{\numberline {8.1}An\IeC {\'a}lisis Econ\IeC {\'o}mico}{42}{section.8.1}
+\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{43}{appendix.Alph1}
+\contentsline {section}{\numberline {A.1}PhotoPlace}{43}{section.Alph1.1}
