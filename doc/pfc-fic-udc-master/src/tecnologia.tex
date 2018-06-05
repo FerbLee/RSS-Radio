@@ -91,7 +91,7 @@ Pese a que o seu uso nos navegadores continúa a ser a principal razón de ser d
 Ademais do código en JavaScript puro, este proxecto tamén fai uso nalgunhas partes do código de funcións de jQuery.
 
 \subsubsection{jQuery}
-
+\label{jquery}
 JQuery é unha biblioteca de JavaScript creada co fin de simplificar o \say{scripting} no lado do cliente. Trátase dunha ferramenta libre, publicada baixo licenza MIT e é mantida pola comunidade jQuery Team. No 2015, xa era empregada polo 63\% do Top Million Websites\cite{jquery}, incluíndo sitios populares coma Netflix, Amazon ou Microsoft. O seu uso segue a ser moi xeralizado a día de hoxe.  
 
 Cunha API funcional e válida en gran parte dos navegadores web, evita moitos dos problemas de incompatibilidade que aparecen ao utilizar JavaScript puro e o código resultante adoita ser moito máis conciso, mellorando a súa comprensibilidade e o seu mantemento. Isto débese en grande medida pola súa expresión \say{selector} que facilita o acceso aos distintos elementos da árbore do HTML DOM (ver figura \ref{fig:img_DOM}). 
@@ -118,6 +118,13 @@ Neste proxecto, XML é utilizado na súa modalidade RSS do xeito detallado no ap
 \subsubsection{RSS}
 \label{rss}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6,keepaspectratio=true]{./images/hlk_rss.png}
+	\caption{Fragmento de ficheiro RSS real utilizado nas probas.}
+	\label{fig:rss}
+\end{figure}
+
 RSS é un tipo de formato XML utilizado para a \say{sindicación} web, isto é, a emisión de contidos actualizados dunha páxina web a un número indefinido de subscritores. Utilízase para evitar a procura manual de novos contidos naquelas páxinas nas que a actualización é frecuente: Páxinas de novas, blogs, podcasts... 
 
 O seu funcionamento consiste nun ficheiro RSS (comunmente chamado \say{feed}) accesible desde a web polos programas clientes de rss que posúan os subscritores. Ese feed mostra información resumida do contido publicado no sitio web ao que fai referencia. Cada vez que o contido se actualice, o feed actualizarase tamén e ese cambio será detectado polo cliente rss na súa seguinte comprobación mediante \say{polling}.
@@ -125,6 +132,33 @@ O seu funcionamento consiste nun ficheiro RSS (comunmente chamado \say{feed}) ac
 O nome procede do acrónimo de \say{Really Simple Syndication}(Sindicación Realmente Sinxela) e o estándar é mantido polo \say{RSS Advisory Board}. Na data de entrega desta memoria e desde o ano 2009, a última revisión é a 2.0.11 \cite{rss}
 
 Neste proxecto, o interese céntrase na actualización dos podcasts. Existen alternativas a este formato de sindicación mais, dado o seu uso xeralizado entre os usuarios potenciais da aplicación web a desenvolver, non foron consideradas.
+
+
+\subsection{JSON}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5,keepaspectratio=true]{./images/json.png}
+	\caption{Exemplo de sintaxe JSON\cite{json_wiki}}
+	\label{fig:json}
+\end{figure}
+
+JSON é un estándar de sintáctico utilizado para o intercambio de datos lixeiros de texto entre distintas linguaxes. A pesares de ser a abreviatura de JavaScript Object Notation pola súa orixe inspirada nos tipos desta linguaxe\cite{json} o seu uso por parte doutras tecnoloxías é común. Esta linguaxe non define un sistema completo de intercambio de datos, mais si un marco sintáctico sobre o que definir un.
+
+Baséase nunha xerarquía definida por chaves, corchetes, comas, dous puntos e parénteses no xeito descrito na figura \ref{fig:json}, onde se amosa un exemplo de codificación dos datos persoais dun home.
+
+Neste proxecto, utilizouse de forma implícita ao ser a codificación utilizada polos obxectos de contexto de Django.
+
+\subsection{LaTeX}
+\label{latex}
+
+LaTeX é un sistema de preparación de documentos para os que sexa necesaria unha tipografía de alta cualidade, habitualmente, documentos medios ou longos para publicacións científicas. A motivación de LaTeX é a máxima separación posible entre o contido e o estilo do documento, facendo depender o segundo de modelos preexistentes para que os autores podan concentrarse na creación do primeiro.
+
+Este sistema non é un editor de texto. Consiste nun conxunto de macros e un programa procesador que interpreta os mesmos. É un software libre e de código aberto (publicado baixo licenza  LaTeX Project Public License\cite{latex}). Na actualidade, pódese escoller entre distintas  distribucións libres de LaTeX que inclúen unha ampla variedade de paquetes de macros adicionais. Para a confección desta memoria, utilizouse TexLive na súa versión de 2016 por ser a máis actual dispoñible nos repositorios do Sistema Operativo no momento de comezar a escritura.
+
+
+
+
 
 
 \section{Django Framework}
@@ -202,6 +236,15 @@ Bootstrap é un framework libre e de código aberto (publicado baixo licenza MIT
 
 Neste proxecto, utilizouse a través da biblioteca de django-bootstrap4 para facilitar o uso dos elementos da versión 4 de Bootstrap desde os templates do framework de Django.
 
+
+\section{Ajax}
+
+Ajax é a abreviación de \say{Asynchronous JavaScript and XML}. Trátase dunha técnica combinada desas tecnoloxías, aínda que a miúdo substituíndo XML por JSON\cite{ajax}, utilizado para manter unha comunicación entre o lado cliente e o lado servidor nunha páxina web sen necesidade dunha recarga completa. 
+
+Utilizando Ajax pódese facer unha petición ao servidor e recibir información de xeito asíncrono mediante JSON ou XML para, mediante a manipulación do HTML DOM con JavaScript, actualizar só partes da páxina amosada ao usuario. Utilízase para diminuír o tráfico entre os dous lados, facendo a navegación máis áxil e mellorando a interactividade.
+
+Nesta aplicación utilizouse a través dos métodos definidos por jQuery (ver apartado \ref{jquery})
+
 \section{Apache HTTP server}
 
 Apache é un proxecto colaborativo para o desenvolvemento dun servidor HTTP robusto, con cualidade suficiente para o seu uso comercial, libre e de código aberto (publicado baixo licenza Apache, versión 2.0\cite{apache}). Apache implementa o protocolo HTTP/1.1 (RFC2616) xunto con varias funcionalidades frecuentemente requiridas pola web coma a personalización das mensaxes de erro (incluso mensaxes que conteñan de CGI scripts), a posibilidade de redirección e declaración de \say{alias} para as URLs de xeito ilimitado ou tamén soporte para hosts virtuais.
@@ -277,4 +320,4 @@ Todo o desenvolvemento deste proxecto así coma a escritura desta memoria realiz
 
 TeXstudio é un editor de documentos LaTex libre e de código aberto (Licenza GPL v2\cite{texstudio}). Proporciona, entre outras funcionalidades, un editor gráfico con soporte de marcado ortográfico para distintos idiomas, un visor de ficheiros PDF integrado e un corrector de referencias. Para este proxecto, utilizouse a versión 2.12.6 co paquete ortográfico de lingua galega de Libre Office v13-10.
 
-Trátase unicamente dun editor, non inclúe un procesador de macros de LaTex. Utilizouse, tanto para o procesamento do LaTex coma para a exportación da memoria a formato PDF, pdfTex na súa versión incluída no paquete de ferramentas TeX Live 2016 dispoñible nos repositorios do Sistema Operativo. 
+Trátase unicamente dun editor, non inclúe un procesador de macros de LaTex. Utilizouse para isto a distribución TeX Live 2016 (ver sección \ref{latex}) e, para a exportación da memoria a formato PDF, pdfTex na súa versión 3.14159265 (a incluída no paquete).

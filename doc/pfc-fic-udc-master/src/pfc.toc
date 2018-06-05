@@ -11,39 +11,43 @@
 \contentsline {subsection}{\numberline {3.1.3}Podomatic}{9}{subsection.3.1.3}
 \contentsline {subsection}{\numberline {3.1.4}Ivoox}{10}{subsection.3.1.4}
 \contentsline {subsection}{\numberline {3.1.5}RadioCo}{11}{subsection.3.1.5}
-\contentsline {section}{\numberline {3.2}Conclusi\IeC {\'o}n}{11}{section.3.2}
-\contentsline {chapter}{\numberline {4}Tecnolox\IeC {\'\i }as Utilizadas}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Linguaxes}{14}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Python}{14}{subsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.1.1}Anaconda}{15}{subsubsection.4.1.1.1}
-\contentsline {subsection}{\numberline {4.1.2}HTML}{15}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}CSS}{16}{subsection.4.1.3}
-\contentsline {subsubsection}{\numberline {4.1.3.1}CSS Grid}{16}{subsubsection.4.1.3.1}
-\contentsline {subsection}{\numberline {4.1.4}JavaScript}{17}{subsection.4.1.4}
-\contentsline {subsubsection}{\numberline {4.1.4.1}jQuery}{17}{subsubsection.4.1.4.1}
-\contentsline {subsection}{\numberline {4.1.5}SQL}{18}{subsection.4.1.5}
-\contentsline {subsection}{\numberline {4.1.6}XML}{18}{subsection.4.1.6}
-\contentsline {subsubsection}{\numberline {4.1.6.1}RSS}{19}{subsubsection.4.1.6.1}
-\contentsline {section}{\numberline {4.2}Django Framework}{19}{section.4.2}
-\contentsline {section}{\numberline {4.3}Celery}{21}{section.4.3}
-\contentsline {section}{\numberline {4.4}RabbitMQ}{21}{section.4.4}
-\contentsline {section}{\numberline {4.5}Bootstrap}{21}{section.4.5}
-\contentsline {section}{\numberline {4.6}Apache HTTP server}{22}{section.4.6}
-\contentsline {section}{\numberline {4.7}PostgreSQL}{23}{section.4.7}
-\contentsline {section}{\numberline {4.8}Ferramentas de desenvolvemento}{23}{section.4.8}
-\contentsline {subsection}{\numberline {4.8.1}Eclipse}{23}{subsection.4.8.1}
-\contentsline {subsection}{\numberline {4.8.2}Git}{24}{subsection.4.8.2}
-\contentsline {subsubsection}{\numberline {4.8.2.1}GitHub}{24}{subsubsection.4.8.2.1}
-\contentsline {subsection}{\numberline {4.8.3}Dia}{25}{subsection.4.8.3}
-\contentsline {subsection}{\numberline {4.8.4}Fedora}{25}{subsection.4.8.4}
-\contentsline {subsection}{\numberline {4.8.5}TeXstudio}{25}{subsection.4.8.5}
-\contentsline {chapter}{\numberline {5}Plan de Proyecto}{27}{chapter.5}
-\contentsline {section}{\numberline {5.1}An\IeC {\'a}lisis de Viabilidad}{28}{section.5.1}
-\contentsline {chapter}{\numberline {6}Dise\IeC {\~n}o}{29}{chapter.6}
-\contentsline {section}{\numberline {6.1}Ciclo de vida}{30}{section.6.1}
-\contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{31}{chapter.7}
-\contentsline {section}{\numberline {7.1}Organizaci\IeC {\'o}n del c\IeC {\'o}digo fuente}{32}{section.7.1}
-\contentsline {chapter}{\numberline {8}Conclusiones}{33}{chapter.8}
-\contentsline {section}{\numberline {8.1}An\IeC {\'a}lisis Econ\IeC {\'o}mico}{34}{section.8.1}
-\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{35}{appendix.Alph1}
-\contentsline {section}{\numberline {A.1}PhotoPlace}{35}{section.Alph1.1}
+\contentsline {section}{\numberline {3.2}T\IeC {\'a}boa comparativa}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}Conclusi\IeC {\'o}n}{13}{section.3.3}
+\contentsline {chapter}{\numberline {4}Tecnolox\IeC {\'\i }as Utilizadas}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Linguaxes}{16}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Python}{16}{subsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.1.1}Anaconda}{17}{subsubsection.4.1.1.1}
+\contentsline {subsection}{\numberline {4.1.2}HTML}{17}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}CSS}{18}{subsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.3.1}CSS Grid}{18}{subsubsection.4.1.3.1}
+\contentsline {subsection}{\numberline {4.1.4}JavaScript}{19}{subsection.4.1.4}
+\contentsline {subsubsection}{\numberline {4.1.4.1}jQuery}{19}{subsubsection.4.1.4.1}
+\contentsline {subsection}{\numberline {4.1.5}SQL}{20}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}XML}{20}{subsection.4.1.6}
+\contentsline {subsubsection}{\numberline {4.1.6.1}RSS}{21}{subsubsection.4.1.6.1}
+\contentsline {subsection}{\numberline {4.1.7}JSON}{22}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}LaTeX}{23}{subsection.4.1.8}
+\contentsline {section}{\numberline {4.2}Django Framework}{23}{section.4.2}
+\contentsline {section}{\numberline {4.3}Celery}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}RabbitMQ}{25}{section.4.4}
+\contentsline {section}{\numberline {4.5}Bootstrap}{25}{section.4.5}
+\contentsline {section}{\numberline {4.6}Ajax}{26}{section.4.6}
+\contentsline {section}{\numberline {4.7}Apache HTTP server}{26}{section.4.7}
+\contentsline {section}{\numberline {4.8}PostgreSQL}{27}{section.4.8}
+\contentsline {section}{\numberline {4.9}Ferramentas de desenvolvemento}{28}{section.4.9}
+\contentsline {subsection}{\numberline {4.9.1}Eclipse}{28}{subsection.4.9.1}
+\contentsline {subsection}{\numberline {4.9.2}Git}{28}{subsection.4.9.2}
+\contentsline {subsubsection}{\numberline {4.9.2.1}GitHub}{29}{subsubsection.4.9.2.1}
+\contentsline {subsection}{\numberline {4.9.3}Dia}{29}{subsection.4.9.3}
+\contentsline {subsection}{\numberline {4.9.4}Fedora}{29}{subsection.4.9.4}
+\contentsline {subsection}{\numberline {4.9.5}TeXstudio}{29}{subsection.4.9.5}
+\contentsline {chapter}{\numberline {5}Plan de Proyecto}{31}{chapter.5}
+\contentsline {section}{\numberline {5.1}An\IeC {\'a}lisis de Viabilidad}{32}{section.5.1}
+\contentsline {chapter}{\numberline {6}Dise\IeC {\~n}o}{33}{chapter.6}
+\contentsline {section}{\numberline {6.1}Ciclo de vida}{34}{section.6.1}
+\contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{35}{chapter.7}
+\contentsline {section}{\numberline {7.1}Organizaci\IeC {\'o}n del c\IeC {\'o}digo fuente}{36}{section.7.1}
+\contentsline {chapter}{\numberline {8}Conclusiones}{37}{chapter.8}
+\contentsline {section}{\numberline {8.1}An\IeC {\'a}lisis Econ\IeC {\'o}mico}{38}{section.8.1}
+\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{39}{appendix.Alph1}
+\contentsline {section}{\numberline {A.1}PhotoPlace}{39}{section.Alph1.1}
