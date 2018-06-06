@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
-from django.conf import settings
 import os
 from datetime import datetime
 import pytz

@@ -1,21 +1,18 @@
-from django.shortcuts import get_object_or_404, render, redirect, render_to_response
+from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.urls import reverse
 from django.views import generic
-from .models import Episode, Program, Image, Station, Vote, Comment, Broadcast, Tag
+from .models import Episode, Program, Image, Station, Comment, Broadcast
 from .models import EXISTING_VOTE_TYPES, LIKE_VOTE, DISLIKE_VOTE, NEUTRAL_VOTE,ADMT_OWNER,EXISTING_ADMIN_TYPES
 from rss_feed import rss_link_parsers as rlp 
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import SignUpForm, EditUserForm,CustomChangePasswordForm,IgnorePasswordEditForm,AddStationForm, \
     CommentForm,AddAdminForm,TextSearchForm
-from django.utils import timezone
 from django.contrib.auth.models import User
 import os
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext as _
-from django.template import RequestContext
 from rss_feed.forms import AddProgramForm, AddBroadcastForm
 from django.utils import timezone
 from rss_feed.models import BCM_DIGITAL, BCM_FM, BCM_TV, SHAREABLE_OPTIONS,\
