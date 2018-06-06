@@ -1,33 +1,31 @@
 \select@language {spanish}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Introducci\IeC {\'o}n}{1}{chapter.1}
+\contentsline {xchapter}{Introduci\IeC {\'o}n}{1}{chapter.1}
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Ouvintes de radio promedio diario do ano 2017 en Espa\IeC {\~n}a.\relax }}{3}{figure.caption.4}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conceptos Previos}{5}{chapter.2}
+\contentsline {xchapter}{Estado da arte}{5}{chapter.2}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Interface de TuneIn\relax }}{6}{figure.caption.5}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Interface de Podomatic\relax }}{7}{figure.caption.6}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Interface de Ivoox\relax }}{8}{figure.caption.7}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Interface de RadioCo\relax }}{9}{figure.caption.8}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Estado da arte}{7}{chapter.3}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Interface de TuneIn\relax }}{8}{figure.caption.5}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Interface de Podomatic\relax }}{9}{figure.caption.6}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Interface de Ivoox\relax }}{10}{figure.caption.7}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Interface de RadioCo\relax }}{11}{figure.caption.8}
+\contentsline {xchapter}{Tecnolox\IeC {\'\i }a e ferramentas empregadas}{13}{chapter.3}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de interacci\IeC {\'o}n de tecnolox\IeC {\'\i }as.\relax }}{14}{figure.caption.10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Exemplo de \IeC {\'a}rbore HTML DOM\cite {dom}\relax }}{16}{figure.caption.11}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Fragmento de ficheiro RSS real utilizado nas probas.\relax }}{19}{figure.caption.12}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Exemplo de sintaxe JSON\cite {json_wiki}\relax }}{20}{figure.caption.13}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Cota de mercado dos servidores no Top million busiest sites (Netcraft, abril 2018)\relax }}{25}{figure.caption.14}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Tecnolox\IeC {\'\i }as Utilizadas}{15}{chapter.4}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de interacci\IeC {\'o}n de tecnolox\IeC {\'\i }as.\relax }}{16}{figure.caption.10}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Exemplo de \IeC {\'a}rbore HTML DOM\cite {dom}\relax }}{18}{figure.caption.11}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Fragmento de ficheiro RSS real utilizado nas probas.\relax }}{21}{figure.caption.12}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Exemplo de sintaxe JSON\cite {json_wiki}\relax }}{22}{figure.caption.13}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Cota de mercado dos servidores no Top million busiest sites (Netcraft, abril 2018)\relax }}{27}{figure.caption.14}
+\contentsline {xchapter}{Plan de Proyecto}{29}{chapter.4}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Plan de Proyecto}{31}{chapter.5}
+\contentsline {xchapter}{Dese\IeC {\~n}o}{31}{chapter.5}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces \IeC {\'A}rbore de m\IeC {\'o}dulos do aplicativo web.\relax }}{33}{figure.caption.15}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama Entidade-Relaci\IeC {\'o}n da Base de Datos.\relax }}{35}{figure.caption.16}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de clases da capa modelo.\relax }}{36}{figure.caption.17}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Patr\IeC {\'o}n Estratexia utilizado para o procesamento de RSS.\relax }}{38}{figure.caption.18}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Dese\IeC {\~n}o}{33}{chapter.6}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces M\IeC {\'o}dulos do proxecto relacionados co patr\IeC {\'o}n MVT.\relax }}{35}{figure.caption.15}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama Entidade-Relaci\IeC {\'o}n da Base de Datos.\relax }}{37}{figure.caption.16}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Diagrama de clases da capa modelo.\relax }}{38}{figure.caption.17}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Patr\IeC {\'o}n Estratexia utilizado para o procesamento de RSS.\relax }}{39}{figure.caption.18}
+\contentsline {xchapter}{Implementaci\IeC {\'o}n}{39}{chapter.6}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementaci\IeC {\'o}n}{41}{chapter.7}
+\contentsline {xchapter}{Conclusiones}{41}{chapter.7}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{43}{chapter.8}
-\addvspace {10\p@ }
-\contentsline {xchapter}{Ap\IeC {\'e}ndice}{45}{appendix.Alph1}
+\contentsline {xchapter}{Ap\IeC {\'e}ndice}{43}{appendix.Alph1}
