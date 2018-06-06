@@ -66,7 +66,7 @@ A estrutura da BD tradúcese na aplicación ás clases definidas no paquete mode
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.4,keepaspectratio=true]{./images/class_diagram.png}
-	\caption{Diagrama de clases do paquete models.}
+	\caption{Diagrama de clases da capa modelo.}
 	\label{fig:clase_models}
 \end{figure}
 
@@ -79,7 +79,7 @@ A estrutura da BD tradúcese na aplicación ás clases definidas no paquete mode
 \end{figure}
 
 
-\subsection{Os usuarios}
+\subsection{Usuarios}
 
 Os usuarios están definidos por dúas táboas: User e UserProfile que se corresponden coas clases User, do paquete django.contrib.auth.models, e UserProfile, definida polo desenvolvedor e, polo tanto, includida no módulo models.py. Esta segunda considerámola coma feble de User pois a existencia dun perfil está vencellada de xeito ineludible á existencia dun usuario (ver figura \ref{fig:diagrama_er}). Esta entidade auxiliar contén os atributos de usuario: avatar, descrición e localizción. Non se utiliza para máis nada.
 
@@ -88,6 +88,24 @@ A clase User inclúe os atributos necesarios para a autenticación: username, em
 Outros atributos de User reflectidos na figura \ref{fig:clase_models} coma followers ou station\_admins son engadidos automáticamente polo framework ao declarar as relacións coa fin de facilitar a navegación entre clases.
 
 
+\subsection{Programas e episodios}
+
+Entendemos, neste sistema, un programa coma un produto radiofónico do cal se publican entregas de xeito periódico. Están almacenados na táboa Program da base de datos. Os programas teñen, entre outros atributos, un nome, unha descrición, unha imaxe, un conxunto de categorías (táboa Tag) e un enlace a un ficheiro RSS dado polo usuario.
+
+A subscrición dos usuarios aos programas modelouse coma unha relación N a N. As instancias de Program poden acceder ao conxunto dos seus subscritores mediante o atributo subscribers.
+
+Episodio é como chamamos ás entregas dun programa. Cada un ten, entre outros atributos, un enlace a un ficheiro de audio que os usuarios poden escoitar ou descargar, un resumo, unha imaxe e un conxunto de etiquetas (tags). Un episodio ten que formar parte de 1 e só a 1 programa. Se un programa é borrado, os episodios deixan de ter sentido no sistema e son borrados en cascada. De aí que se considerara a relación destas clases coma unha composición.
+
+\subsection{Votos e comentarios}
+
+Nunha primeira aproximación ao deseño da base de datos, entendéronse estas dúas entidades coma simples relacións N a N entre as entidades Episode e User. Porén, decidiuse finalmente que representan conceptos de seu que non perden o sentido semántico fóra da relación e, polo tanto, modeláronse coma entidades (Vote e Comment nos diagramas \ref{fig:diagrama_er} e \ref{fig:clase_models}).
+
+O atributo type de Vote serve para lle dar significado ao voto: Positivo, negativo ou neutro.
+
+
+\subsection{Emisoras}
+
+As emisoras de radio ou canles de podcast están representadas pola táboa Station do módulo models.py. Os atributos a destacar son o nome, o medio principal de emisión (FM, AM, Internet...),  
 
 
 

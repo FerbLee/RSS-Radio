@@ -49,7 +49,10 @@
 \contentsline {subsection}{\numberline {6.1.2}Actividades de produci\IeC {\'o}n de contidos}{34}{subsection.6.1.2}
 \contentsline {section}{\numberline {6.2}Arquitectura}{35}{section.6.2}
 \contentsline {section}{\numberline {6.3}Capa Modelo}{36}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Os usuarios}{36}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.1}Usuarios}{36}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Programas e episodios}{37}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Votos e comentarios}{39}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Emisoras}{40}{subsection.6.3.4}
 \contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{41}{chapter.7}
 \contentsline {section}{\numberline {7.1}Organizaci\IeC {\'o}n del c\IeC {\'o}digo fuente}{42}{section.7.1}
 \contentsline {chapter}{\numberline {8}Conclusiones}{43}{chapter.8}
