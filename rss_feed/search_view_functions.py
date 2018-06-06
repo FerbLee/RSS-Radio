@@ -257,7 +257,8 @@ def get_paginated_station_latest_episodes(station,page=1,ps=PAGE_SIZE):
  
 def get_paginated_station_programs(station,page=1,ps=PAGE_SIZE): 
      
-        result_qs = station.programs.order_by('id')
+        result_qs = station.broadcast_set.order_by('program__id').prefetch_related('program')
+        #result_qs = station.programs.order_by('id')
         return _aux_paginator_creation(result_qs,page,ps)
     
     
@@ -281,7 +282,7 @@ def get_paginated_user_foll_stations(user,page=1,ps=PAGE_SIZE):
     
 def get_paginated_user_adm_programs(user,page=1,ps=PAGE_SIZE):
     
-    result_qs = user.programs_admin.order_by('program__id').prefetch_related('program')
+    result_qs = user.programs_admin.order_by('program__id')
     return _aux_paginator_creation(result_qs,page,ps)
 
     

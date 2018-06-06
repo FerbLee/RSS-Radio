@@ -88,11 +88,12 @@
 
 	{% if program_list %}
    
-	    {% for program in program_list %}
+	    {% for programbc in program_list %}
 	        <div class="grid-item" >
-	        	<a href="{% url 'rss_feed:detail_program' program.id %}">
-	        	<img src="{{ program.image.path.url }}" width='100'>
-	        	<p>{{ program.name }}</p></a>
+	        	<a href="{% url 'rss_feed:detail_program' programbc.program.id %}">
+	        	<img src="{{ programbc.program.image.path.url }}" width='100'>
+	        	<p>{{ programbc.program.name }}</p></a>
+	        	<p>{{ programbc.schedule_details }}</p></a>
 	        </div>
 	    {% endfor %}
 	{% else %}
