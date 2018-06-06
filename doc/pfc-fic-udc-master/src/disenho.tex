@@ -37,7 +37,7 @@ Neste proxecto, os modelos  definíronse no módulo models.py e as vistas en vie
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5,keepaspectratio=true]{./images/project_tree.png}
-	\caption{Módulos do proxecto.}
+	\caption{Módulos do proxecto relacionados co patrón MVT.}
 	\label{fig:project_tree}
 \end{figure}
 
@@ -81,7 +81,15 @@ A estrutura da BD tradúcese na aplicación ás clases definidas no paquete mode
 
 \subsection{Os usuarios}
 
-Os usuarios están definidos por dúas táboas: User e UserProfile que se corresponden coas clases User, do paquete django.contrib.auth.models, e UserProfile, definida polo desenvolvedor e, polo tanto, includida no paquete models.py. Esta segunda considerámola coma feble de User pois a existencia dun perfil está vencellada de xeito ineludible á existencia dun usuario.
+Os usuarios están definidos por dúas táboas: User e UserProfile que se corresponden coas clases User, do paquete django.contrib.auth.models, e UserProfile, definida polo desenvolvedor e, polo tanto, includida no módulo models.py. Esta segunda considerámola coma feble de User pois a existencia dun perfil está vencellada de xeito ineludible á existencia dun usuario (ver figura \ref{fig:diagrama_er}). Esta entidade auxiliar contén os atributos de usuario: avatar, descrición e localizción. Non se utiliza para máis nada.
+
+A clase User inclúe os atributos necesarios para a autenticación: username, email e password, quedando este último encriptado en base de datos mediante o sistema PBKDF2. De entre os campos utilizados para o funcionamento de Django, cómpre destacar is\_staff, que é o que concede acceso do usuario ao panel de administración do aplicativo que provee o propio framework (como se mencionou no apartado \ref{django})
+
+Outros atributos de User reflectidos na figura \ref{fig:clase_models} coma followers ou station\_admins son engadidos automáticamente polo framework ao declarar as relacións coa fin de facilitar a navegación entre clases.
+
+
+
+
 
 
 
