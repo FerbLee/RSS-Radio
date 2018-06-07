@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 
-<h3>{{ program.name }} {% trans "management dashboard" %} </h3>
+<h3>{% trans "Management dashboard for" %} {{ program.name }}</h3>
 
 <div class="dashboard-sections">
 <p><a href="{% url 'rss_feed:edit_program' program.id%}">{% trans "Edit Profile" %}</a></p>

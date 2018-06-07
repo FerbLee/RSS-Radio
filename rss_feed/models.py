@@ -7,8 +7,8 @@ import pytz
 from django.contrib.auth.models import User, Group
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-from django.utils.translation import ugettext as _
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
 default_time = datetime(1975,1,1,0,0,0,0,tzinfo=pytz.UTC)
 
@@ -21,26 +21,26 @@ ML_TYPE = 40
 ML_ORIGINAL_ID = 200
 ML_TAG = 50
 
-CO_ENABLE = ('en','Enable')
-CO_DISABLE = ('di','Disable')
+CO_ENABLE = ('en',_('Enable'))
+CO_DISABLE = ('di',_('Disable'))
 EXISTING_COMMENT_OPTIONS = (CO_ENABLE,CO_DISABLE)
 
-SH_TF = ('tf','share free')
-SH_AF = ('af','ask first')
-SH_NS = ('ns','no share')
-SHAREABLE_OPTIONS = [SH_TF,SH_AF]
-EXISTING_SHARING_OPTS = (SH_TF,SH_AF,SH_NS )
+SH_TF = ('tf',_('share free'))
+SH_AF = ('af',_('ask first'))
+SH_NS = ('ns',_('no share'))
+SHAREABLE_OPTIONS = [SH_TF]
+EXISTING_SHARING_OPTS = (SH_TF,SH_NS )
 
-LIKE_VOTE = ('lk','like')
-DISLIKE_VOTE = ('dl','dislike')
-NEUTRAL_VOTE = ('ne','neutral')
+LIKE_VOTE = ('lk',_('like'))
+DISLIKE_VOTE = ('dl',_('dislike'))
+NEUTRAL_VOTE = ('ne',_('neutral'))
 EXISTING_VOTE_TYPES = (LIKE_VOTE,DISLIKE_VOTE,NEUTRAL_VOTE)
 
-BCM_FM = ('fm','Radio FM/AM')
-BCM_DIGITAL = ('di','Radio Digital')
-BCM_TV = ('tv','TV Channel')
-EXISTING_BCMETHODS = (BCM_FM, BCM_DIGITAL, BCM_TV, ('in','Radio Internet'),
-                      ('pc','Podcasting Channel'),('ot','Others'))
+BCM_FM = ('fm',_('Radio FM/AM'))
+BCM_DIGITAL = ('di',_('Radio Digital'))
+BCM_TV = ('tv',_('TV Channel'))
+EXISTING_BCMETHODS = (BCM_FM, BCM_DIGITAL, BCM_TV, ('in',_('Radio Internet')),
+                      ('pc',_('Podcasting Channel')),('ot',_('Others')))
 
 ADMT_OWNER = ('ow',_('Owner'))
 ADMT_ADMIN = ('ad',_('Admin'))

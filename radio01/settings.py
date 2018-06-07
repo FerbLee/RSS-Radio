@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from django.utils.translation import ugettext_lazy as _
+#from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,12 +49,12 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'radio01.urls'
@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'rss_feed.views.define_search_tool',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -156,10 +157,10 @@ MEDIA_URL = '/media/'
 
 # Translation
 USE_I18N = True
-LOCALE_PATHS=('/locale/',)
+LOCALE_PATHS=(os.path.join(BASE_DIR, "locale"),)
 LANGUAGES = (
-    ('en-us', _('English')),
-    ('gl', _('Galician')),
-    ('es-es', _('Spanish')),
+    ('en', 'English'),
+    ('gl', 'Galego'),
 )
-LANGUAGE_CODE = 'en-us'
+
+LANGUAGE_CODE = 'en'

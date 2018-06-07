@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 
-<h3>{{ station.name }} {% trans "management dashboard" %} </h3>
+<h3>{% trans "Management dashboard for" %} {{ station.name }}</h3>
 
 <div class="dashboard-sections">
 <p><a href="{% url 'rss_feed:edit_station' station.id %}">{% trans "Edit Profile" %}</a> </p>
@@ -13,7 +13,7 @@
 
 <div class="dashboard-view">
 <div id="bc-programs">
-	<h3>Add new program</h3>
+	<h3>{% trans "Add new program" %}</h3>
 	<form method="post" class="form-inline" action="{% url 'rss_feed:add_broadcast' station.id %}">
 		{% csrf_token %}
 		{{add_broadcast_form}}
@@ -50,7 +50,7 @@
 			</tbody>
 		</table>
 		</div>
-		<p>Block actions</p> 
+		<p>{% trans "Block actions"%}</p> 
 		<input type="submit" name="bcremove" value="{% blocktrans %}Delete{% endblocktrans %}">
 		<input type="submit" name="bcupdate" value="{% blocktrans %}Update{% endblocktrans %}">
 		{% if messages %}

@@ -1,12 +1,9 @@
-
-{% load staticfiles %}
-{% load bootstrap4 %}
+{% extends 'base.html' %}
 {% load i18n %}
 
-<head>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="{% static 'css/company.css' %}" type='text/css'/>
-</head>
+{% block content %}
+
+<h2>{% trans "Log in" %}</h2>
 
 {% if form.errors %}
 	<p>{% trans "Your username and password didn't match. Please try again." %}</p>
@@ -38,6 +35,8 @@
 	<input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">{% trans "Lost password?" %}</a></p>
-<p>{% trans "Not an user?"%} <a href="{% url 'signup' %}"> <b>sign up</b></a></p>
+<!--{# Assumes you setup the password_reset view in your URLconf #}-->
+<!--<p><a href="{% url 'password_reset' %}">{% trans "Lost password?" %}</a></p>-->
+<p>{% trans "Not an user?"%} <a href="{% url 'signup' %}"> <b>{% trans "sign up" %}</b></a></p>
+<a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a>
+{% endblock %}

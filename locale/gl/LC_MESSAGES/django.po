@@ -1,0 +1,952 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-07 19:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: rss_feed/forms.py:92 rss_feed/forms.py:157
+msgid "Location"
+msgstr "Localización"
+
+#: rss_feed/forms.py:93 rss_feed/forms.py:110 rss_feed/forms.py:156
+msgid "Description"
+msgstr "Descrición"
+
+#: rss_feed/forms.py:96 rss_feed/forms.py:113
+msgid "Avatar"
+msgstr "Avatar"
+
+#: rss_feed/forms.py:124
+msgid "Old password"
+msgstr "Antigo password"
+
+#: rss_feed/forms.py:125
+msgid "New password"
+msgstr "Novo password"
+
+#: rss_feed/forms.py:126
+msgid "New password confirmation"
+msgstr "Confirmar novo password"
+
+#: rss_feed/forms.py:140
+msgid "RSS Link"
+msgstr "Enlace ao RSS"
+
+#: rss_feed/forms.py:142
+msgid "Sharing mode"
+msgstr "Compartición"
+
+#: rss_feed/forms.py:143
+msgid "Enable episode comments"
+msgstr "Permitir comentarios"
+
+#: rss_feed/forms.py:144 rss_feed/forms.py:166
+msgid "Website"
+msgstr "Sitio web"
+
+#: rss_feed/forms.py:153
+msgid "Name"
+msgstr "Nome"
+
+#: rss_feed/forms.py:158
+msgid "Profile Image"
+msgstr "Imaxe de Perfil"
+
+#: rss_feed/forms.py:159
+msgid "Logo"
+msgstr "Logo"
+
+#: rss_feed/forms.py:161
+msgid "Media"
+msgstr "Medio"
+
+#: rss_feed/forms.py:163
+msgid "Area"
+msgstr "Área"
+
+#: rss_feed/forms.py:164
+msgid "Frequency"
+msgstr "Frecuencia"
+
+#: rss_feed/forms.py:165
+msgid "Streaming Link"
+msgstr "Enlace ao streaming"
+
+#: rss_feed/forms.py:177
+msgid "Text"
+msgstr "Texto"
+
+#: rss_feed/forms.py:247 rss_feed/templates/rss_feed/manage_station.html:37
+#: rss_feed/views.py:883 rss_feed/views.py:886
+msgid "Program"
+msgstr "Programa"
+
+#: rss_feed/forms.py:248
+msgid "Broadcast Schedule"
+msgstr "Horario de emisión"
+
+#: rss_feed/forms.py:274
+msgid "Administrator"
+msgstr "Administrador"
+
+#: rss_feed/forms.py:275 rss_feed/templates/rss_feed/admin_program.html:40
+#: rss_feed/templates/rss_feed/admin_station.html:40
+msgid "Permissions"
+msgstr "Permisos"
+
+#: rss_feed/forms.py:284 rss_feed/templates/base.html:51
+msgid "Search"
+msgstr "Procura"
+
+#: rss_feed/models.py:24
+msgid "Enable"
+msgstr "Permitir"
+
+#: rss_feed/models.py:25
+msgid "Disable"
+msgstr "Deshabilitar"
+
+#: rss_feed/models.py:28
+msgid "share free"
+msgstr "libre"
+
+#: rss_feed/models.py:29
+msgid "ask first"
+msgstr "restringida"
+
+#: rss_feed/models.py:30
+msgid "no share"
+msgstr "desactivada"
+
+#: rss_feed/models.py:34
+msgid "like"
+msgstr "gústame"
+
+#: rss_feed/models.py:35
+msgid "dislike"
+msgstr "Non me gusta"
+
+#: rss_feed/models.py:36
+msgid "neutral"
+msgstr "neutral"
+
+#: rss_feed/models.py:39
+msgid "Radio FM/AM"
+msgstr "Radio FM/AM"
+
+#: rss_feed/models.py:40
+msgid "Radio Digital"
+msgstr "Radio Digital"
+
+#: rss_feed/models.py:41
+msgid "TV Channel"
+msgstr "Canle de TV"
+
+#: rss_feed/models.py:42
+msgid "Radio Internet"
+msgstr "Radio Internet"
+
+#: rss_feed/models.py:43
+msgid "Podcasting Channel"
+msgstr "Canle de Podcasts"
+
+#: rss_feed/models.py:43
+msgid "Others"
+msgstr "Outros"
+
+#: rss_feed/models.py:45
+msgid "Owner"
+msgstr "Propietario"
+
+#: rss_feed/models.py:46
+msgid "Admin"
+msgstr "Admin"
+
+#: rss_feed/templates/base.html:33
+msgid "Logged as"
+msgstr "Identificado coma"
+
+#: rss_feed/templates/base.html:36
+msgid "Log out"
+msgstr "Pechar sesión"
+
+#: rss_feed/templates/base.html:41
+msgid "Welcome, please"
+msgstr "Benvido, por favor"
+
+#: rss_feed/templates/base.html:41
+msgid "log in"
+msgstr "identifícate"
+
+#: rss_feed/templates/base.html:42
+msgid "or"
+msgstr "ou"
+
+#: rss_feed/templates/base.html:42
+#: rss_feed/templates/registration/login.html:40
+msgid "sign up"
+msgstr "rexístrate"
+
+#: rss_feed/templates/base.html:69
+msgid "Go"
+msgstr ""
+
+#: rss_feed/templates/registration/login.html:6
+msgid "Log in"
+msgstr "identifícate"
+
+#: rss_feed/templates/registration/login.html:9
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"O tey nome de usuario e password non coinciden. Por favor, téntao de novo."
+
+#: rss_feed/templates/registration/login.html:17
+msgid "Please login to see this page."
+msgstr "Por favor, identifícate para ver esta páxina."
+
+#: rss_feed/templates/registration/login.html:39
+msgid "Lost password?"
+msgstr "Non lembras o password?"
+
+#: rss_feed/templates/registration/login.html:40
+msgid "Not an user?"
+msgstr "Non es usuario?"
+
+#: rss_feed/templates/registration/login.html:41
+#: rss_feed/templates/registration/signup.html:21
+#: rss_feed/templates/rss_feed/add_content.html:97
+#: rss_feed/templates/rss_feed/admin_program.html:139
+#: rss_feed/templates/rss_feed/admin_station.html:139
+#: rss_feed/templates/rss_feed/detail_episode.html:143
+#: rss_feed/templates/rss_feed/detail_program.html:135
+#: rss_feed/templates/rss_feed/detail_station.html:142
+#: rss_feed/templates/rss_feed/detail_user.html:144
+#: rss_feed/templates/rss_feed/manage_program.html:65
+#: rss_feed/templates/rss_feed/manage_station.html:80
+#: rss_feed/templates/rss_feed/predelete_program.html:32
+msgid "Back"
+msgstr "Volver"
+
+#: rss_feed/templates/registration/signup.html:4
+#: rss_feed/templates/registration/signup.html:19
+msgid "Sign up"
+msgstr "Rexístrate"
+
+#: rss_feed/templates/rss_feed/add_content.html:5
+msgid "Add New Content:"
+msgstr "Engadir Novo Contido:"
+
+#: rss_feed/templates/rss_feed/add_content.html:8
+msgid "Add New Program"
+msgstr "Engadir Programa"
+
+#: rss_feed/templates/rss_feed/add_content.html:10
+msgid "Add New Station"
+msgstr "Engadir Emisora"
+
+#: rss_feed/templates/rss_feed/add_content.html:16
+msgid "New Program:"
+msgstr "Novo Programa:"
+
+#: rss_feed/templates/rss_feed/add_content.html:33
+#: rss_feed/templates/rss_feed/add_content.html:92
+msgid "Send"
+msgstr "Enviar"
+
+#: rss_feed/templates/rss_feed/add_content.html:34
+#: rss_feed/templates/rss_feed/add_content.html:93
+#: rss_feed/templates/rss_feed/edit_program.html:27
+#: rss_feed/templates/rss_feed/edit_station.html:75
+#: rss_feed/templates/rss_feed/edit_user.html:55
+#: rss_feed/templates/rss_feed/predelete_program.html:20
+#: rss_feed/templates/rss_feed/predelete_station.html:20
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: rss_feed/templates/rss_feed/add_content.html:41
+msgid "New Station:"
+msgstr "Nova Emisora:"
+
+#: rss_feed/templates/rss_feed/admin_program.html:5
+#: rss_feed/templates/rss_feed/admin_station.html:5
+#: rss_feed/templates/rss_feed/edit_program.html:5
+#: rss_feed/templates/rss_feed/edit_station.html:5
+#: rss_feed/templates/rss_feed/manage_program.html:5
+#: rss_feed/templates/rss_feed/manage_station.html:5
+msgid "Management dashboard for"
+msgstr "Panel de xestión de"
+
+#: rss_feed/templates/rss_feed/admin_program.html:8
+#: rss_feed/templates/rss_feed/admin_station.html:8
+#: rss_feed/templates/rss_feed/edit_program.html:8
+#: rss_feed/templates/rss_feed/edit_station.html:8
+#: rss_feed/templates/rss_feed/manage_program.html:8
+#: rss_feed/templates/rss_feed/manage_station.html:8
+#: rss_feed/templates/rss_feed/predelete_program.html:8
+#: rss_feed/templates/rss_feed/predelete_station.html:8
+msgid "Edit Profile"
+msgstr "Editar Perfil"
+
+#: rss_feed/templates/rss_feed/admin_program.html:9
+#: rss_feed/templates/rss_feed/admin_station.html:9
+#: rss_feed/templates/rss_feed/edit_program.html:9
+#: rss_feed/templates/rss_feed/edit_station.html:9
+#: rss_feed/templates/rss_feed/manage_program.html:9
+#: rss_feed/templates/rss_feed/predelete_program.html:9
+#: rss_feed/templates/rss_feed/predelete_station.html:9
+msgid "Broadcast Management"
+msgstr "Xestión de Emisión"
+
+#: rss_feed/templates/rss_feed/admin_program.html:10
+#: rss_feed/templates/rss_feed/admin_station.html:10
+#: rss_feed/templates/rss_feed/edit_program.html:10
+#: rss_feed/templates/rss_feed/edit_station.html:10
+#: rss_feed/templates/rss_feed/manage_program.html:10
+#: rss_feed/templates/rss_feed/manage_station.html:10
+#: rss_feed/templates/rss_feed/predelete_program.html:10
+#: rss_feed/templates/rss_feed/predelete_station.html:10
+msgid "Administration"
+msgstr "Administración"
+
+#: rss_feed/templates/rss_feed/admin_program.html:11
+#: rss_feed/templates/rss_feed/edit_program.html:11
+#: rss_feed/templates/rss_feed/manage_program.html:11
+#: rss_feed/templates/rss_feed/predelete_program.html:11
+msgid "Delete Program"
+msgstr "Borrar Programa"
+
+#: rss_feed/templates/rss_feed/admin_program.html:21
+#: rss_feed/templates/rss_feed/admin_station.html:21
+#: rss_feed/templates/rss_feed/manage_station.html:20
+msgid "Add"
+msgstr "Engadir"
+
+#: rss_feed/templates/rss_feed/admin_program.html:34
+#: rss_feed/templates/rss_feed/admin_station.html:34
+msgid "Current administrators:"
+msgstr "Administradores actuais:"
+
+#: rss_feed/templates/rss_feed/admin_program.html:40
+#: rss_feed/templates/rss_feed/admin_station.html:40
+#: rss_feed/templates/rss_feed/manage_program.html:23
+#: rss_feed/templates/rss_feed/manage_station.html:37
+msgid "Select"
+msgstr "Seleccionar"
+
+#: rss_feed/templates/rss_feed/admin_program.html:40
+#: rss_feed/templates/rss_feed/admin_station.html:40 rss_feed/views.py:1119
+msgid "User"
+msgstr "Usuario"
+
+#: rss_feed/templates/rss_feed/admin_program.html:59
+#: rss_feed/templates/rss_feed/admin_station.html:59
+msgid "Yourself"
+msgstr "Ti mesmo"
+
+#: rss_feed/templates/rss_feed/admin_program.html:65
+#: rss_feed/templates/rss_feed/admin_station.html:65
+msgid "can't be edited"
+msgstr "non pode ser editado"
+
+#: rss_feed/templates/rss_feed/admin_program.html:89
+#: rss_feed/templates/rss_feed/admin_station.html:89
+msgid "Remove"
+msgstr "Eliminar"
+
+#: rss_feed/templates/rss_feed/admin_program.html:90
+#: rss_feed/templates/rss_feed/admin_station.html:90
+#: rss_feed/templates/rss_feed/edit_program.html:26
+#: rss_feed/templates/rss_feed/edit_station.html:74
+#: rss_feed/templates/rss_feed/edit_user.html:55
+#: rss_feed/templates/rss_feed/manage_station.html:55
+msgid "Update"
+msgstr "Actualizar"
+
+#: rss_feed/templates/rss_feed/admin_program.html:103
+#: rss_feed/templates/rss_feed/admin_station.html:103
+#: rss_feed/templates/rss_feed/predelete_program.html:23
+#: rss_feed/templates/rss_feed/predelete_station.html:23
+msgid "Only"
+msgstr "Soamente os usuarios de nivel"
+
+#: rss_feed/templates/rss_feed/admin_program.html:103
+#: rss_feed/templates/rss_feed/admin_station.html:103
+#: rss_feed/templates/rss_feed/predelete_program.html:23
+#: rss_feed/templates/rss_feed/predelete_station.html:23
+msgid ""
+" level users can access this view. You may contact the following users if "
+"you need an upgrade:"
+msgstr ""
+" poden acceder a esta vista. Podes contactar cos seguintes usuarios se "
+"necesitas máis permisos."
+
+#: rss_feed/templates/rss_feed/admin_station.html:11
+#: rss_feed/templates/rss_feed/edit_station.html:11
+#: rss_feed/templates/rss_feed/manage_station.html:11
+#: rss_feed/templates/rss_feed/predelete_station.html:11
+msgid "Delete Station"
+msgstr "Eliminar Emisora"
+
+#: rss_feed/templates/rss_feed/deleted.html:7
+#: rss_feed/templates/rss_feed/predelete_program.html:19
+#: rss_feed/templates/rss_feed/predelete_station.html:19
+msgid "Accept"
+msgstr "Aceptar"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:5
+#: rss_feed/templates/rss_feed/detail_program.html:5
+#: rss_feed/templates/rss_feed/detail_station.html:5
+#: rss_feed/templates/rss_feed/index.html:6
+msgid "See more"
+msgstr "Ver máis"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:7
+#: rss_feed/templates/rss_feed/detail_program.html:7
+msgid "Program:"
+msgstr "Programa:"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:9
+msgid "Episode:"
+msgstr "Episodio:"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:18
+msgid "Liked"
+msgstr "Gustoute"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:22
+#: rss_feed/templates/rss_feed/detail_episode.html:45
+msgid "Dislike"
+msgstr "Non me gusta"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:29
+#: rss_feed/templates/rss_feed/detail_episode.html:40
+msgid "Like"
+msgstr "Gústame"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:33
+msgid "Disliked"
+msgstr "Disgustoute"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:53
+msgid "Likes:"
+msgstr "Gustou:"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:54
+msgid "Dislikes:"
+msgstr "Disgustou:"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:55
+msgid "Listens:"
+msgstr "Escoitas"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:57
+msgid "Published on:"
+msgstr "Publicado o:"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:61
+#: rss_feed/templates/rss_feed/detail_station.html:53
+msgid "Your browser does not support the audio element."
+msgstr "O teu navegador non soporta este elemento de audio."
+
+#: rss_feed/templates/rss_feed/detail_episode.html:65
+#: rss_feed/templates/rss_feed/detail_program.html:42
+msgid "Categories:"
+msgstr "Categorías"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:71
+msgid "Summary:"
+msgstr "Resumo:"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:76
+msgid "Comments:"
+msgstr "Comentarios:"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:81
+msgid "Comment:"
+msgstr "Comentario:"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:83
+msgid "This comment was removed by the author"
+msgstr "Este comentario foi eliminado polo autor"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:87
+msgid "at"
+msgstr "o"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:93
+#: rss_feed/templates/rss_feed/manage_program.html:40
+#: rss_feed/templates/rss_feed/manage_station.html:54
+msgid "Delete"
+msgstr "Borrar"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:107
+msgid "No comments yet"
+msgstr "Aínda non hai comentarios"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:118
+msgid "Leave a comment"
+msgstr "Deixa un comentario"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:130
+msgid "Publish"
+msgstr "Publicar"
+
+#: rss_feed/templates/rss_feed/detail_episode.html:136
+msgid "Comments for this program have been disabled."
+msgstr "Este programa ten os comentarios deshabilitados."
+
+#: rss_feed/templates/rss_feed/detail_program.html:10
+#: rss_feed/templates/rss_feed/detail_station.html:13
+msgid "Manage"
+msgstr "Xestionar"
+
+#: rss_feed/templates/rss_feed/detail_program.html:20
+msgid "Unsubscribe"
+msgstr "Cancelar Subs."
+
+#: rss_feed/templates/rss_feed/detail_program.html:25
+msgid "Subscribe"
+msgstr "Subscribirte"
+
+#: rss_feed/templates/rss_feed/detail_program.html:31
+msgid "Author:"
+msgstr "Autor:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:32
+msgid "Added on:"
+msgstr "Engadido o:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:32
+msgid "by"
+msgstr "por"
+
+#: rss_feed/templates/rss_feed/detail_program.html:37
+msgid "unknown"
+msgstr "descoñecido"
+
+#: rss_feed/templates/rss_feed/detail_program.html:40
+msgid "Language:"
+msgstr "Lingua:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:40
+msgid "Rating:"
+msgstr "Calificación:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:48
+#: rss_feed/templates/rss_feed/detail_station.html:40
+#: rss_feed/templates/rss_feed/detail_user.html:18
+msgid "Description:"
+msgstr "Descrición:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:49
+msgid "Podcast:"
+msgstr "Podcast:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:52
+msgid "Website:"
+msgstr "Sitio Web:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:55
+msgid "Episodes"
+msgstr "Episodios"
+
+#: rss_feed/templates/rss_feed/detail_program.html:68
+#: rss_feed/templates/rss_feed/detail_station.html:70
+#: rss_feed/templates/rss_feed/search_results.html:38
+msgid "No episodes"
+msgstr "Non hai episodios"
+
+#: rss_feed/templates/rss_feed/detail_program.html:75
+#: rss_feed/templates/rss_feed/detail_program.html:102
+#: rss_feed/templates/rss_feed/detail_program.html:126
+#: rss_feed/templates/rss_feed/detail_station.html:78
+#: rss_feed/templates/rss_feed/detail_station.html:107
+#: rss_feed/templates/rss_feed/detail_station.html:133
+#: rss_feed/templates/rss_feed/detail_user.html:42
+#: rss_feed/templates/rss_feed/detail_user.html:72
+#: rss_feed/templates/rss_feed/detail_user.html:104
+#: rss_feed/templates/rss_feed/detail_user.html:132
+#: rss_feed/templates/rss_feed/index.html:39
+#: rss_feed/templates/rss_feed/index.html:71
+#: rss_feed/templates/rss_feed/index.html:99
+#: rss_feed/templates/rss_feed/index.html:126
+#: rss_feed/templates/rss_feed/index.html:154
+#: rss_feed/templates/rss_feed/search_results.html:31
+#: rss_feed/templates/rss_feed/search_results.html:54
+#: rss_feed/templates/rss_feed/search_results.html:77
+#: rss_feed/templates/rss_feed/search_results.html:101
+msgid "previous"
+msgstr "anterior"
+
+#: rss_feed/templates/rss_feed/detail_program.html:79
+#: rss_feed/templates/rss_feed/detail_program.html:106
+#: rss_feed/templates/rss_feed/detail_program.html:130
+#: rss_feed/templates/rss_feed/detail_station.html:82
+#: rss_feed/templates/rss_feed/detail_station.html:111
+#: rss_feed/templates/rss_feed/detail_station.html:137
+#: rss_feed/templates/rss_feed/detail_user.html:46
+#: rss_feed/templates/rss_feed/detail_user.html:76
+#: rss_feed/templates/rss_feed/detail_user.html:108
+#: rss_feed/templates/rss_feed/detail_user.html:136
+#: rss_feed/templates/rss_feed/index.html:43
+#: rss_feed/templates/rss_feed/index.html:75
+#: rss_feed/templates/rss_feed/index.html:103
+#: rss_feed/templates/rss_feed/index.html:130
+#: rss_feed/templates/rss_feed/index.html:158
+#: rss_feed/templates/rss_feed/search_results.html:34
+#: rss_feed/templates/rss_feed/search_results.html:57
+#: rss_feed/templates/rss_feed/search_results.html:80
+#: rss_feed/templates/rss_feed/search_results.html:104
+msgid "next"
+msgstr "seguinte"
+
+#: rss_feed/templates/rss_feed/detail_program.html:83
+msgid "Broadcasted in:"
+msgstr "Emitido en:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:95
+#: rss_feed/templates/rss_feed/search_results.html:84
+msgid "No stations"
+msgstr "Non hai emisoras"
+
+#: rss_feed/templates/rss_feed/detail_program.html:110
+msgid "Subscribers:"
+msgstr "Subscritores:"
+
+#: rss_feed/templates/rss_feed/detail_program.html:120
+msgid "No subscribers yet"
+msgstr "Aínda sen subscritores"
+
+#: rss_feed/templates/rss_feed/detail_station.html:8
+msgid "Station:"
+msgstr "Emisora:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:24
+msgid "Unfollow"
+msgstr "Deixar de seguir"
+
+#: rss_feed/templates/rss_feed/detail_station.html:29
+msgid "Follow"
+msgstr "Seguir"
+
+#: rss_feed/templates/rss_feed/detail_station.html:36
+msgid "Visit website"
+msgstr "Visita a web"
+
+#: rss_feed/templates/rss_feed/detail_station.html:39
+#: rss_feed/templates/rss_feed/detail_user.html:17
+msgid "Location:"
+msgstr "Localización:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:41
+msgid "Media:"
+msgstr "Medio:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:44
+msgid "Area:"
+msgstr "Área:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:45
+msgid "Frequency:"
+msgstr "Frecuencia:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:49
+msgid "Streaming:"
+msgstr "En directo:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:56
+msgid "Latest episodes:"
+msgstr "Últimos episodios:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:86
+msgid "Associated programs:"
+msgstr "Programas asociados:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:100
+#: rss_feed/templates/rss_feed/search_results.html:61
+msgid "No programs"
+msgstr "Non hai programas"
+
+#: rss_feed/templates/rss_feed/detail_station.html:116
+msgid "Followers:"
+msgstr "Seguidores:"
+
+#: rss_feed/templates/rss_feed/detail_station.html:126
+msgid "No followers yet"
+msgstr "Aínda non ten seguidores"
+
+#: rss_feed/templates/rss_feed/detail_user.html:5
+msgid "User:"
+msgstr "Usuario:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:8
+#: rss_feed/templates/rss_feed/edit_user.html:5
+msgid "Edit"
+msgstr "Editar"
+
+#: rss_feed/templates/rss_feed/detail_user.html:14
+msgid "Name:"
+msgstr "Nome:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:15
+msgid "Joined on:"
+msgstr "Alta o:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:16
+msgid "Contact:"
+msgstr "Contacto:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:20
+msgid "Subscribed to:"
+msgstr "Suscrito a:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:34
+#: rss_feed/templates/rss_feed/index.html:32
+msgid "No subscriptions"
+msgstr "Sen subscricións"
+
+#: rss_feed/templates/rss_feed/detail_user.html:51
+msgid "Followed stations:"
+msgstr "Emisoras seguidas:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:64
+msgid "No stations followed"
+msgstr "Sen emisoras seguidas"
+
+#: rss_feed/templates/rss_feed/detail_user.html:83
+msgid "Your own content:"
+msgstr "O teu propio contido:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:84
+msgid "Your programs:"
+msgstr "Os teus programas:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:97
+msgid "No owned programs"
+msgstr "Sen programas propios"
+
+#: rss_feed/templates/rss_feed/detail_user.html:112
+msgid "Your stations:"
+msgstr "As tuas emisoras:"
+
+#: rss_feed/templates/rss_feed/detail_user.html:125
+msgid "No owned stations"
+msgstr "Sen emisoras propias"
+
+#: rss_feed/templates/rss_feed/edit_program.html:15
+#: rss_feed/templates/rss_feed/edit_station.html:15
+msgid "Edit profile"
+msgstr "Editar Perfil"
+
+#: rss_feed/templates/rss_feed/edit_user.html:5
+msgid "data:"
+msgstr "datos:"
+
+#: rss_feed/templates/rss_feed/edit_user.html:34
+#, fuzzy
+#| msgid "New password"
+msgid "Change Password"
+msgstr "Novo Password"
+
+#: rss_feed/templates/rss_feed/index.html:5
+msgid "Add New Content"
+msgstr "Engadir Novo Contido"
+
+#: rss_feed/templates/rss_feed/index.html:18
+msgid "Your subscriptions"
+msgstr "As túas subscricións"
+
+#: rss_feed/templates/rss_feed/index.html:50
+msgid "Latest episodes"
+msgstr "Episodios recentes"
+
+#: rss_feed/templates/rss_feed/index.html:64
+msgid "No episodes found"
+msgstr "Non se atoparon episodios"
+
+#: rss_feed/templates/rss_feed/index.html:79
+msgid "Popular programs"
+msgstr "Programas populares"
+
+#: rss_feed/templates/rss_feed/index.html:93
+msgid "No programs found"
+msgstr "Non se atoparon programas"
+
+#: rss_feed/templates/rss_feed/index.html:109
+msgid "Your favourite stations"
+msgstr "As túas emisoras favoritas"
+
+#: rss_feed/templates/rss_feed/index.html:120
+msgid "No favourite stations"
+msgstr "Non tes emisoras favoritas"
+
+#: rss_feed/templates/rss_feed/index.html:136
+msgid "All Stations"
+msgstr "Todas as emisoras"
+
+#: rss_feed/templates/rss_feed/index.html:148
+msgid "No stations found"
+msgstr "Non se atoparon emisoras"
+
+#: rss_feed/templates/rss_feed/manage_program.html:17
+msgid "Broadcasting stations:"
+msgstr "Emitido por:"
+
+#: rss_feed/templates/rss_feed/manage_program.html:23
+msgid "Station"
+msgstr "Emisora"
+
+#: rss_feed/templates/rss_feed/manage_program.html:23
+#: rss_feed/templates/rss_feed/manage_station.html:37
+msgid "Broadcast schedule"
+msgstr "Horario de emisión"
+
+#: rss_feed/templates/rss_feed/manage_program.html:39
+#: rss_feed/templates/rss_feed/manage_station.html:53
+msgid "Block actions"
+msgstr "Accións en bloque"
+
+#: rss_feed/templates/rss_feed/manage_station.html:9
+msgid "Broadcast management"
+msgstr "Xestión da emisión"
+
+#: rss_feed/templates/rss_feed/manage_station.html:16
+msgid "Add new program"
+msgstr "Engadir Programa"
+
+#: rss_feed/templates/rss_feed/manage_station.html:31
+msgid "Programs currently broadcasted:"
+msgstr "Programas emitidos actualmente:"
+
+#: rss_feed/templates/rss_feed/predelete_program.html:5
+#: rss_feed/templates/rss_feed/predelete_station.html:5
+msgid "management dashboard"
+msgstr "panel de xestión"
+
+#: rss_feed/templates/rss_feed/predelete_program.html:16
+msgid "You are about to delete the program"
+msgstr "Estás a piques de borrar o programa"
+
+#: rss_feed/templates/rss_feed/predelete_program.html:16
+#: rss_feed/templates/rss_feed/predelete_station.html:16
+msgid "This action cannot be undone. Do you want to proceed anyway?"
+msgstr "Esta acción é irreversible. Queres continuar de todos modos?"
+
+#: rss_feed/templates/rss_feed/predelete_station.html:16
+msgid "You are about to delete the station"
+msgstr "Estás a piques de borrar a emisora"
+
+#: rss_feed/templates/rss_feed/search_results.html:5
+msgid "Search results for:"
+msgstr "Resultados da procura de:"
+
+#: rss_feed/templates/rss_feed/search_results.html:17
+msgid "Found episodes:"
+msgstr "Episodios atopados:"
+
+#: rss_feed/templates/rss_feed/search_results.html:41
+msgid "Found programs:"
+msgstr "Programas atopados:"
+
+#: rss_feed/templates/rss_feed/search_results.html:64
+msgid "Found stations:"
+msgstr "Emisoras atopadas:"
+
+#: rss_feed/templates/rss_feed/search_results.html:88
+msgid "Found users:"
+msgstr "Usuarios atopados:"
+
+#: rss_feed/templates/rss_feed/search_results.html:108
+msgid "No users"
+msgstr "Non se atoparon usuarios"
+
+#: rss_feed/views.py:883
+msgid " needs approval to be broadcasted. A request was sent."
+msgstr " necesita da aprobación previa para ser emitido. Mandouse unha petición."
+
+#: rss_feed/views.py:886
+msgid "was successfully added!"
+msgstr "foi engadido satisfactoriamente!"
+
+#: rss_feed/views.py:924
+msgid "program was successfully removed."
+msgstr "foi eliminado satisfactoriamente."
+
+#: rss_feed/views.py:926
+msgid "programs were successfully removed."
+msgstr "programas foron eliminados satisfactoriamente."
+
+#: rss_feed/views.py:941
+msgid "program was successfully updated."
+msgstr "programa foi actualizado satisfactoriamente."
+
+#: rss_feed/views.py:943
+msgid "programs were successfully updated."
+msgstr "programas foron actualizados satisfactoriamente."
+
+#: rss_feed/views.py:946 rss_feed/views.py:1339
+msgid ""
+"No program was selected. Please, check the program lines in order to commit "
+"the changes."
+msgstr ""
+"Ningún programa foi seleccionado. Por favor, marque os selectores de "
+"programa para efectuar os cambios "
+
+#: rss_feed/views.py:1119
+msgid "was successfully added as"
+msgstr "foi engadido satisfactoriamente coma"
+
+#: rss_feed/views.py:1154
+msgid "admin was successfully removed."
+msgstr "admin foi eliminado satisfactoriamente."
+
+#: rss_feed/views.py:1156
+msgid "admin were successfully removed."
+msgstr "admins foron eliminados satisfactoriamente."
+
+#: rss_feed/views.py:1182
+msgid "admin was successfully updated."
+msgstr "admin foi actualizado satisfactoriamente."
+
+#: rss_feed/views.py:1184
+msgid "admin were successfully updated."
+msgstr "admin foi actualizado satisfactoriamente."
+
+#: rss_feed/views.py:1187
+msgid ""
+"No admin was selected. Please, check the admin lines in order to commit the "
+"changes."
+msgstr ""
+"Ningún admin foi seleccionado. Por favor, marque os selectores de admin para "
+"efectuar os cambios"
+
+#: rss_feed/views.py:1335
+msgid "station was successfully removed."
+msgstr "emisora foi eliminada satisfactoriamente."
+
+#: rss_feed/views.py:1337
+msgid "stations were successfully removed."
+msgstr "emisoras foron eliminadas satisfactoriamente."
+
+#~ msgid "English"
+#~ msgstr "Inglés"
+
+#~ msgid "Galician"
+#~ msgstr "Galego"
+
+#~ msgid "profile"
+#~ msgstr "perfil"

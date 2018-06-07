@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.forms.widgets import HiddenInput
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from .models import Station,Program,Broadcast,EXISTING_BCMETHODS,Comment,EXISTING_SHARING_OPTS,EXISTING_ADMIN_TYPES
 from rss_feed.models import EXISTING_COMMENT_OPTIONS
 

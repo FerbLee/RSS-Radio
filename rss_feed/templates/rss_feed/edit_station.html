@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 
-<h3>{{ station.name }} {% trans "management dashboard" %} </h3>
+<h3>{% trans "Management dashboard for" %} {{ station.name }}</h3>
 
 <div class="dashboard-sections">
 <p><div class="selected-section">{% trans "Edit Profile" %}</a></div></p>
@@ -12,7 +12,7 @@
 </div>
 
 <div class="dashboard-view">
-<h3>{% trans "Edit" %} {{ station.name }} {% trans "profile" %}</h3>
+<h3>{% trans "Edit profile" %}</h3>
 
 {% if form_station %}
 	<form method="post" action='' enctype='multipart/form-data' >
