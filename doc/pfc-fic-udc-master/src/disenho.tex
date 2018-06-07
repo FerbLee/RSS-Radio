@@ -111,11 +111,40 @@ Tanto para a administración de emisoras como de Programas, existen dous roles: 
 
 Nótese que tal relación de administración non existe no caso dos episodios. Isto débese a que, ao ser engadidos automaticamente segundo a información recibida polo ficheiro RSS do programa (explicado máis en detalle na sección \ref{rss_parser_section}), non son editables. Aquelas opcións que poidan afectar en bloque aos episodios dun programa considéranse xa opcións do programa.
 
-Os superusuarios do sistema, pola súa parte, poden editar e borrar calquer contido mediante ferramentas de Django coma panel de administración ou o IPython shell.
+Os superusuarios do sistema, pola súa parte, poden editar e borrar calquera contido mediante ferramentas de Django coma o panel de administración ou o IPython shell.
 
 
 \subsection{Capa Vista}
+
+A capa vista é na que se atopa a lóxica funcional do aplicativo. Fai uso dos obxectos da capa modelo para, ou ben extraer e compñer os datos que serán enviados ao cliente ou ben recoller os datos enviados desde o cliente para facer as conseguintes modificacións na base de datos. O módulo central desta capa é views.py. Nel, defínense funcións e clases que reciben un obxecto de Django HttpRequest e unha serie de parámetros opcionais e, tras realizar as operacións necesarias, retornan un obxecto HttpResponse.
+
+Un obxecto HttpRequest contén metadatos da petición que se executou desde o cliente: Información da sesión do usuario, tipo de petición (GET, POST...), datos necesarios para os posibles \say{middlewares} e datos que o cliente envía a través dos formularios. 
+
+Os middlewares, en Django, son plugins que alteran globalmente a entrada e saída do procesamento das peticións e as respostas. O framework oferta certa variedade de plugins de serie e a posibilidade de crear middlewares propios. Comentaranse os utilizados no capítulo de Implementación.
+
+Un obxecto HttpResponse contén os datos que han de ser devoltos ao cliente, incluíndo a páxina á que se ha de redirixir ao usuario por causa da petición. Django require gardar os datos nun dicionario clave-valor ao que chama context. Esas claves valerán para acceder aos valores no template á hora de renderizar a resposta.
+
+A decisión de a qué instancia ou función se lle pasa o obxecto HttpRequest tómase en base á url destino enviada polo cliente xunto co propio obxecto. É necesario manter un módulo que relacione as urls coas funcións e clases correspondentes á operación a realizar. Comunmente en Django e tamén neste proxecto, este ficheiro chámase urls.py.
+
+Na figura \ref{fig:vista} amósase un esquema do funcionamento da capa vista. Para unha maior claridade, condensáronse as distintas clases de middleware nun único paso do diagrama. Tamén nesa figura pode verse unha referencia ao obxectos Form de Django que son utilizados neste proxecto. Estes obxectos consisten nunha abstracción a obxecto de Python da información procedente dos formularios despregados no template e dos contedores de dita información (selectores, caixas de texto...). O seu uso é opcional, pero simplifican a definición valores por defecto e a validación dos datos. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6,keepaspectratio=true]{./images/secuencia_vista_v.png}
+	\caption{Esquema do funcionamento das vistas.}
+	\label{fig:vista}
+\end{figure} 
+
+
+\subsubsection{Engadir contido}
 \label{rss_parser_section}
+
+Explicarase en detalle esta vista por ser, a posibilidade de que os usuarios engadan os seus propios programas e os episodios, a parte principal deste proxecto. Un usuario, pode engadir un programa e todos os seus episodios simplemente proporcionándolle ao aplicativo o enlace ao seu ficheiro de RSS.
+
+A función de vista encargada de realizar este traballo recibe o obxecto de request e carga os datos deste nun formulario de Django. Unha vez validado, accede ao ficheiro RSS e extrae os datos do programa e os episodios. Enfrontámonos aquí a unha limitación do proxecto: Non existe un estándar de campos de RSS. Distintos servidores de podcasting poden ter distintos formatos.
+
+Debido a isto, debía deseñarse o sistema de xeito que puidésemos contar con distintos algoritmos de interpretación do RSS e, de cara a unha continuación do desenvolvemento, que engadir novos algoritmos fose sinxelo. De modo que se decidiu aplicar o patrón de deseño \say{estratexia}, como se ve no diagrama \ref{fig:strategy}. A superclase, RSSLinkParser, implementa o método parse\_and\_save, encargado da creación das novas instancias. Esta función utiliza os métodos de lectura da información de programa e episodio, pero deixa a súa implementación ás clases fillas. Actualmente, o proxecto soporta 3 tipos ficheiro RSS dos máis populares entre os usuarios obxectivo.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5,keepaspectratio=true]{./images/strategy.png}
@@ -124,5 +153,11 @@ Os superusuarios do sistema, pola súa parte, poden editar e borrar calquer cont
 \end{figure}
 
 
-
 \subsection{Capa Template}
+
+A capa template define a forma na que os datos obtidos da capa vista serán amosados ao usuario.  [Por Facer]
+
+
+\section{Actualización dos datos}
+
+[Por Facer]

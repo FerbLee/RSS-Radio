@@ -7,9 +7,6 @@ Created on 12 Sep 2017
 # Pre-generic view code
 
 from django.conf.urls import url
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.defaults import page_not_found
 from . import views
 

@@ -667,7 +667,7 @@ def add_content(request):
         
             if new_program_added == None:  
                   
-                print('Could not identify parser per link. Trying with all of them')
+                print('Could not identify parser for link. Trying with all of them')
                 
                 for key,strategy in known_parsers.items():
                     
