@@ -136,8 +136,6 @@ A decisión de a qué instancia ou función se lle pasa o obxecto HttpRequest t�
 Na figura \ref{fig:vista} amósase un esquema do funcionamento da capa vista. Para unha maior claridade, condensáronse as distintas clases de middleware nun único paso do diagrama. Tamén nesa figura pode verse unha referencia ao obxectos Form de Django que son utilizados neste proxecto. Estes obxectos consisten nunha abstracción a obxecto de Python da información procedente dos formularios despregados no template e dos contedores de dita información (selectores, caixas de texto...). O seu uso é opcional, pero simplifican a definición valores por defecto e a validación dos datos. 
 
 
-
-
 \subsubsection{Engadir contido}
 \label{rss_parser_section}
 
@@ -172,19 +170,23 @@ Todas as páxinas levan unha cabeceira amosando a información transversal á p�
 
 A continuación coméntase brevemente as diferentes partes da interface:
 
-\subsubsection{Portada}
-
-Pensouse na portada coma unha páxina que ofreza información breve e xeral que o usuario queira consultar con máis frecuencia, por exemplo, as novidades nas súas subscricións e o acceso rápido ás súas emisoras favoritas. Tamén, pensando nos usuarios anónimos, considerouse engadir información de interese xeral coma os episodios máis recentes ou os programas máis \say{populares}, concepto que se explica na sección \ref{daemon_desenho}.
-
-Na figura \ref{fig:index1_p} amósase un primeiro borrador desta páxina. Móstrase a información dos programas e os episodios en forma de grella na parte esquerda e das emisoras en forma de lista no lado dereito. Isto cambia nos pequenos dispositivos, onde a información das emisoras pasa a situarse na parte máis baixa da páxina.
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2,keepaspectratio=true]{./images/index1_p.png}
 	\caption{Extracto do borrador do deseño da interface. Portada.}
 	\label{fig:index1_p}
 \end{figure}
 
+\subsubsection{Portada}
+
+Pensouse na portada coma unha páxina que ofreza información breve e xeral que o usuario queira consultar con máis frecuencia, por exemplo, as novidades nas súas subscricións e o acceso rápido ás súas emisoras favoritas. Tamén, pensando nos usuarios anónimos, considerouse engadir información de interese xeral coma os episodios máis recentes ou os programas máis \say{populares}, concepto que se explica na sección \ref{daemon_desenho}.
+
+Na figura \ref{fig:index1_p} amósase un primeiro borrador desta páxina. Móstrase a información dos programas e os episodios en forma de grella na parte esquerda e das emisoras en forma de lista no lado dereito. Isto cambia nos pequenos dispositivos, onde a información das emisoras pasa a situarse na parte máis baixa da páxina.
+
+
+\subsubsection{Páxinas de engadir e editar contido}
+
+As páxinas de engadir contido (incluída a de rexistrar usuario) consisten na lista de atributos da entidade a engadir xunto cos seus respectivos elemento HTML de entrada de datos. As de edición son semellantes, pero amosando os valores actuais da entidade.
 
 \subsubsection{Páxinas de detalle}
 
@@ -194,7 +196,12 @@ Na figura \ref{fig:program1_p} amosamos un borrador da páxina de detalles de pr
 
 A máis distinta sería, se cadra, a de episodio. Esta incluiría ao final unha sección de comentarios en lugar dunha grella de obxectos.
 
-\begin{figure}[h]
+
+\subsubsection{Páxina de resultados de busca}
+
+A páxina de resultados de busca é á que se accede a través da caixa de procura da cabeceira (busca por texto) ou a través de \say{clicar} nunha etiqueta de categoría (busca por tag). Divídese en dúas partes en proporcións semellantes á de portada: A parte da esquerda amosa as entidades atopadas en forma de cuadrícula e a da dereita unha nube de etiquetas. Ao igual que na páxina de portada, a parte da dereita trasládase abaixo nos dispositivos pequenos.
+
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2,keepaspectratio=true]{./images/program1_p.png}
 	\caption{Extracto do borrador do deseño da interface. Detalles de programa.}
@@ -202,6 +209,49 @@ A máis distinta sería, se cadra, a de episodio. Esta incluiría ao final unha 
 \end{figure}
 
 
+\subsubsection{Páxinas de xestión}
+
+As páxinas de xestión de emisión e xestión de administradores para programas e emisoras son semellantes. A figura \ref{fig:manage1_p} mostra un esquema da páxina que permitiría xestionar os programas emitidos por unha emisora. Aínda que o aspecto aí debuxado cambiou moito durante a implementación, serve para dar unha idea das necesidades de deseño: O usuario xestor ten que poder ver os programas xa emitidos para poder eliminalos da emisión e ver os non emitidos para poder engadilos ao catálogo da emisora.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2,keepaspectratio=true]{./images/manage1_p.png}
+	\caption{Extracto do borrador do deseño da interface. Xestión de emisión.}
+	\label{fig:manage1_p}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5,keepaspectratio=true]{./images/access_tree_auth.png}
+	\caption{Mapa de navegación entre as distintas páxinas.}
+	\label{fig:access_tree}
+\end{figure}
+
+
 \section{Actualización dos datos}
 \label{daemon_desenho}
-[Por Facer]
+
+Existen dous procesos executados periodicamente no lado do servidor coa fin de manter actualizados os datos dos programas no sistema.
+
+\subsubsection{Novos episodios}
+
+Cando un programa é engadido, todos os episodios presentes no ficheiro RSS gárdanse tamén. A partir de entón, é responsabilidade do sistema facer \say{polling} do RSS para detectar as novas publicacións e engadilas á base de datos. Este proceso reutiliza o código do módulo rss\_link\_parsers visto na sección \ref{rss_parser_section}.
+
+\subsubsection{Popularidade e cualificación dos programas}
+
+A cualificación (rating) dun programa calcúlase en base aos votos positivos e negativos. Só se teñen en conta os episodios con data de publicación entre os últimos 365 días. Se non hai votos, asúmese unha cualificación do 50\%:
+
+\[cualificacion_{p}=100\frac{\sum_{episodios_p}vpositivos}{\sum_{episodios_p}vpositivos+vnegativos}\]
+
+A popularidade é unha medida do impacto que os programas teñen no sistema e, coma tal, inflúe na súa visibilidade en portada e resultados de procura. Depende das subscricións, dos votos ponderados dos episodios, das escoitas dos episodios e do número de emisoras que o emitan. Tampouco aquí se teñen en conta os episodios con máis dun ano de antigüidade.
+
+\[vponderados_e=(vpositivos-vnegativos)*(vpositivos+vnegativos)\]
+\[popularidade_{p}=5*subscricions+10*emisoras+escoitas+\sum_{episodios_p}vponderados_e\]
+
+A ponderación de emisoras e subscricións decidiuse en base a diferencia de magnitude esperada. A ponderación dos votos é en base ao número de votos de cada capítulo.
+
+Ámbolos dous valores, ao depender de actividades dos usuarios, han de ser actualizados periodicamente.
+
+
