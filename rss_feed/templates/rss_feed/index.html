@@ -5,12 +5,13 @@
 {% trans "Add New Content" as newcontent %}
 {% trans "See more" as seemore %}
 
+<div class="new-content">
 {% if request.user.is_authenticated %}
-	<a href="{% url 'rss_feed:add_content' %}" class="button">{{ newcontent }}</a>
+	<a href="{% url 'rss_feed:add_content' %}" class="button" >{{ newcontent }}</a>
 {% else %}
 	<a href="{% url 'login' %}" class="button">{{ newcontent }}</a>
 {% endif %}
-
+</div>
 <div class="index-container">
 	<div class="left-side">
 		

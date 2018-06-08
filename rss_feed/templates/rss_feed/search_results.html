@@ -4,15 +4,6 @@
 
 <h2>{% trans "Search results for:"%} {{keywords}}</h2> 
 
-<div class="index-container">
-	<div class="right-side-search">
-		<div class="tag-cloud">
-			{% for tag in all_tags %}
-				<a href="?tag={{tag.name}}" class="size-{{ tag.size }}">{{tag.name}}</a>
-			{% endfor %}
-		</div>
-	</div>
-
 	<div class="left-side-search">
 	<div  class="section-title"><b>{% trans "Found episodes:" %}</b></div>
 	{% if episodes %}
@@ -109,4 +100,14 @@
 	{% endif %}
 </div>
 </div>
+
+<div class="index-container">
+	<div class="right-side-search">
+		<div class="tag-cloud">
+			{% for tag in all_tags %}
+				<a href="?tag={{tag.name}}" class="size-{{ tag.size }}">{{tag.name}}</a>
+			{% endfor %}
+		</div>
+	</div>
+
 {% endblock %}

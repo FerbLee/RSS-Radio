@@ -4,7 +4,7 @@
 
 {% trans "See more" as seemore %}
 
-<p><img src="{{ station.profile_img.path.url }}" width='500'><p>
+<p><div class="station-image"><img src="{{ station.profile_img.path.url }}" width='500'></div><p>
 <h1> <img src="{{ station.logo.path.url }}" width='100'> {% trans "Station:" %} {{ station.name }}</h1>
 <p></p>
 {% if request.user.is_authenticated %}
