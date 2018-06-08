@@ -93,12 +93,13 @@ class Image(models.Model):
     def delete(self):
         
         if not DEFAULT_IMAGES_DIR in self.path.path:
+            
             try:
                 os.remove(self.path.path)
             except FileNotFoundError:
                 print('Image ' + self.path.path + ' not found for deletion. Removing DB entry anyway.')
                 
-        super(Image, self).delete() 
+            super(Image, self).delete() 
     
     
     @classmethod
