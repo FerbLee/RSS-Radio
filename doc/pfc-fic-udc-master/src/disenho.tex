@@ -126,14 +126,16 @@ Un obxecto HttpResponse contén os datos que han de ser devoltos ao cliente, inc
 
 A decisión de a qué instancia ou función se lle pasa o obxecto HttpRequest tómase en base á url destino enviada polo cliente xunto co propio obxecto. É necesario manter un módulo que relacione as urls coas funcións e clases correspondentes á operación a realizar. Comunmente en Django e tamén neste proxecto, este ficheiro chámase urls.py.
 
-Na figura \ref{fig:vista} amósase un esquema do funcionamento da capa vista. Para unha maior claridade, condensáronse as distintas clases de middleware nun único paso do diagrama. Tamén nesa figura pode verse unha referencia ao obxectos Form de Django que son utilizados neste proxecto. Estes obxectos consisten nunha abstracción a obxecto de Python da información procedente dos formularios despregados no template e dos contedores de dita información (selectores, caixas de texto...). O seu uso é opcional, pero simplifican a definición valores por defecto e a validación dos datos. 
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6,keepaspectratio=true]{./images/secuencia_vista_v.png}
 	\caption{Esquema do funcionamento das vistas.}
 	\label{fig:vista}
 \end{figure} 
+
+Na figura \ref{fig:vista} amósase un esquema do funcionamento da capa vista. Para unha maior claridade, condensáronse as distintas clases de middleware nun único paso do diagrama. Tamén nesa figura pode verse unha referencia ao obxectos Form de Django que son utilizados neste proxecto. Estes obxectos consisten nunha abstracción a obxecto de Python da información procedente dos formularios despregados no template e dos contedores de dita información (selectores, caixas de texto...). O seu uso é opcional, pero simplifican a definición valores por defecto e a validación dos datos. 
+
+
 
 
 \subsubsection{Engadir contido}
@@ -141,23 +143,65 @@ Na figura \ref{fig:vista} amósase un esquema do funcionamento da capa vista. Pa
 
 Explicarase en detalle esta vista por ser, a posibilidade de que os usuarios engadan os seus propios programas e os episodios, a parte principal deste proxecto. Un usuario, pode engadir un programa e todos os seus episodios simplemente proporcionándolle ao aplicativo o enlace ao seu ficheiro de RSS.
 
-A función de vista encargada de realizar este traballo recibe o obxecto de request e carga os datos deste nun formulario de Django. Unha vez validado, accede ao ficheiro RSS e extrae os datos do programa e os episodios. Enfrontámonos aquí a unha limitación do proxecto: Non existe un estándar de campos de RSS. Distintos servidores de podcasting poden ter distintos formatos.
-
-Debido a isto, debía deseñarse o sistema de xeito que puidésemos contar con distintos algoritmos de interpretación do RSS e, de cara a unha continuación do desenvolvemento, que engadir novos algoritmos fose sinxelo. De modo que se decidiu aplicar o patrón de deseño \say{estratexia}, como se ve no diagrama \ref{fig:strategy}. A superclase, RSSLinkParser, implementa o método parse\_and\_save, encargado da creación das novas instancias. Esta función utiliza os métodos de lectura da información de programa e episodio, pero deixa a súa implementación ás clases fillas. Actualmente, o proxecto soporta 3 tipos ficheiro RSS dos máis populares entre os usuarios obxectivo.
-
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5,keepaspectratio=true]{./images/strategy.png}
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/strategy.png}
 	\caption{Patrón Estratexia utilizado para o procesamento de RSS.}
 	\label{fig:strategy}
 \end{figure}
 
+A función de vista encargada de realizar este traballo recibe o obxecto de request e carga os datos deste nun formulario de Django. Unha vez validado, accede ao ficheiro RSS e extrae os datos do programa e os episodios. Enfrontámonos aquí a unha limitación do proxecto: Non existe un estándar de campos de RSS. Distintos servidores de podcasting poden ter distintos formatos.
+
+Debido a isto, debía deseñarse o sistema de xeito que puidésemos contar con distintos algoritmos de interpretación do RSS e, de cara a unha continuación do desenvolvemento, que engadir novos algoritmos fose sinxelo. De modo que se decidiu aplicar o patrón de deseño \say{estratexia}, como se ve no diagrama \ref{fig:strategy}. A superclase, RSSLinkParser, implementa o método parse\_and\_save, encargado da creación das novas instancias. Esta función utiliza os métodos de lectura da información de programa e episodio, pero deixa a súa implementación ás clases fillas. Actualmente, o proxecto soporta 3 tipos ficheiro RSS dos máis populares entre os usuarios obxectivo.
+
 
 \subsection{Capa Template}
 
-A capa template define a forma na que os datos obtidos da capa vista serán amosados ao usuario.  [Por Facer]
+A capa template define a forma na que os datos obtidos na capa vista serán amosados ao usuario e tamén os métodos de entrada de datos que poremos a disposición deste. A idea xeral foi a dunha interface na que os datos simples (atributos) se amosan en forma de lista e os complexos (Entidades) en forma de cuadrícula. Cada elemento desa cuadrícula representa un programa, episodio ou emisora da forma representada na figura \ref{fig:grella} e constitúe un enlace á páxina de detalles desa entidade.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6,keepaspectratio=true]{./images/grella.png}
+	\caption{Esquema dun elemento da cuadrícula.}
+	\label{fig:grella}
+\end{figure}
+
+Pensando no uso da web en dispositivos móbiles, o número de elementos por fila da cuadrícula varía dependendo do tamaño da pantalla. Aquelas páxinas divididas de xeito horizontal (esquerda e dereita)  pasan a verticais (arriba e abaixo) pois considerase o \say{scroll} vertical máis cómodo para o usuario destes dispositivos. 
+
+Todas as páxinas levan unha cabeceira amosando a información transversal á páxina: Un enlace á portada, botón de inicio/peche de sesión, unha caixa de procura por texto e máis o selector de linguaxe. 
+
+A continuación coméntase brevemente as diferentes partes da interface:
+
+\subsubsection{Portada}
+
+Pensouse na portada coma unha páxina que ofreza información breve e xeral que o usuario queira consultar con máis frecuencia, por exemplo, as novidades nas súas subscricións e o acceso rápido ás súas emisoras favoritas. Tamén, pensando nos usuarios anónimos, considerouse engadir información de interese xeral coma os episodios máis recentes ou os programas máis \say{populares}, concepto que se explica na sección \ref{daemon_desenho}.
+
+Na figura \ref{fig:index1_p} amósase un primeiro borrador desta páxina. Móstrase a información dos programas e os episodios en forma de grella na parte esquerda e das emisoras en forma de lista no lado dereito. Isto cambia nos pequenos dispositivos, onde a información das emisoras pasa a situarse na parte máis baixa da páxina.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.2,keepaspectratio=true]{./images/index1_p.png}
+	\caption{Extracto do borrador do deseño da interface. Portada.}
+	\label{fig:index1_p}
+\end{figure}
+
+
+\subsubsection{Páxinas de detalle}
+
+Ás páxinas de detalle son aquelas onde se amosa a información completa dunha instancia dalgunha das 4 grandes clases deste proxecto: Usuario, emisora, programa e episodio. Tamén debería dar acceso á páxina de edición de ter, o usuario, permisos para iso.
+
+Na figura \ref{fig:program1_p} amosamos un borrador da páxina de detalles de programa que nos ha valer coma exemplo xeral: Encabézase coa imaxe da instancia e o seu nome. Debaixo, lístanse os seus atributos incluíndo o reprodutor de audio para os casos de emisora e episodio. Finalmente, as cuadrículas dos obxectos cos que se relacionan.
+
+A máis distinta sería, se cadra, a de episodio. Esta incluiría ao final unha sección de comentarios en lugar dunha grella de obxectos.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.2,keepaspectratio=true]{./images/program1_p.png}
+	\caption{Extracto do borrador do deseño da interface. Detalles de programa.}
+	\label{fig:program1_p}
+\end{figure}
 
 
 \section{Actualización dos datos}
-
+\label{daemon_desenho}
 [Por Facer]
