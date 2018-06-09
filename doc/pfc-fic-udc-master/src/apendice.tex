@@ -1,25 +1,237 @@
 \chapter[Apéndice]{
-  \label{chp:apendice}
-  Demostración
+  \label{chp:dicionario}
+  Dicionario de datos
 }
 
-En este apéndice se mostrará el funcionamiento de la aplicación, primero con
-la versión para computador y a continuación la aplicación web. Para ello, se
-mostrará el caso de uso para generar una presentación KML. No se
-pretende detallar todos los parámetros del proceso, puesto que están cubiertos 
-por la documentación de usuario disponible en la web, sólo mostrar la 
-apariencia de la aplicación y su filosofía de funcionamiento.
+\textbf{Broadcast:} Clase que representa a relación N-N de emisión entre programas e emisoras.
 
-\section{\software}
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{program} & ForeignKey & Clave foránea da entidade Program\\
+	\hline
+	\textbf{station} & ForeignKey & Clave foránea da entidade Station\\	
+	\hline
+	\textbf{schedule\_details} & Char(100) & Texto do comentario\\
+	\hline
+\end{tabular}
 
-Como se ha comentado, el proyecto ha sido desarrollado en abierto usando
-la plataforma Google Code. El nombre elegido para el software ha sido
-\software\footnote{Web oficial del proyecto \url{https://code.google.com/p/photoplace}} 
-y se ha desarrollado un logotipo que refuerza la identidad del programa:
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.4,keepaspectratio=true]{photoplace.png}
-  \caption*{Web de desarrollo de \software\ en Google Code}
-  \label{fig:photoplace}
-\end{figure}
+\textbf{Comment:} Entidade que garda os comentarios que os usuarios deixan nos episodios.
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{episode} & ForeignKey & Clave foránea da entidade Episode\\
+	\hline
+	\textbf{user} & ForeignKey & Clave foránea da entidade User\\	
+	\hline
+	\textbf{text} & Text & Texto do comentario\\
+	\hline
+	\textbf{publication\_date} & DateTime & Data de publicación (GMT)\\
+	\hline
+	\textbf{removed} & Boolean & Marcado coma borrado\\
+	\hline
+\end{tabular}
+
+
+
+\textbf{Episode:} Entidade que garda cada unha das entregas (episodios) dos programas.
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|} 
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{program} & ForeignKey & Clave foránea da entidade Program\\
+	\hline
+	\textbf{title} & Char(200) & Título do episodio\\	
+	\hline
+	\textbf{summary} & Text & Resumo do episodio\\
+	\hline
+	\textbf{publication\_date} & DateTime & Data de publicación (GMT)\\
+	\hline
+	\textbf{insertion\_date} & DateTime & Data de inserción na base de datos (GMT)\\
+	\hline
+	\textbf{file} & URL & Enlace ao ficheiro de audio\\
+	\hline
+	\textbf{file\_type} & Char(40) & Enlace ao ficheiro de audio\\
+	\hline
+	\textbf{downloads} & BigInt & Contador de descargas e escoitas do episodio\\
+	\hline
+	\textbf{original\_id} & Char(200) & Id do episodio no sistema orixinal de almacenamento\\
+	\hline
+	\textbf{original\_site} & URL & Páxina do episodio no sistema orixinal de almacenamento\\
+	\hline
+	\textbf{removed} & Boolean & Marcado coma borrado\\
+	\hline
+	\textbf{image} & ForeignKey & Clave foránea da entidade Image\\
+	\hline
+	\textbf{votes} & ManyToMany & Referencia ás instancias de Vote relacionadas\\
+	\hline
+	\textbf{comments} & ManyToMany & Referencia ás instancias de Comment relacionadas\\
+	\hline
+	
+\end{tabular}
+
+\textbf{Program:} Entidade que garda os programas engadidos polos usuarios.
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{image} & ForeignKey & Clave foránea da entidade Image\\
+	\hline
+	\textbf{name} & Char(200) & Nome do programa\\	
+	\hline
+	\textbf{description} & Text & Texto descritivo sobre o programa\\
+	\hline
+	\textbf{creation\_date} & DateTime & Data de inserción na base de datos (GMT)\\
+	\hline
+	\textbf{author\_email} & Email & Correo electrónico do autor do programa\\
+	\hline
+	\textbf{author} & Char(200) & Autor orixinal extraído do ficheiro RSS\\
+	\hline
+	\textbf{language} & Char(10) & Código de linguaxe do programa\\
+	\hline
+	\textbf{rss\_link} & URL & Enlace ao ficheiro RSS do programa\\
+	\hline
+	\textbf{rss\_link\_type} & Char[ivoox $|$ radioco $|$ podomatic] & Tipo de RSSLinkParser utilizado na súa creación\\
+	\hline
+	\textbf{rating} & PositiveSmall Integer[0:100] & Cualificación calculada para o programa\\
+	\hline
+	\textbf{original\_site} & URL & Enlace ao podcast orixinal\\
+	\hline
+	\textbf{popularity } & Float & Popularidade calculada para o programa\\
+	\hline
+	\textbf{website} & URL & Páxina web do programa\\
+	\hline
+	\textbf{sharing\_options} & Char[share\_free $|$ no\_share] & Condicións de compartición\\
+	\hline
+	\textbf{comment \_options} & Char[enable $|$ disable] & Opción de activar ou desactivar comentarios\\
+	\hline
+	\textbf{subscribers} &  ManyToMany & Referencia ás instancias de User relacionadas. Representa os subscritores do programa\\
+	\hline
+	\textbf{admins} &  ManyToMany & Referencia ás instancias de ProgramAdmin relacionadas\\
+	\hline
+\end{tabular}
+
+
+\textbf{ProgramAdmin:} Clase que representa a relación N-N de administración entre programas e usuarios.
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{program} & ForeignKey & Clave foránea da entidade Program\\
+	\hline
+	\textbf{user} & ForeignKey & Clave foránea da entidade User\\	
+	\hline
+	\textbf{type} & Char[owner $|$ admin] & Permisos do usuario sobre o programa\\
+	\hline
+	\textbf{date} & DateTime & Data na que se concedeu o permiso (GMT)\\
+	\hline
+\end{tabular}
+
+
+\textbf{Station:} Entidade que garda os colectivos de emisión (radios por ondas, radios por internet, canles de podcast...)
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{logo} & ForeignKey & Clave foránea da entidade Image para o logotipo da emisora\\
+	\hline
+	\textbf{profile\_img} & ForeignKey & Clave foránea da entidade Image para a imaxe de cabeceira do perfil\\
+	\hline
+	\textbf{name} & Char(200) & Nome da emisora\\	
+	\hline
+	\textbf{broadcasting \_method} & Char[RadioFM $|$ RadioAM $|$ RadioDigital $|$ TVChannel $|$ RadioInternet $|$ PodcastingChannel $|$ Others] & Método de emisión dos programas \\
+	\hline
+	\textbf{broadcasting \_area} & Char(200) & Área de emisión (No caso de RadioFM, RadioAM e RadioDigital)\\
+	\hline
+	\textbf{broadcasting \_frequency} & Char(50) & Frecuencia de emisión (No caso de RadioFM, RadioAM e RadioDigital)\\
+	\hline
+	\textbf{streaming\_link} & URL & Enlace á emisión en directo por streaming\\
+	\hline
+	\textbf{website} & URL & Enlace á páxina web do colectivo\\
+	\hline
+	\textbf{location} & Char(200) & Localización da emisora\\
+	\hline
+	\textbf{programs} &  ManyToMany & Referencia ás instancias de Broadcast relacionadas\\
+	\hline
+	\textbf{admins} &  ManyToMany & Referencia ás instancias de ProgramAdmin relacionadas\\
+	\hline
+	\textbf{followers} &  ManyToMany & Referencia ás instancias de User relacionadas. Representa os seguidores da emisora.\\
+	\hline
+\end{tabular}
+
+
+\textbf{StationAdmin:} Clase que representa a relación N-N de administración entre emisoras e usuarios.
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{station} & ForeignKey & Clave foránea da entidade Station\\
+	\hline
+	\textbf{user} & ForeignKey & Clave foránea da entidade User\\	
+	\hline
+	\textbf{type} & Char[owner $|$ admin] & Permisos do usuario sobre a emisora\\
+	\hline
+	\textbf{date} & DateTime & Data na que se concedeu o permiso (GMT)\\
+	\hline
+\end{tabular}	
+
+
+\textbf{Tag:}  Entidade que garda os etiquetas de categoría dadas polos ficheiros RSS.
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{name} & Char(50) & Nome do tag en minúsculas. Ten que ser único\\
+	\hline
+	\textbf{times\_used} & Positive IntegerField & Cantidade de veces presente en programas e episodios\\	
+	\hline
+	\textbf{programs} & ManyToMany & Referencia ás instancias de Program relacionadas\\
+	\hline
+	\textbf{episodes} & ManyToMany & Referencia ás instancias de Episode relacionadas\\
+	\hline
+\end{tabular}
+
+
+\textbf{UserProfile:}  Entidade que extende a clase User para asignarlle novos atributos.
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{user} & OneToOne & Referencia á instancia de User que extende\\
+	\hline
+	\textbf{description} & Texto de presentación do usuario\\	
+	\hline
+	\textbf{avatar} & ForeignKey & Clave foránea da entidade Image\\
+	\hline
+	\textbf{location} & Char(100) & Localización do usuario\\
+	\hline
+\end{tabular}
+
+
+\textbf{Vote:}  Entidade que representa os votos cos que os usuarios cualifican os episodios.
+
+\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+	\hline
+	Atributo & Tipo & Descrición\\
+	\hline
+	\textbf{user} & ForeignKey & Clave Foránea da entidade User\\
+	\hline
+	\textbf{episode} & ForeignKey & Clave foránea da entidade Episode\\
+	\hline
+	\textbf{location} & Char(100) & Localización do usuario\\
+	\hline
+	\textbf{date} & DateTime & Data na que se concedeu o permiso (GMT)\\
+	\hline
+\end{tabular}
+

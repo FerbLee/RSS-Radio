@@ -77,4 +77,3 @@
 \contentsline {chapter}{\numberline {8}Conclusiones}{55}{chapter.8}
 \contentsline {section}{\numberline {8.1}An\IeC {\'a}lisis Econ\IeC {\'o}mico}{56}{section.8.1}
 \contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{57}{appendix.Alph1}
-\contentsline {section}{\numberline {A.1}PhotoPlace}{57}{section.Alph1.1}
