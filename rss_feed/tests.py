@@ -74,5 +74,3 @@ class ImageModelTests(TestCase):
         self.assertEqual(img2,[])
         
     
-    
-    
