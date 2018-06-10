@@ -40,6 +40,8 @@
 \contentsline {subsection}{\numberline {3.9.3}Dia}{27}{subsection.3.9.3}
 \contentsline {subsection}{\numberline {3.9.4}Fedora}{27}{subsection.3.9.4}
 \contentsline {subsection}{\numberline {3.9.5}TeXstudio}{27}{subsection.3.9.5}
+\contentsline {subsection}{\numberline {3.9.6}Mozilla Firefox}{28}{subsection.3.9.6}
+\contentsline {subsection}{\numberline {3.9.7}GIMP}{28}{subsection.3.9.7}
 \contentsline {chapter}{\numberline {4}Plan de Proyecto}{29}{chapter.4}
 \contentsline {section}{\numberline {4.1}An\IeC {\'a}lisis de Viabilidad}{30}{section.4.1}
 \contentsline {chapter}{\numberline {5}An\IeC {\'a}lise}{31}{chapter.5}
