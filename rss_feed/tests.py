@@ -1,7 +1,9 @@
 from django.test import TestCase
-from .models import Image,UserProfile, Program, Tag
-from .models import DEFAULT_IMAGE_PATH,DEFAULT_AVATAR_PATH, ADMT_OWNER, ADMT_ADMIN
+from .models import Image,UserProfile, Program, Tag, Episode, Comment, Vote, Station
+from .models import DEFAULT_IMAGE_PATH,DEFAULT_AVATAR_PATH, ADMT_OWNER, ADMT_ADMIN, LIKE_VOTE, DISLIKE_VOTE
+from rss_feed.models import CO_DISABLE
 from django.contrib.auth.models import User
+
 
 # Create your tests here.
 
@@ -150,7 +152,7 @@ class ProgramModelTests(TestCase):
         
     def setUp(self):
         
-        rssl = 'http://dummy_linl.xml'
+        rssl = 'http://dummy_link.xml'
         p_image = Image.objects.create(name='p_image1',path='path/to/p_image1')
         
         p1 = Program.objects.create(name='TestProgram1',rss_link=rssl,image=p_image)
@@ -203,4 +205,92 @@ class ProgramModelTests(TestCase):
         self.assertEqual(t1.times_used,0)
         self.assertEqual(t2.times_used,1)
         
+        
+        
+class EpisodeModelTests(TestCase): 
     
+        
+    def setUp(self): 
+        
+        rssl = 'http://dummy_link2.xml'
+        p1 = Program.objects.create(name='TestProgram2',rss_link=rssl)
+        
+        u1 = User.objects.create(username='usere1')
+        u2 = User.objects.create(username='usere2')
+        u3 = User.objects.create(username='usere3')
+        
+        p1.programadmin_set.create(user=u1,type=ADMT_OWNER[0])
+        p1.programadmin_set.create(user=u2,type=ADMT_ADMIN[0])
+        
+        e_image = Image.objects.create(name='e_image1',path='path/to/e_image1')
+        audio_file = 'http://episode.audio/file.ogg'
+        e1 = Episode.objects.create(program=p1,title='TestEpisode1',file=audio_file,image=e_image)
+        
+        t1 = Tag.objects.create(name='et1',times_used=1)
+        t2 = Tag.objects.create(name='et2',times_used=2)
+        
+        e1.tag_set.add(t1)
+        e1.tag_set.add(t2)
+        
+        e1.vote_set.add(Vote.objects.create(episode=e1,user=u1,type=LIKE_VOTE[0])) 
+        e1.vote_set.add(Vote.objects.create(episode=e1,user=u2,type=LIKE_VOTE[0]))
+        e1.vote_set.add(Vote.objects.create(episode=e1,user=u3,type=DISLIKE_VOTE[0])) 
+        
+        p2 = Program.objects.create(name='TestProgram3',rss_link=rssl,comment_options=CO_DISABLE[0])
+        Episode.objects.create(program=p2,title='TestEpisode2',file=audio_file,image=e_image)
+        
+    
+    def test_get_upvote_number(self):
+        
+        e1 = Episode.objects.get(title='TestEpisode1')
+        
+        self.assertEqual(e1.get_upvote_number(),2)
+        
+    
+    def test_get_downvote_number(self):
+        
+        e1 = Episode.objects.get(title='TestEpisode1')
+        
+        self.assertEqual(e1.get_downvote_number(),1)
+        
+    
+    def test_check_user_is_admin(self):
+        
+        e1 = Episode.objects.get(title='TestEpisode1')
+        u1 = User.objects.get(username='usere1')
+        u2 = User.objects.get(username='usere2')
+        u3 = User.objects.get(username='usere3')
+        
+        self.assertTrue(e1.check_user_is_admin(u1,ADMT_OWNER[0]))
+        self.assertFalse(e1.check_user_is_admin(u1,ADMT_ADMIN[0]))
+        self.assertTrue(e1.check_user_is_admin(u2,ADMT_ADMIN[0]))
+        self.assertFalse(e1.check_user_is_admin(u2,ADMT_OWNER[0]))
+        self.assertFalse(e1.check_user_is_admin(u3))     
+        
+    
+    def test_check_comments_enabled(self):    
+    
+        e1 = Episode.objects.get(title='TestEpisode1')
+        self.assertTrue(e1.check_comments_enabled())
+        
+        e2 = Episode.objects.get(title='TestEpisode2')
+        self.assertFalse(e2.check_comments_enabled())
+        
+    
+    def test_delete(self):
+        
+        e1 = Episode.objects.get(title='TestEpisode1')
+        e1_id = e1.id
+        
+        e1.delete()
+        
+        e2 = list(Episode.objects.filter(pk=e1_id))
+        self.assertEqual(e2,[])
+        
+        t1 = Tag.objects.get(name='et1')
+        t2 = Tag.objects.get(name='et2')
+        
+        self.assertEqual(t1.times_used,0)
+        self.assertEqual(t2.times_used,1)
+        
+      
