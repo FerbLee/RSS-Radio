@@ -364,7 +364,7 @@ class Station(models.Model):
     broadcasting_method = models.CharField(choices=EXISTING_BCMETHODS,max_length=2,default='fm')
     broadcasting_area = TruncatingCharField(max_length=200,null=True)
     broadcasting_frequency = TruncatingCharField(max_length=50,null=True)
-    streaming_link = models.URLField()
+    streaming_link = models.URLField(null=True)
     profile_img = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='profile_img')
     logo = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True,related_name='logo')
     website = models.URLField(default=None,null=True)

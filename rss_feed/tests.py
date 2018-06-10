@@ -293,4 +293,55 @@ class EpisodeModelTests(TestCase):
         self.assertEqual(t1.times_used,0)
         self.assertEqual(t2.times_used,1)
         
-      
+
+class StationModelTests(TestCase): 
+    
+        
+    def setUp(self): 
+        
+        logo = Image.objects.create(name='logo1',path='path/to/logo1')
+        p_img = Image.objects.create(name='p_image1',path='path/to/p_image1')
+        
+        s1 = Station.objects.create(name='RadioTest1',profile_img=p_img,logo=logo) 
+
+        u1 = User.objects.create(username='users1')
+        u2 = User.objects.create(username='users2')
+        User.objects.create(username='users3')
+        
+        s1.stationadmin_set.create(user=u1,type=ADMT_OWNER[0])
+        s1.stationadmin_set.create(user=u2,type=ADMT_ADMIN[0])
+    
+    
+    def test_check_user_is_admin(self):
+        
+        s1 = Station.objects.get(name='RadioTest1')
+        u1 = User.objects.get(username='users1')
+        u2 = User.objects.get(username='users2')
+        u3 = User.objects.get(username='users3')
+        
+        self.assertTrue(s1.check_user_is_admin(u1,ADMT_OWNER[0]))
+        self.assertFalse(s1.check_user_is_admin(u1,ADMT_ADMIN[0]))
+        self.assertTrue(s1.check_user_is_admin(u2,ADMT_ADMIN[0]))
+        self.assertFalse(s1.check_user_is_admin(u2,ADMT_OWNER[0]))
+        self.assertFalse(s1.check_user_is_admin(u3))  
+        
+    
+    def test_delete(self):
+        
+        s1 = Station.objects.get(name='RadioTest1')
+        s1_id = s1.id
+        logo_id = s1.logo.id
+        p_img_id = s1.profile_img.id
+        
+        s1.delete()
+        
+        s2 = list(Station.objects.filter(pk=s1_id))
+        self.assertEqual(s2,[])
+        
+        logo2 = list(Image.objects.filter(pk=logo_id))
+        self.assertEqual(logo2,[])
+        
+        p_img2 = list(Image.objects.filter(pk=p_img_id))
+        self.assertEqual(p_img2,[])
+    
+        
