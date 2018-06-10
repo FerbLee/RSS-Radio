@@ -1,0 +1,77 @@
+\chapter[Análise]{
+  \label{chp:analise}
+  Análise
+}
+\minitoc
+\newpage
+
+Neste capítulo repasaranse os requirimentos identificados ao abordar os obxectivos do proxecto. Distinguimos entre:
+
+\begin{itemize}
+	\item \textbf{Requirimentos funcionais:} Son aqueles que describen as accións que o sistema debe efectuar, isto é: a colección de capacidades e características que o software pon a disposición do usuario.
+	\item \textbf{Requirimentos non funcionais:} Son aqueles que especifican as propiedades do sistema no referente á manexabilidade, seguridade e robustez\cite{softreq}.
+\end{itemize}
+
+\section{Requirimentos funcionais}
+
+Presentaranse estes en forma de \say{historias de usuario}. Unha historia de usuario é unha frase concisa onde o usuario obxectivo expresa unha necesidade que quere que o sistema cubra.
+
+Se ben é certo que houbo encontros con membros de colectivos do terceiro sector coma a U.R.C.M.(Unión de radios libres e comunitarias de Madrid) e Cuac FM (A radio comunitaria da Coruña), parte delas están extraídas da experiencia propia coma colaborador nestes medios e coma moderador de comunidades en liña.
+
+
+\begin{itemize}
+	\item Ter un punto de encontro onde ver os programas que están a emitir as emisoras federadas na ReMC (Red de Medios Comunitarios)
+	\item Que unha emisora poda acceder aos ficheiros de audio das demais.
+	\item Que os \say{autores} dun programa poidan saber en que emisoras está a ser emitido e a que hora.
+	\item Que os programas se poidan dar de alta e de baixa.
+	\item Poder visualizar información das emisoras e dos programas: Nome, información de emisión, datos de contacto...
+	\item Poder subscribirse aos programas.
+	\item Poder compartir contido entre usuarios.
+	\item Que os ficheiros de audio se asocien de xeito automático a cada emisora.
+	\item Que non sexa necesario engadir manualmente os novos ficheiros.
+	\item Que os usuarios podan colaborar na xestión das emisoras.
+	\item Agrupar os programas por categorías.
+\end{itemize}
+
+Eses \say{ficheiros de audio} nos que se pensaba nunha primeira aproximación foron o que finalmente derivou no concepto de \say{episodios de programa} que se explicará máis a fondo no capítulo \ref{chp:disenho} sobre o deseño.
+
+Gran parte destas historias veñen dos usuarios que producen o contido. A medida que avanzaba o deseño e os primeiros pasos da implementación, fóronse perfilando novas historias de usuario pensando máis nos ouvintes:
+
+\begin{itemize}
+	\item Que os ouvintes poidan manifestar a súa opinión sobre os programas mediante votos e comentarios.
+	\item Que os ouvintes poidan manter unha lista de programas e emisoras favoritas.
+	\item Ter ferramentas de procura de contidos.
+	\item Recibir recomendacións.  
+\end{itemize}  
+
+E tamén outros requirimentos propios da xestión dos contidos.
+
+\begin{itemize}
+	\item Crear diferentes roles de administración.
+	\item Que o administrador dun programa poida restrinxir a emisión do seu contido.
+	\item Que o administrador dun programa poida moderar os comentarios no seu contido.
+\end{itemize}  
+
+\section{Requirimentos non funcionais}
+
+\subsection{Autenticación}
+
+O sistema ten que permitir o rexistro de usuarios cun login único e un contrasinal. Dito contrasinal ha de gardarse cifrado na base de datos. A información de sesión da autenticación debe protexerse de manipulacións para evitar impostores.
+
+\subsection{Internacionalización}
+
+O sistema debe ter soporte para a tradución a distintos idiomas. As datas deben gardarse nun formato común e zona horaria UTC(Universal Time Coordinated) para adecuarse na interface ás preferencias do usuario.
+
+\subsection{Rendemento}
+
+A carga de obxectos desde a base de datos debe realizarse de xeito \say{lazy} (preguiceiro) de modo que non se sobrecargue a memoria de forma innecesaria. Isto é especialmente eficiente en comprobacións de existencia de obxectos ou na navegación entre clases relacionadas. 
+
+O tráfico entre o cliente e o servidor debe minimizarse mediante, por exemplo, un sistema de paxinación para aquelas vistas que amosen unha grande cantidade de datos.
+
+\subsection{Seguridade}
+
+Os novos datos que se engadan ao sistema han de ser validados para evitar comportamentos maliciosos coma ataques de inxección de código. Cómpre tamén facer validación das URL's para evitar accesos non permitidos. 
+
+\subsection{Adaptabilidade a dispositivos móbiles}
+
+Xa que nos capítulos anteriores mencionamos a importancia dos dispositivos móbiles no crecemento da radio por Internet, a páxina debe ser amigable con eles adaptando a interface cando a pantalla na que se execute sexa pequena.

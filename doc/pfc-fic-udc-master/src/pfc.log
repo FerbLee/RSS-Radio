@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.5.8)  10 JUN 2018 01:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.5.8)  10 JUN 2018 11:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -265,6 +265,24 @@ Package caption Info: float package is loaded.
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip48
+\LTright=\skip49
+\LTpre=\skip50
+\LTpost=\skip51
+\LTchunksize=\count116
+\LTcapwidth=\dimen130
+\LT@head=\box59
+\LT@firsthead=\box60
+\LT@foot=\box61
+\LT@lastfoot=\box62
+\LT@cols=\count117
+\LT@rows=\count118
+\c@LT@tables=\count119
+\c@LT@chunks=\count120
+\LT@p@ftn=\toks32
+)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -281,10 +299,10 @@ Package graphics Info: Driver file: pdftex.def on input line 96.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
-\Gread@gobject=\count116
+\Gread@gobject=\count121
 ))
-\Gin@req@height=\dimen130
-\Gin@req@width=\dimen131
+\Gin@req@height=\dimen131
+\Gin@req@width=\dimen132
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
@@ -297,6 +315,40 @@ Package color Info: Driver file: pdftex.def on input line 144.
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
 File: dvipsnam.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen133
+\extrarowheight=\dimen134
+\NC@list=\toks33
+\extratabsurround=\skip52
+\backup@length=\skip53
+)
+\everycr=\toks34
+\minrowclearance=\skip54
+)
+LaTeX Info: Redefining \color on input line 709.
+\rownum=\count122
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2016/05/21 v6.83p Hypertext links for LaTeX
 
@@ -345,14 +397,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-\@linkdim=\dimen132
-\Hy@linkcounter=\count117
-\Hy@pagecounter=\count118
+\@linkdim=\dimen135
+\Hy@linkcounter=\count123
+\Hy@pagecounter=\count124
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2016/05/21 v6.83p Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count119
+\Hy@SavedSpaceFactor=\count125
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -373,17 +425,17 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 ))
-\c@Hy@tempcnt=\count120
+\c@Hy@tempcnt=\count126
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen133
-\Fld@menulength=\count121
-\Field@Width=\dimen134
-\Fld@charsize=\dimen135
+\XeTeXLinkMargin=\dimen136
+\Fld@menulength=\count127
+\Field@Width=\dimen137
+\Fld@charsize=\dimen138
 Package hyperref Info: Hyper figures OFF on input line 6342.
 Package hyperref Info: Link nesting OFF on input line 6347.
 Package hyperref Info: Hyper index ON on input line 6350.
@@ -393,64 +445,64 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6367.
 Package hyperref Info: PDF/A mode OFF on input line 6372.
 LaTeX Info: Redefining \ref on input line 6412.
 LaTeX Info: Redefining \pageref on input line 6416.
-\Hy@abspage=\count122
-\c@Item=\count123
-\c@Hfootnote=\count124
+\Hy@abspage=\count128
+\c@Item=\count129
+\c@Hfootnote=\count130
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2016/05/21 v6.83p Hyperref driver for pdfTeX
-\Fld@listcount=\count125
-\c@bookmark@seq@number=\count126
-\Hy@SectionHShift=\skip48
+\Fld@listcount=\count131
+\c@bookmark@seq@number=\count132
+\Hy@SectionHShift=\skip55
 )
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box59
-\beforetitleunit=\skip49
-\aftertitleunit=\skip50
-\ttl@plus=\dimen136
-\ttl@minus=\dimen137
-\ttl@toksa=\toks32
-\titlewidth=\dimen138
-\titlewidthlast=\dimen139
-\titlewidthfirst=\dimen140
+\ttl@box=\box63
+\beforetitleunit=\skip56
+\aftertitleunit=\skip57
+\ttl@plus=\dimen139
+\ttl@minus=\dimen140
+\ttl@toksa=\toks35
+\titlewidth=\dimen141
+\titlewidthlast=\dimen142
+\titlewidthfirst=\dimen143
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip51
-\f@ncyO@elh=\skip52
-\f@ncyO@erh=\skip53
-\f@ncyO@olh=\skip54
-\f@ncyO@orh=\skip55
-\f@ncyO@elf=\skip56
-\f@ncyO@erf=\skip57
-\f@ncyO@olf=\skip58
-\f@ncyO@orf=\skip59
+\fancy@headwidth=\skip58
+\f@ncyO@elh=\skip59
+\f@ncyO@erh=\skip60
+\f@ncyO@olh=\skip61
+\f@ncyO@orh=\skip62
+\f@ncyO@elf=\skip63
+\f@ncyO@erf=\skip64
+\f@ncyO@olf=\skip65
+\f@ncyO@orf=\skip66
 )
 (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen141
-\lightrulewidth=\dimen142
-\cmidrulewidth=\dimen143
-\belowrulesep=\dimen144
-\belowbottomsep=\dimen145
-\aboverulesep=\dimen146
-\abovetopsep=\dimen147
-\cmidrulesep=\dimen148
-\cmidrulekern=\dimen149
-\defaultaddspace=\dimen150
-\@cmidla=\count127
-\@cmidlb=\count128
-\@aboverulesep=\dimen151
-\@belowrulesep=\dimen152
-\@thisruleclass=\count129
-\@lastruleclass=\count130
-\@thisrulewidth=\dimen153
+\heavyrulewidth=\dimen144
+\lightrulewidth=\dimen145
+\cmidrulewidth=\dimen146
+\belowrulesep=\dimen147
+\belowbottomsep=\dimen148
+\aboverulesep=\dimen149
+\abovetopsep=\dimen150
+\cmidrulesep=\dimen151
+\cmidrulekern=\dimen152
+\defaultaddspace=\dimen153
+\@cmidla=\count133
+\@cmidlb=\count134
+\@aboverulesep=\dimen154
+\@belowrulesep=\dimen155
+\@thisruleclass=\count135
+\@lastruleclass=\count136
+\@thisrulewidth=\dimen156
 )
 (/usr/share/texlive/texmf-dist/tex/latex/rotating/rotating.sty
 Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
@@ -458,34 +510,34 @@ Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count131
-\rotFPtop=\skip60
-\rotFPbot=\skip61
-\rot@float@box=\box60
-\rot@mess@toks=\toks33
+\c@r@tfl@t=\count137
+\rotFPtop=\skip67
+\rotFPbot=\skip68
+\rot@float@box=\box64
+\rot@mess@toks=\toks36
 )
 (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen154
+\bigstrutjot=\dimen157
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count132
-\lst@gtempboxa=\box61
-\lst@token=\toks34
-\lst@length=\count133
-\lst@currlwidth=\dimen155
-\lst@column=\count134
-\lst@pos=\count135
-\lst@lostspace=\dimen156
-\lst@width=\dimen157
-\lst@newlines=\count136
-\lst@lineno=\count137
-\lst@maxwidth=\dimen158
+\lst@mode=\count138
+\lst@gtempboxa=\box65
+\lst@token=\toks37
+\lst@length=\count139
+\lst@currlwidth=\dimen158
+\lst@column=\count140
+\lst@pos=\count141
+\lst@lostspace=\dimen159
+\lst@width=\dimen160
+\lst@newlines=\count142
+\lst@lineno=\count143
+\lst@maxwidth=\dimen161
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count138
-\lst@skipnumbers=\count139
-\lst@framebox=\box62
+\c@lstnumber=\count144
+\lst@skipnumbers=\count145
+\lst@framebox=\box66
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -497,28 +549,28 @@ Package: dirtree 2012/12/11 v0.32 package wrapper for dirtree
 
 (/usr/share/texlive/texmf-dist/tex/generic/dirtree/dirtree.tex
 `dirtree' v0.32, 2012/12/11 (jcc)
-\DT@offset=\dimen159
-\DT@width=\dimen160
-\DT@sep=\dimen161
-\DT@all=\dimen162
-\DT@rulewidth=\dimen163
-\DT@dotwidth=\dimen164
-\DTbaselineskip=\dimen165
-\DT@counti=\count140
-\DT@countii=\count141
-\DT@countiii=\count142
-\DT@countiv=\count143
-\DT@indent=\dimen166
-\DT@parskip=\dimen167
-\DT@baselineskip=\dimen168
+\DT@offset=\dimen162
+\DT@width=\dimen163
+\DT@sep=\dimen164
+\DT@all=\dimen165
+\DT@rulewidth=\dimen166
+\DT@dotwidth=\dimen167
+\DTbaselineskip=\dimen168
+\DT@counti=\count146
+\DT@countii=\count147
+\DT@countiii=\count148
+\DT@countiv=\count149
+\DT@indent=\dimen169
+\DT@parskip=\dimen170
+\DT@baselineskip=\dimen171
 )
 File: dirtree.tex 2012/12/11 v0.32 `dirtree' (jcc)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
-\@float@every@algorithm=\toks35
-\c@algorithm=\count144
+\@float@every@algorithm=\toks38
+\c@algorithm=\count150
 )
 (/usr/share/texlive/texmf-dist/tex/latex/minitoc/minitoc.sty
 Package: minitoc 2015/07/13 v61 Package minitoc
@@ -529,17 +581,17 @@ Package: mtcmess 2006/03/14
 Package minitoc Info: I0001
 (minitoc)             *** minitoc package, version 61 ***.
 \tf@mtc=\write4
-\mtcindent=\skip62
-\mtcskipamount=\skip63
+\mtcindent=\skip69
+\mtcskipamount=\skip70
 Package minitoc Info: I0005
 (minitoc)             compatible with hyperref.
 Package minitoc Info: I0023
 (minitoc)             part level macros available.
 Package minitoc Info: I0003
 (minitoc)             chapter level macros available.
-\mtc@toks=\toks36
-\mtc@strutbox=\box63
-\mtc@hstrutbox=\box64
+\mtc@toks=\toks39
+\mtc@strutbox=\box67
+\mtc@hstrutbox=\box68
 Package minitoc Info: I0002
 (minitoc)             Autoconfiguration of extensions.
 \openout4 = `pfc.mtc0'.
@@ -556,11 +608,11 @@ Package minitoc Info: I0031
 
 \openout4 = `pfc.mtc0'.
 
-\c@mtc=\count145
-\c@minitocdepth=\count146
-\c@ptc=\count147
-\c@parttocdepth=\count148
-\ptcindent=\skip64
+\c@mtc=\count151
+\c@minitocdepth=\count152
+\c@ptc=\count153
+\c@parttocdepth=\count154
+\ptcindent=\skip71
 Package minitoc Info: I0010
 (minitoc)             The english language is selected.
 (minitoc)              on input line 4909.
@@ -573,7 +625,7 @@ File: english.mld 2006/01/13
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count149
+\etb@tempcnta=\count155
 )
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 Package: glossaries 2016/06/09 v4.25 (NLCT)
@@ -583,16 +635,16 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks37
-\XKV@tempa@toks=\toks38
+\XKV@toks=\toks40
+\XKV@tempa@toks=\toks41
 )
-\XKV@depth=\count150
+\XKV@depth=\count156
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
 Package: mfirstuc 2015/12/17 v2.02 (NLCT)
-\@glsmfirst=\toks39
-\@glsmrest=\toks40
+\@glsmfirst=\toks42
+\@glsmrest=\toks43
 )
 (/usr/share/texlive/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
@@ -605,7 +657,7 @@ Package: datatool-base 2016/01/18 v2.25 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/substr/substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
-\c@su@anzahl=\count151
+\c@su@anzahl=\count157
 )
 (/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-fp.sty
 Package: datatool-fp 2016/01/18 v2.25 (NLCT)
@@ -616,19 +668,19 @@ Package: fp 1995/04/02
 `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
 (/usr/share/texlive/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count152
+\actioncount=\count158
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count153
-\FP@xia=\count154
-\FP@xib=\count155
-\FP@xfa=\count156
-\FP@xfb=\count157
-\FP@rega=\count158
-\FP@regb=\count159
-\FP@regs=\count160
-\FP@times=\count161
+\FP@xs=\count159
+\FP@xia=\count160
+\FP@xib=\count161
+\FP@xfa=\count162
+\FP@xfb=\count163
+\FP@rega=\count164
+\FP@regb=\count165
+\FP@regs=\count166
+\FP@times=\count167
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
@@ -647,7 +699,7 @@ Package: fp-pas 1994/08/29
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count162
+\FPseed=\count168
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
@@ -658,15 +710,15 @@ Package: fp-upn 1996/10/21
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eval.sty
 Package: fp-eval 1995/04/03
 )))
-\@dtl@toks=\toks41
-\@dtl@tmpcount=\count163
-\dtl@tmplength=\skip65
-\dtl@sortresult=\count164
-\@dtl@numgrpsepcount=\count165
-\@dtl@datatype=\count166
-\dtl@codeA=\count167
-\dtl@codeB=\count168
-\@dtl@foreach@level=\count169
+\@dtl@toks=\toks44
+\@dtl@tmpcount=\count169
+\dtl@tmplength=\skip72
+\dtl@sortresult=\count170
+\@dtl@numgrpsepcount=\count171
+\@dtl@datatype=\count172
+\dtl@codeA=\count173
+\dtl@codeB=\count174
+\@dtl@foreach@level=\count175
 )
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-
 307.sty
@@ -686,76 +738,56 @@ Package glossaries Warning: No language module detected for `spanish'.
 (glossaries)                Please check on CTAN for a bundle called
 (glossaries)                `glossaries-spanish' or similar.
 
-\gls@level=\count170
-\@gls@tmpb=\toks42
-\gls@tmplen=\skip66
-\glskeylisttok=\toks43
-\glslabeltok=\toks44
-\glsshorttok=\toks45
-\glslongtok=\toks46
+\gls@level=\count176
+\@gls@tmpb=\toks45
+\gls@tmplen=\skip73
+\glskeylisttok=\toks46
+\glslabeltok=\toks47
+\glsshorttok=\toks48
+\glslongtok=\toks49
 
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.st
 y
 Package: glossary-hypernav 2016/06/09 v4.25 (NLCT)
 ) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 Package: glossary-list 2016/06/09 v4.25 (NLCT)
-\glslistdottedwidth=\skip67
+\glslistdottedwidth=\skip74
 ) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
 Package: glossary-long 2016/06/09 v4.25 (NLCT)
-
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip68
-\LTright=\skip69
-\LTpre=\skip70
-\LTpost=\skip71
-\LTchunksize=\count171
-\LTcapwidth=\dimen169
-\LT@head=\box65
-\LT@firsthead=\box66
-\LT@foot=\box67
-\LT@lastfoot=\box68
-\LT@cols=\count172
-\LT@rows=\count173
-\c@LT@tables=\count174
-\c@LT@chunks=\count175
-\LT@p@ftn=\toks47
-)
-\glsdescwidth=\skip72
-\glspagelistwidth=\skip73
-)
-(/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
+\glsdescwidth=\skip75
+\glspagelistwidth=\skip76
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
 Package: glossary-super 2016/06/09 v4.25 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
-\c@tracingst=\count176
-\ST@wd=\dimen170
-\ST@rightskip=\skip74
-\ST@leftskip=\skip75
-\ST@parfillskip=\skip76
-\ST@pageleft=\dimen171
-\ST@headht=\dimen172
-\ST@tailht=\dimen173
-\ST@pagesofar=\dimen174
-\ST@pboxht=\dimen175
-\ST@lineht=\dimen176
-\ST@stretchht=\dimen177
-\ST@prevht=\dimen178
-\ST@toadd=\dimen179
-\ST@dimen=\dimen180
+\c@tracingst=\count177
+\ST@wd=\dimen172
+\ST@rightskip=\skip77
+\ST@leftskip=\skip78
+\ST@parfillskip=\skip79
+\ST@pageleft=\dimen173
+\ST@headht=\dimen174
+\ST@tailht=\dimen175
+\ST@pagesofar=\dimen176
+\ST@pboxht=\dimen177
+\ST@lineht=\dimen178
+\ST@stretchht=\dimen179
+\ST@prevht=\dimen180
+\ST@toadd=\dimen181
+\ST@dimen=\dimen182
 \ST@pbox=\box69
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
 Package: glossary-tree 2016/06/09 v4.25 (NLCT)
-\glstreeindent=\skip77
+\glstreeindent=\skip80
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip78
-\bibsep=\skip79
+\bibhang=\skip81
+\bibsep=\skip82
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count177
+\c@NAT@ctr=\count178
 )
 (/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
@@ -763,24 +795,24 @@ Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
-\CenteringLeftskip=\skip80
-\RaggedLeftLeftskip=\skip81
-\RaggedRightLeftskip=\skip82
-\CenteringRightskip=\skip83
-\RaggedLeftRightskip=\skip84
-\RaggedRightRightskip=\skip85
-\CenteringParfillskip=\skip86
-\RaggedLeftParfillskip=\skip87
-\RaggedRightParfillskip=\skip88
-\JustifyingParfillskip=\skip89
-\CenteringParindent=\skip90
-\RaggedLeftParindent=\skip91
-\RaggedRightParindent=\skip92
-\JustifyingParindent=\skip93
+\CenteringLeftskip=\skip83
+\RaggedLeftLeftskip=\skip84
+\RaggedRightLeftskip=\skip85
+\CenteringRightskip=\skip86
+\RaggedLeftRightskip=\skip87
+\RaggedRightRightskip=\skip88
+\CenteringParfillskip=\skip89
+\RaggedLeftParfillskip=\skip90
+\RaggedRightParfillskip=\skip91
+\JustifyingParfillskip=\skip92
+\CenteringParindent=\skip93
+\RaggedLeftParindent=\skip94
+\RaggedRightParindent=\skip95
+\JustifyingParindent=\skip96
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/dirtytalk/dirtytalk.sty
 Package: dirtytalk 2010/11/21 A package making "quoting" easier
-\c@dirtytalk@qdepth=\count178
+\c@dirtytalk@qdepth=\count179
 )
 Package hyperref Info: Option `unicode' set `false' on input line 54.
 Package hyperref Info: Option `pdftoolbar' set `true' on input line 54.
@@ -847,17 +879,17 @@ Package caption Info: End \AtBeginDocument code.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count179
-\scratchdimen=\dimen181
+\scratchcounter=\count180
+\scratchdimen=\dimen183
 \scratchbox=\box70
-\nofMPsegments=\count180
-\nofMParguments=\count181
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count182
-\MPscratchDim=\dimen182
-\MPnumerator=\count183
-\makeMPintoPDFobject=\count184
-\everyMPtoPDFconversion=\toks49
+\nofMPsegments=\count181
+\nofMParguments=\count182
+\everyMPshowfont=\toks50
+\MPscratchCnt=\count183
+\MPscratchDim=\dimen184
+\MPnumerator=\count184
+\makeMPintoPDFobject=\count185
+\everyMPtoPDFconversion=\toks51
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -885,7 +917,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count185
+\c@section@level=\count186
 )
 LaTeX Info: Redefining \ref on input line 59.
 LaTeX Info: Redefining \pageref on input line 59.
@@ -895,7 +927,7 @@ LaTeX Info: Redefining \nameref on input line 59.
 \@outlinefile=\write8
 \openout8 = `pfc.out'.
 
-\c@lstlisting=\count186
+\c@lstlisting=\count187
 Package minitoc(hints) Info: I0049
 (minitoc(hints))             ==> You requested the hints option. 
 (minitoc(hints))             Some hints are eventually given below.
@@ -1072,17 +1104,17 @@ Package babel Info: Redefining spanish shorthand "?
 
  (./pfc_nota.tex
 Underfull \hbox (badness 1783) in paragraph at lines 14--15
-[]\OT1/cmr/bx/n/12 Online ser-vice for pub-lish-ing ra-dio broad-cast-ing
+[]|\OT1/cmr/bx/n/12 Online ser-vice for pub-lish-ing ra-dio broad-cast-ing
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 26--26
-[]\OT1/cmr/bx/n/12 Data de
+[]|\OT1/cmr/bx/n/12 Data de
  []
 
 
 Overfull \hbox (14.7195pt too wide) in paragraph at lines 28--28
-[]\OT1/cmr/bx/n/12 Calificaci^^Son:| 
+[]|\OT1/cmr/bx/n/12 Calificaci^^Son:| 
  []
 
 )
@@ -2077,18 +2109,163 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 77.
 
+
+Package xcolor Warning: Incompatible color definition on input line 86.
+
+
+Package xcolor Warning: Incompatible color definition on input line 86.
+
+
+Package xcolor Warning: Incompatible color definition on input line 86.
+
+
+Package xcolor Warning: Incompatible color definition on input line 86.
+
+
+Package xcolor Warning: Incompatible color definition on input line 86.
+
+
+Package xcolor Warning: Incompatible color definition on input line 86.
+
+
+Package xcolor Warning: Incompatible color definition on input line 88.
+
+
+Package xcolor Warning: Incompatible color definition on input line 88.
+
+
+Package xcolor Warning: Incompatible color definition on input line 88.
+
+
+Package xcolor Warning: Incompatible color definition on input line 88.
+
+
+Package xcolor Warning: Incompatible color definition on input line 88.
+
+
+Package xcolor Warning: Incompatible color definition on input line 88.
+
+
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
+Package xcolor Warning: Incompatible color definition on input line 92.
+
+
+Package xcolor Warning: Incompatible color definition on input line 92.
+
+
+Package xcolor Warning: Incompatible color definition on input line 92.
+
+
+Package xcolor Warning: Incompatible color definition on input line 92.
+
+
+Package xcolor Warning: Incompatible color definition on input line 92.
+
+
+Package xcolor Warning: Incompatible color definition on input line 92.
+
+
+Package xcolor Warning: Incompatible color definition on input line 94.
+
+
+Package xcolor Warning: Incompatible color definition on input line 94.
+
+
+Package xcolor Warning: Incompatible color definition on input line 94.
+
+
+Package xcolor Warning: Incompatible color definition on input line 94.
+
+
+Package xcolor Warning: Incompatible color definition on input line 94.
+
+
+Package xcolor Warning: Incompatible color definition on input line 94.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 96--96
-[]\OT1/cmr/m/n/10.95 Publicaci^^Son de
+[]|\OT1/cmr/m/n/10.95 Publicaci^^Son de
  []
+
+
+Package xcolor Warning: Incompatible color definition on input line 96.
+
+
+Package xcolor Warning: Incompatible color definition on input line 96.
+
+
+Package xcolor Warning: Incompatible color definition on input line 96.
+
+
+Package xcolor Warning: Incompatible color definition on input line 96.
+
+
+Package xcolor Warning: Incompatible color definition on input line 96.
+
+
+Package xcolor Warning: Incompatible color definition on input line 96.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 98--98
-[]\OT1/cmr/m/n/10.95 Ferramentas de
+[]|\OT1/cmr/m/n/10.95 Ferramentas de
  []
 
 
+Package xcolor Warning: Incompatible color definition on input line 98.
+
+
+Package xcolor Warning: Incompatible color definition on input line 98.
+
+
+Package xcolor Warning: Incompatible color definition on input line 98.
+
+
+Package xcolor Warning: Incompatible color definition on input line 98.
+
+
+Package xcolor Warning: Incompatible color definition on input line 98.
+
+
+Package xcolor Warning: Incompatible color definition on input line 98.
+
+
+Package xcolor Warning: Incompatible color definition on input line 100.
+
+
+Package xcolor Warning: Incompatible color definition on input line 100.
+
+
+Package xcolor Warning: Incompatible color definition on input line 100.
+
+
+Package xcolor Warning: Incompatible color definition on input line 100.
+
+
+Package xcolor Warning: Incompatible color definition on input line 100.
+
+
+Package xcolor Warning: Incompatible color definition on input line 100.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 102--102
-[]\OT1/cmr/m/n/10.95 Xerarqu^^S^^Pa
+[]|\OT1/cmr/m/n/10.95 Xerarqu^^S^^Pa
  []
 
 
@@ -2097,12 +2274,84 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--102
  []
 
 
+Package xcolor Warning: Incompatible color definition on input line 102.
+
+
+Package xcolor Warning: Incompatible color definition on input line 102.
+
+
+Package xcolor Warning: Incompatible color definition on input line 102.
+
+
+Package xcolor Warning: Incompatible color definition on input line 102.
+
+
+Package xcolor Warning: Incompatible color definition on input line 102.
+
+
+Package xcolor Warning: Incompatible color definition on input line 102.
+
+
 Underfull \hbox (badness 6252) in paragraph at lines 104--104
-[]\OT1/cmr/m/n/10.95 Redifusi^^Son en-tre
+[]|\OT1/cmr/m/n/10.95 Redifusi^^Son en-tre
  []
 
 
-Overfull \hbox (3.55688pt too wide) in paragraph at lines 82--111
+Package xcolor Warning: Incompatible color definition on input line 104.
+
+
+Package xcolor Warning: Incompatible color definition on input line 104.
+
+
+Package xcolor Warning: Incompatible color definition on input line 104.
+
+
+Package xcolor Warning: Incompatible color definition on input line 104.
+
+
+Package xcolor Warning: Incompatible color definition on input line 104.
+
+
+Package xcolor Warning: Incompatible color definition on input line 104.
+
+
+Package xcolor Warning: Incompatible color definition on input line 106.
+
+
+Package xcolor Warning: Incompatible color definition on input line 106.
+
+
+Package xcolor Warning: Incompatible color definition on input line 106.
+
+
+Package xcolor Warning: Incompatible color definition on input line 106.
+
+
+Package xcolor Warning: Incompatible color definition on input line 106.
+
+
+Package xcolor Warning: Incompatible color definition on input line 106.
+
+
+Package xcolor Warning: Incompatible color definition on input line 108.
+
+
+Package xcolor Warning: Incompatible color definition on input line 108.
+
+
+Package xcolor Warning: Incompatible color definition on input line 108.
+
+
+Package xcolor Warning: Incompatible color definition on input line 108.
+
+
+Package xcolor Warning: Incompatible color definition on input line 108.
+
+
+Package xcolor Warning: Incompatible color definition on input line 108.
+
+
+Overfull \hbox (5.15686pt too wide) in paragraph at lines 82--111
  [][] 
  []
 
@@ -4262,255 +4511,304 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 4.
 
-Overfull \hbox (1.16565pt too wide) in paragraph at lines 16--16
-[]\OT1/cmr/bx/n/10.95 schedule[]details| 
+Overfull \hbox (1.16565pt too wide) in paragraph at lines 20--20
+[]|\OT1/cmr/bx/n/10.95 schedule[]details| 
  []
 
 
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 8--19
-[][] 
+Overfull \hbox (9.1472pt too wide) in alignment at lines 9--22
+ [] [] [] 
  []
 
 
-Overfull \hbox (4.34871pt too wide) in paragraph at lines 33--33
-[]\OT1/cmr/bx/n/10.95 publication[]date| 
+Underfull \vbox (badness 10000) detected at line 22
  []
 
 
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 23--38
-[][] 
+Overfull \hbox (4.34871pt too wide) in paragraph at lines 40--40
+[]|\OT1/cmr/bx/n/10.95 publication[]date| 
  []
 
 
-Overfull \hbox (4.34871pt too wide) in paragraph at lines 53--53
-[]\OT1/cmr/bx/n/10.95 publication[]date| 
+Overfull \hbox (9.1472pt too wide) in alignment at lines 27--44
+ [] [] [] 
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 73--74
-[]\OT1/cmr/m/n/10.95 Referencia ^^Sas in-stan-cias de Com-ment rela-
+Underfull \vbox (badness 10000) detected at line 44
  []
 
 
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 43--77
-[][] 
+Overfull \hbox (4.34871pt too wide) in paragraph at lines 63--63
+[]|\OT1/cmr/bx/n/10.95 publication[]date| 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 1824) in paragraph at lines 83--84
+[]|\OT1/cmr/m/n/10.95 Referencia ^^Sas in-stan-cias de Com-ment rela-
+ []
+
+
+Overfull \hbox (9.1472pt too wide) in alignment at lines 50--86
+ [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 86
+ []
 
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 80.
- [57
+(babel)             in language  on input line 86.
+[57
 
 
 
 ]
-Underfull \hbox (badness 1789) in paragraph at lines 100--100
-[]\OT1/cmr/m/n/10.95 Char[ivoox $\OMS/cmsy/m/n/10.95 j$ \OT1/cmr/m/n/10.95 ra-
+Underfull \hbox (badness 1789) in paragraph at lines 114--114
+[]|\OT1/cmr/m/n/10.95 Char[ivoox $\OMS/cmsy/m/n/10.95 j$ \OT1/cmr/m/n/10.95 ra-
+
  []
 
 
-Underfull \hbox (badness 5374) in paragraph at lines 100--101
-[]\OT1/cmr/m/n/10.95 Tipo de RSSLinkPars-er uti-liza-do na s^^Sua
+Underfull \hbox (badness 5374) in paragraph at lines 114--115
+[]|\OT1/cmr/m/n/10.95 Tipo de RSSLinkPars-er uti-liza-do na s^^Sua
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 110--110
-[]\OT1/cmr/m/n/10.95 Char[share[]free $\OMS/cmsy/m/n/10.95 j$
+Underfull \hbox (badness 2772) in paragraph at lines 124--124
+[]|\OT1/cmr/m/n/10.95 Char[share[]free $\OMS/cmsy/m/n/10.95 j$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
-[]\OT1/cmr/bx/n/10.95 comment
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+[]|\OT1/cmr/bx/n/10.95 comment
  []
 
 
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 80--119
-[][] 
+Overfull \hbox (9.1472pt too wide) in alignment at lines 91--132
+ [] [] [] 
  []
 
 
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 123--136
-[][] 
+Underfull \vbox (badness 10000) detected at line 132
+ []
+
+LaTeX Info: Redefining \. on input line 132.
+LaTeX Info: Redefining \% on input line 132.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 132.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 132.
+[58]
+Overfull \hbox (9.1472pt too wide) in alignment at lines 137--152
+ [] [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--150
-[]\OT1/cmr/bx/n/10.95 broadcasting
+Underfull \vbox (badness 10000) detected at line 152
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--150
-[]\OT1/cmr/m/n/10.95 Char[RadioFM
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
+[]|\OT1/cmr/bx/n/10.95 broadcasting
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--150
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
+[]|\OT1/cmr/m/n/10.95 Char[RadioFM
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
 \OMS/cmsy/m/n/10.95 j$ \OT1/cmr/m/n/10.95 Ra-dioAM $\OMS/cmsy/m/n/10.95 j$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--150
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
 \OT1/cmr/m/n/10.95 Ra-dioDig-i-tal $\OMS/cmsy/m/n/10.95 j$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--150
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
 \OT1/cmr/m/n/10.95 TVChan-nel $\OMS/cmsy/m/n/10.95 j$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--150
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
 \OT1/cmr/m/n/10.95 Ra-dioIn-t-er-net $\OMS/cmsy/m/n/10.95 j$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--150
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
 \OT1/cmr/m/n/10.95 Pod-cast-ingChan-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--152
-[]\OT1/cmr/bx/n/10.95 broadcasting
+Underfull \hbox (badness 10000) in paragraph at lines 172--172
+[]|\OT1/cmr/bx/n/10.95 broadcasting
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--154
-[]\OT1/cmr/bx/n/10.95 broadcasting
+Underfull \hbox (badness 10000) in paragraph at lines 174--174
+[]|\OT1/cmr/bx/n/10.95 broadcasting
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 162--163
-[]\OT1/cmr/m/n/10.95 Referencia ^^Sas in-stan-cias de Broad-cast rela-
+Underfull \hbox (badness 1515) in paragraph at lines 182--183
+[]|\OT1/cmr/m/n/10.95 Referencia ^^Sas in-stan-cias de Broad-cast rela-
  []
 
 
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 140--169
-[][] 
+Overfull \hbox (9.1472pt too wide) in alignment at lines 157--188
+ [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 188
+ []
+
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 188.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 188.
+[59]
+Overfull \hbox (9.1472pt too wide) in alignment at lines 192--207
+ [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 207
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--221
+[]|\OT1/cmr/m/n/10.95 Positive In-te-
+ []
+
+
+Underfull \hbox (badness 3199) in paragraph at lines 223--224
+[]|\OT1/cmr/m/n/10.95 Referencia ^^Sas in-stan-cias de Pro-gram rela-
+ []
+
+
+Overfull \hbox (9.1472pt too wide) in alignment at lines 212--227
+ [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 227
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 171.
-LaTeX Info: Redefining \% on input line 171.
+LaTeX Info: Redefining \. on input line 230.
+LaTeX Info: Redefining \% on input line 230.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 171.
- [58]
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 173--186
-[][] 
+(babel)             in language  on input line 230.
+ [60]
+Overfull \hbox (9.1472pt too wide) in alignment at lines 232--247
+ [] [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
-[]\OT1/cmr/m/n/10.95 Positive In-te-
+Underfull \vbox (badness 10000) detected at line 247
  []
 
 
-Underfull \hbox (badness 3199) in paragraph at lines 198--199
-[]\OT1/cmr/m/n/10.95 Referencia ^^Sas in-stan-cias de Pro-gram rela-
+Overfull \hbox (9.1472pt too wide) in alignment at lines 252--267
+ [] [] [] 
  []
 
 
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 190--203
-[][] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 205.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 205.
- [59]
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
-[]\OT1/cmr/m/n/10.95 Texto de pre-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
-\OT1/cmr/m/n/10.95 sentaci^^Son do
- []
-
-
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 207--220
-[][] 
- []
-
-
-Overfull \hbox (17.54723pt too wide) in paragraph at lines 224--237
-[][] 
+Underfull \vbox (badness 10000) detected at line 267
  []
 
 )
-LaTeX Info: Redefining \. on input line 101.
-LaTeX Info: Redefining \% on input line 101.
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 101.
 Package babel Info: Redefining spanish shorthand >>
@@ -4535,10 +4833,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 101.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 101.
- [60]
-No file pfc.gls.
-No file pfc.acr.
-(./pfc.bbl (./pfc.brf)
+ [61] (./pfc.bbl (./pfc.brf)
 \tf@brf=\write11
 \openout11 = `pfc.brf'.
 
@@ -4566,34 +4861,8 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [61
-
-]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 1.
  [62
+
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 37--37
@@ -4693,6 +4962,11 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the pfc.log file.
 
+
+Package glossaries Warning: No \printglossary or \printglossaries found. 
+(Remove \makeglossaries if you don't want any glossaries.) 
+This document will not have a glossary.
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
 LaTeX Info: Redefining \. on input line 114.
 LaTeX Info: Redefining \% on input line 114.
@@ -4739,10 +5013,10 @@ Package rerunfilecheck Info: File `pfc.brf' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
  ) 
 Here is how much of TeX's memory you used:
- 19576 strings out of 494946
- 294242 string characters out of 6180982
- 490482 words of memory out of 5000000
- 21931 multiletter control sequences out of 15000+600000
+ 20079 strings out of 494946
+ 300065 string characters out of 6180982
+ 508988 words of memory out of 5000000
+ 22413 multiletter control sequences out of 15000+600000
  12725 words of font info for 45 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  53i,13n,79p,1965b,788s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -4803,10 +5077,10 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on pfc.pdf (85 pages, 3826031 bytes).
+Output written on pfc.pdf (85 pages, 3828462 bytes).
 PDF statistics:
- 1163 PDF objects out of 1200 (max. 8388607)
- 1013 compressed objects within 11 object streams
- 217 named destinations out of 1000 (max. 500000)
+ 1174 PDF objects out of 1200 (max. 8388607)
+ 1024 compressed objects within 11 object streams
+ 227 named destinations out of 1000 (max. 500000)
  586 words of extra memory for PDF output out of 10000 (max. 10000000)
 

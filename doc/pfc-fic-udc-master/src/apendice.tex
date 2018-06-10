@@ -2,12 +2,16 @@
   \label{chp:dicionario}
   Dicionario de datos
 }
+Neste apéndice figura, por orde alfabética, unha descrición dos modelos de datos utilizados. Inclúense so as entidades definidas de forma propia, non aquelas dadas polo framework (por exemplo, User). Do mesmo xeito, non se inclúen os atributos automaticamente definidos pola declaración relacións en Django. 
 
 \textbf{Broadcast:} Clase que representa a relación N-N de emisión entre programas e emisoras.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{program} & ForeignKey & Clave foránea da entidade Program\\
 	\hline
@@ -15,14 +19,17 @@
 	\hline
 	\textbf{schedule\_details} & Char(100) & Texto do comentario\\
 	\hline
-\end{tabular}
+\end{longtable}
 
 
 \textbf{Comment:} Entidade que garda os comentarios que os usuarios deixan nos episodios.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{episode} & ForeignKey & Clave foránea da entidade Episode\\
 	\hline
@@ -34,15 +41,18 @@
 	\hline
 	\textbf{removed} & Boolean & Marcado coma borrado\\
 	\hline
-\end{tabular}
+\end{longtable}
 
 
 
 \textbf{Episode:} Entidade que garda cada unha das entregas (episodios) dos programas.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|} 
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|} 
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{program} & ForeignKey & Clave foránea da entidade Program\\
 	\hline
@@ -73,13 +83,17 @@
 	\textbf{comments} & ManyToMany & Referencia ás instancias de Comment relacionadas\\
 	\hline
 	
-\end{tabular}
+\end{longtable}
+
 
 \textbf{Program:} Entidade que garda os programas engadidos polos usuarios.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{image} & ForeignKey & Clave foránea da entidade Image\\
 	\hline
@@ -115,14 +129,17 @@
 	\hline
 	\textbf{admins} &  ManyToMany & Referencia ás instancias de ProgramAdmin relacionadas\\
 	\hline
-\end{tabular}
+\end{longtable}
 
 
 \textbf{ProgramAdmin:} Clase que representa a relación N-N de administración entre programas e usuarios.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{program} & ForeignKey & Clave foránea da entidade Program\\
 	\hline
@@ -132,14 +149,17 @@
 	\hline
 	\textbf{date} & DateTime & Data na que se concedeu o permiso (GMT)\\
 	\hline
-\end{tabular}
+\end{longtable}
 
 
 \textbf{Station:} Entidade que garda os colectivos de emisión (radios por ondas, radios por internet, canles de podcast...)
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{logo} & ForeignKey & Clave foránea da entidade Image para o logotipo da emisora\\
 	\hline
@@ -165,14 +185,16 @@
 	\hline
 	\textbf{followers} &  ManyToMany & Referencia ás instancias de User relacionadas. Representa os seguidores da emisora.\\
 	\hline
-\end{tabular}
-
+\end{longtable}
 
 \textbf{StationAdmin:} Clase que representa a relación N-N de administración entre emisoras e usuarios.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{station} & ForeignKey & Clave foránea da entidade Station\\
 	\hline
@@ -182,14 +204,17 @@
 	\hline
 	\textbf{date} & DateTime & Data na que se concedeu o permiso (GMT)\\
 	\hline
-\end{tabular}	
+\end{longtable}	
 
 
 \textbf{Tag:}  Entidade que garda os etiquetas de categoría dadas polos ficheiros RSS.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{name} & Char(50) & Nome do tag en minúsculas. Ten que ser único\\
 	\hline
@@ -199,31 +224,37 @@
 	\hline
 	\textbf{episodes} & ManyToMany & Referencia ás instancias de Episode relacionadas\\
 	\hline
-\end{tabular}
+\end{longtable}
 
-
+\pagebreak
 \textbf{UserProfile:}  Entidade que extende a clase User para asignarlle novos atributos.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{user} & OneToOne & Referencia á instancia de User que extende\\
 	\hline
-	\textbf{description} & Texto de presentación do usuario\\	
+	\textbf{description} & Text & Texto de presentación do usuario\\	
 	\hline
 	\textbf{avatar} & ForeignKey & Clave foránea da entidade Image\\
 	\hline
 	\textbf{location} & Char(100) & Localización do usuario\\
 	\hline
-\end{tabular}
+\end{longtable}
 
 
 \textbf{Vote:}  Entidade que representa os votos cos que os usuarios cualifican os episodios.
 
-\begin{tabular}{|p{3cm}|p{3cm}|p{8cm}|}
+\begin{longtable}{|p{3cm}|p{3cm}|p{8cm}|}
 	\hline
+	\rowcolor{gray!50}
 	Atributo & Tipo & Descrición\\
+	\hline
+	@\textbf{id} & Serial & Clave primaria\\
 	\hline
 	\textbf{user} & ForeignKey & Clave Foránea da entidade User\\
 	\hline
@@ -233,5 +264,5 @@
 	\hline
 	\textbf{date} & DateTime & Data na que se concedeu o permiso (GMT)\\
 	\hline
-\end{tabular}
+\end{longtable}
 

@@ -15,7 +15,7 @@
 %\usepackage{subfigure}
 \usepackage{subcaption}
 \usepackage{ifpdf}
-
+\usepackage{longtable}
 
 \ifpdf
     % pdflatex
@@ -23,6 +23,7 @@
     \usepackage[pdftex]{graphicx}
     % Para escribir en color...
     \usepackage[pdftex,usenames,dvipsnames]{color}
+    \usepackage[table]{xcolor}
 \else
     % latex
     % Para incluir gráficos EPS => compilar con latex.
