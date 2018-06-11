@@ -3,7 +3,7 @@ Created on 3 Jun 2018
 
 @author: fer
 '''
-from rss_feed.models import Program, Episode
+from rss_feed.models import Program
 from django.utils import timezone
 from datetime import timedelta
 
@@ -37,7 +37,7 @@ def get_broadcasting_stations(program):
     
     return program.broadcast_set.count()
 
-def update_pop_rating_all_programs():
+def update_pop_rating_all_programs(days=365):
     
     program_set = Program.objects.all()
 
@@ -52,10 +52,13 @@ def update_pop_rating_all_programs():
         wgd_rating = 0
         listens = 0
         
-        end_date = timezone.now()
-        start_date =  end_date - timedelta(days=365)
-        episode_set = a_program.episode_set.filter(publication_date__range=[start_date, end_date])
-        
+        if days > 0:
+            end_date = timezone.now()
+            start_date =  end_date - timedelta(days=days)
+            episode_set = a_program.episode_set.filter(publication_date__range=[start_date, end_date])
+        else:
+            episode_set = a_program.episode_set.filter()
+         
         for an_episode in episode_set.iterator():
             
             likes = an_episode.get_upvote_number()

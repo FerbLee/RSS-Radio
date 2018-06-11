@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 import os,feedparser,datetime
 import pytz
 
-from .models import Image,UserProfile, Program, Tag, Episode, Comment, Vote, Station
+from .models import Image,UserProfile, Program, Tag, Episode, Broadcast, Vote, Station
 from .models import DEFAULT_IMAGE_PATH,DEFAULT_AVATAR_PATH,ADMT_OWNER,ADMT_ADMIN,LIKE_VOTE,DISLIKE_VOTE,CO_DISABLE
 from .models import IVOOX_TYPE, RADIOCO_TYPE, PODOMATIC_TYPE
 
@@ -11,7 +11,7 @@ from .rss_link_parsers import find_image_in_html,create_image,get_tag_instance
 from .rss_link_parsers import ParserRadioco, ParserIvoox, ParserPodomatic
 
 from .update_rss_daemon import ud_iterate_program_table
-
+from .update_popularity_daemon import update_pop_rating_all_programs,program_popularity_formula
 
 # Create your tests here.
 
@@ -651,4 +651,59 @@ class UpdateRSSDaemonTests(TestCase):
         e3 = p2.episode_set.filter(title='CiudadanoKinders: Cómo hacer un monólogo')
         self.assertTrue(e3)
         
+
+class UpdatePopularityDaemonTests(TestCase):
+
+    
+    def setUp(self):
+
+        u1 = User.objects.create(username='userUPD1')
+        u2 = User.objects.create(username='userUPD2')
+        s1 = Station.objects.create(name='RadioTest2')
+
+        RSS1 = TEST_AUX_FILE_PATH + 'hasta-los-kinders_original.xml'
+        rlp = ParserIvoox(RSS1,u1)
+        hlk = rlp.parse_and_save()
+
+        hlk_ep1 = hlk.episode_set.all()[0]
+        hlk_ep1.vote_set.add(Vote.objects.create(type=LIKE_VOTE[0],user=u1,episode=hlk_ep1))
         
+        hlk_ep2 = hlk.episode_set.all()[1]
+        hlk_ep2.vote_set.add(Vote.objects.create(type=LIKE_VOTE[0],user=u1,episode=hlk_ep2))
+        
+        hlk_ep3 = hlk.episode_set.all()[2]
+        hlk_ep3.vote_set.add(Vote.objects.create(type=DISLIKE_VOTE[0],user=u1,episode=hlk_ep3))
+        hlk_ep3.vote_set.add(Vote.objects.create(type=LIKE_VOTE[0],user=u2,episode=hlk_ep3))
+
+        RSS2 = TEST_AUX_FILE_PATH + 'falacalado_podomatic.xml'
+        rlp = ParserPodomatic(RSS2,u1)
+        fc = rlp.parse_and_save()
+        fc.subscribers.add(u1)
+        fc.broadcast_set.add(Broadcast.objects.create(station=s1,program=fc,schedule_details='Friday 21:00'))
+        
+        fc_ep1 = fc.episode_set.all()[0]
+        fc_ep1.downloads = 1000
+        fc_ep1.save()
+    
+    
+    def test_update_pop_rating_all_programs(self):
+
+        hlk = Program.objects.get(name='Hasta Los Kinders')
+        fc = Program.objects.get(name="fala calado's podcast")
+        
+        self.assertEqual(hlk.rating,50)
+        self.assertEqual(fc.popularity,0)
+        
+        #Ignore 365 days limitation
+        update_pop_rating_all_programs(days=0)
+        
+        hlk2 = Program.objects.get(name='Hasta Los Kinders')
+        fc2 = Program.objects.get(name="fala calado's podcast")
+        
+        exp_pop = program_popularity_formula(1,1,0,1000)
+        
+        self.assertEqual(hlk2.rating,75)
+        self.assertEqual(fc2.popularity,exp_pop)
+
+
+  
