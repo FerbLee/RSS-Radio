@@ -1,11 +1,16 @@
 from django.test import TestCase
-from .models import Image,UserProfile, Program, Tag, Episode, Comment, Vote, Station
-from .models import DEFAULT_IMAGE_PATH,DEFAULT_AVATAR_PATH, ADMT_OWNER, ADMT_ADMIN, LIKE_VOTE, DISLIKE_VOTE
-from rss_feed.models import CO_DISABLE
 from django.contrib.auth.models import User
+import os
+
+from .models import Image,UserProfile, Program, Tag, Episode, Comment, Vote, Station
+from .models import DEFAULT_IMAGE_PATH,DEFAULT_AVATAR_PATH,ADMT_OWNER,ADMT_ADMIN,LIKE_VOTE,DISLIKE_VOTE,CO_DISABLE
+
+from .rss_link_parsers import find_image_in_html,create_image,get_tag_instance
 
 
 # Create your tests here.
+
+TEXT_AUX_FILE_PATH='/home/fer/eclipse-workspace/RSS-Radio/test_aux_files/'
 
 
 class ImageModelTests(TestCase):
@@ -343,5 +348,55 @@ class StationModelTests(TestCase):
         
         p_img2 = list(Image.objects.filter(pk=p_img_id))
         self.assertEqual(p_img2,[])
+
+
+
+class AuxFuncitonsRSSLPTests(TestCase):
     
+
+    def test_find_image_in_HTML(self):
         
+        html_file = TEXT_AUX_FILE_PATH + 'description.html'
+        expected_link = 'https://i1.wp.com/spoiler.cuacfm.org/wp-content/uploads/sites/2/2018/04/1453377486-sopranos.jpg'
+        
+        with open(html_file, 'r') as myfile:
+            
+            html_text=myfile.read().replace('\n', '')
+        
+        self.assertEqual(find_image_in_html(html_text)[0],expected_link)
+        
+    
+    def test_create_image(self):
+        
+        image_url = 'https://i1.wp.com/spoiler.cuacfm.org/wp-content/uploads/sites/2/2018/04/1453377486-sopranos.jpg'
+        expected_name_subchain = '1453377486-sopranos.jpg'
+        
+        i1 = create_image(image_url)
+
+        self.assertIsInstance(i1, Image)
+        self.assertEqual(i1.name,expected_name_subchain)
+        self.assertTrue(os.path.isfile(i1.path.path))
+        
+        try:
+            # Cleans the local file createad
+            i1.delete()
+        except:
+            pass
+    
+    
+    def test_get_tag_instance(self):
+    
+        tag1 = "rlpTAG1  "
+        tag2 = " Rlptag1"
+        
+        t1 = get_tag_instance(tag1)
+        t2 = get_tag_instance(tag2)
+        
+        self.assertEqual(t1.id, t2.id)
+        self.assertEqual(t1.times_used, 1)
+        self.assertEqual(t2.times_used,2)
+        
+    
+    
+    
+
