@@ -1,16 +1,20 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-import os
+import os,feedparser,datetime
+import pytz
 
 from .models import Image,UserProfile, Program, Tag, Episode, Comment, Vote, Station
 from .models import DEFAULT_IMAGE_PATH,DEFAULT_AVATAR_PATH,ADMT_OWNER,ADMT_ADMIN,LIKE_VOTE,DISLIKE_VOTE,CO_DISABLE
+from .models import IVOOX_TYPE, RADIOCO_TYPE, PODOMATIC_TYPE
 
 from .rss_link_parsers import find_image_in_html,create_image,get_tag_instance
+from .rss_link_parsers import ParserRadioco, ParserIvoox, ParserPodomatic
+
 
 
 # Create your tests here.
 
-TEXT_AUX_FILE_PATH='/home/fer/eclipse-workspace/RSS-Radio/test_aux_files/'
+TEST_AUX_FILE_PATH='/home/fer/eclipse-workspace/RSS-Radio/test_aux_files/'
 
 
 class ImageModelTests(TestCase):
@@ -356,7 +360,7 @@ class AuxFuncitonsRSSLPTests(TestCase):
 
     def test_find_image_in_HTML(self):
         
-        html_file = TEXT_AUX_FILE_PATH + 'description.html'
+        html_file = TEST_AUX_FILE_PATH + 'description.html'
         expected_link = 'https://i1.wp.com/spoiler.cuacfm.org/wp-content/uploads/sites/2/2018/04/1453377486-sopranos.jpg'
         
         with open(html_file, 'r') as myfile:
@@ -397,6 +401,201 @@ class AuxFuncitonsRSSLPTests(TestCase):
         self.assertEqual(t2.times_used,2)
         
     
-    
-    
 
+class ParserIvooxRSSLPTests(TestCase):
+
+
+    def initialize_test(self):
+        
+        RSS_file = TEST_AUX_FILE_PATH + 'hasta-los-kinders_original.xml'
+        feed_dict = feedparser.parse(RSS_file)
+        u1 = User.objects.create(username='userRSSLP1')
+        
+        return ParserIvoox(RSS_file,u1),feed_dict
+
+
+    def test_get_entry_list(self):
+        
+        rlp,fd = self.initialize_test()
+        el = rlp.get_entry_list(fd)
+
+        self.assertIsInstance(el,list)
+        self.assertIsInstance(el[0],dict)
+        
+
+    def test_parse_program(self):
+
+        program_web = 'http://www.ivoox.com/podcast-hasta-los-kinders_sq_f14062_1.html'
+        rlp,fd = self.initialize_test()
+        
+        p1 = rlp.parse_program(fd)
+        
+        self.assertEqual(p1.name,'Hasta Los Kinders')
+        self.assertEqual(p1.language,'es-ES')
+        self.assertEqual(p1.original_site,program_web)
+        self.assertEqual(p1.rss_link_type,IVOOX_TYPE[0])
+        
+    
+    def test_parse_episode(self):
+       
+        rlp,fd = self.initialize_test()
+        
+        #Expected info
+        exp_titlte = 'CiudadanoKinders: Cómo hacer un monólogo'
+        exp_pub_date = datetime.datetime(2010, 9, 17, 20, 45, 24, tzinfo=pytz.utc)
+        exp_file = 'http://www.ivoox.com/ciudadanokinders-como-hacer-monologo_mf_368919_feed_1.mp3'
+        exp_web = 'http://www.ivoox.com/ciudadanokinders-como-hacer-monologo-audios-mp3_rf_368919_1.html'
+        exp_original_id = 'http://www.ivoox.com/368919'
+        
+        p1 = rlp.parse_program(fd)
+        entry_dict = rlp.get_entry_list(fd)[0]
+        
+        e1 = rlp.parse_episode(entry_dict,p1)
+        
+        self.assertIsInstance(e1,Episode)
+        self.assertEquals(e1.title,exp_titlte)
+        self.assertEquals(e1.publication_date,exp_pub_date)
+        self.assertEquals(e1.file,exp_file)
+        self.assertEquals(e1.original_site,exp_web)
+        self.assertEquals(e1.original_id,exp_original_id)
+    
+    
+    # From superclass
+    def test_parse_and_save(self):
+    
+        rlp,_ = self.initialize_test()
+        
+        p1 = rlp.parse_and_save()
+        self.assertIsInstance(p1,Program)
+        
+        p1_id = p1.id
+        p2 = list(Program.objects.filter(pk=p1_id))
+        self.assertNotEqual(p2,[])
+        
+        p2 = p2[0]
+        
+        self.assertEqual(p2.tag_set.count(),1)
+        self.assertEqual(p2.tag_set.all()[0].name,'comedy')
+        self.assertIsInstance(p2.image,Image)
+        
+        
+        self.assertEqual(p2.episode_set.count(),20)
+        
+        e1 = p2.episode_set.filter(title='CiudadanoKinders: Cómo hacer un monólogo')
+        self.assertNotEqual(e1,[])
+        
+        e1 = e1[0]
+        self.assertIsInstance(e1,Episode)
+
+        self.assertEquals(e1.image,p2.image)
+        
+        # Clean copied image
+        p2.image.delete()
+        
+        
+
+class ParserRadiocoRSSLPTests(TestCase):
+
+
+    def initialize_test(self):
+        
+        RSS_file = TEST_AUX_FILE_PATH + 'alegria_radioco.xml'
+        feed_dict = feedparser.parse(RSS_file)
+        
+        return ParserRadioco(RSS_file),feed_dict 
+
+    
+    # get_entry_list from superclass
+    def test_get_entry_list(self):
+        
+        rlp,fd = self.initialize_test()
+        el = rlp.get_entry_list(fd)
+
+        self.assertIsInstance(el,list)
+        self.assertIsInstance(el[0],dict)
+
+
+    def test_parse_program(self):
+
+        program_web = 'https://cuacfm.org/radioco/programmes/alegria/'
+        rlp,fd = self.initialize_test()
+        
+        p1 = rlp.parse_program(fd)
+        
+        self.assertEqual(p1.name,'Alegria')
+        self.assertEqual(p1.language,'gl')
+        self.assertEqual(p1.original_site,program_web)
+        self.assertEqual(p1.rss_link_type,RADIOCO_TYPE[0])
+
+
+    def test_parse_episode(self):
+       
+        rlp,fd = self.initialize_test()
+        
+        #Expected info
+        exp_titlte = '15x22 Alegria'
+        exp_pub_date = datetime.datetime(2018, 4, 24, 16, 0, tzinfo=pytz.utc)
+        exp_file = 'https://cuacfm.org/radioco/recordings/2018-04-24%2018-00-00%20alegria.mp3'
+        exp_web = 'https://cuacfm.org/radioco/programmes/alegria/15x22/'
+        
+        p1 = rlp.parse_program(fd)
+        entry_dict = rlp.get_entry_list(fd)[0]
+        
+        e1 = rlp.parse_episode(entry_dict,p1)
+        
+        self.assertIsInstance(e1,Episode)
+        self.assertEquals(e1.title,exp_titlte)
+        self.assertEquals(e1.publication_date,exp_pub_date)
+        self.assertEquals(e1.file,exp_file)
+        self.assertEquals(e1.original_site,exp_web)
+        self.assertIsNone(e1.original_id)
+
+
+
+class ParserPodomaticRSSLPTests(TestCase):
+
+
+    def initialize_test(self):
+        
+        RSS_file = TEST_AUX_FILE_PATH + 'falacalado_podomatic.xml'
+        feed_dict = feedparser.parse(RSS_file)
+        
+        return ParserPodomatic(RSS_file),feed_dict 
+
+
+    def test_parse_program(self):
+
+        program_web = 'https://www.podomatic.com/podcasts/falacalado'
+        rlp,fd = self.initialize_test()
+        
+        p1 = rlp.parse_program(fd)
+        
+        self.assertEqual(p1.name,"fala calado's podcast")
+        self.assertEqual(p1.language,'gl')
+        self.assertEqual(p1.original_site,program_web)
+        self.assertEqual(p1.rss_link_type,PODOMATIC_TYPE[0])
+
+    
+    def test_parse_episode(self):
+       
+        rlp,fd = self.initialize_test()
+        
+        #Expected info
+        exp_titlte = 'Un Falacalado moi Periscópico!'
+        exp_pub_date = datetime.datetime(2010, 3, 14, 22, 12, 22, tzinfo=pytz.utc)
+        exp_file = 'http://falacalado.podOmatic.com/enclosure/2010-03-14T15_12_22-07_00.mp3'
+        exp_web = 'https://www.podomatic.com/podcasts/falacalado/episodes/2010-03-14T15_12_22-07_00'
+        exp_original_id = 'http://falacalado.podomatic.com/entry/2010-03-14T15_12_22-07_00'
+        
+        p1 = rlp.parse_program(fd)
+        entry_dict = rlp.get_entry_list(fd)[0]
+        
+        e1 = rlp.parse_episode(entry_dict,p1)
+        
+        self.assertIsInstance(e1,Episode)
+        self.assertEquals(e1.title,exp_titlte)
+        self.assertEquals(e1.publication_date,exp_pub_date)
+        self.assertEquals(e1.file,exp_file)
+        self.assertEquals(e1.original_site,exp_web)
+        self.assertEquals(e1.original_id,exp_original_id)
+    

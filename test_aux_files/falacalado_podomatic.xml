@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fala calado's podcast</title>
+    <link>https://www.podomatic.com/podcasts/falacalado</link>
+    <description></description>
+    <language>gl</language>
+    <generator>podOmatic RSS Generator</generator>
+    <pubDate>Sat, 10 Feb 2018 01:42:37 +0000</pubDate>
+    <itunes:keywords>falacalado</itunes:keywords>
+    <itunes:subtitle>Te lo vas a perder??</itunes:subtitle>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:block>no</itunes:block>
+    <itunes:image href="http://falacalado.podomatic.com/images/default/podcast-3-1400.png"/>
+    <itunes:author>FalaCalado CuacFm</itunes:author>
+    <itunes:summary></itunes:summary>
+    <atom:link href="http://falacalado.podomatic.com/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Un Falacalado moi Perisc&#243;pico!</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2747626.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;El pasado viernes 12 de marzo nos acompa&#241;&#243; en el estudio Borji y por tel&#233;fono Fer, del programa Perisc&#243;picos, todos los mi&#233;rcoles a las 20:00.
+Tambi&#233;n tuvmos unas charlas muy interesantes sobre el &quot;foro de emprego&quot; de Ferrol.
+
+A disfrutar!!!
+
+y ya sabeis...a votar Falacalado en los Oscuac ;)</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2010-03-14T15_12_22-07_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2010-03-14T15_12_22-07_00</comments>
+      <pubDate>Sun, 14 Mar 2010 22:12:22 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2010-03-14T15_12_22-07_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,periscopicos,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2010-03-14T15_12_22-07_00.mp3" length="42021198" type="audio/mpeg"/>
+      <itunes:duration>3501</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2747626.jpg"/>
+      <itunes:explicit>yes</itunes:explicit>
+      <itunes:summary>El pasado viernes 12 de marzo nos acompa&#241;&#243; en el estudio Borji y por tel&#233;fono Fer, del programa Perisc&#243;picos, todos los mi&#233;rcoles a las 20:00.
+Tambi&#233;n tuvmos unas charlas muy interesantes sobre el &quot;foro de emprego&quot; de Ferrol.
+
+A disfrutar!!!
+
+y ya sabeis...a votar Falacalado en los Oscuac ;)</itunes:summary>
+      <itunes:subtitle>El pasado viernes 12 de marzo nos acompa&#241;&#243; en el estudio Borji y por tel&#233;fono Fer, del programa P...</itunes:subtitle>
+    </item>
+    <item>
+      <title>Un programa deportivo y &quot;divertido&quot; (19/02/2010)</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2665936.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;Buenas,
+
+aqu&#237; ten&#233;is el programa emitido el pasado viernes en el que conocimos un nuevo deporte: el kayak polo!
+si quer&#233;is m&#225;s informaci&#243;n u os apetece iniciaros, la informaci&#243;n en esta web:
+http://www.kayakpolocopacabana.com/
+
+Saludos y a disfrutar del programa!</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2010-02-21T15_38_33-08_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2010-02-21T15_38_33-08_00</comments>
+      <pubDate>Sun, 21 Feb 2010 23:38:33 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2010-02-21T15_38_33-08_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,cuacfm,kayak,polo,103.4</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2010-02-21T15_38_33-08_00.mp3" length="37677453" type="audio/mpeg"/>
+      <itunes:duration>3139</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2665936.jpg"/>
+      <itunes:explicit>yes</itunes:explicit>
+      <itunes:summary>Buenas,
+
+aqu&#237; ten&#233;is el programa emitido el pasado viernes en el que conocimos un nuevo deporte: el kayak polo!
+si quer&#233;is m&#225;s informaci&#243;n u os apetece iniciaros, la informaci&#243;n en esta web:
+http://www.kayakpolocopacabana.com/
+
+Saludos y a disfrutar del programa!</itunes:summary>
+      <itunes:subtitle>Buenas,
+
+aqu&#237; ten&#233;is el programa emitido el pasado viernes en el que conocimos un nuevo deporte...</itunes:subtitle>
+    </item>
+    <item>
+      <title>El programa m&#225;s chanfaino y bizarro de la historia de Falacalado</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2665938.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;&lt;p&gt;Buenas,&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Aqu&amp;iacute; ten&amp;eacute;is con unas d&amp;iacute;as de retraso el podcast del programa en el que estuvimos acompa&amp;ntilde;ados por nuestros compa&amp;ntilde;eros de Chanfaina Bizarra.&lt;/p&gt;
+&lt;p&gt;M&amp;aacute;s informaci&amp;oacute;n de ellos en: http://chanfainabizarra.cuacfm.org/&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;A disfrutarlo!!!&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2010-02-21T15_31_25-08_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2010-02-21T15_31_25-08_00</comments>
+      <pubDate>Sun, 21 Feb 2010 23:31:25 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2010-02-21T15_31_25-08_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,chanfaina,bizarra,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2010-02-21T15_31_25-08_00.mp3" length="39190883" type="audio/mpeg"/>
+      <itunes:duration>3265</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2665938.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Buenas,
+&amp;nbsp;
+Aqu&amp;iacute; ten&amp;eacute;is con unas d&amp;iacute;as de retraso el podcast del programa en el que estuvimos acompa&amp;ntilde;ados por nuestros compa&amp;ntilde;eros de Chanfaina Bizarra.
+M&amp;aacute;s informaci&amp;oacute;n de ellos en: http://chanfainabizarra.cuacfm.org/&amp;nbsp;
+&amp;nbsp;
+A disfrutarlo!!!
+&amp;nbsp;</itunes:summary>
+      <itunes:subtitle>Buenas,
+&amp;nbsp;
+Aqu&amp;iacute; ten&amp;eacute;is con unas d&amp;iacute;as de retraso el podcast del program...</itunes:subtitle>
+    </item>
+    <item>
+      <title>El Falacalado m&#225;s Heavy de la historia!!!</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2618083.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;&lt;p&gt;Con unos d&amp;iacute;as de retraso, aqu&amp;iacute; llega el programa m&amp;aacute;s heavy! Recibimos la visita de Evil Way, desde Ares&lt;/p&gt;
+&lt;p&gt;No os lo perd&amp;aacute;is, y escucharlos, merecen MUY MUCHO la pena!&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ten&amp;eacute;is m&amp;aacute;s informaci&amp;oacute;n de ellos en su web:&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;a href=&quot;http://evilway.es/&quot; target=&quot;_blank&quot;&gt;http://EvilWay.es&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;Besi&amp;ntilde;os y hasta pronto!!!&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;PD.- no olvidamos que os debemos un par de programas por el medio!&lt;/span&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2010-02-08T15_03_28-08_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2010-02-08T15_03_28-08_00</comments>
+      <pubDate>Mon, 08 Feb 2010 23:03:28 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2010-02-08T15_03_28-08_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,cuacfm,evil,way,103.4</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2010-02-08T15_03_28-08_00.mp3" length="42448457" type="audio/mpeg"/>
+      <itunes:duration>3537</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2618083.jpg"/>
+      <itunes:explicit>yes</itunes:explicit>
+      <itunes:summary>Con unos d&amp;iacute;as de retraso, aqu&amp;iacute; llega el programa m&amp;aacute;s heavy! Recibimos la visita de Evil Way, desde Ares
+No os lo perd&amp;aacute;is, y escucharlos, merecen MUY MUCHO la pena!
+&amp;nbsp;
+Ten&amp;eacute;is m&amp;aacute;s informaci&amp;oacute;n de ellos en su web:&amp;nbsp;http://EvilWay.es
+&amp;nbsp;
+&amp;nbsp;
+Besi&amp;ntilde;os y hasta pronto!!!
+&amp;nbsp;
+&amp;nbsp;
+PD.- no olvidamos que os debemos un par de programas por el medio!</itunes:summary>
+      <itunes:subtitle>Con unos d&amp;iacute;as de retraso, aqu&amp;iacute; llega el programa m&amp;aacute;s heavy! Recibimos la vis...</itunes:subtitle>
+    </item>
+    <item>
+      <title>Programa especial con BSO &amp; Y Si No De Que </title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2413797.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;&lt;p&gt;Aqu&amp;iacute; teneis el programa emitido ayer (04/12/2009).&lt;/p&gt;
+&lt;p&gt;Como estaba sola, me hicieron compa&amp;ntilde;&amp;iacute;a los chicos de &lt;strong&gt;Y Si No De Qu&amp;eacute;&lt;/strong&gt; y &lt;strong&gt;BSO &lt;/strong&gt;y celebramos su 1er cumplea&amp;ntilde;os en antena!&lt;/p&gt;
+&lt;p&gt;Casi una hora de diversi&amp;oacute;n!!!&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;Que cumpl&amp;aacute;is muchos m&amp;aacute;s a&amp;ntilde;os (y que nosotros los veamos)&amp;nbsp;&lt;img title=&quot;Cool&quot; src=&quot;../../../javascripts/tiny_mce/plugins/emotions/img/smiley-cool.gif&quot; border=&quot;0&quot; alt=&quot;Cool&quot; /&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2009-12-05T09_48_10-08_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2009-12-05T09_48_10-08_00</comments>
+      <pubDate>Sat, 05 Dec 2009 17:48:10 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2009-12-05T09_48_10-08_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,cuacfm,bso,ysinodeque</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2009-12-05T09_48_10-08_00.mp3" length="33359098" type="audio/mpeg"/>
+      <itunes:duration>2779</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2413797.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Aqu&amp;iacute; teneis el programa emitido ayer (04/12/2009).
+Como estaba sola, me hicieron compa&amp;ntilde;&amp;iacute;a los chicos de Y Si No De Qu&amp;eacute; y BSO y celebramos su 1er cumplea&amp;ntilde;os en antena!
+Casi una hora de diversi&amp;oacute;n!!!
+&amp;nbsp;
+Que cumpl&amp;aacute;is muchos m&amp;aacute;s a&amp;ntilde;os (y que nosotros los veamos)&amp;nbsp;</itunes:summary>
+      <itunes:subtitle>Aqu&amp;iacute; teneis el programa emitido ayer (04/12/2009).
+Como estaba sola, me hicieron compa&amp;nt...</itunes:subtitle>
+    </item>
+    <item>
+      <title>Desinformativo visita Falacalado (20 - 11 - 2009)</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2369916.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;&lt;p&gt;Buenas amig@s&lt;/p&gt;
+&lt;p&gt;Tras unas semanas, aqu&amp;iacute; traemos un nuevo programa de Falacalado!&lt;/p&gt;
+&lt;p&gt;Este viernes estuvimos acompa&amp;ntilde;ados por los miembros de Desinformativo (&lt;a href=&quot;http://desinformativo.podomatic.com/&quot;&gt;http://desinformativo.podomatic.com/&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Esperamos que os guste!&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Besi&amp;ntilde;os y hasta el pr&amp;oacute;ximo podcast!!!&lt;/p&gt;</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2009-11-21T07_43_09-08_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2009-11-21T07_43_09-08_00</comments>
+      <pubDate>Sat, 21 Nov 2009 15:43:09 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2009-11-21T07_43_09-08_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,desinformativo,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2009-11-21T07_43_09-08_00.mp3" length="24237299" type="audio/mpeg"/>
+      <itunes:duration>3478</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2369916.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Buenas amig@s
+Tras unas semanas, aqu&amp;iacute; traemos un nuevo programa de Falacalado!
+Este viernes estuvimos acompa&amp;ntilde;ados por los miembros de Desinformativo (http://desinformativo.podomatic.com/)
+&amp;nbsp;
+Esperamos que os guste!
+&amp;nbsp;
+Besi&amp;ntilde;os y hasta el pr&amp;oacute;ximo podcast!!!</itunes:summary>
+      <itunes:subtitle>Buenas amig@s
+Tras unas semanas, aqu&amp;iacute; traemos un nuevo programa de Falacalado!
+Este vier...</itunes:subtitle>
+    </item>
+    <item>
+      <title>Programa emitido el 30 de octubre</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2304081.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;En esta ocasi&#243;n, Dani de BSO vino al programa, aunque estuvo un poco t&#237;mido!!
+Tb nos visit&#243; Edu, para promocionar a Los V&#225;lvulas, por lo dem&#225;s un programa entretenido, como siempre!!
+</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2009-11-01T15_15_21-08_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2009-11-01T15_15_21-08_00</comments>
+      <pubDate>Sun, 01 Nov 2009 23:15:21 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2009-11-01T15_15_21-08_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2009-11-01T15_15_21-08_00.mp3" length="21783926" type="audio/mpeg"/>
+      <itunes:duration>3126</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2304081.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>En esta ocasi&#243;n, Dani de BSO vino al programa, aunque estuvo un poco t&#237;mido!!
+Tb nos visit&#243; Edu, para promocionar a Los V&#225;lvulas, por lo dem&#225;s un programa entretenido, como siempre!!
+</itunes:summary>
+      <itunes:subtitle>En esta ocasi&#243;n, Dani de BSO vino al programa, aunque estuvo un poco t&#237;mido!!
+Tb nos visit&#243; Edu,...</itunes:subtitle>
+    </item>
+    <item>
+      <title>Programa emitido el 23 de Octubre (2009)</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2284508.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2009-10-25T16_12_53-07_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2009-10-25T16_12_53-07_00</comments>
+      <pubDate>Sun, 25 Oct 2009 23:12:53 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2009-10-25T16_12_53-07_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2009-10-25T16_12_53-07_00.mp3" length="23970673" type="audio/mpeg"/>
+      <itunes:duration>3440</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2284508.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary></itunes:summary>
+      <itunes:subtitle></itunes:subtitle>
+    </item>
+    <item>
+      <title>Programa emitido el 16 de Octubre (2009)</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2261387.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;Buenas,
+
+aqu&#237; os dejamos otro programilla m&#225;s.
+
+Ayer en la fiesta de presentaci&#243;n de la nueva temporada de Cuac, Tomi (Alegr&#237;a, martes de 16 a 17) nos propuso un reto. A ver quien consegu&#237;a que les mandaran una carta manuscrita!!
+
+As&#237; que animaros y escribidnos, cont&#225;ndonos cualquier cosa: una historia que os haya pasado, un tema que deber&#237;amos tratar, una serie de la que quereis que hablemos o mismo la secci&#243;n que hariais para &quot;Rinc&#243;n del oyente&quot;.
+
+La direcci&#243;n es:
+
+CUAC fm - Falacalado
+Casa do franc&#233;s, R&#250;a Lisboa S/N 
+15071 A. Zapateira, A Coru&#241;a.
+
+
+Besi&#241;os y esperamos que os guste el programa</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2009-10-17T07_22_18-07_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2009-10-17T07_22_18-07_00</comments>
+      <pubDate>Sat, 17 Oct 2009 14:22:18 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2009-10-17T07_22_18-07_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2009-10-17T07_22_18-07_00.mp3" length="21782152" type="audio/mpeg"/>
+      <itunes:duration>3126</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2261387.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Buenas,
+
+aqu&#237; os dejamos otro programilla m&#225;s.
+
+Ayer en la fiesta de presentaci&#243;n de la nueva temporada de Cuac, Tomi (Alegr&#237;a, martes de 16 a 17) nos propuso un reto. A ver quien consegu&#237;a que les mandaran una carta manuscrita!!
+
+As&#237; que animaros y escribidnos, cont&#225;ndonos cualquier cosa: una historia que os haya pasado, un tema que deber&#237;amos tratar, una serie de la que quereis que hablemos o mismo la secci&#243;n que hariais para &quot;Rinc&#243;n del oyente&quot;.
+
+La direcci&#243;n es:
+
+CUAC fm - Falacalado
+Casa do franc&#233;s, R&#250;a Lisboa S/N 
+15071 A. Zapateira, A Coru&#241;a.
+
+
+Besi&#241;os y esperamos que os guste el programa</itunes:summary>
+      <itunes:subtitle>Buenas,
+
+aqu&#237; os dejamos otro programilla m&#225;s.
+
+Ayer en la fiesta de presentaci&#243;n de la nueva...</itunes:subtitle>
+    </item>
+    <item>
+      <title>Programa emitido el 10 de Octubre (2009)</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2243314.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2009-10-12T07_08_10-07_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2009-10-12T07_08_10-07_00</comments>
+      <pubDate>Mon, 12 Oct 2009 14:08:10 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2009-10-12T07_08_10-07_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2009-10-12T07_08_10-07_00.mp3" length="23153321" type="audio/mpeg"/>
+      <itunes:duration>3323</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_2243314.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary></itunes:summary>
+      <itunes:subtitle></itunes:subtitle>
+    </item>
+    <item>
+      <title>Outro programi&#241;a</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_1763593.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2009-05-10T15_12_37-07_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2009-05-10T15_12_37-07_00</comments>
+      <pubDate>Sun, 10 May 2009 22:12:37 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2009-05-10T15_12_37-07_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,090417,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2009-05-10T15_12_37-07_00.mp3" length="22146295" type="audio/mpeg"/>
+      <itunes:duration>3178</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_1763593.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary></itunes:summary>
+      <itunes:subtitle></itunes:subtitle>
+    </item>
+    <item>
+      <title>4con60 secuestra Falacalado</title>
+      <description>&lt;img src=&quot;http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_1700041.jpg&quot; alt=&quot;itunes pic&quot; /&gt;&lt;br /&gt;e nos...encantadas!!!!
+
+Ma&#241;&#225; nos Oscuacs....VOTA FALACALADO!!!
+
+Podes facelo nas seguintes categor&#237;as:
+- Mellor Programa
+- Mellor Magazine
+- Mellor Locutora (Iria, Lo, Rosa)
+- Mellor T&#233;cnica de sonido (Chon)
+- Mellor Locutora Novata (Rosa)
+- Mellor Promoci&#243;n
+- Mellor cu&#241;a
+- Mellor Producci&#243;n
+- Mellor sinton&#237;a
+- Programa m&#225;is ca&#243;tico
+
+e non sei se me olvido dalgunha!
+
+o caso &#233; que nos votes!!!
+
+
+Graci&#241;as por escoitarnos!!!!
+
+
+
+</description>
+      <guid isPermaLink="true">http://falacalado.podomatic.com/entry/2009-03-27T16_38_03-07_00</guid>
+      <comments>https://www.podomatic.com/podcasts/falacalado/episodes/2009-03-27T16_38_03-07_00</comments>
+      <pubDate>Fri, 27 Mar 2009 23:38:03 +0000</pubDate>
+      <dcterms:modified>2013-12-05</dcterms:modified>
+      <dcterms:created>2013-12-05</dcterms:created>
+      <link>https://www.podomatic.com/podcasts/falacalado/episodes/2009-03-27T16_38_03-07_00</link>
+      <dc:creator>FalaCalado CuacFm</dc:creator>
+      <itunes:keywords>falacalado,cuacfm</itunes:keywords>
+      <enclosure url="http://falacalado.podOmatic.com/enclosure/2009-03-27T16_38_03-07_00.mp3" length="22844819" type="audio/mpeg"/>
+      <itunes:duration>3278</itunes:duration>
+      <itunes:image href="http://assets.podomatic.net/ts/b2/68/87/falacalado/1400x1400_1700041.jpg"/>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>e nos...encantadas!!!!
+
+Ma&#241;&#225; nos Oscuacs....VOTA FALACALADO!!!
+
+Podes facelo nas seguintes categor&#237;as:
+- Mellor Programa
+- Mellor Magazine
+- Mellor Locutora (Iria, Lo, Rosa)
+- Mellor T&#233;cnica de sonido (Chon)
+- Mellor Locutora Novata (Rosa)
+- Mellor Promoci&#243;n
+- Mellor cu&#241;a
+- Mellor Producci&#243;n
+- Mellor sinton&#237;a
+- Programa m&#225;is ca&#243;tico
+
+e non sei se me olvido dalgunha!
+
+o caso &#233; que nos votes!!!
+
+
+Graci&#241;as por escoitarnos!!!!
+
+
+
+</itunes:summary>
+      <itunes:subtitle>e nos...encantadas!!!!
+
+Ma&#241;&#225; nos Oscuacs....VOTA FALACALADO!!!
+
+Podes facelo nas seguintes ca...</itunes:subtitle>
+    </item>
+  </channel>
+</rss>
