@@ -10,6 +10,7 @@ from .models import IVOOX_TYPE, RADIOCO_TYPE, PODOMATIC_TYPE
 from .rss_link_parsers import find_image_in_html,create_image,get_tag_instance
 from .rss_link_parsers import ParserRadioco, ParserIvoox, ParserPodomatic
 
+from .update_rss_daemon import ud_iterate_program_table
 
 
 # Create your tests here.
@@ -598,4 +599,56 @@ class ParserPodomaticRSSLPTests(TestCase):
         self.assertEquals(e1.file,exp_file)
         self.assertEquals(e1.original_site,exp_web)
         self.assertEquals(e1.original_id,exp_original_id)
+
+
+class UpdateRSSDaemonTests(TestCase):
+
     
+    def setUp(self):
+
+        RSS_file = TEST_AUX_FILE_PATH + 'hasta-los-kinders_fewer_chapters.xml'
+        u1 = User.objects.create(username='userRD1')
+        rlp = ParserIvoox(RSS_file,u1)
+        rlp.parse_and_save()
+        
+        
+    def test_ud_iterate_program_table(self):
+        
+        p1 = Program.objects.get(name='Hasta Los Kinders')
+        p1_id = p1.id
+        
+        self.assertEqual(p1.language,'Klingon')
+        self.assertEqual(p1.author,'Autor Random')
+        self.assertEqual(p1.image,Image.get_default_program_image())
+        self.assertTrue(p1.tag_set.filter(name='humor'))
+        self.assertEqual(p1.episode_set.count(),19)
+        
+        e1 = p1.episode_set.get(title='Las series japonesas')
+        self.assertIsInstance(e1,Episode)
+        e1_id = e1.id
+        
+        e4 = p1.episode_set.filter(title='CiudadanoKinders: Cómo hacer un monólogo')
+        self.assertFalse(e4)
+        
+        RSS_file = TEST_AUX_FILE_PATH + 'hasta-los-kinders_original.xml'
+        p1.rss_link = RSS_file
+        p1.save()
+        
+        ud_iterate_program_table()
+        
+        p2 = Program.objects.get(pk=p1_id)
+        
+        self.assertEqual(p2.language,'es-ES')
+        self.assertEqual(p2.author,'Fer Lee')
+        self.assertNotEqual(p2.image,Image.get_default_program_image())
+        self.assertTrue(p2.tag_set.filter(name='comedy'))
+        self.assertEqual(p2.episode_set.count(),20)
+        
+        e2 = p2.episode_set.get(pk=e1_id)
+        self.assertIsInstance(e2,Episode)
+        self.assertEqual(e2.title,'Las series "anime" de HLK')
+        
+        e3 = p2.episode_set.filter(title='CiudadanoKinders: Cómo hacer un monólogo')
+        self.assertTrue(e3)
+        
+        

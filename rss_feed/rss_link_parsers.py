@@ -14,6 +14,7 @@ import pytz
 import urllib
 import os
 import re
+from Crypto.Cipher.AES import new
 
 
 def get_parser_by_program(a_program):
@@ -209,13 +210,17 @@ class RSSLinkParser(object):
         try:
             # 2. Create new program instance
             new_program = self.parse_program(feed_dict)
-            # 3. Create image instance and add to program
-            new_program.image = create_image(self.get_program_image_url_from_feed_dict(feed_dict))
         
         except KeyError:
 
             return None
-        
+
+        try:
+            # 3. Create image instance and add to program
+            new_program.image = create_image(self.get_program_image_url_from_feed_dict(feed_dict))
+        except KeyError:
+            new_program.image = Image.get_default_program_image()
+            
         # 4.Save program
         new_program.save()
         

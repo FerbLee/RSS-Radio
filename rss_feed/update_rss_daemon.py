@@ -163,7 +163,12 @@ def ud_iterate_program_table():
         parser = get_parser_by_program(a_program)
         
         updated_program = parser.parse_program(feed_dict)
-        updated_image_url = parser.get_program_image_url_from_feed_dict(feed_dict)   
+        
+        try:
+            updated_image_url = parser.get_program_image_url_from_feed_dict(feed_dict)   
+        except:
+            updated_image_url = None
+        
         updated_tag_names = parser.get_program_tag_names_from_feed_dict(feed_dict,clean=True)
         
         updated_program = ud_update_program_episode(a_program,updated_program,PROGRAM_ATB_FROM_RSS,updated_image_url,
