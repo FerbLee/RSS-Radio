@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 import os,feedparser,datetime
 import pytz
+from django.urls import reverse
 
 from .models import Image,UserProfile, Program, Tag, Episode, Broadcast, Vote, Station
 from .models import DEFAULT_IMAGE_PATH,DEFAULT_AVATAR_PATH,ADMT_OWNER,ADMT_ADMIN,LIKE_VOTE,DISLIKE_VOTE,CO_DISABLE
@@ -12,6 +13,8 @@ from .rss_link_parsers import ParserRadioco, ParserIvoox, ParserPodomatic
 
 from .update_rss_daemon import ud_iterate_program_table
 from .update_popularity_daemon import update_pop_rating_all_programs,program_popularity_formula
+
+
 
 # Create your tests here.
 
@@ -706,4 +709,138 @@ class UpdatePopularityDaemonTests(TestCase):
         self.assertEqual(fc2.popularity,exp_pop)
 
 
+
+class IndexViewTests(TestCase):
   
+
+    @classmethod
+    def setUpTestData(cls):
+        
+        u1 = User.objects.create(username='userIV1')
+
+        RSS1 = TEST_AUX_FILE_PATH + 'hasta-los-kinders_original.xml'
+        rlp = ParserIvoox(RSS1,u1)
+        hlk = rlp.parse_and_save()
+        hlk.popularity = 10 # Check if first
+        hlk.save()
+
+        RSS2 = TEST_AUX_FILE_PATH + 'falacalado_podomatic.xml'
+        rlp = ParserPodomatic(RSS2,u1)
+        rlp.parse_and_save()
+    
+        # Total of 10 + 2 programs
+        for i in range(1,11):
+            
+            rssl = 'http://dummy_link_iv_' + str(i) + '.xml'
+            pname = 'ProgramIV_' + str(i)
+            Program.objects.create(name=pname,rss_link=rssl)
+        
+        # Create 30 stations
+        for i in range(1,31):
+            
+            sname = 'StationIV_' + str(i)
+            Station.objects.create(name=sname)
+            
+            
+    def test_view_url_exists(self): 
+        
+        resp = self.client.get('/rss_feed/') 
+        self.assertEqual(resp.status_code, 200)  
+        
+            
+    def test_view_url_accessible_by_name(self):
+    
+        resp = self.client.get(reverse('rss_feed:index'))
+        self.assertEqual(resp.status_code, 200)
+            
+    
+    def test_view_uses_correct_template(self):
+        
+        resp = self.client.get(reverse('rss_feed:index'))
+        self.assertEqual(resp.status_code, 200)
+
+        self.assertTemplateUsed(resp, 'rss_feed/index.html')
+    
+    
+    def test_program_list(self):
+    
+        resp = self.client.get(reverse('rss_feed:index'))
+        self.assertEqual(resp.status_code, 200)
+        
+        self.assertEqual( len(resp.context['program_list']),4)
+        self.assertTrue(resp.context['program_list'].has_next())
+        self.assertFalse(resp.context['program_list'].has_previous())
+        
+        p1 = resp.context['program_list'][0]
+        p2 = Program.objects.get(name='Hasta Los Kinders')
+        self.assertEqual(p1,p2)
+        
+        resp = self.client.get('/rss_feed/?p_page=3')
+        self.assertEqual(resp.status_code, 200)
+        
+        self.assertEqual( len(resp.context['program_list']),4)
+        self.assertFalse(resp.context['program_list'].has_next())
+        self.assertTrue(resp.context['program_list'].has_previous())
+    
+    
+    def test_station_list(self):
+        
+        resp = self.client.get(reverse('rss_feed:index'))
+        self.assertEqual(resp.status_code, 200)        
+        
+        self.assertEqual( len(resp.context['station_list']),15)
+        self.assertTrue(resp.context['station_list'].has_next())
+        self.assertFalse(resp.context['station_list'].has_previous())
+        
+        resp = self.client.get('/rss_feed/?s_page=2')
+        self.assertEqual(resp.status_code, 200)
+        
+        self.assertEqual( len(resp.context['station_list']),15)
+        self.assertFalse(resp.context['station_list'].has_next())
+        self.assertTrue(resp.context['station_list'].has_previous())
+        
+          
+        
+class AddContentViewTests(TestCase):
+
+
+    def setUp(self):
+        
+        u2 = User.objects.create(username='userIV2')
+        u2.set_password('12345678A')
+        u2.save()
+        
+    
+    def test_redirect_if_not_logged_in(self):
+        
+        resp = self.client.get(reverse('rss_feed:add_content'))
+        self.assertRedirects(resp, '/registration/login/?next=/rss_feed/add_content/')
+   
+   
+    def test_login(self):
+        
+        self.client.login(username='userIV2',password='12345678A')
+        resp = self.client.get(reverse('rss_feed:add_content'))
+    
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(str(resp.context['user']), 'userIV2')
+        
+        self.assertTemplateUsed(resp, 'rss_feed/add_content.html')
+    
+    
+    def test_add_station(self):
+        
+        self.client.login(username='userIV2',password='12345678A')
+
+        form_station = {'form_station-name': ['StationIV1'], 'form_station-logo': [''], 'form_station-profile_img': [''], 
+                        'form_station-broadcasting_method': ['fm'], 'form_station-broadcasting_area': [''], 
+                        'form_station-broadcasting_frequency': [''], 'form_station-streaming_link': [''], 
+                        'form_station-description': [''], 'form_station-website': [''], 'form_station-location': ['']}
+        
+        self.client.post(reverse('rss_feed:add_content'),  form_station)
+        
+        s1 = Station.objects.get(name='StationIV1')
+        
+        self.assertIsInstance(s1,Station)
+        
+            

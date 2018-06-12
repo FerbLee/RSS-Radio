@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+#import sys
 #from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -111,9 +112,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGIN_URL = '/registration/login/'
 LOGIN_REDIRECT_URL = '/rss_feed/'
 LOGOUT_REDIRECT_URL = '/rss_feed/'
+
+#if 'test' in sys.argv:
+#    CACHE_MIDDLEWARE_SECONDS = 0
+
 
 # Because we override the user class
 #AUTH_USER_MODEL = 'core.User'

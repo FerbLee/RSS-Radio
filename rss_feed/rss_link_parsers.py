@@ -14,7 +14,6 @@ import pytz
 import urllib
 import os
 import re
-from Crypto.Cipher.AES import new
 
 
 def get_parser_by_program(a_program):

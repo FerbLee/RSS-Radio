@@ -215,7 +215,7 @@ def get_paginated_latest_episodes(page=1,ps=PAGE_SIZE):
 def get_paginated_stations(user=None,page=1,ps=PAGE_SIZE):
     
     if user == None:
-        result_qs = Station.objects.all()
+        result_qs = Station.objects.order_by('id')
     else:
         result_qs = user.followers.order_by('name')
     

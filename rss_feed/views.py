@@ -687,7 +687,11 @@ def add_content(request):
             new_program_added.save()
             
             return HttpResponseRedirect(reverse('rss_feed:detail_program', args=(new_program_added.id,)))
-
+        
+        else:
+            print('add_content view: No form is valid in POST!')
+            return HttpResponseNotFound()
+        
     else:
         
         form_station = AddStationForm(request.POST,prefix='form_station') 
