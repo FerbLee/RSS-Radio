@@ -17,24 +17,28 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Cota de mercado dos servidores no Top million busiest sites (Netcraft, abril 2018)\relax }}{25}{figure.caption.14}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Cota de mercado dos navegadores web. (W3Counter, maio 2018)\cite {firefox2}\relax }}{28}{figure.caption.15}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Plan de Proyecto}{29}{chapter.4}
+\contentsline {xchapter}{Metodolox\IeC {\'\i }a}{29}{chapter.4}
 \addvspace {10\p@ }
-\contentsline {xchapter}{An\IeC {\'a}lise}{31}{chapter.5}
+\contentsline {xchapter}{Plan de Proyecto}{31}{chapter.5}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Dese\IeC {\~n}o}{35}{chapter.6}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces \IeC {\'A}rbore de m\IeC {\'o}dulos do aplicativo web.\relax }}{37}{figure.caption.16}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama Entidade-Relaci\IeC {\'o}n da Base de Datos.\relax }}{39}{figure.caption.17}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Diagrama de clases da capa modelo.\relax }}{40}{figure.caption.18}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Esquema do funcionamento das vistas.\relax }}{43}{figure.caption.19}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Patr\IeC {\'o}n Estratexia utilizado para o procesamento de RSS.\relax }}{44}{figure.caption.20}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Esquema dun elemento da cuadr\IeC {\'\i }cula.\relax }}{45}{figure.caption.21}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Portada.\relax }}{46}{figure.caption.22}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Detalles de programa.\relax }}{48}{figure.caption.23}
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Xesti\IeC {\'o}n de emisi\IeC {\'o}n.\relax }}{49}{figure.caption.24}
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Mapa de navegaci\IeC {\'o}n entre as distintas p\IeC {\'a}xinas.\relax }}{50}{figure.caption.25}
+\contentsline {xchapter}{An\IeC {\'a}lise}{33}{chapter.6}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementaci\IeC {\'o}n}{53}{chapter.7}
+\contentsline {xchapter}{Dese\IeC {\~n}o}{37}{chapter.7}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces \IeC {\'A}rbore de m\IeC {\'o}dulos do aplicativo web.\relax }}{39}{figure.caption.16}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Diagrama Entidade-Relaci\IeC {\'o}n da Base de Datos.\relax }}{41}{figure.caption.17}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Diagrama de clases da capa modelo.\relax }}{42}{figure.caption.18}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Esquema do funcionamento das vistas.\relax }}{45}{figure.caption.19}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Patr\IeC {\'o}n Estratexia utilizado para o procesamento de RSS.\relax }}{46}{figure.caption.20}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Esquema dun elemento da cuadr\IeC {\'\i }cula.\relax }}{47}{figure.caption.21}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Portada.\relax }}{48}{figure.caption.22}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Detalles de programa.\relax }}{50}{figure.caption.23}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Xesti\IeC {\'o}n de emisi\IeC {\'o}n.\relax }}{51}{figure.caption.24}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Mapa de navegaci\IeC {\'o}n entre as distintas p\IeC {\'a}xinas.\relax }}{52}{figure.caption.25}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{55}{chapter.8}
+\contentsline {xchapter}{Implementaci\IeC {\'o}n}{55}{chapter.8}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Ap\IeC {\'e}ndice}{57}{appendix.Alph1}
+\contentsline {xchapter}{Probas do sistema}{57}{chapter.9}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Conclusiones}{67}{chapter.10}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Ap\IeC {\'e}ndice}{69}{appendix.Alph1}

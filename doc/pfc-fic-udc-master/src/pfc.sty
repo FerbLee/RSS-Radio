@@ -151,8 +151,10 @@
 }
 \lstdefinestyle{term}{
   basicstyle=\scriptsize\bf\ttfamily,
-  backgroundcolor=\color{gray75},
+  %backgroundcolor=\color{gray75},
 }
+\lstset{style=term}
+
 % Minimizar fragmentado de listados
 \lstnewenvironment{listing}[1][]{
   \lstset{#1}\pagebreak[0]}{\pagebreak[0]

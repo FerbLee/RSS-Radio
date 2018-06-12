@@ -1,0 +1,356 @@
+\chapter[Probas do sistema]{
+  \label{chp:test}
+  Probas do sistema
+}
+\minitoc
+\newpage
+
+Neste capítulo explicarase o proceso de probas ao que se someteu o sistema desenvolvido. Distinguimos entre probas de unidade e probas de integración.
+
+\section{Probas de unidade}
+
+Son aquelas que verifican o correcto funcionamento individual das compoñentes. Para realizar este tipo de probas, cómpre definir un entorno independente para cada unha de xeito que os resultados das anteriores non inflúan nas posteriores. Coma consecuencia da utilización da metodoloxía TDD (ver capítulo \ref{chp:metodoloxia}) os casos de proba definidos estarán automatizados. Isto fai posible executalos cando se fagan cambios no código coa fin de detectar a aparición de efectos non desexados. O código correspondente pode atoparse no ficheiro \say{tests.py} incluido no proxecto (ver figura \ref{fig:project_tree})
+
+Utilizouse a biblioteca \say{django.test} de Django, a cal, mediante o uso do paquete \say{unittest} estándar de Python, permite a escritura das probas de unidade. Defínense, para isto, conxuntos de casos de proba en forma de clase que ha ser herdeira da clase TestCase, incluída na biblioteca. Confecciónanse, a continuación, as probas en forma de métodos cuxo nome ha levar o prefixo "test".
+
+Para asegurar a independencia entre probas, Django creará unha base de datos temporal que será borrada automaticamente unha vez os tests finalicen, independentemente do seu éxito. Isto implica que cada instancia filla de TestCase teña que popular a base de datos coma paso previo á execución dos tests, podendo isto facerse en cada proba ou declarando un método setUp.
+
+
+\begin{lstlisting}[language=Python, caption=Probas de unidade dos metodos de Program, label=lst:programtest]
+class ProgramModelTests(TestCase): 
+
+
+	def setUp(self):
+	
+		rssl = 'http://dummy_link.xml'
+		p_image = Image.objects.create(name='p_image1',path='path/to/p_image1')
+		
+		p1 = Program.objects.create(name='TestProgram1',rss_link=rssl,image=p_image)
+		
+		u1 = User.objects.create(username='userp1')
+		u2 = User.objects.create(username='userp2')
+		User.objects.create(username='userp3')
+		
+		p1.programadmin_set.create(user=u1,type=ADMT_OWNER[0])
+		p1.programadmin_set.create(user=u2,type=ADMT_ADMIN[0])
+		
+		t1 = Tag.objects.create(name='pt1',times_used=1)
+		t2 = Tag.objects.create(name='pt2',times_used=2)
+		
+		p1.tag_set.add(t1)
+		p1.tag_set.add(t2)
+	
+	
+	def test_check_user_is_admin(self):
+	
+		p1 = Program.objects.get(name='TestProgram1')
+		u1 = User.objects.get(username='userp1')
+		u2 = User.objects.get(username='userp2')
+		u3 = User.objects.get(username='userp3')
+		
+		self.assertTrue(p1.check_user_is_admin(u1,ADMT_OWNER[0]))
+		self.assertFalse(p1.check_user_is_admin(u1,ADMT_ADMIN[0]))
+		self.assertTrue(p1.check_user_is_admin(u2,ADMT_ADMIN[0]))
+		self.assertFalse(p1.check_user_is_admin(u2,ADMT_OWNER[0]))
+		self.assertFalse(p1.check_user_is_admin(u3))
+	
+	
+	def test_delete(self):
+	
+		p1 = Program.objects.get(name='TestProgram1')
+		p1_id = p1.id
+		img_id = p1.image.id
+		
+		p1.delete()
+		
+		p2 = list(Program.objects.filter(pk=p1_id))
+		self.assertEqual(p2,[])
+		
+		img2 = list(Image.objects.filter(pk=img_id))
+		self.assertEqual(img2,[])
+		
+		t1 = Tag.objects.get(name='pt1')
+		t2 = Tag.objects.get(name='pt2')
+		
+		self.assertEqual(t1.times_used,0)
+		self.assertEqual(t2.times_used,1)
+
+\end{lstlisting}
+ 
+
+O código amosado no exemplo \ref{lst:programtest} é o utilizado nas probas de unidade da clase Program. Primeiro, o método \textit{setUp} crea na base de datos temporal o programa \textit{p1}, 3 usuarios dos cales lle asigna 2 coma administradores e máis 2 tags que tamén lle asigna. Nótese que se utiliza un método de creación propio dun obxecto imaxe, iso é posible porque xa ten a súa propia proba de unidade executada anteriormente no mesmo ficheiro. O código xa probado pasa a considerarse seguro e pode ser utilizado nos tests seguintes.
+
+O primeiro test comproba que o método \textit{check\_user\_is\_admin(user,[type])} de Program responda correctamente á pregunta de se o usuario dado é administrador dese programa e cos permisos especificados. O segundo comproba se o método de borrado borra tamén a imaxe asignada e fai decrecer o contador de uso dos tags. Probas semellantes se fixeron para as clases do módulo models.py que posúen métodos propios.
+
+
+\begin{lstlisting}[language=Python, caption=Probas de unidade dos metodos de ParserIvoox, label=lst:ivooxtest]
+class ParserIvooxRSSLPTests(TestCase):
+
+
+	def initialize_test(self):
+	
+		RSS_file = TEST_AUX_FILE_PATH + 'hasta-los-kinders_original.xml'
+		feed_dict = feedparser.parse(RSS_file)
+		u1 = User.objects.create(username='userRSSLP1')
+		
+		return ParserIvoox(RSS_file,u1),feed_dict
+	
+	
+	def test_get_entry_list(self):
+	
+		rlp,fd = self.initialize_test()
+		el = rlp.get_entry_list(fd)
+		
+		self.assertIsInstance(el,list)
+		self.assertIsInstance(el[0],dict)
+	
+	
+	def test_parse_program(self):
+	
+		program_web = 'http://www.ivoox.com/podcast-hasta-los-kinders_sq_f14062_1.html'
+		rlp,fd = self.initialize_test()
+		
+		p1 = rlp.parse_program(fd)
+		
+		self.assertEqual(p1.name,'Hasta Los Kinders')
+		self.assertEqual(p1.language,'es-ES')
+		self.assertEqual(p1.original_site,program_web)
+		self.assertEqual(p1.rss_link_type,IVOOX_TYPE[0])
+	
+	
+	def test_parse_episode(self):
+	
+		rlp,fd = self.initialize_test()
+		
+		#Expected info
+		exp_titlte = 'CiudadanoKinders: Como hacer un monologo'
+		exp_pub_date = datetime.datetime(2010, 9, 17, 20, 45, 24, tzinfo=pytz.utc)
+		exp_file = 'http://www.ivoox.com/ciudadanokinders-como-hacer-monologo_mf_368919_feed_1.mp3'
+		exp_web = 'http://www.ivoox.com/ciudadanokinders-como-hacer-monologo-audios-mp3_rf_368919_1.html'
+		exp_original_id = 'http://www.ivoox.com/368919'
+		
+		p1 = rlp.parse_program(fd)
+		entry_dict = rlp.get_entry_list(fd)[0]
+		
+		e1 = rlp.parse_episode(entry_dict,p1)
+		
+		self.assertIsInstance(e1,Episode)
+		self.assertEquals(e1.title,exp_titlte)
+		self.assertEquals(e1.publication_date,exp_pub_date)
+		self.assertEquals(e1.file,exp_file)
+		self.assertEquals(e1.original_site,exp_web)
+		self.assertEquals(e1.original_id,exp_original_id)
+	
+	
+	# From superclass
+	def test_parse_and_save(self):
+		
+		rlp,_ = self.initialize_test()
+		
+		p1 = rlp.parse_and_save()
+		self.assertIsInstance(p1,Program)
+		
+		p1_id = p1.id
+		p2 = list(Program.objects.filter(pk=p1_id))
+		self.assertNotEqual(p2,[])
+		
+		p2 = p2[0]
+		
+		self.assertEqual(p2.tag_set.count(),1)
+		self.assertEqual(p2.tag_set.all()[0].name,'comedy')
+		self.assertIsInstance(p2.image,Image)
+		
+		
+		self.assertEqual(p2.episode_set.count(),20)
+		
+		e1 = p2.episode_set.filter(title='CiudadanoKinders: Como hacer un monologo')
+		self.assertNotEqual(e1,[])
+		
+		e1 = e1[0]
+		self.assertIsInstance(e1,Episode)
+		
+		self.assertEquals(e1.image,p2.image)
+		
+		# Clean copied image
+		p2.image.delete()
+\end{lstlisting}   
+
+No exemplo \ref{lst:ivooxtest} atópase o código que valeu para probar o funcionamento dun dos intérpretes de RSS do módulo rss\_link\_parser.py (ver sección \ref{rss_parser_section}), concretamente o correspondente aos ficheiros co formato de Ivoox.  Tanto con este coma cos outros \say{parsers} probáronse as subrutinas auxiliares e máis os métodos \textit{parse\_program} e \textit{parse\_episode}. No amosado, inclúese tamén o test da función \textit{parse\_and\_save} herdada da superclase.
+
+Para realizar as anteriores probas utilizáronse ficheiros RSS reais descargados a disco local. Dado que o obxectivo último desta clase é a creación de obxectos a partir da información do RSS, as probas enfócanse en comprobar se o gardado en base de datos coincide co esperado.
+
+
+\begin{lstlisting}[language=Python, caption=Probas de unidade do proceso de actualización de popularidade, label=lst:popdaemon]
+class UpdatePopularityDaemonTests(TestCase):
+
+
+	def setUp(self):
+	
+		u1 = User.objects.create(username='userUPD1')
+		u2 = User.objects.create(username='userUPD2')
+		s1 = Station.objects.create(name='RadioTest2')
+		
+		RSS1 = TEST_AUX_FILE_PATH + 'hasta-los-kinders_original.xml'
+		rlp = ParserIvoox(RSS1,u1)
+		hlk = rlp.parse_and_save()
+		
+		hlk_ep1 = hlk.episode_set.all()[0]
+		hlk_ep1.vote_set.add(Vote.objects.create(type=LIKE_VOTE[0],user=u1,episode=hlk_ep1))
+		
+		hlk_ep2 = hlk.episode_set.all()[1]
+		hlk_ep2.vote_set.add(Vote.objects.create(type=LIKE_VOTE[0],user=u1,episode=hlk_ep2))
+		
+		hlk_ep3 = hlk.episode_set.all()[2]
+		hlk_ep3.vote_set.add(Vote.objects.create(type=DISLIKE_VOTE[0],user=u1,episode=hlk_ep3))
+		hlk_ep3.vote_set.add(Vote.objects.create(type=LIKE_VOTE[0],user=u2,episode=hlk_ep3))
+		
+		RSS2 = TEST_AUX_FILE_PATH + 'falacalado_podomatic.xml'
+		rlp = ParserPodomatic(RSS2,u1)
+		fc = rlp.parse_and_save()
+		fc.subscribers.add(u1)
+		fc.broadcast_set.add(Broadcast.objects.create(station=s1,program=fc,schedule_details='Friday 21:00'))
+		
+		fc_ep1 = fc.episode_set.all()[0]
+		fc_ep1.downloads = 1000
+		fc_ep1.save()
+	
+	
+	def test_update_pop_rating_all_programs(self):
+		
+		hlk = Program.objects.get(name='Hasta Los Kinders')
+		fc = Program.objects.get(name="fala calado's podcast")
+		
+		self.assertEqual(hlk.rating,50)
+		self.assertEqual(fc.popularity,0)
+		
+		#Ignore 365 days limitation
+		update_pop_rating_all_programs(days=0)
+		
+		hlk2 = Program.objects.get(name='Hasta Los Kinders')
+		fc2 = Program.objects.get(name="fala calado's podcast")
+		
+		exp_pop = program_popularity_formula(1,1,0,1000)
+		
+		self.assertEqual(hlk2.rating,75)
+		self.assertEqual(fc2.popularity,exp_pop)
+\end{lstlisting}
+
+As funcións que compoñen os procesos executados polo servidor para actualizar os programas (ver sección \ref{daemon_desenho}) tamén foron sometidos a probas. No exemplo \ref{lst:popdaemon} vese o código do test de unidade do proceso que actualiza os campos de \textit{rating} (cualificación) e \textit{popularity} (popularidade) dos programas. Para iso, créase en \textit{setUp} os programas \textit{hlk} e \textit{fc} mediante os parsers de Ivoox e Podomatic (previamente probados) respectivamente. Despois, manipúlanse as características valorables para o rating no primeiro e as valorables para popularity no segundo.
+
+Ao comezar o test, compróbase se os valores de ámbolos dous atributos son os iniciais, logo executase o código de actualización e, finalmente, compróbase se os valores cambiaron da forma esperada.
+
+\section{Probas de integración}
+
+Son aquelas que serven para verificar o traballo conxunto de distintas compoñentes. Estes casos de test, por regra xeral, tratan de probar as conexións entre compoñentes ignorando o funcionamento interno\cite{tests}.
+
+No módulo views.py atópanse as funcións que reciben os datos entrantes e pasan as respostas ao cliente. Para probalas foi necesario o uso da clase Client, dispoñible na biblioteca de Django utilizada para os tests. Esta clase interactúa co sistema a modo de navegador web sinxelo permitindo simular operacións de GET e POST, ver a cadea redirección entre os distintos templates e comprobar que os datos presentes no contexto son os axeitados.
+
+\begin{lstlisting}[language=Python, caption=Fragmento das probas da vista index, label=lst:index]
+class IndexViewTests(TestCase):
+
+
+	@classmethod
+	def setUpTestData(cls):
+	
+		u1 = User.objects.create(username='userIV1')
+		
+		RSS1 = TEST_AUX_FILE_PATH + 'hasta-los-kinders_original.xml'
+		rlp = ParserIvoox(RSS1,u1)
+		hlk = rlp.parse_and_save()
+		hlk.popularity = 10 # Check if first
+		hlk.save()
+		
+		RSS2 = TEST_AUX_FILE_PATH + 'falacalado_podomatic.xml'
+		rlp = ParserPodomatic(RSS2,u1)
+		rlp.parse_and_save()
+		
+		# Total of 10 + 2 programs
+		for i in range(1,11):
+		
+		rssl = 'http://dummy_link_iv_' + str(i) + '.xml'
+		pname = 'ProgramIV_' + str(i)
+		Program.objects.create(name=pname,rss_link=rssl)
+		
+		# Create 30 stations
+		for i in range(1,31):
+		
+		sname = 'StationIV_' + str(i)
+		Station.objects.create(name=sname)
+
+
+    def test_view_uses_correct_template(self):
+
+		resp = self.client.get(reverse('rss_feed:index'))
+		self.assertEqual(resp.status_code, 200)
+		
+		self.assertTemplateUsed(resp, 'rss_feed/index.html')
+
+
+	def test_program_list(self):
+
+		resp = self.client.get(reverse('rss_feed:index'))
+		self.assertEqual(resp.status_code, 200)
+		
+		self.assertEqual( len(resp.context['program_list']),4)
+		self.assertTrue(resp.context['program_list'].has_next())
+		self.assertFalse(resp.context['program_list'].has_previous())
+		
+		p1 = resp.context['program_list'][0]
+		p2 = Program.objects.get(name='Hasta Los Kinders')
+		self.assertEqual(p1,p2)
+		
+		resp = self.client.get('/rss_feed/?p_page=3')
+		self.assertEqual(resp.status_code, 200)
+		
+		self.assertEqual( len(resp.context['program_list']),4)
+		self.assertFalse(resp.context['program_list'].has_next())
+		self.assertTrue(resp.context['program_list'].has_previous())
+	
+\end{lstlisting}
+
+
+No exemplo \ref{lst:index} vénse algunhas probas realizadas para a vista de \say{index}, que se corresponde coa páxina principal do aplicativo. Créanse primeiro, na función de clase \textit{setUpTestData}, 12 programas e 20 emisoras co obxectivo de comprobar que o contexto está a pasar o número deles correcto, na orde correcta e cos datos axeitados a cerca da paxinación. Isto realízase no segundo test, o do método \textit{test\_program\_list}, só para o caso dos programas (as emisoras tamén se proban, pero incluílo semella redundante). O primeiro test, \textit{test\_view\_uses\_correct\_template}, comproba que se accede á vista index a través do template axeitado.
+
+\begin{lstlisting}[language=Python, caption=Fragmento das probas da vista add\_content, label=lst:add_content]
+class AddContentViewTests(TestCase):
+
+
+	def setUp(self):
+	
+		u2 = User.objects.create(username='userIV2')
+		u2.set_password('12345678A')
+		u2.save()
+	
+	
+	def test_login(self):
+	
+		self.client.login(username='userIV2',password='12345678A')
+		resp = self.client.get(reverse('rss_feed:add_content'))
+		
+		self.assertEqual(resp.status_code, 200)
+		self.assertEqual(str(resp.context['user']), 'userIV2')
+		
+		self.assertTemplateUsed(resp, 'rss_feed/add_content.html')
+	
+	
+	def test_add_station(self):
+	
+		self.client.login(username='userIV2',password='12345678A')
+		
+		form_station = {'form_station-name': ['StationIV1'], 'form_station-logo': [''], 'form_station-profile_img': [''], 
+		'form_station-broadcasting_method': ['fm'], 'form_station-broadcasting_area': [''], 
+		'form_station-broadcasting_frequency': [''], 'form_station-streaming_link': [''], 
+		'form_station-description': [''], 'form_station-website': [''], 'form_station-location': ['']}
+		
+		self.client.post(reverse('rss_feed:add_content'),  form_station)
+		
+		s1 = Station.objects.get(name='StationIV1')
+		
+		self.assertIsInstance(s1,Station)
+		self.assertEqual(s1.logo,Image.get_default_program_image())
+\end{lstlisting}
+
+
+Aquelas vistas que requiran que o usuario estea identificado tamén poden ser probadas, como se ve no exemplo \ref{lst:add_content}. O primeiro caso proba que o login funciona e que se utiliza o template correcto. O segundo, proba a inserción dunha nova emisora a través do formulario que se enviaría desde a interface web.
+
+O código puramente de \say{front-end} (Javascript, HTML...) foi probado de xeito manual e non automatizado.
