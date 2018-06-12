@@ -500,25 +500,26 @@ def create_avatar(avatar_in_memory_instance,username):
 
 def create_logo(avatar_in_memory_instance,username):
 
-#    try:
+    try:
         
-    if avatar_in_memory_instance != None:
-    
-        avatar_img = Image()
-        avatar_img.path = avatar_in_memory_instance
-        avatar_img.creation_date = timezone.now()
-        avatar_img.name = os.path.basename(avatar_in_memory_instance._name)
-        avatar_img.alt_text = username + '-logo'
-        avatar_img.save()
+        if avatar_in_memory_instance != None:
         
-        return avatar_img
+            avatar_img = Image()
+            avatar_img.path = avatar_in_memory_instance
+            avatar_img.creation_date = timezone.now()
+            avatar_img.name = os.path.basename(avatar_in_memory_instance._name)
+            avatar_img.alt_text = username + '-logo'
+            avatar_img.save()
+            
+            return avatar_img
     
-#    else:
-#        raise Exception
+        return Image.get_default_program_image()
 
-#    except Exception as e:
 
-    return Image.get_default_avatar()
+    except Exception as e:
+        
+        print('Create Logo Exception:' + str(e))
+        return Image.get_default_program_image()
 
 
 

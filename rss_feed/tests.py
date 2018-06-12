@@ -842,5 +842,6 @@ class AddContentViewTests(TestCase):
         s1 = Station.objects.get(name='StationIV1')
         
         self.assertIsInstance(s1,Station)
+        self.assertEqual(s1.logo,Image.get_default_program_image())
         
             

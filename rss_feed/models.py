@@ -317,6 +317,9 @@ class Vote(models.Model):
     type = models.CharField(choices=EXISTING_VOTE_TYPES,max_length=2)
     date =  models.DateTimeField(default=default_time)
 
+    def __str__(self):
+        return self.episode.title + '-' + self.user.username + '-' + str(self.type)
+
 
 class Comment(models.Model):
     
@@ -326,6 +329,8 @@ class Comment(models.Model):
     text = models.TextField()
     removed = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.episode.title + '-' + self.user.username + '-' + str(self.publication_date)
 
 class Tag(models.Model):
 
@@ -409,7 +414,7 @@ class Broadcast(models.Model):
     station =  models.ForeignKey(Station, on_delete=models.CASCADE)
     schedule_details = TruncatingCharField(max_length=100,null=True)
 
-    def __str_(self):
+    def __str__(self):
         
         return 'Program:' + str(self.program) + "-Station:" + str(self.station)
 
