@@ -84,3 +84,5 @@
 \contentsline {chapter}{\numberline {10}Conclusiones}{67}{chapter.10}
 \contentsline {section}{\numberline {10.1}An\IeC {\'a}lisis Econ\IeC {\'o}mico}{68}{section.10.1}
 \contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{69}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice}{75}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{75}{section.Alph2.1}
