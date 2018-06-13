@@ -86,3 +86,4 @@
 \contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{69}{appendix.Alph1}
 \contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice}{75}{appendix.Alph2}
 \contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{75}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{76}{section.Alph2.2}

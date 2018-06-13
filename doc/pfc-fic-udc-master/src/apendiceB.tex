@@ -3,11 +3,54 @@
   Licenza
 }
 
-Este apéndice ten o propósito de determinar a licenza baixo a que se distribúen este proxecto e maila súa documentación. Un dos obxectivos era que o software resultante fose compatible coa definición de software libre que da a Free Software Foundation, o cal quere dicir que ha de cumprir o que comunmente se chama \say{As catro liberdades esenciais}\cite{licenza}:
+Este apéndice ten o propósito de determinar a licenza baixo a que se distribúen este proxecto e maila súa documentación. Un dos obxectivos a priori era que o software resultante fose compatible coa definición de software libre que da a Free Software Foundation, segundo a cal, un programa ten que cumprir o que comunmente se chama \say{As catro liberdades esenciais}\cite{licenza}:
 
 \begin{itemize}
-	\item Liberdade1
+	\item \textbf{Liberdade 0:} Liberdade de executar o programa con calquera propósito desexable.
+	\item \textbf{Liberdade 1:} Liberdade para estudar o funcionamento do programa e de modificalo sen limitacións. Para garantir esta liberdade, o código fonte debe estar dispoñible ao acceso público.
+	\item \textbf{Liberdade 2:} Liberdade de redistribución de copias do programa orixinal. 
+	\item \textbf{Liberdade 3:} Liberdade de distribución de copias de versións modificadas do software sempre e cando ese código modificado estea á súa vez dispoñible ao público.
 \end{itemize} 
 
 \section{Licenzas das dependencias do proxecto}
+
+A continuación móstrase unha táboa das dependencias do software deste proxecto. Centrarémonos en dúas características:
+
+\begin{itemize}
+	\item Liberdade: Se a licenza é compatible coa definición de software libre vista con anterioridade.
+	\item Copyleft: Dise daquela licencia que esixa preservar as súas liberdades na distribución do produto ou derivados. Un software con licenza libre non copyleft podería ser utilizado noutro software de natureza privativa.
+\end{itemize} 
+\break
+
+\begin{longtable}{|p{3cm}|p{1.5cm}|p{5.5cm}|p{1cm}|p{1.5cm}|}
+	\hline
+	\rowcolor{gray!50}
+	Dependencia & Versión & Licenza & Libre & Copyleft \\
+	\hline
+	\textbf{Anaconda} & 4.4.0 (64bits) & BSD (Berkeley Software Distribution) & Si & Non \\
+	\hline
+	\textbf{Django} & 1.11 & BSD & Si & Non \\
+	\hline
+	\textbf{psycopg2} & 2.7.1 & LGPL (GNU Lesser General Public License) & Si & Si \\	
+	\hline
+	\textbf{django-bootstrap4} & 0.0.6 & Apache Software License 2.0 & Si & Si\\
+	\hline
+	\textbf{celery} & 4.1.0 & BSD & Si & Non \\
+	\hline
+	\textbf{django-celery-results} & 1.0.1 & BSD & Si & Non \\
+	\hline
+	\textbf{django-celery-beat} & 1.1.1 & BSD & Si & Non \\
+	\hline
+	\textbf{django-static-jquery} & 2.1.4 & MIT (Massachusetts Institute of Technology) & Si & Non \\
+	\hline
+	\textbf{gettext} & 0.19.8.1-3 & GPLv3 (GNU General Public License) & Si & Si \\
+	\hline
+\end{longtable}
+
+
+\section{Conclusión}
+
+O software creado neste proxecto publícase baixo a licenza \textbf{GPLv3}. Esta foi orixinalmente creada para o proxecto GNU pola propia Free Software Foundation, sendo a versión 3, publicada en 2007, a máis recente. Trátase dunha licencia copyleft, o cal significa que a distribución das copias deste software e calquera traballo derivado han de ser tamén un proxecto de software libre. Esta licenza permite non so que, no futuro, outros desenvolvedores podan colaborar na mellora e mantemento deste software, senón tamén que outros proxectos o reutilicen.
+
+A documentación, é dicir, a presente memoria, queda publicada baixo licenza \textbf{GFDL} (GNU Free Documentation License). É unha licenza libre creada tamén pola FSF para o proxecto GNU. Este feito implica que o presente documento pode ser copiado e modificado por quen o desexe. Ao ser GFDL unha licenza copyleft, a redistribución de copias e obras derivadas desta documentación está suxeita ao mantemento dos termos da licencia por parte das mesmas.
 
