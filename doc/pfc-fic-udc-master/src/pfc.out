@@ -45,29 +45,34 @@
 \BOOKMARK [2][-]{subsection.5.2.1}{Primeira reuni\363n \(Iteraci\363n 0\)}{section.5.2}% 45
 \BOOKMARK [2][-]{subsection.5.2.2}{Iteraci\363n 1}{section.5.2}% 46
 \BOOKMARK [2][-]{subsection.5.2.3}{Iteraci\363n 2}{section.5.2}% 47
-\BOOKMARK [0][-]{chapter.6}{An\341lise}{}% 48
-\BOOKMARK [1][-]{section.6.1}{Requirimentos funcionais}{chapter.6}% 49
-\BOOKMARK [1][-]{section.6.2}{Requirimentos non funcionais}{chapter.6}% 50
-\BOOKMARK [2][-]{subsection.6.2.1}{Autenticaci\363n}{section.6.2}% 51
-\BOOKMARK [2][-]{subsection.6.2.2}{Internacionalizaci\363n}{section.6.2}% 52
-\BOOKMARK [2][-]{subsection.6.2.3}{Rendemento}{section.6.2}% 53
-\BOOKMARK [2][-]{subsection.6.2.4}{Seguridade}{section.6.2}% 54
-\BOOKMARK [2][-]{subsection.6.2.5}{Adaptabilidade a dispositivos m\363biles}{section.6.2}% 55
-\BOOKMARK [0][-]{chapter.7}{Dese\361o}{}% 56
-\BOOKMARK [1][-]{section.7.1}{Descrici\363n do funcionamento}{chapter.7}% 57
-\BOOKMARK [2][-]{subsection.7.1.1}{Actividades de consumo de contidos}{section.7.1}% 58
-\BOOKMARK [2][-]{subsection.7.1.2}{Actividades de produci\363n de contidos}{section.7.1}% 59
-\BOOKMARK [1][-]{section.7.2}{Arquitectura}{chapter.7}% 60
-\BOOKMARK [2][-]{subsection.7.2.1}{Capa Modelo}{section.7.2}% 61
-\BOOKMARK [2][-]{subsection.7.2.2}{Capa Vista}{section.7.2}% 62
-\BOOKMARK [2][-]{subsection.7.2.3}{Capa Template}{section.7.2}% 63
-\BOOKMARK [1][-]{section.7.3}{Actualizaci\363n dos datos}{chapter.7}% 64
-\BOOKMARK [0][-]{chapter.8}{Implementaci\363n}{}% 65
-\BOOKMARK [0][-]{chapter.9}{Probas do sistema}{}% 66
-\BOOKMARK [1][-]{section.9.1}{Probas de unidade}{chapter.9}% 67
-\BOOKMARK [1][-]{section.9.2}{Probas de integraci\363n}{chapter.9}% 68
-\BOOKMARK [0][-]{chapter.10}{Conclusi\363ns}{}% 69
-\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice: Dicionario de datos}{}% 70
-\BOOKMARK [0][-]{appendix.Alph2}{Ap\351ndice: Licenza}{}% 71
-\BOOKMARK [1][-]{section.Alph2.1}{Licenzas das dependencias do proxecto}{appendix.Alph2}% 72
-\BOOKMARK [1][-]{section.Alph2.2}{Conclusi\363n}{appendix.Alph2}% 73
+\BOOKMARK [2][-]{subsection.5.2.4}{Iteraci\363n 3}{section.5.2}% 48
+\BOOKMARK [2][-]{subsection.5.2.5}{Iteraci\363n 4}{section.5.2}% 49
+\BOOKMARK [2][-]{subsection.5.2.6}{Iteraci\363n 5}{section.5.2}% 50
+\BOOKMARK [2][-]{subsection.5.2.7}{Iteraci\363n 6}{section.5.2}% 51
+\BOOKMARK [2][-]{subsection.5.2.8}{Iteraci\363n 7}{section.5.2}% 52
+\BOOKMARK [0][-]{chapter.6}{An\341lise}{}% 53
+\BOOKMARK [1][-]{section.6.1}{Requirimentos funcionais}{chapter.6}% 54
+\BOOKMARK [1][-]{section.6.2}{Requirimentos non funcionais}{chapter.6}% 55
+\BOOKMARK [2][-]{subsection.6.2.1}{Autenticaci\363n}{section.6.2}% 56
+\BOOKMARK [2][-]{subsection.6.2.2}{Internacionalizaci\363n}{section.6.2}% 57
+\BOOKMARK [2][-]{subsection.6.2.3}{Rendemento}{section.6.2}% 58
+\BOOKMARK [2][-]{subsection.6.2.4}{Seguridade}{section.6.2}% 59
+\BOOKMARK [2][-]{subsection.6.2.5}{Adaptabilidade a dispositivos m\363biles}{section.6.2}% 60
+\BOOKMARK [0][-]{chapter.7}{Dese\361o}{}% 61
+\BOOKMARK [1][-]{section.7.1}{Descrici\363n do funcionamento}{chapter.7}% 62
+\BOOKMARK [2][-]{subsection.7.1.1}{Actividades de consumo de contidos}{section.7.1}% 63
+\BOOKMARK [2][-]{subsection.7.1.2}{Actividades de produci\363n de contidos}{section.7.1}% 64
+\BOOKMARK [1][-]{section.7.2}{Arquitectura}{chapter.7}% 65
+\BOOKMARK [2][-]{subsection.7.2.1}{Capa Modelo}{section.7.2}% 66
+\BOOKMARK [2][-]{subsection.7.2.2}{Capa Vista}{section.7.2}% 67
+\BOOKMARK [2][-]{subsection.7.2.3}{Capa Template}{section.7.2}% 68
+\BOOKMARK [1][-]{section.7.3}{Actualizaci\363n dos datos}{chapter.7}% 69
+\BOOKMARK [0][-]{chapter.8}{Implementaci\363n}{}% 70
+\BOOKMARK [0][-]{chapter.9}{Probas do sistema}{}% 71
+\BOOKMARK [1][-]{section.9.1}{Probas de unidade}{chapter.9}% 72
+\BOOKMARK [1][-]{section.9.2}{Probas de integraci\363n}{chapter.9}% 73
+\BOOKMARK [0][-]{chapter.10}{Conclusi\363ns}{}% 74
+\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice: Dicionario de datos}{}% 75
+\BOOKMARK [0][-]{appendix.Alph2}{Ap\351ndice: Licenza}{}% 76
+\BOOKMARK [1][-]{section.Alph2.1}{Licenzas das dependencias do proxecto}{appendix.Alph2}% 77
+\BOOKMARK [1][-]{section.Alph2.2}{Conclusi\363n}{appendix.Alph2}% 78
