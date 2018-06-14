@@ -47,43 +47,44 @@
 \contentsline {section}{\numberline {4.2}XP}{31}{section.4.2}
 \contentsline {chapter}{\numberline {5}Planificaci\IeC {\'o}n}{33}{chapter.5}
 \contentsline {section}{\numberline {5.1}Iteraci\IeC {\'o}ns}{34}{section.5.1}
-\contentsline {chapter}{\numberline {6}An\IeC {\'a}lise}{35}{chapter.6}
-\contentsline {section}{\numberline {6.1}Requirimentos funcionais}{36}{section.6.1}
-\contentsline {section}{\numberline {6.2}Requirimentos non funcionais}{37}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Autenticaci\IeC {\'o}n}{37}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Internacionalizaci\IeC {\'o}n}{37}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Rendemento}{38}{subsection.6.2.3}
-\contentsline {subsection}{\numberline {6.2.4}Seguridade}{38}{subsection.6.2.4}
-\contentsline {subsection}{\numberline {6.2.5}Adaptabilidade a dispositivos m\IeC {\'o}biles}{38}{subsection.6.2.5}
-\contentsline {chapter}{\numberline {7}Dese\IeC {\~n}o}{39}{chapter.7}
-\contentsline {section}{\numberline {7.1}Descrici\IeC {\'o}n do funcionamento}{40}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Actividades de consumo de contidos}{40}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Actividades de produci\IeC {\'o}n de contidos}{40}{subsection.7.1.2}
-\contentsline {section}{\numberline {7.2}Arquitectura}{41}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Capa Modelo}{42}{subsection.7.2.1}
-\contentsline {subsubsection}{\numberline {7.2.1.1}Usuarios}{42}{subsubsection.7.2.1.1}
-\contentsline {subsubsection}{\numberline {7.2.1.2}Programas e episodios}{43}{subsubsection.7.2.1.2}
-\contentsline {subsubsection}{\numberline {7.2.1.3}Votos e comentarios}{45}{subsubsection.7.2.1.3}
-\contentsline {subsubsection}{\numberline {7.2.1.4}A entidade Station}{45}{subsubsection.7.2.1.4}
-\contentsline {subsubsection}{\numberline {7.2.1.5}Administraci\IeC {\'o}n de contido}{45}{subsubsection.7.2.1.5}
-\contentsline {subsection}{\numberline {7.2.2}Capa Vista}{46}{subsection.7.2.2}
-\contentsline {subsubsection}{\numberline {7.2.2.1}Engadir contido}{48}{subsubsection.7.2.2.1}
-\contentsline {subsection}{\numberline {7.2.3}Capa Template}{49}{subsection.7.2.3}
-\contentsline {subsubsection}{\numberline {7.2.3.1}Portada}{50}{subsubsection.7.2.3.1}
-\contentsline {subsubsection}{\numberline {7.2.3.2}P\IeC {\'a}xinas de engadir e editar contido}{51}{subsubsection.7.2.3.2}
-\contentsline {subsubsection}{\numberline {7.2.3.3}P\IeC {\'a}xinas de detalle}{51}{subsubsection.7.2.3.3}
-\contentsline {subsubsection}{\numberline {7.2.3.4}P\IeC {\'a}xina de resultados de busca}{51}{subsubsection.7.2.3.4}
-\contentsline {subsubsection}{\numberline {7.2.3.5}P\IeC {\'a}xinas de xesti\IeC {\'o}n}{52}{subsubsection.7.2.3.5}
-\contentsline {section}{\numberline {7.3}Actualizaci\IeC {\'o}n dos datos}{54}{section.7.3}
-\contentsline {subsubsection}{\numberline {7.3.0.1}Novos episodios}{54}{subsubsection.7.3.0.1}
-\contentsline {subsubsection}{\numberline {7.3.0.2}Popularidade e cualificaci\IeC {\'o}n dos programas}{55}{subsubsection.7.3.0.2}
-\contentsline {chapter}{\numberline {8}Implementaci\IeC {\'o}n}{57}{chapter.8}
-\contentsline {section}{\numberline {8.1}Organizaci\IeC {\'o}n del c\IeC {\'o}digo fuente}{58}{section.8.1}
-\contentsline {chapter}{\numberline {9}Probas do sistema}{59}{chapter.9}
-\contentsline {section}{\numberline {9.1}Probas de unidade}{60}{section.9.1}
-\contentsline {section}{\numberline {9.2}Probas de integraci\IeC {\'o}n}{65}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusi\IeC {\'o}ns}{69}{chapter.10}
-\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice}{71}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice}{77}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{77}{section.Alph2.1}
-\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{78}{section.Alph2.2}
+\contentsline {subsection}{\numberline {5.1.1}Reuni\IeC {\'o}n inicial}{34}{subsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.1.1}Requirimentos primitivos}{34}{subsubsection.5.1.1.1}
+\contentsline {chapter}{\numberline {6}An\IeC {\'a}lise}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Requirimentos funcionais}{38}{section.6.1}
+\contentsline {section}{\numberline {6.2}Requirimentos non funcionais}{39}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Autenticaci\IeC {\'o}n}{39}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Internacionalizaci\IeC {\'o}n}{39}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Rendemento}{40}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Seguridade}{40}{subsection.6.2.4}
+\contentsline {subsection}{\numberline {6.2.5}Adaptabilidade a dispositivos m\IeC {\'o}biles}{40}{subsection.6.2.5}
+\contentsline {chapter}{\numberline {7}Dese\IeC {\~n}o}{41}{chapter.7}
+\contentsline {section}{\numberline {7.1}Descrici\IeC {\'o}n do funcionamento}{42}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Actividades de consumo de contidos}{42}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Actividades de produci\IeC {\'o}n de contidos}{42}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.2}Arquitectura}{43}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Capa Modelo}{44}{subsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.1.1}Usuarios}{44}{subsubsection.7.2.1.1}
+\contentsline {subsubsection}{\numberline {7.2.1.2}Programas e episodios}{45}{subsubsection.7.2.1.2}
+\contentsline {subsubsection}{\numberline {7.2.1.3}Votos e comentarios}{47}{subsubsection.7.2.1.3}
+\contentsline {subsubsection}{\numberline {7.2.1.4}A entidade Station}{47}{subsubsection.7.2.1.4}
+\contentsline {subsubsection}{\numberline {7.2.1.5}Administraci\IeC {\'o}n de contido}{47}{subsubsection.7.2.1.5}
+\contentsline {subsection}{\numberline {7.2.2}Capa Vista}{48}{subsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.2.1}Engadir contido}{50}{subsubsection.7.2.2.1}
+\contentsline {subsection}{\numberline {7.2.3}Capa Template}{51}{subsection.7.2.3}
+\contentsline {subsubsection}{\numberline {7.2.3.1}Portada}{52}{subsubsection.7.2.3.1}
+\contentsline {subsubsection}{\numberline {7.2.3.2}P\IeC {\'a}xinas de engadir e editar contido}{53}{subsubsection.7.2.3.2}
+\contentsline {subsubsection}{\numberline {7.2.3.3}P\IeC {\'a}xinas de detalle}{53}{subsubsection.7.2.3.3}
+\contentsline {subsubsection}{\numberline {7.2.3.4}P\IeC {\'a}xina de resultados de busca}{53}{subsubsection.7.2.3.4}
+\contentsline {subsubsection}{\numberline {7.2.3.5}P\IeC {\'a}xinas de xesti\IeC {\'o}n}{54}{subsubsection.7.2.3.5}
+\contentsline {section}{\numberline {7.3}Actualizaci\IeC {\'o}n dos datos}{56}{section.7.3}
+\contentsline {subsubsection}{\numberline {7.3.0.1}Novos episodios}{56}{subsubsection.7.3.0.1}
+\contentsline {subsubsection}{\numberline {7.3.0.2}Popularidade e cualificaci\IeC {\'o}n dos programas}{57}{subsubsection.7.3.0.2}
+\contentsline {chapter}{\numberline {8}Implementaci\IeC {\'o}n}{59}{chapter.8}
+\contentsline {chapter}{\numberline {9}Probas do sistema}{61}{chapter.9}
+\contentsline {section}{\numberline {9.1}Probas de unidade}{62}{section.9.1}
+\contentsline {section}{\numberline {9.2}Probas de integraci\IeC {\'o}n}{67}{section.9.2}
+\contentsline {chapter}{\numberline {10}Conclusi\IeC {\'o}ns}{71}{chapter.10}
+\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice: Dicionario de datos}{73}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{79}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{79}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{80}{section.Alph2.2}
