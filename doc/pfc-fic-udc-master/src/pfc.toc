@@ -98,7 +98,9 @@
 \contentsline {section}{\numberline {9.1}Probas de unidade}{78}{section.9.1}
 \contentsline {section}{\numberline {9.2}Probas de integraci\IeC {\'o}n}{83}{section.9.2}
 \contentsline {chapter}{\numberline {10}Conclusi\IeC {\'o}ns}{87}{chapter.10}
-\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice: Dicionario de datos}{89}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{95}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{95}{section.Alph2.1}
-\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{96}{section.Alph2.2}
+\contentsline {section}{\numberline {10.1}Co\IeC {\~n}ecementos acadados}{89}{section.10.1}
+\contentsline {section}{\numberline {10.2}Futuros traballos}{89}{section.10.2}
+\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice: Dicionario de datos}{91}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{97}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{97}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{98}{section.Alph2.2}

@@ -5,3 +5,58 @@
 \minitoc
 \newpage
 
+Neste capítulo porase en balance o traballo realizado e darase unha breve guía de melloras que poderían implementarse no futuro.
+
+A aplicación web presentada nesta memoria cumpre cos obxectivos iniciais do proxecto (ver sección \ref{obxectivos}) 
+
+\begin{itemize}
+	\item Creouse un portal web que da \textbf{acceso a ficheiros de audio}, ou ben mediante streaming por Internet, ou ben por descarga directa, estando estes aloxados nun servidor alleo.
+	\item Implementáronse funcionalidades para que os \textbf{usuarios engadan o seu propio contido}. Poden engadir as súas emisoras ou programas de forma manual. No caso dos episodios, son creados automaticamente mediante os algoritmos de lectura de ficheiros RSS. Estes mesmos algoritmos, agrupan os arquivos de audio por programa e categoría.
+	\item Puxéronse a disposición dos usuarios \textbf{ferramentas de procura} de contidos por texto e máis por etiqueta. 
+	\item Habilitouse, para os usuarios, un \textbf{sistema de subscrición} aos programas e de seguimento das emisoras.
+	\item Deseñouse un esquema de roles e permisos para facilitar a \textbf{colaboración entre os usuarios} nas tarefas de xestión de contidos.
+	\item Logrouse o anterior utilizando ferramentas e bibliotecas de software libre, o cal permite que \textbf{o software teña unha licenza de software libre} que satisfai os requisitos da Free Software Foundation.
+\end{itemize}
+
+
+A medida que o traballo avanzaba, fóronse intuíndo novas necesidades que os usuarios poderían ter. Destas, implementáronse as seguintes:
+
+\begin{itemize}
+	
+	\item Panel de administración: Provese dunha interface web de administración para que un superusuario do sistema poida manipular os datos presentes na base de datos.
+	
+	\item Visualización por méritos: Creouse o concepto de \say{popularidade} dos programas. Canto máis popular sexa un programa, máis posibilidades terá de saír en portada e aparecerá antes nos resultados de busca.
+	
+	\item Comentarios e votos: Os usuarios poden dar \say{feedback} aos autores dos programas mediante votos e comentarios nos episodios.
+	
+	\item Limitación de redifusión dos programas: Un dos fins deste proxecto é facilitar o intercambio de programas por parte de distintas emisoras, porén, poden darse situacións nas que se queira limitar esa posibilidade. As \say{Opcións de compartición} poden ser seleccionadas no panel de xestión do programa.
+	
+\end{itemize}
+
+
+Persoalmente, considero que se desenvolveu unha ferramenta útil para os medios do terceiro sector. A aplicación web creada dá resposta a unha serie de necesidades reais que coñezo de primeira man, non so polos contactos con membros deste tipo de medios, senón tamén pola miña experiencia persoal colaborando en Cuac FM. O aumento das sinerxias entre colectivos é unha necesidade de supervivencia para estes e creo que este proxecto é un modesto aporte.   
+
+
+\section{Coñecementos acadados}
+
+Durante os meus anos coma estudante e coma profesional, o deseño web nunca foi a miña predilección debido aos meus prexuízos con respecto ao desenvolvemento de \textbf{frontend}, que me parecía un pastiche de tecnoloxías e un caos. Forzarme a utilizar JavaScript e afondar no meu coñecemento de CSS e HTML foi unha forma de abrir a mente a este campo e diversificar o meu coñecemento.
+
+Aprender \textbf{Django} foi un aspecto moi positivo deste traballo, pois completa bastante a miña experiencia de uso de Python, linguaxe que me esperta especial interese.
+
+O proxecto tamén me valeu para refrescar conceptos teóricos de \textbf{enxeñaría do software} (metodoloxías, xestión de proxectos, patróns de deseño...) e como aplicalos.
+
+
+\section{Futuros traballos}
+
+A continuación, exponse unha lista de melloras que se poderían levar a cabo no futuro:
+
+\begin{itemize}
+	
+	\item \textbf{Rediseño da interface de xestión de Programas e Emisoras:} Tras amosar a interface a xente allea ao proxecto, parece que a configuración actual das ferramentas de entrada de datos poden levar a certa confusión.
+	
+	\item \textbf{Enriquecer información de emisión:} O horario de emisión dun programa por unha emisora é información en texto. Poderíase modelar ese dato de xeito que o sistema puidese responder a preguntas coma: \say{Que programas se emiten os luns?}, \say{Que programa se está a emitir agora?}
+	
+	\item \textbf{Crear caixa de mensaxes para os usuarios:} Actualmente, os usuarios poden ver os novos episodios das súas subscricións na portada, pero estaría ben que se lles avisase cunha mensaxe directa. Poderíanse enviar mensaxes para máis eventos, por exemplo: \say{A emisora \textit{RadioX} quere emitir o teu programa \textit{ProgramaY}}
+	
+	\item \textbf{Melloras en seguridade:} O rexistro de usuario podería ter un CAPTCHA para evitar a un atacante crear usuarios de xeito automatizado. Tamén se podería pedir un número de teléfono aos usuarios para implementar unha \say{verificación de dous pasos}.
+\end{itemize}
