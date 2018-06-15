@@ -49,7 +49,7 @@ Os obxectivos de cara a primeira iteración foron:
 
 \subsection{Iteración 1}
 
-Cumpríronse os obxectivos marcados, entregando un deseño preliminar do modelo de datos na data estimada. No diagrama da figura \ref{fig:classold} vese que o modelo aínda era alleo aos requisitos de Django que se explicarán máis adiante no capítulo \ref{chp:disenho} sobre o deseño.
+Cumpríronse os obxectivos marcados, entregando un deseño preliminar do modelo de datos na data estimada (figura \ref{fig:classold}) 
 
 \begin{figure}[h]
 	\centering
@@ -60,9 +60,7 @@ Cumpríronse os obxectivos marcados, entregando un deseño preliminar do modelo 
 
 Unha cousa a comentar neste primeiro modelo é a existencia dunha clase \say{canle} intermediaria entre a emisora e o programa que, como veremos, quedou finalmente desbotada. A idea era que os colectivos que realmente teñen unha emisión por onda e aqueles que publican podcasts de escoita baixo demanda terían necesidades distintas e debían diferenciarse, sempre sen bloquear a posibilidade de que unha radio emitise podcasts.
 
-Xa daquela se prevía necesidade de que os usuarios deixasen a súa impresión a cerca dos contidos, expresada no atributo \say{valoración} da clase programa. 
-
-En canto ao RSS, fixéronse os primeiros scripts de proba utilizando a biblioteca de Python \textit{feedparser} incluída no paquete de Anaconda. Ese primeiro código era capaz de descargar un ficheiro RSS e transformalo nun obxecto cos datos do programa que á súa vez contiña unha lista de obxectos cos datos dos episodios, demostrando que a consulta de RSS si era a forma axeitada de afrontar a inserción e actualización dos contidos.
+En canto ao RSS, fixéronse os primeiros scripts de lectura. Ese primeiro código era capaz de descargar un ficheiro RSS e transformalo nun obxecto cos datos do programa que á súa vez contiña unha lista de obxectos cos datos dos episodios, demostrando que a consulta de RSS si era a forma axeitada de afrontar a inserción e actualización dos contidos.
 
 Novos obxectivos:
 
@@ -75,7 +73,7 @@ Novos obxectivos:
 
 \subsection{Iteración 2}
 
-Ao chegar a seguinte reunión, Django estaba configurado. Creáronse as clases Program e Episode coas súas correspondentes táboas nunha base de datos controlada mediante PostgreSQL. Esas primeiras clases aínda non contiñan información das imaxes nin das etiquetas e os datos non extraíbles do RSS contiñan valores nulos. O sistema executábase sobre o servidor de desenvolvemento de Django, algo que se mantivo durante todo o proceso de desenvolvemento por comodidade e eficiencia. Creouse tamén un repositorio para o control de versións utilizando a plataforma GitHub (ver sección \ref{git})
+Configurouse o entorno de django e as ferramentas de desenvolvemento. Creáronse as clases Program e Episode coas súas correspondentes táboas nunha base de datos controlada mediante PostgreSQL. Esas primeiras clases aínda non contiñan información das imaxes nin das etiquetas e os datos non extraíbles do RSS contiñan valores nulos. O sistema executábase sobre o servidor de desenvolvemento de Django, algo que se mantivo durante todo o proceso de desenvolvemento por comodidade e eficiencia. Creouse tamén un repositorio para o control de versións utilizando a plataforma GitHub (ver sección \ref{git})
 
 Conseguiuse a medias o obxectivo de servir unha interface web sinxela: Amosábanse os datos gardados, pero non servía para engadir novo contido aínda. Desprazouse ese obxectivo á seguinte iteración.
 
@@ -98,9 +96,7 @@ Novos obxectivos::
 
 \subsection{Iteración 3}
 
-Nesta iteración creouse o formulario de envío do enlace RSS. Agora, un usuario podía inserir en base de datos o seu programa con todos os seu episodios só con proporcionarlle ao sistema o enlace ao ficheiro. Isto definiu de xeito definitivo o proceso en que os programas e os episodios serían engadidos (non así o aspecto do formulario, que sería cambiado máis adiante).
-
-Instalouse o soporte de Django para Bootstrap 4, podendo así usar eses modelos. Creouse, así, unha páxina de engadir programa co aspecto amosado na figura \ref{fig:it3_add_program}.
+Creouse o formulario de envío do enlace RSS. Instalouse o soporte de Django para Bootstrap 4, podendo así usar eses modelos. Utilizándoos, creouse unha páxina de engadir programa co aspecto amosado na figura \ref{fig:it3_add_program}.
 
 \begin{figure}[h]
 	\centering
@@ -109,7 +105,7 @@ Instalouse o soporte de Django para Bootstrap 4, podendo así usar eses modelos.
 	\label{fig:it3_add_program}
 \end{figure}
 
-Implementouse o soporte para os distintos formatos de ficheiro RSS: Ao principio da iteración só se podían engadir ficheiros extraídos de RadioCo. Ao final, os parsers para Ivoox e Podomatic quedaron tamén implementados. Foi nesta etapa cando se empezou a sentir a necesidade de automatización de probas. Pese a que os 3 tipos de lectores funcionaban, a calidade do código non era a satisfactoria.
+Implementouse o soporte para os distintos formatos de ficheiro RSS: Ao principio da iteración só se podían engadir ficheiros extraídos de RadioCo. Ao final, os parsers para Ivoox e Podomatic quedaron tamén implementados. Pese a que os 3 funcionaban, a calidade do código non era a satisfactoria.
 
 Novos obxectivos:
 
@@ -156,18 +152,20 @@ Novos obxectivos:
 
 \subsection{Iteración 6}
 
+A partir desta iteración, as reunións pasan a ser semanais.
+
 Introduciuse unha clase de apoio para outorgarlle ao usuario de Django unha serie de atributos necesarios no sistema. Introduciuse a comprobación de autenticación naquelas vistas que o requirisen, por exemplo, engadir programa, como se ve nas figuras \ref{fig:it6_log} e \ref{fig:it6_anon}.
 
 Fíxose unha primeira implementación da vista de edición de usuario, pero sen soporte para o cambio de contrasinal. Quedaría para a iteración seguinte.
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.4,keepaspectratio=true]{./images/it6_log.png}
 	\caption{It6: index.html para usuario identificado.}
 	\label{fig:it6_log}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5,keepaspectratio=true]{./images/it6_anon.png}
 	\caption{It6: index.html para usuario anónimo.}
@@ -184,12 +182,149 @@ Novos obxectivos:
 
 \subsection{Iteración 7}
 
-Debuxáronse uns deseños esquemáticos das distintas páxinas de interface web e definiuse a navegación entre elas. Este deseño de interface foi xa o definitivo. Valería, en diante, coma guía para confeccionar as distintas vistas.
+Debuxáronse uns deseños esquemáticos das distintas páxinas de interface web e definiuse a navegación entre elas. Este deseño de interface foi xa o definitivo. Valería, en diante, coma guía para confeccionar as distintas vistas. Poden verse algúns borradores no capítulo \ref{chp:disenho} sobre o deseño.
 
 O resto de obxectivos foron cumpridos. Nesta iteración decidiu desbotarse a clase de Canle por ter unhas funcións moi limitadas e solaparse en gran parte con Emisora.
 
+Novos obxectivos:
 \begin{itemize}
 	\item Dar soporte á internacionalización.
-	\item Crear páxina para engadir novas emisoras.
+	\item Crear vista para engadir novas emisoras.
 \end{itemize}
+
+
+\subsection{Iteración 8}
+
+Engadiuse o soporte de Django para a internacionalización e fíxose unha primeira tradución da web a lingua galega. Non obstante, o seu funcionamento non era o axeitado. Dado que se estaba empregar moito tempo nesta tarefa sen acadar ningún resultado, decidiuse pospoñela.
+
+Co gallo de situar o selector de idioma, fíxose unha cabeceira para situar as ferramentas transversais ás vistas.
+
+Integráronse a vista de engadir programa e a nova de crear emisora nunha única, chamada \say{engadir contido}. Debido ao bloqueo sufrido pola tarefa de internacionalización, sobrou tempo que se empregou en implementar a vista da páxina principal (index) e a vista de detalles de emisora (figura \ref{fig:station_detail_final}).
+
+Novos obxectivos:
+\begin{itemize}
+	\item Corrixir internacionalización (Posposto)
+	\item Crear edición de emisora e programa.
+	\item Implementar accións de ouvinte.
+	\item Completar vistas de detalle de emisora e programa
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4,keepaspectratio=true]{./images/station_detail_final.png}
+	\caption{It8: Vista de detalles de emisora.}
+	\label{fig:station_detail_final}
+\end{figure}
+
+
+\subsection{Iteración 9}
+
+Actualizáronse as vistas de detalle de programa e episodio (ver figura \ref{fig:episode_detail_final}). Implementáronse as accións dos ouvintes: Votar os episodios (Positivo, negativo e desfacer voto), subscribirse, seguir emisora e engadir comentarios.
+
+Ao afrontar a implementación das vistas de edición, discutiuse a cerca da relación entre os usuarios e os seu contido. Chegouse a conclusión de que sería necesaria a creación de roles de administración para programas e emisoras.
+
+Descubríronse unha serie de erros na vista de engadir contidos que foron corrixidos. Non se realizou ningunha actividade no tocante á internacionalización.
+
+Novos obxectivos:
+\begin{itemize}
+	\item Corrixir internacionalización.
+	\item Crear roles de usuario.
+	\item Crear panel de edición e xestión de emisora e programa.
+	\item Implementar as funcións de procura de contidos.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5,keepaspectratio=true]{./images/episode_detail_final.png}
+	\caption{It9: Vista de detalles de episodio.}
+	\label{fig:episode_detail_final}
+\end{figure}
+
+
+\subsection{Iteración 10}
+
+Creáronse os roles de usuario e fíxose o panel de edición e xestión de programas e emisoras. A implementación da procura quedou posposta por falta de tempo.
+
+Coméntose a posibilidade de adaptar o estilo da páxina para os dispositivos móbiles.
+
+Novos obxectivos:
+\begin{itemize}
+	\item Comezar a redacción da documentación.
+	\item Corrixir internacionalización.
+	\item Implementar as funcións de procura de contidos.
+	\item Adaptar o estilo para dispositivos móbiles.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5,keepaspectratio=true]{./images/xestion_final.png}
+	\caption{It10: Panel de xestión de programa.}
+	\label{fig:xestionl_final}
+\end{figure}
+
+
+\subsection{Iteración 11}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4,keepaspectratio=true]{./images/procura_final.png}
+	\caption{It11: Páxina de resultados de busca.}
+	\label{fig:procura_final}
+\end{figure}
+
+Todos os obxectivos restantes foron cumpridos, sendo o máis destacable a nova vista de resultados de busca (Figura \ref{fig:procura_final}). Implementáronse ferramentas de busca por texto e busca por tag.
+
+A partir de aquí, as sucesivas reunións consistiron en revisións desta documentación. Demos, polo tanto, o desenvolvemento por finalizado.
+
+
+
+\section{Estudo de custos}
+
+A intención desta sección é facer unha estimación do custo do proxecto. Dado que este foi realizado por unha única persoa levando a cabo distintas tarefas en cada fase do proxecto, estimarase un custe uniforme de 19€/h para todas elas. 
+
+Na táboa \ref{tab:custo} pódese ver o gasto por iteración e o custo total do proxecto.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|p{5cm}|l|l|}
+		\hline
+		\rowcolor{blue!10}
+		Iteración & Horas de traballo & Custo(€)\\
+		\hline
+		Primeira reunión & 1 &  19\\
+		\hline
+		Iteración 1 & 3 &  57\\
+		\hline
+		Iteración 2 & 12 &  228\\
+		\hline
+		Iteración 3 & 10 &  190\\
+		\hline
+		Iteración 4 & 20 &  380\\
+		\hline
+		Iteración 5 & 25 &  475\\
+		\hline
+		Iteración 6 & 23 &  437\\
+		\hline
+		Iteración 7 & 27 &  513\\
+		\hline
+		Iteración 8 & 32 &  608\\
+		\hline
+		Iteración 9 & 26 &  494\\
+		\hline
+		Iteración 10 & 30 &  570\\
+		\hline
+		Iteración 11 &  18 &  342\\
+		\hline
+		Escritura da documentación & 45 & 855\\
+		\hline
+		\textbf{Total} & \textbf{272} & \textbf{5168} \\
+		\hline
+	\end{tabular}
+	\caption{Custo das distintas etapas de traballo.}
+\label{tab:custo}
+\end{table}
+
+
+\section{Relación de tarefas}
+
 
