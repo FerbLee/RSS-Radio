@@ -1,29 +1,30 @@
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.1}Linguaxes}{\reset@font\mtcSfont 14}{section.3.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.1}Python}{\reset@font\mtcSSfont 14}{subsection.3.1.1}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.1.1.1}Anaconda}{\reset@font\mtcSSSfont 15}{subsubsection.3.1.1.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.2}HTML}{\reset@font\mtcSSfont 15}{subsection.3.1.2}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.3}CSS}{\reset@font\mtcSSfont 16}{subsection.3.1.3}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.1.3.1}CSS Grid}{\reset@font\mtcSSSfont 16}{subsubsection.3.1.3.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.4}JavaScript}{\reset@font\mtcSSfont 17}{subsection.3.1.4}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.1.4.1}jQuery}{\reset@font\mtcSSSfont 17}{subsubsection.3.1.4.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.5}SQL}{\reset@font\mtcSSfont 18}{subsection.3.1.5}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.6}XML}{\reset@font\mtcSSfont 18}{subsection.3.1.6}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.1.6.1}RSS}{\reset@font\mtcSSSfont 19}{subsubsection.3.1.6.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.7}JSON}{\reset@font\mtcSSfont 20}{subsection.3.1.7}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.8}LaTeX}{\reset@font\mtcSSfont 21}{subsection.3.1.8}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.2}Django Framework}{\reset@font\mtcSfont 21}{section.3.2}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.3}Celery}{\reset@font\mtcSfont 23}{section.3.3}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.4}RabbitMQ}{\reset@font\mtcSfont 23}{section.3.4}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.5}Bootstrap}{\reset@font\mtcSfont 23}{section.3.5}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.6}Ajax}{\reset@font\mtcSfont 24}{section.3.6}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.7}Apache HTTP server}{\reset@font\mtcSfont 24}{section.3.7}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.8}PostgreSQL}{\reset@font\mtcSfont 25}{section.3.8}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.9}Ferramentas de desenvolvemento}{\reset@font\mtcSfont 26}{section.3.9}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.1}Eclipse}{\reset@font\mtcSSfont 26}{subsection.3.9.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.2}Git}{\reset@font\mtcSSfont 26}{subsection.3.9.2}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.9.2.1}GitHub}{\reset@font\mtcSSSfont 27}{subsubsection.3.9.2.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.3}Dia}{\reset@font\mtcSSfont 27}{subsection.3.9.3}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.4}Fedora}{\reset@font\mtcSSfont 27}{subsection.3.9.4}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.5}TeXstudio}{\reset@font\mtcSSfont 27}{subsection.3.9.5}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.6}Mozilla Firefox}{\reset@font\mtcSSfont 28}{subsection.3.9.6}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.7}GIMP}{\reset@font\mtcSSfont 28}{subsection.3.9.7}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.1}Linguaxes}{\reset@font\mtcSfont 15}{section.3.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.1}Python}{\reset@font\mtcSSfont 15}{subsection.3.1.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.1.1.1}Anaconda}{\reset@font\mtcSSSfont 16}{subsubsection.3.1.1.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.2}HTML}{\reset@font\mtcSSfont 16}{subsection.3.1.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.3}CSS}{\reset@font\mtcSSfont 17}{subsection.3.1.3}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.1.3.1}CSS Grid}{\reset@font\mtcSSSfont 17}{subsubsection.3.1.3.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.4}JavaScript}{\reset@font\mtcSSfont 18}{subsection.3.1.4}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.1.4.1}jQuery}{\reset@font\mtcSSSfont 18}{subsubsection.3.1.4.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.5}SQL}{\reset@font\mtcSSfont 19}{subsection.3.1.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.6}XML}{\reset@font\mtcSSfont 19}{subsection.3.1.6}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.1.6.1}RSS}{\reset@font\mtcSSSfont 20}{subsubsection.3.1.6.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.7}JSON}{\reset@font\mtcSSfont 21}{subsection.3.1.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.1.8}LaTeX}{\reset@font\mtcSSfont 22}{subsection.3.1.8}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.2}Django Framework}{\reset@font\mtcSfont 22}{section.3.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.3}Celery}{\reset@font\mtcSfont 24}{section.3.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.4}RabbitMQ}{\reset@font\mtcSfont 24}{section.3.4}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.5}Bootstrap}{\reset@font\mtcSfont 24}{section.3.5}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.6}Ajax}{\reset@font\mtcSfont 25}{section.3.6}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.7}Apache HTTP server}{\reset@font\mtcSfont 25}{section.3.7}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.8}PostgreSQL}{\reset@font\mtcSfont 26}{section.3.8}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {3.9}Ferramentas de desenvolvemento}{\reset@font\mtcSfont 27}{section.3.9}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.1}Eclipse}{\reset@font\mtcSSfont 27}{subsection.3.9.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.2}Git}{\reset@font\mtcSSfont 27}{subsection.3.9.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {3.9.2.1}GitHub}{\reset@font\mtcSSSfont 28}{subsubsection.3.9.2.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.3}Dia}{\reset@font\mtcSSfont 28}{subsection.3.9.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.4}Fedora}{\reset@font\mtcSSfont 28}{subsection.3.9.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.5}TeXstudio}{\reset@font\mtcSSfont 28}{subsection.3.9.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.6}Mozilla Firefox}{\reset@font\mtcSSfont 29}{subsection.3.9.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.7}GIMP}{\reset@font\mtcSSfont 29}{subsection.3.9.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {3.9.8}Projectlibre}{\reset@font\mtcSSfont 30}{subsection.3.9.8}}
