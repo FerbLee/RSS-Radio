@@ -94,13 +94,21 @@
 \contentsline {subsubsection}{\numberline {7.3.0.1}Novos episodios}{72}{subsubsection.7.3.0.1}
 \contentsline {subsubsection}{\numberline {7.3.0.2}Popularidade e cualificaci\IeC {\'o}n dos programas}{73}{subsubsection.7.3.0.2}
 \contentsline {chapter}{\numberline {8}Implementaci\IeC {\'o}n}{75}{chapter.8}
-\contentsline {chapter}{\numberline {9}Probas do sistema}{77}{chapter.9}
-\contentsline {section}{\numberline {9.1}Probas de unidade}{78}{section.9.1}
-\contentsline {section}{\numberline {9.2}Probas de integraci\IeC {\'o}n}{83}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusi\IeC {\'o}ns}{87}{chapter.10}
-\contentsline {section}{\numberline {10.1}Co\IeC {\~n}ecementos acadados}{89}{section.10.1}
-\contentsline {section}{\numberline {10.2}Futuros traballos}{89}{section.10.2}
-\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice: Dicionario de datos}{91}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{97}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{97}{section.Alph2.1}
-\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{98}{section.Alph2.2}
+\contentsline {section}{\numberline {8.1}Estrutura xeral do c\IeC {\'o}digo fonte}{76}{section.8.1}
+\contentsline {section}{\numberline {8.2}Ficheiros de imaxe}{77}{section.8.2}
+\contentsline {section}{\numberline {8.3}A vista de engadir programa}{78}{section.8.3}
+\contentsline {section}{\numberline {8.4}A traduci\IeC {\'o}n}{79}{section.8.4}
+\contentsline {section}{\numberline {8.5}O contador de escoitas}{80}{section.8.5}
+\contentsline {section}{\numberline {8.6}O panel de xesti\IeC {\'o}n}{80}{section.8.6}
+\contentsline {section}{\numberline {8.7}Execuci\IeC {\'o}n dos procesos en Celery}{82}{section.8.7}
+\contentsline {section}{\numberline {8.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{82}{section.8.8}
+\contentsline {chapter}{\numberline {9}Probas do sistema}{85}{chapter.9}
+\contentsline {section}{\numberline {9.1}Probas de unidade}{86}{section.9.1}
+\contentsline {section}{\numberline {9.2}Probas de integraci\IeC {\'o}n}{91}{section.9.2}
+\contentsline {chapter}{\numberline {10}Conclusi\IeC {\'o}ns}{95}{chapter.10}
+\contentsline {section}{\numberline {10.1}Co\IeC {\~n}ecementos acadados}{97}{section.10.1}
+\contentsline {section}{\numberline {10.2}Futuros traballos}{97}{section.10.2}
+\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice: Dicionario de datos}{99}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{105}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{105}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{106}{section.Alph2.2}

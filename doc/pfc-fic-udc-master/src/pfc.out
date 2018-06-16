@@ -75,13 +75,21 @@
 \BOOKMARK [2][-]{subsection.7.2.3}{Capa Template}{section.7.2}% 75
 \BOOKMARK [1][-]{section.7.3}{Actualizaci\363n dos datos}{chapter.7}% 76
 \BOOKMARK [0][-]{chapter.8}{Implementaci\363n}{}% 77
-\BOOKMARK [0][-]{chapter.9}{Probas do sistema}{}% 78
-\BOOKMARK [1][-]{section.9.1}{Probas de unidade}{chapter.9}% 79
-\BOOKMARK [1][-]{section.9.2}{Probas de integraci\363n}{chapter.9}% 80
-\BOOKMARK [0][-]{chapter.10}{Conclusi\363ns}{}% 81
-\BOOKMARK [1][-]{section.10.1}{Co\361ecementos acadados}{chapter.10}% 82
-\BOOKMARK [1][-]{section.10.2}{Futuros traballos}{chapter.10}% 83
-\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice: Dicionario de datos}{}% 84
-\BOOKMARK [0][-]{appendix.Alph2}{Ap\351ndice: Licenza}{}% 85
-\BOOKMARK [1][-]{section.Alph2.1}{Licenzas das dependencias do proxecto}{appendix.Alph2}% 86
-\BOOKMARK [1][-]{section.Alph2.2}{Conclusi\363n}{appendix.Alph2}% 87
+\BOOKMARK [1][-]{section.8.1}{Estrutura xeral do c\363digo fonte}{chapter.8}% 78
+\BOOKMARK [1][-]{section.8.2}{Ficheiros de imaxe}{chapter.8}% 79
+\BOOKMARK [1][-]{section.8.3}{A vista de engadir programa}{chapter.8}% 80
+\BOOKMARK [1][-]{section.8.4}{A traduci\363n}{chapter.8}% 81
+\BOOKMARK [1][-]{section.8.5}{O contador de escoitas}{chapter.8}% 82
+\BOOKMARK [1][-]{section.8.6}{O panel de xesti\363n}{chapter.8}% 83
+\BOOKMARK [1][-]{section.8.7}{Execuci\363n dos procesos en Celery}{chapter.8}% 84
+\BOOKMARK [1][-]{section.8.8}{Adaptabilidade a dispositivos m\363biles}{chapter.8}% 85
+\BOOKMARK [0][-]{chapter.9}{Probas do sistema}{}% 86
+\BOOKMARK [1][-]{section.9.1}{Probas de unidade}{chapter.9}% 87
+\BOOKMARK [1][-]{section.9.2}{Probas de integraci\363n}{chapter.9}% 88
+\BOOKMARK [0][-]{chapter.10}{Conclusi\363ns}{}% 89
+\BOOKMARK [1][-]{section.10.1}{Co\361ecementos acadados}{chapter.10}% 90
+\BOOKMARK [1][-]{section.10.2}{Futuros traballos}{chapter.10}% 91
+\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice: Dicionario de datos}{}% 92
+\BOOKMARK [0][-]{appendix.Alph2}{Ap\351ndice: Licenza}{}% 93
+\BOOKMARK [1][-]{section.Alph2.1}{Licenzas das dependencias do proxecto}{appendix.Alph2}% 94
+\BOOKMARK [1][-]{section.Alph2.2}{Conclusi\363n}{appendix.Alph2}% 95
