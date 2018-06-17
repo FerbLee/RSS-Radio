@@ -121,33 +121,40 @@ def ud_iterate_episode_table(a_program,entry_list,rss_parser=None):
     
     for an_entry in entry_list:
         
-        episode_new = rss_parser.parse_episode(an_entry,a_program)
-        
-        if episode_new.original_id != None:
-            episode_old_qs = Episode.objects.filter(program_id=a_program,original_id=episode_new.original_id)
-        else:
-            episode_old_qs = Episode.objects.filter(program_id=a_program,title=episode_new.title,
-                                                    original_site=episode_new.original_site)
-        
-        if episode_old_qs.exists():
-       
-            try:
-                updated_image_url = rss_parser.get_episode_image_url_from_entry_dict(an_entry)  
-            except KeyError:
-                updated_image_url = None
+        try:
+            episode_new = rss_parser.parse_episode(an_entry,a_program)
+            
+            if episode_new.original_id != None:
+                episode_old_qs = Episode.objects.filter(program_id=a_program,original_id=episode_new.original_id)
+            else:
+                episode_old_qs = Episode.objects.filter(program_id=a_program,title=episode_new.title,
+                                                        original_site=episode_new.original_site)
+            
+            if episode_old_qs.exists():
+           
+                try:
+                    updated_image_url = rss_parser.get_episode_image_url_from_entry_dict(an_entry)  
+                except KeyError:
+                    updated_image_url = None
+                    
+                updated_tag_names = rss_parser.get_episode_tag_names_from_entry_dict(an_entry,clean=True)
                 
-            updated_tag_names = rss_parser.get_episode_tag_names_from_entry_dict(an_entry,clean=True)
+                ud_update_program_episode(episode_old_qs[0],episode_new,EPISODE_ATB_FROM_RSS,updated_image_url,
+                                          updated_tag_names)
+                
+            else:
+                
+                try:
+                    new_episode = rss_parser.save_single_episode(an_entry,a_program)
+                    print(str(type(new_episode)) + ' ' + new_episode.title + ' was CREATED')
+                except KeyError:
+                    continue
+        
+        except Exception as e:
             
-            ud_update_program_episode(episode_old_qs[0],episode_new,EPISODE_ATB_FROM_RSS,updated_image_url,
-                                      updated_tag_names)
-            
-        else:
-            
-            try:
-                new_episode = rss_parser.save_single_episode(an_entry,a_program)
-                print(str(type(new_episode)) + ' ' + new_episode.title + ' was CREATED')
-            except KeyError:
-                continue
+            print(e)
+            print("ERROR: ud_iterate_episode_table, episode " + str(an_entry))
+        
         
 
 
@@ -158,27 +165,36 @@ def ud_iterate_program_table():
     # chunk size 2000 default cannot be changed
     for a_program in program_set.iterator():
         
-        feed_dict = feedparser.parse(a_program.rss_link)
-        
-        parser = get_parser_by_program(a_program)
-        
-        updated_program = parser.parse_program(feed_dict)
-        
         try:
-            updated_image_url = parser.get_program_image_url_from_feed_dict(feed_dict)   
-        except:
-            updated_image_url = None
+            
+            feed_dict = feedparser.parse(a_program.rss_link)
+            
+            parser = get_parser_by_program(a_program)
+            
+            updated_program = parser.parse_program(feed_dict)
+            
+            try:
+                updated_image_url = parser.get_program_image_url_from_feed_dict(feed_dict)   
+            except:
+                updated_image_url = None
+            
+            updated_tag_names = parser.get_program_tag_names_from_feed_dict(feed_dict,clean=True)
+            
+            updated_program = ud_update_program_episode(a_program,updated_program,PROGRAM_ATB_FROM_RSS,updated_image_url,
+                                                        updated_tag_names)
+            
+            entry_list = parser.get_entry_list(feed_dict)
         
-        updated_tag_names = parser.get_program_tag_names_from_feed_dict(feed_dict,clean=True)
         
-        updated_program = ud_update_program_episode(a_program,updated_program,PROGRAM_ATB_FROM_RSS,updated_image_url,
-                                                    updated_tag_names)
+            ud_iterate_episode_table(updated_program,entry_list,parser)
         
-        entry_list = parser.get_entry_list(feed_dict)
-        
-        ud_iterate_episode_table(updated_program,entry_list,parser)
-        
-         
+        except Exception as e:
+            
+            print(e)
+            print("ERROR: ud_iterate_program_table, program " + str(a_program.name))
+            
+            
+            
 
 def main():
 
