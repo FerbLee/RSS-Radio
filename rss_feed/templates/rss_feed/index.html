@@ -26,6 +26,7 @@
 				        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
 				        	<img src="{{ episode.image.path.url }}" width='100'>
 				        	<p>{{ episode.title }}</p></a>
+				        	<p>{{ episode.publication_date }}</p>
 				        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
 				        </div>
 				    {% endfor %}
@@ -58,6 +59,7 @@
 			        	<a href="{% url 'rss_feed:detail_episode' episode.id %}">
 			        	<img src="{{ episode.image.path.url }}" width='100'>
 			        	<p>{{ episode.title }}</p></a>
+			        	<p>{{ episode.publication_date }}</p>
 			        	<p><a href="{% url 'rss_feed:detail_program' episode.program.id %}">{{ episode.program.name }}</a></p>
 			        </div>
 			    {% endfor %}

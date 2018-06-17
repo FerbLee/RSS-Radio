@@ -92,7 +92,7 @@ class RSSLinkParser(object):
     
     def __init__(self,rss_link,owner=None):
         
-        self._link = rss_link  
+        self._link = rss_link 
         self._owner = owner
     
     def getLinkToAudio(self,dict_list):

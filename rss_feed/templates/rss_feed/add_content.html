@@ -9,7 +9,9 @@
 <button type="button" onclick="asd(2)" id="add-station" 
 	value="{% blocktrans %}Add New Station{% endblocktrans %}">{% trans "Add New Station" %}</button></p>
 
-
+{% if show_error %}
+	<p style="color: red">{%trans "The entered data was not valid. Please, check it down." %}</p>
+{% endif %}
 
 
 <div id='addnc-link'>
@@ -24,9 +26,11 @@
         	{% if field.help_text %}
           		<small style="color: grey">{{ field.help_text }}</small>
         	{% endif %}
-       		{% for error in field.errors %}
+        	{% if show_error %}
+       			{% for error in field.errors %}
          			<p style="color: red">{{ error }}</p>
-       		{% endfor %}
+       			{% endfor %}
+       		{% endif %}
 	  		</p>
 	  	{% endfor %}
 	  	
@@ -83,9 +87,11 @@
 		        	{% if field.help_text %}
 		          		<small style="color: grey">{{ field.help_text }}</small>
 		        	{% endif %}
-	        		{% for error in field.errors %}
-	          			<p style="color: red">{{ error }}</p>
-	        		{% endfor %}
+		        	{% if show_error %}
+	        			{% for error in field.errors %}
+	          				<p style="color: red">{{ error }}</p>
+	        			{% endfor %}
+	        		{% endif %}
 	     		{% endif %}
 	  	</p>
 	  	{% endfor %}
@@ -97,38 +103,38 @@
 <a href="{% url 'rss_feed:index'%}">{% trans "Back" %}</a>
 
 <script type="text/javascript">
-	window.onload = function() {
+
+
+window.onload = function() {
 	
-		document.getElementById("addnc-link").style.display = "none";
-		document.getElementById("addnc-station").style.display = "none";
-
-	};
-
-  	function asd(a) {
-    	if (a == 1) {
-      		document.getElementById("addnc-link").style.display = "block";
-      		document.getElementById("addnc-station").style.display = "none";
-    	} else if (a == 2) {
-      			document.getElementById("addnc-link").style.display = "none";
-      			document.getElementById("addnc-station").style.display = "block";
-    		}else {
-      			document.getElementById("addnc-link").style.display = "none";
-      			document.getElementById("addnc-station").style.display = "none";
-    		}
-    };
-  	
-    function bcMethodFilter(bcm_id) {
-        var e = document.getElementById(bcm_id);
-        var bc_method = e.options[e.selectedIndex].value;
-       
-        if (bc_method == "fm" || bc_method == "di" || bc_method == "tv") {
-            document.getElementById("bc-area").style.display = "block";
-            document.getElementById("bc-freq").style.display = "block";
-        } else {
-            document.getElementById("bc-area").style.display = "none";
-            document.getElementById("bc-freq").style.display = "none";
-        }
-    };  
+	document.getElementById("addnc-link").style.display = "none";
+	document.getElementById("addnc-station").style.display = "none";
+};
+	function asd(a) {
+	if (a == 1) {
+  		document.getElementById("addnc-link").style.display = "block";
+  		document.getElementById("addnc-station").style.display = "none";
+	} else if (a == 2) {
+  			document.getElementById("addnc-link").style.display = "none";
+  			document.getElementById("addnc-station").style.display = "block";
+		}else {
+  			document.getElementById("addnc-link").style.display = "none";
+  			document.getElementById("addnc-station").style.display = "none";
+		}
+};
+	
+function bcMethodFilter(bcm_id) {
+    var e = document.getElementById(bcm_id);
+    var bc_method = e.options[e.selectedIndex].value;
+   
+    if (bc_method == "fm" || bc_method == "di" || bc_method == "tv") {
+        document.getElementById("bc-area").style.display = "block";
+        document.getElementById("bc-freq").style.display = "block";
+    } else {
+        document.getElementById("bc-area").style.display = "none";
+        document.getElementById("bc-freq").style.display = "none";
+    }
+};  
 
     
 </script>

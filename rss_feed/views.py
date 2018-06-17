@@ -691,14 +691,19 @@ def add_content(request):
         
         else:
             print('add_content view: No form is valid in POST!')
-            return HttpResponseNotFound()
+            #return HttpResponseNotFound()
+    
+            form_station = AddStationForm(request.POST,prefix='form_station') 
+            form_rss = AddProgramForm(request.POST,prefix='form_rss',initial={'sharing-options':SH_TF[0],'comment-options':CO_ENABLE[0]})
+
+            return render(request, 'rss_feed/add_content.html', {'form_station': form_station,'form_rss': form_rss,'show_error':True})
         
     else:
         
         form_station = AddStationForm(request.POST,prefix='form_station') 
         form_rss = AddProgramForm(request.POST,prefix='form_rss',initial={'sharing-options':SH_TF[0],'comment-options':CO_ENABLE[0]})
     
-        return render(request, 'rss_feed/add_content.html', {'form_station': form_station,'form_rss': form_rss})
+        return render(request, 'rss_feed/add_content.html', {'form_station': form_station,'form_rss': form_rss,'show_error':False})
 
 
 
