@@ -113,3 +113,18 @@
 \contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{105}{section.Alph2.1}
 \contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{106}{section.Alph2.2}
 \contentsline {chapter}{\numberline {C}Ap\IeC {\'e}ndice: Manual de usuario}{107}{appendix.Alph3}
+\contentsline {section}{\numberline {C.1}Usuarios}{108}{section.Alph3.1}
+\contentsline {subsection}{\numberline {C.1.1}Crear}{108}{subsection.Alph3.1.1}
+\contentsline {subsection}{\numberline {C.1.2}Editar}{108}{subsection.Alph3.1.2}
+\contentsline {section}{\numberline {C.2}Acci\IeC {\'o}ns de ouvinte}{108}{section.Alph3.2}
+\contentsline {subsection}{\numberline {C.2.1}Escoitar e seguir unha emisora}{108}{subsection.Alph3.2.1}
+\contentsline {subsection}{\numberline {C.2.2}Subscribirse a un programa}{109}{subsection.Alph3.2.2}
+\contentsline {subsection}{\numberline {C.2.3}Acci\IeC {\'o}ns sobre os episodios}{109}{subsection.Alph3.2.3}
+\contentsline {subsection}{\numberline {C.2.4}Contidos favoritos}{109}{subsection.Alph3.2.4}
+\contentsline {section}{\numberline {C.3}Acci\IeC {\'o}ns de produtor de contidos}{110}{section.Alph3.3}
+\contentsline {subsection}{\numberline {C.3.1}Crear unha emisora}{110}{subsection.Alph3.3.1}
+\contentsline {subsection}{\numberline {C.3.2}Xestionar unha emisora}{110}{subsection.Alph3.3.2}
+\contentsline {subsubsection}{\numberline {C.3.2.1}Editar perfil}{110}{subsubsection.Alph3.3.2.1}
+\contentsline {subsubsection}{\numberline {C.3.2.2}Xestionar emisi\IeC {\'o}n}{110}{subsubsection.Alph3.3.2.2}
+\contentsline {subsubsection}{\numberline {C.3.2.3}Xestionar administradores}{111}{subsubsection.Alph3.3.2.3}
+\contentsline {subsubsection}{\numberline {C.3.2.4}Borrar emisora}{111}{subsubsection.Alph3.3.2.4}
