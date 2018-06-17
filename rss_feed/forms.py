@@ -89,8 +89,17 @@ class ImageFieldDisplay(forms.widgets.FileInput):
 
 class SignUpForm(UserCreationForm):
     
+    def __init__(self,*args, **kwargs):
+    
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        self.fields['username'].help_text = _('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only')
+        self.fields['password1'].help_text = _('<ul><li>Your password cannot be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password cannot be a commonly used password.</li><li>Your password cannot be entirely numeric.</li></ul>')
+        self.fields['password2'].help_text = _('Enter the same password as before, for verification.')
+        self.fields['email'].required = True    
+        self.fields['email'].help_text = _('Required')
+        
     location = forms.CharField(label=_('Location'),max_length=100,required=False)
-    description = forms.CharField(label=_('Description'),max_length=500,required=False)
+    description = forms.CharField(label=_('Description'),widget=forms.Textarea,max_length=500,required=False)
     
     ifd = ImageFieldDisplay()
     avatar = forms.ImageField(label=_('Avatar'),widget=ifd,required=False)
@@ -98,7 +107,7 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',
-                  'location','description','avatar')
+                 'location','description','avatar')
 
 
 class EditUserForm(forms.ModelForm):
