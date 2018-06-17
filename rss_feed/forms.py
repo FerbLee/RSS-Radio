@@ -115,8 +115,8 @@ class EditUserForm(forms.ModelForm):
     location = forms.CharField(label='Location',max_length=100,required=False)
     #description = forms.CharField(label='Description',max_length=500,required=False)
 
-    cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
-    description = forms.CharField(label=_('Description'),widget=cw,required=False)
+    #cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
+    description = forms.CharField(label=_('Description'),widget=forms.Textarea ,required=False)
     
     ifd = ImageFieldDisplay()
     avatar = forms.ImageField(label=_('Avatar'),widget=ifd,required=False)
@@ -161,8 +161,8 @@ class AddStationForm(forms.ModelForm):
     
     name = forms.CharField(label=_('Name'),max_length=200)
 
-    cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
-    description = forms.CharField(label=_('Description'),max_length=500,widget=cw,required=False)
+    #cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
+    description = forms.CharField(label=_('Description'),max_length=500,widget=forms.Textarea,required=False)
     location = forms.CharField(label=_('Location'),max_length=200,required=False)
     profile_img = forms.ImageField(label=_('Profile Image'),widget=ImageFieldDisplay(),required=False)
     logo = forms.ImageField(label=_('Logo'),widget=ImageFieldDisplay(),required=False)
@@ -182,8 +182,8 @@ class AddStationForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     
-    cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
-    text = forms.CharField(label=_('Text'),max_length=500,widget=cw,required=True)
+    #cw = CountableWidget(attrs={'data-min-count': 5,'data-max-count': 90})
+    text = forms.CharField(label=_('Text'),max_length=500,widget=forms.Textarea,required=True)
     
     
     def save(self, user, episode, commit=True, *args, **kwargs):

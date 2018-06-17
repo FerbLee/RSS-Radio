@@ -1126,7 +1126,7 @@ def add_admin(request,**kwargs):
                 entity.programadmin_set.create(user=new_admin,type=new_admin_type)
             
             permission_dict = dict(EXISTING_ADMIN_TYPES)
-            messages.success(request, _('User') + ' ' + new_admin.username + ' ' + _('was successfully added as')+ ' ' + permission_dict[new_admin_type],
+            messages.success(request, _('User') + ' ' + new_admin.username + ' ' + _('was successfully added as')+ ' ' + str(permission_dict[new_admin_type]),
                              extra_tags='add')
         
         else:
