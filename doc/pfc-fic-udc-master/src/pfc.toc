@@ -112,3 +112,4 @@
 \contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{105}{appendix.Alph2}
 \contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{105}{section.Alph2.1}
 \contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{106}{section.Alph2.2}
+\contentsline {chapter}{\numberline {C}Ap\IeC {\'e}ndice: Manual de usuario}{107}{appendix.Alph3}
