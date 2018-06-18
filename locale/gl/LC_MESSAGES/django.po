@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-17 15:02+0000\n"
+"POT-Creation-Date: 2018-06-17 22:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -258,7 +258,7 @@ msgstr "Non es usuario?"
 #: rss_feed/templates/rss_feed/admin_program.html:139
 #: rss_feed/templates/rss_feed/admin_station.html:139
 #: rss_feed/templates/rss_feed/detail_episode.html:143
-#: rss_feed/templates/rss_feed/detail_program.html:135
+#: rss_feed/templates/rss_feed/detail_program.html:136
 #: rss_feed/templates/rss_feed/detail_station.html:142
 #: rss_feed/templates/rss_feed/detail_user.html:144
 #: rss_feed/templates/rss_feed/manage_program.html:65
@@ -358,6 +358,10 @@ msgstr "Administración"
 #: rss_feed/templates/rss_feed/predelete_program.html:11
 msgid "Delete Program"
 msgstr "Borrar Programa"
+
+#: rss_feed/templates/rss_feed/admin_program.html:17
+msgid "Add new Administrator"
+msgstr "Engadir novo Administrador"
 
 #: rss_feed/templates/rss_feed/admin_program.html:21
 #: rss_feed/templates/rss_feed/admin_station.html:21
@@ -594,15 +598,15 @@ msgstr "Sitio Web:"
 msgid "Episodes"
 msgstr "Episodios"
 
-#: rss_feed/templates/rss_feed/detail_program.html:68
+#: rss_feed/templates/rss_feed/detail_program.html:69
 #: rss_feed/templates/rss_feed/detail_station.html:70
 #: rss_feed/templates/rss_feed/search_results.html:29
 msgid "No episodes"
 msgstr "Non hai episodios"
 
-#: rss_feed/templates/rss_feed/detail_program.html:75
-#: rss_feed/templates/rss_feed/detail_program.html:102
-#: rss_feed/templates/rss_feed/detail_program.html:126
+#: rss_feed/templates/rss_feed/detail_program.html:76
+#: rss_feed/templates/rss_feed/detail_program.html:103
+#: rss_feed/templates/rss_feed/detail_program.html:127
 #: rss_feed/templates/rss_feed/detail_station.html:78
 #: rss_feed/templates/rss_feed/detail_station.html:107
 #: rss_feed/templates/rss_feed/detail_station.html:133
@@ -622,9 +626,9 @@ msgstr "Non hai episodios"
 msgid "previous"
 msgstr "anterior"
 
-#: rss_feed/templates/rss_feed/detail_program.html:79
-#: rss_feed/templates/rss_feed/detail_program.html:106
-#: rss_feed/templates/rss_feed/detail_program.html:130
+#: rss_feed/templates/rss_feed/detail_program.html:80
+#: rss_feed/templates/rss_feed/detail_program.html:107
+#: rss_feed/templates/rss_feed/detail_program.html:131
 #: rss_feed/templates/rss_feed/detail_station.html:82
 #: rss_feed/templates/rss_feed/detail_station.html:111
 #: rss_feed/templates/rss_feed/detail_station.html:137
@@ -644,20 +648,20 @@ msgstr "anterior"
 msgid "next"
 msgstr "seguinte"
 
-#: rss_feed/templates/rss_feed/detail_program.html:83
+#: rss_feed/templates/rss_feed/detail_program.html:84
 msgid "Broadcasted in:"
 msgstr "Emitido en:"
 
-#: rss_feed/templates/rss_feed/detail_program.html:95
+#: rss_feed/templates/rss_feed/detail_program.html:96
 #: rss_feed/templates/rss_feed/search_results.html:75
 msgid "No stations"
 msgstr "Non hai emisoras"
 
-#: rss_feed/templates/rss_feed/detail_program.html:110
+#: rss_feed/templates/rss_feed/detail_program.html:111
 msgid "Subscribers:"
 msgstr "Subscritores:"
 
-#: rss_feed/templates/rss_feed/detail_program.html:120
+#: rss_feed/templates/rss_feed/detail_program.html:121
 msgid "No subscribers yet"
 msgstr "Aínda sen subscritores"
 

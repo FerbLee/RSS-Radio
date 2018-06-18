@@ -14,7 +14,7 @@
 <div class="dashboard-view">
 {% if is_owner %}
 	<div id="new-admin-section">	
-	<h3>Add new Administrator</h3>
+	<h3>{% trans "Add new Administrator" %}</h3>
 		<form method="post" class="form-inline" action="{% url 'rss_feed:add_admin' program.id program_class_id %}">
 			{% csrf_token %}
 			{{add_admin_form}}
