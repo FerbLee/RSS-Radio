@@ -39,75 +39,76 @@
 \BOOKMARK [2][-]{subsection.3.9.5}{TeXstudio}{section.3.9}% 39
 \BOOKMARK [2][-]{subsection.3.9.6}{Mozilla Firefox}{section.3.9}% 40
 \BOOKMARK [2][-]{subsection.3.9.7}{GIMP}{section.3.9}% 41
-\BOOKMARK [2][-]{subsection.3.9.8}{Projectlibre}{section.3.9}% 42
+\BOOKMARK [2][-]{subsection.3.9.8}{ProjectLibre}{section.3.9}% 42
 \BOOKMARK [0][-]{chapter.4}{Metodolox\355a}{}% 43
-\BOOKMARK [1][-]{section.4.1}{TDD}{chapter.4}% 44
-\BOOKMARK [1][-]{section.4.2}{XP}{chapter.4}% 45
-\BOOKMARK [0][-]{chapter.5}{An\341lise}{}% 46
-\BOOKMARK [1][-]{section.5.1}{Requirimentos funcionais}{chapter.5}% 47
-\BOOKMARK [1][-]{section.5.2}{Requirimentos non funcionais}{chapter.5}% 48
-\BOOKMARK [2][-]{subsection.5.2.1}{Autenticaci\363n}{section.5.2}% 49
-\BOOKMARK [2][-]{subsection.5.2.2}{Internacionalizaci\363n}{section.5.2}% 50
-\BOOKMARK [2][-]{subsection.5.2.3}{Rendemento}{section.5.2}% 51
-\BOOKMARK [2][-]{subsection.5.2.4}{Seguridade}{section.5.2}% 52
-\BOOKMARK [2][-]{subsection.5.2.5}{Adaptabilidade a dispositivos m\363biles}{section.5.2}% 53
-\BOOKMARK [0][-]{chapter.6}{Dese\361o}{}% 54
-\BOOKMARK [1][-]{section.6.1}{Descrici\363n do funcionamento}{chapter.6}% 55
-\BOOKMARK [2][-]{subsection.6.1.1}{Actividades de consumo de contidos}{section.6.1}% 56
-\BOOKMARK [2][-]{subsection.6.1.2}{Actividades de produci\363n de contidos}{section.6.1}% 57
-\BOOKMARK [1][-]{section.6.2}{Arquitectura}{chapter.6}% 58
-\BOOKMARK [2][-]{subsection.6.2.1}{Capa Modelo}{section.6.2}% 59
-\BOOKMARK [2][-]{subsection.6.2.2}{Capa Vista}{section.6.2}% 60
-\BOOKMARK [2][-]{subsection.6.2.3}{Capa Template}{section.6.2}% 61
-\BOOKMARK [1][-]{section.6.3}{Actualizaci\363n dos datos}{chapter.6}% 62
-\BOOKMARK [0][-]{chapter.7}{Implementaci\363n}{}% 63
-\BOOKMARK [1][-]{section.7.1}{Estrutura xeral do c\363digo fonte}{chapter.7}% 64
-\BOOKMARK [1][-]{section.7.2}{Ficheiros de imaxe}{chapter.7}% 65
-\BOOKMARK [1][-]{section.7.3}{A vista de engadir programa}{chapter.7}% 66
-\BOOKMARK [1][-]{section.7.4}{A traduci\363n}{chapter.7}% 67
-\BOOKMARK [1][-]{section.7.5}{O contador de escoitas}{chapter.7}% 68
-\BOOKMARK [1][-]{section.7.6}{O panel de xesti\363n}{chapter.7}% 69
-\BOOKMARK [1][-]{section.7.7}{Execuci\363n dos procesos en Celery}{chapter.7}% 70
-\BOOKMARK [1][-]{section.7.8}{Adaptabilidade a dispositivos m\363biles}{chapter.7}% 71
-\BOOKMARK [0][-]{chapter.8}{Planificaci\363n}{}% 72
-\BOOKMARK [1][-]{section.8.1}{Orixe do proxecto \(REVISAR\)}{chapter.8}% 73
-\BOOKMARK [1][-]{section.8.2}{Iteraci\363ns}{chapter.8}% 74
-\BOOKMARK [2][-]{subsection.8.2.1}{Primeira reuni\363n \(Iteraci\363n 0\)}{section.8.2}% 75
-\BOOKMARK [2][-]{subsection.8.2.2}{Iteraci\363n 1}{section.8.2}% 76
-\BOOKMARK [2][-]{subsection.8.2.3}{Iteraci\363n 2}{section.8.2}% 77
-\BOOKMARK [2][-]{subsection.8.2.4}{Iteraci\363n 3}{section.8.2}% 78
-\BOOKMARK [2][-]{subsection.8.2.5}{Iteraci\363n 4}{section.8.2}% 79
-\BOOKMARK [2][-]{subsection.8.2.6}{Iteraci\363n 5}{section.8.2}% 80
-\BOOKMARK [2][-]{subsection.8.2.7}{Iteraci\363n 6}{section.8.2}% 81
-\BOOKMARK [2][-]{subsection.8.2.8}{Iteraci\363n 7}{section.8.2}% 82
-\BOOKMARK [2][-]{subsection.8.2.9}{Iteraci\363n 8}{section.8.2}% 83
-\BOOKMARK [2][-]{subsection.8.2.10}{Iteraci\363n 9}{section.8.2}% 84
-\BOOKMARK [2][-]{subsection.8.2.11}{Iteraci\363n 10}{section.8.2}% 85
-\BOOKMARK [2][-]{subsection.8.2.12}{Iteraci\363n 11}{section.8.2}% 86
-\BOOKMARK [1][-]{section.8.3}{Estudo de custos}{chapter.8}% 87
-\BOOKMARK [1][-]{section.8.4}{Programaci\363n das tarefas}{chapter.8}% 88
-\BOOKMARK [0][-]{chapter.9}{Probas do sistema}{}% 89
-\BOOKMARK [1][-]{section.9.1}{Probas de unidade}{chapter.9}% 90
-\BOOKMARK [1][-]{section.9.2}{Probas de integraci\363n}{chapter.9}% 91
-\BOOKMARK [0][-]{chapter.10}{Conclusi\363ns}{}% 92
-\BOOKMARK [1][-]{section.10.1}{Co\361ecementos acadados}{chapter.10}% 93
-\BOOKMARK [1][-]{section.10.2}{Futuros traballos}{chapter.10}% 94
-\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice: Dicionario de datos}{}% 95
-\BOOKMARK [0][-]{appendix.Alph2}{Ap\351ndice: Licenza}{}% 96
-\BOOKMARK [1][-]{section.Alph2.1}{Licenzas das dependencias do proxecto}{appendix.Alph2}% 97
-\BOOKMARK [1][-]{section.Alph2.2}{Conclusi\363n}{appendix.Alph2}% 98
-\BOOKMARK [0][-]{appendix.Alph3}{Ap\351ndice: Manual de usuario}{}% 99
-\BOOKMARK [1][-]{section.Alph3.1}{Usuarios}{appendix.Alph3}% 100
-\BOOKMARK [2][-]{subsection.Alph3.1.1}{Crear}{section.Alph3.1}% 101
-\BOOKMARK [2][-]{subsection.Alph3.1.2}{Editar}{section.Alph3.1}% 102
-\BOOKMARK [1][-]{section.Alph3.2}{Acci\363ns de ouvinte}{appendix.Alph3}% 103
-\BOOKMARK [2][-]{subsection.Alph3.2.1}{Escoitar e seguir unha emisora}{section.Alph3.2}% 104
-\BOOKMARK [2][-]{subsection.Alph3.2.2}{Subscribirse a un programa}{section.Alph3.2}% 105
-\BOOKMARK [2][-]{subsection.Alph3.2.3}{Acci\363ns sobre os episodios}{section.Alph3.2}% 106
-\BOOKMARK [2][-]{subsection.Alph3.2.4}{Contidos favoritos}{section.Alph3.2}% 107
-\BOOKMARK [1][-]{section.Alph3.3}{Procura de contidos}{appendix.Alph3}% 108
-\BOOKMARK [1][-]{section.Alph3.4}{Acci\363ns de produtor de contidos}{appendix.Alph3}% 109
-\BOOKMARK [2][-]{subsection.Alph3.4.1}{Crear unha emisora}{section.Alph3.4}% 110
-\BOOKMARK [2][-]{subsection.Alph3.4.2}{Xestionar unha emisora}{section.Alph3.4}% 111
-\BOOKMARK [2][-]{subsection.Alph3.4.3}{Crear un programa}{section.Alph3.4}% 112
-\BOOKMARK [2][-]{subsection.Alph3.4.4}{Xestionar un programa}{section.Alph3.4}% 113
+\BOOKMARK [1][-]{section.4.1}{Principios das metodolox\355as \341xiles}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.2}{Extreme Programming}{chapter.4}% 45
+\BOOKMARK [1][-]{section.4.3}{Test Driven Development}{chapter.4}% 46
+\BOOKMARK [0][-]{chapter.5}{An\341lise}{}% 47
+\BOOKMARK [1][-]{section.5.1}{Requirimentos funcionais}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.2}{Requirimentos non funcionais}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.2.1}{Autenticaci\363n}{section.5.2}% 50
+\BOOKMARK [2][-]{subsection.5.2.2}{Internacionalizaci\363n}{section.5.2}% 51
+\BOOKMARK [2][-]{subsection.5.2.3}{Rendemento}{section.5.2}% 52
+\BOOKMARK [2][-]{subsection.5.2.4}{Seguridade}{section.5.2}% 53
+\BOOKMARK [2][-]{subsection.5.2.5}{Adaptabilidade a dispositivos m\363biles}{section.5.2}% 54
+\BOOKMARK [0][-]{chapter.6}{Dese\361o}{}% 55
+\BOOKMARK [1][-]{section.6.1}{Descrici\363n do funcionamento}{chapter.6}% 56
+\BOOKMARK [2][-]{subsection.6.1.1}{Actividades de consumo de contidos}{section.6.1}% 57
+\BOOKMARK [2][-]{subsection.6.1.2}{Actividades de produci\363n de contidos}{section.6.1}% 58
+\BOOKMARK [1][-]{section.6.2}{Arquitectura}{chapter.6}% 59
+\BOOKMARK [2][-]{subsection.6.2.1}{Capa Modelo}{section.6.2}% 60
+\BOOKMARK [2][-]{subsection.6.2.2}{Capa Vista}{section.6.2}% 61
+\BOOKMARK [2][-]{subsection.6.2.3}{Capa Template}{section.6.2}% 62
+\BOOKMARK [1][-]{section.6.3}{Actualizaci\363n dos datos}{chapter.6}% 63
+\BOOKMARK [0][-]{chapter.7}{Implementaci\363n}{}% 64
+\BOOKMARK [1][-]{section.7.1}{Estrutura xeral do c\363digo fonte}{chapter.7}% 65
+\BOOKMARK [1][-]{section.7.2}{Ficheiros de imaxe}{chapter.7}% 66
+\BOOKMARK [1][-]{section.7.3}{A vista de engadir programa}{chapter.7}% 67
+\BOOKMARK [1][-]{section.7.4}{A traduci\363n}{chapter.7}% 68
+\BOOKMARK [1][-]{section.7.5}{O contador de escoitas}{chapter.7}% 69
+\BOOKMARK [1][-]{section.7.6}{O panel de xesti\363n}{chapter.7}% 70
+\BOOKMARK [1][-]{section.7.7}{Execuci\363n dos procesos en Celery}{chapter.7}% 71
+\BOOKMARK [1][-]{section.7.8}{Adaptabilidade a dispositivos m\363biles}{chapter.7}% 72
+\BOOKMARK [0][-]{chapter.8}{Planificaci\363n}{}% 73
+\BOOKMARK [1][-]{section.8.1}{Orixe do proxecto \(REVISAR\)}{chapter.8}% 74
+\BOOKMARK [1][-]{section.8.2}{Iteraci\363ns}{chapter.8}% 75
+\BOOKMARK [2][-]{subsection.8.2.1}{Primeira reuni\363n \(Iteraci\363n 0\)}{section.8.2}% 76
+\BOOKMARK [2][-]{subsection.8.2.2}{Iteraci\363n 1}{section.8.2}% 77
+\BOOKMARK [2][-]{subsection.8.2.3}{Iteraci\363n 2}{section.8.2}% 78
+\BOOKMARK [2][-]{subsection.8.2.4}{Iteraci\363n 3}{section.8.2}% 79
+\BOOKMARK [2][-]{subsection.8.2.5}{Iteraci\363n 4}{section.8.2}% 80
+\BOOKMARK [2][-]{subsection.8.2.6}{Iteraci\363n 5}{section.8.2}% 81
+\BOOKMARK [2][-]{subsection.8.2.7}{Iteraci\363n 6}{section.8.2}% 82
+\BOOKMARK [2][-]{subsection.8.2.8}{Iteraci\363n 7}{section.8.2}% 83
+\BOOKMARK [2][-]{subsection.8.2.9}{Iteraci\363n 8}{section.8.2}% 84
+\BOOKMARK [2][-]{subsection.8.2.10}{Iteraci\363n 9}{section.8.2}% 85
+\BOOKMARK [2][-]{subsection.8.2.11}{Iteraci\363n 10}{section.8.2}% 86
+\BOOKMARK [2][-]{subsection.8.2.12}{Iteraci\363n 11}{section.8.2}% 87
+\BOOKMARK [1][-]{section.8.3}{Estudo de custos}{chapter.8}% 88
+\BOOKMARK [1][-]{section.8.4}{Programaci\363n das tarefas}{chapter.8}% 89
+\BOOKMARK [0][-]{chapter.9}{Probas do sistema}{}% 90
+\BOOKMARK [1][-]{section.9.1}{Probas de unidade}{chapter.9}% 91
+\BOOKMARK [1][-]{section.9.2}{Probas de integraci\363n}{chapter.9}% 92
+\BOOKMARK [0][-]{chapter.10}{Conclusi\363ns}{}% 93
+\BOOKMARK [1][-]{section.10.1}{Co\361ecementos acadados}{chapter.10}% 94
+\BOOKMARK [1][-]{section.10.2}{Futuros traballos}{chapter.10}% 95
+\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice: Dicionario de datos}{}% 96
+\BOOKMARK [0][-]{appendix.Alph2}{Ap\351ndice: Licenza}{}% 97
+\BOOKMARK [1][-]{section.Alph2.1}{Licenzas das dependencias do proxecto}{appendix.Alph2}% 98
+\BOOKMARK [1][-]{section.Alph2.2}{Conclusi\363n}{appendix.Alph2}% 99
+\BOOKMARK [0][-]{appendix.Alph3}{Ap\351ndice: Manual de usuario}{}% 100
+\BOOKMARK [1][-]{section.Alph3.1}{Usuarios}{appendix.Alph3}% 101
+\BOOKMARK [2][-]{subsection.Alph3.1.1}{Crear}{section.Alph3.1}% 102
+\BOOKMARK [2][-]{subsection.Alph3.1.2}{Editar}{section.Alph3.1}% 103
+\BOOKMARK [1][-]{section.Alph3.2}{Acci\363ns de ouvinte}{appendix.Alph3}% 104
+\BOOKMARK [2][-]{subsection.Alph3.2.1}{Escoitar e seguir unha emisora}{section.Alph3.2}% 105
+\BOOKMARK [2][-]{subsection.Alph3.2.2}{Subscribirse a un programa}{section.Alph3.2}% 106
+\BOOKMARK [2][-]{subsection.Alph3.2.3}{Acci\363ns sobre os episodios}{section.Alph3.2}% 107
+\BOOKMARK [2][-]{subsection.Alph3.2.4}{Contidos favoritos}{section.Alph3.2}% 108
+\BOOKMARK [1][-]{section.Alph3.3}{Procura de contidos}{appendix.Alph3}% 109
+\BOOKMARK [1][-]{section.Alph3.4}{Acci\363ns de produtor de contidos}{appendix.Alph3}% 110
+\BOOKMARK [2][-]{subsection.Alph3.4.1}{Crear unha emisora}{section.Alph3.4}% 111
+\BOOKMARK [2][-]{subsection.Alph3.4.2}{Xestionar unha emisora}{section.Alph3.4}% 112
+\BOOKMARK [2][-]{subsection.Alph3.4.3}{Crear un programa}{section.Alph3.4}% 113
+\BOOKMARK [2][-]{subsection.Alph3.4.4}{Xestionar un programa}{section.Alph3.4}% 114
