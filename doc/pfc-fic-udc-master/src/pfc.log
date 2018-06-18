@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.6.14)  18 JUN 2018 21:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.6.14)  18 JUN 2018 22:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -9573,14 +9573,8 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 120.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 120.
 Package rerunfilecheck Info: File `pfc.out' has not changed.
 (rerunfilecheck)             Checksum: C8EF2E51909E612913A6404CCB70CFBB;7910.
-
-
-Package rerunfilecheck Warning: File `pfc.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `pfc.brf':
-(rerunfilecheck)             Before: B71EF790F1CF7BEC51DA0823E5FBDC87;2649
-(rerunfilecheck)             After:  FEFDF8838FCC6A5E981BA7B9700A3519;2693.
+Package rerunfilecheck Info: File `pfc.brf' has not changed.
+(rerunfilecheck)             Checksum: FEFDF8838FCC6A5E981BA7B9700A3519;2693.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 120.
  ) 
 Here is how much of TeX's memory you used:
@@ -9671,10 +9665,10 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/eurosym/feymr10.pfb>
-Output written on pfc.pdf (156 pages, 7631600 bytes).
+Output written on pfc.pdf (156 pages, 7632906 bytes).
 PDF statistics:
- 2617 PDF objects out of 2984 (max. 8388607)
- 2292 compressed objects within 23 object streams
+ 2618 PDF objects out of 2984 (max. 8388607)
+ 2293 compressed objects within 23 object streams
  786 named destinations out of 1000 (max. 500000)
  1267 words of extra memory for PDF output out of 10000 (max. 10000000)
 
