@@ -1,21 +1,8 @@
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.1}Descrici\IeC {\'o}n do funcionamento}{\reset@font\mtcSfont 58}{section.7.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {7.1.1}Actividades de consumo de contidos}{\reset@font\mtcSSfont 58}{subsection.7.1.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {7.1.2}Actividades de produci\IeC {\'o}n de contidos}{\reset@font\mtcSSfont 58}{subsection.7.1.2}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.2}Arquitectura}{\reset@font\mtcSfont 59}{section.7.2}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {7.2.1}Capa Modelo}{\reset@font\mtcSSfont 60}{subsection.7.2.1}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.1.1}Usuarios}{\reset@font\mtcSSSfont 60}{subsubsection.7.2.1.1}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.1.2}Programas e episodios}{\reset@font\mtcSSSfont 61}{subsubsection.7.2.1.2}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.1.3}Votos e comentarios}{\reset@font\mtcSSSfont 63}{subsubsection.7.2.1.3}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.1.4}A entidade Station}{\reset@font\mtcSSSfont 63}{subsubsection.7.2.1.4}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.1.5}Administraci\IeC {\'o}n de contido}{\reset@font\mtcSSSfont 63}{subsubsection.7.2.1.5}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {7.2.2}Capa Vista}{\reset@font\mtcSSfont 64}{subsection.7.2.2}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.2.1}Engadir contido}{\reset@font\mtcSSSfont 66}{subsubsection.7.2.2.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {7.2.3}Capa Template}{\reset@font\mtcSSfont 67}{subsection.7.2.3}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.3.1}Portada}{\reset@font\mtcSSSfont 68}{subsubsection.7.2.3.1}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.3.2}P\IeC {\'a}xinas de engadir e editar contido}{\reset@font\mtcSSSfont 69}{subsubsection.7.2.3.2}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.3.3}P\IeC {\'a}xinas de detalle}{\reset@font\mtcSSSfont 69}{subsubsection.7.2.3.3}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.3.4}P\IeC {\'a}xina de resultados de busca}{\reset@font\mtcSSSfont 69}{subsubsection.7.2.3.4}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.2.3.5}P\IeC {\'a}xinas de xesti\IeC {\'o}n}{\reset@font\mtcSSSfont 70}{subsubsection.7.2.3.5}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.3}Actualizaci\IeC {\'o}n dos datos}{\reset@font\mtcSfont 72}{section.7.3}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.3.0.1}Novos episodios}{\reset@font\mtcSSSfont 72}{subsubsection.7.3.0.1}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode \numberline {7.3.0.2}Popularidade e cualificaci\IeC {\'o}n dos programas}{\reset@font\mtcSSSfont 73}{subsubsection.7.3.0.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.1}Estrutura xeral do c\IeC {\'o}digo fonte}{\reset@font\mtcSfont 60}{section.7.1}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.2}Ficheiros de imaxe}{\reset@font\mtcSfont 61}{section.7.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.3}A vista de engadir programa}{\reset@font\mtcSfont 62}{section.7.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.4}A traduci\IeC {\'o}n}{\reset@font\mtcSfont 63}{section.7.4}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.5}O contador de escoitas}{\reset@font\mtcSfont 64}{section.7.5}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.6}O panel de xesti\IeC {\'o}n}{\reset@font\mtcSfont 64}{section.7.6}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.7}Execuci\IeC {\'o}n dos procesos en Celery}{\reset@font\mtcSfont 66}{section.7.7}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {7.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{\reset@font\mtcSfont 66}{section.7.8}}

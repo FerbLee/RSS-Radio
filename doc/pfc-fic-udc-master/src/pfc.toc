@@ -2,106 +2,108 @@
 \contentsline {chapter}{\numberline {1}Introduci\IeC {\'o}n}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Marco do proxecto}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Motivaci\IeC {\'o}n}{3}{section.1.2}
-\contentsline {section}{\numberline {1.3}Obxectivos}{3}{section.1.3}
-\contentsline {chapter}{\numberline {2}Estado da arte}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Alternativas Existentes}{6}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}TuneIn}{6}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}iTunes}{7}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Podomatic}{7}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Ivoox}{8}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}RadioCo}{9}{subsection.2.1.5}
-\contentsline {section}{\numberline {2.2}T\IeC {\'a}boa comparativa}{9}{section.2.2}
-\contentsline {section}{\numberline {2.3}Conclusi\IeC {\'o}n}{11}{section.2.3}
-\contentsline {chapter}{\numberline {3}Tecnolox\IeC {\'\i }a e ferramentas empregadas}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}Linguaxes}{15}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Python}{15}{subsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.1.1}Anaconda}{16}{subsubsection.3.1.1.1}
-\contentsline {subsection}{\numberline {3.1.2}HTML}{16}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}CSS}{17}{subsection.3.1.3}
-\contentsline {subsubsection}{\numberline {3.1.3.1}CSS Grid}{17}{subsubsection.3.1.3.1}
-\contentsline {subsection}{\numberline {3.1.4}JavaScript}{18}{subsection.3.1.4}
-\contentsline {subsubsection}{\numberline {3.1.4.1}jQuery}{18}{subsubsection.3.1.4.1}
-\contentsline {subsection}{\numberline {3.1.5}SQL}{19}{subsection.3.1.5}
-\contentsline {subsection}{\numberline {3.1.6}XML}{19}{subsection.3.1.6}
-\contentsline {subsubsection}{\numberline {3.1.6.1}RSS}{20}{subsubsection.3.1.6.1}
-\contentsline {subsection}{\numberline {3.1.7}JSON}{21}{subsection.3.1.7}
-\contentsline {subsection}{\numberline {3.1.8}LaTeX}{22}{subsection.3.1.8}
-\contentsline {section}{\numberline {3.2}Django Framework}{22}{section.3.2}
-\contentsline {section}{\numberline {3.3}Celery}{24}{section.3.3}
-\contentsline {section}{\numberline {3.4}RabbitMQ}{24}{section.3.4}
-\contentsline {section}{\numberline {3.5}Bootstrap}{24}{section.3.5}
-\contentsline {section}{\numberline {3.6}Ajax}{25}{section.3.6}
-\contentsline {section}{\numberline {3.7}Apache HTTP server}{25}{section.3.7}
-\contentsline {section}{\numberline {3.8}PostgreSQL}{26}{section.3.8}
-\contentsline {section}{\numberline {3.9}Ferramentas de desenvolvemento}{27}{section.3.9}
-\contentsline {subsection}{\numberline {3.9.1}Eclipse}{27}{subsection.3.9.1}
-\contentsline {subsection}{\numberline {3.9.2}Git}{27}{subsection.3.9.2}
-\contentsline {subsubsection}{\numberline {3.9.2.1}GitHub}{28}{subsubsection.3.9.2.1}
-\contentsline {subsection}{\numberline {3.9.3}Dia}{28}{subsection.3.9.3}
-\contentsline {subsection}{\numberline {3.9.4}Fedora}{28}{subsection.3.9.4}
-\contentsline {subsection}{\numberline {3.9.5}TeXstudio}{28}{subsection.3.9.5}
-\contentsline {subsection}{\numberline {3.9.6}Mozilla Firefox}{29}{subsection.3.9.6}
-\contentsline {subsection}{\numberline {3.9.7}GIMP}{29}{subsection.3.9.7}
-\contentsline {subsection}{\numberline {3.9.8}Projectlibre}{30}{subsection.3.9.8}
-\contentsline {chapter}{\numberline {4}Metodolox\IeC {\'\i }a}{31}{chapter.4}
-\contentsline {section}{\numberline {4.1}TDD}{32}{section.4.1}
-\contentsline {section}{\numberline {4.2}XP}{33}{section.4.2}
-\contentsline {chapter}{\numberline {5}Planificaci\IeC {\'o}n}{35}{chapter.5}
-\contentsline {section}{\numberline {5.1}Orixe do proxecto}{36}{section.5.1}
-\contentsline {section}{\numberline {5.2}Iteraci\IeC {\'o}ns}{37}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Primeira reuni\IeC {\'o}n (Iteraci\IeC {\'o}n 0)}{37}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Iteraci\IeC {\'o}n 1}{38}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Iteraci\IeC {\'o}n 2}{39}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Iteraci\IeC {\'o}n 3}{40}{subsection.5.2.4}
-\contentsline {subsection}{\numberline {5.2.5}Iteraci\IeC {\'o}n 4}{41}{subsection.5.2.5}
-\contentsline {subsection}{\numberline {5.2.6}Iteraci\IeC {\'o}n 5}{41}{subsection.5.2.6}
-\contentsline {subsection}{\numberline {5.2.7}Iteraci\IeC {\'o}n 6}{42}{subsection.5.2.7}
-\contentsline {subsection}{\numberline {5.2.8}Iteraci\IeC {\'o}n 7}{43}{subsection.5.2.8}
-\contentsline {subsection}{\numberline {5.2.9}Iteraci\IeC {\'o}n 8}{43}{subsection.5.2.9}
-\contentsline {subsection}{\numberline {5.2.10}Iteraci\IeC {\'o}n 9}{44}{subsection.5.2.10}
-\contentsline {subsection}{\numberline {5.2.11}Iteraci\IeC {\'o}n 10}{45}{subsection.5.2.11}
-\contentsline {subsection}{\numberline {5.2.12}Iteraci\IeC {\'o}n 11}{46}{subsection.5.2.12}
-\contentsline {section}{\numberline {5.3}Estudo de custos}{47}{section.5.3}
-\contentsline {section}{\numberline {5.4}Programaci\IeC {\'o}n das tarefas}{48}{section.5.4}
-\contentsline {chapter}{\numberline {6}An\IeC {\'a}lise}{53}{chapter.6}
-\contentsline {section}{\numberline {6.1}Requirimentos funcionais}{54}{section.6.1}
-\contentsline {section}{\numberline {6.2}Requirimentos non funcionais}{55}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Autenticaci\IeC {\'o}n}{55}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Internacionalizaci\IeC {\'o}n}{55}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Rendemento}{56}{subsection.6.2.3}
-\contentsline {subsection}{\numberline {6.2.4}Seguridade}{56}{subsection.6.2.4}
-\contentsline {subsection}{\numberline {6.2.5}Adaptabilidade a dispositivos m\IeC {\'o}biles}{56}{subsection.6.2.5}
-\contentsline {chapter}{\numberline {7}Dese\IeC {\~n}o}{57}{chapter.7}
-\contentsline {section}{\numberline {7.1}Descrici\IeC {\'o}n do funcionamento}{58}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Actividades de consumo de contidos}{58}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Actividades de produci\IeC {\'o}n de contidos}{58}{subsection.7.1.2}
-\contentsline {section}{\numberline {7.2}Arquitectura}{59}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Capa Modelo}{60}{subsection.7.2.1}
-\contentsline {subsubsection}{\numberline {7.2.1.1}Usuarios}{60}{subsubsection.7.2.1.1}
-\contentsline {subsubsection}{\numberline {7.2.1.2}Programas e episodios}{61}{subsubsection.7.2.1.2}
-\contentsline {subsubsection}{\numberline {7.2.1.3}Votos e comentarios}{63}{subsubsection.7.2.1.3}
-\contentsline {subsubsection}{\numberline {7.2.1.4}A entidade Station}{63}{subsubsection.7.2.1.4}
-\contentsline {subsubsection}{\numberline {7.2.1.5}Administraci\IeC {\'o}n de contido}{63}{subsubsection.7.2.1.5}
-\contentsline {subsection}{\numberline {7.2.2}Capa Vista}{64}{subsection.7.2.2}
-\contentsline {subsubsection}{\numberline {7.2.2.1}Engadir contido}{66}{subsubsection.7.2.2.1}
-\contentsline {subsection}{\numberline {7.2.3}Capa Template}{67}{subsection.7.2.3}
-\contentsline {subsubsection}{\numberline {7.2.3.1}Portada}{68}{subsubsection.7.2.3.1}
-\contentsline {subsubsection}{\numberline {7.2.3.2}P\IeC {\'a}xinas de engadir e editar contido}{69}{subsubsection.7.2.3.2}
-\contentsline {subsubsection}{\numberline {7.2.3.3}P\IeC {\'a}xinas de detalle}{69}{subsubsection.7.2.3.3}
-\contentsline {subsubsection}{\numberline {7.2.3.4}P\IeC {\'a}xina de resultados de busca}{69}{subsubsection.7.2.3.4}
-\contentsline {subsubsection}{\numberline {7.2.3.5}P\IeC {\'a}xinas de xesti\IeC {\'o}n}{70}{subsubsection.7.2.3.5}
-\contentsline {section}{\numberline {7.3}Actualizaci\IeC {\'o}n dos datos}{72}{section.7.3}
-\contentsline {subsubsection}{\numberline {7.3.0.1}Novos episodios}{72}{subsubsection.7.3.0.1}
-\contentsline {subsubsection}{\numberline {7.3.0.2}Popularidade e cualificaci\IeC {\'o}n dos programas}{73}{subsubsection.7.3.0.2}
-\contentsline {chapter}{\numberline {8}Implementaci\IeC {\'o}n}{75}{chapter.8}
-\contentsline {section}{\numberline {8.1}Estrutura xeral do c\IeC {\'o}digo fonte}{76}{section.8.1}
-\contentsline {section}{\numberline {8.2}Ficheiros de imaxe}{77}{section.8.2}
-\contentsline {section}{\numberline {8.3}A vista de engadir programa}{78}{section.8.3}
-\contentsline {section}{\numberline {8.4}A traduci\IeC {\'o}n}{79}{section.8.4}
-\contentsline {section}{\numberline {8.5}O contador de escoitas}{80}{section.8.5}
-\contentsline {section}{\numberline {8.6}O panel de xesti\IeC {\'o}n}{80}{section.8.6}
-\contentsline {section}{\numberline {8.7}Execuci\IeC {\'o}n dos procesos en Celery}{82}{section.8.7}
-\contentsline {section}{\numberline {8.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{82}{section.8.8}
+\contentsline {section}{\numberline {1.3}Orixe do proxecto}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}Obxectivos}{4}{section.1.4}
+\contentsline {section}{\numberline {1.5}Organizaci\IeC {\'o}n da memoria}{5}{section.1.5}
+\contentsline {chapter}{\numberline {2}Estado da arte}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Alternativas Existentes}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}TuneIn}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}iTunes}{9}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Podomatic}{9}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Ivoox}{10}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}RadioCo}{11}{subsection.2.1.5}
+\contentsline {section}{\numberline {2.2}T\IeC {\'a}boa comparativa}{11}{section.2.2}
+\contentsline {section}{\numberline {2.3}Conclusi\IeC {\'o}n}{13}{section.2.3}
+\contentsline {chapter}{\numberline {3}Tecnolox\IeC {\'\i }a e ferramentas empregadas}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}Linguaxes}{17}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Python}{17}{subsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.1.1}Anaconda}{18}{subsubsection.3.1.1.1}
+\contentsline {subsection}{\numberline {3.1.2}HTML}{18}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}CSS}{19}{subsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.3.1}CSS Grid}{19}{subsubsection.3.1.3.1}
+\contentsline {subsection}{\numberline {3.1.4}JavaScript}{20}{subsection.3.1.4}
+\contentsline {subsubsection}{\numberline {3.1.4.1}jQuery}{20}{subsubsection.3.1.4.1}
+\contentsline {subsection}{\numberline {3.1.5}SQL}{21}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}XML}{21}{subsection.3.1.6}
+\contentsline {subsubsection}{\numberline {3.1.6.1}RSS}{22}{subsubsection.3.1.6.1}
+\contentsline {subsection}{\numberline {3.1.7}JSON}{23}{subsection.3.1.7}
+\contentsline {subsection}{\numberline {3.1.8}LaTeX}{24}{subsection.3.1.8}
+\contentsline {section}{\numberline {3.2}Django Framework}{24}{section.3.2}
+\contentsline {section}{\numberline {3.3}Celery}{26}{section.3.3}
+\contentsline {section}{\numberline {3.4}RabbitMQ}{26}{section.3.4}
+\contentsline {section}{\numberline {3.5}Bootstrap}{26}{section.3.5}
+\contentsline {section}{\numberline {3.6}Ajax}{27}{section.3.6}
+\contentsline {section}{\numberline {3.7}Apache HTTP server}{27}{section.3.7}
+\contentsline {section}{\numberline {3.8}PostgreSQL}{28}{section.3.8}
+\contentsline {section}{\numberline {3.9}Ferramentas de desenvolvemento}{29}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Eclipse}{29}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Git}{29}{subsection.3.9.2}
+\contentsline {subsubsection}{\numberline {3.9.2.1}GitHub}{30}{subsubsection.3.9.2.1}
+\contentsline {subsection}{\numberline {3.9.3}Dia}{30}{subsection.3.9.3}
+\contentsline {subsection}{\numberline {3.9.4}Fedora}{30}{subsection.3.9.4}
+\contentsline {subsection}{\numberline {3.9.5}TeXstudio}{30}{subsection.3.9.5}
+\contentsline {subsection}{\numberline {3.9.6}Mozilla Firefox}{31}{subsection.3.9.6}
+\contentsline {subsection}{\numberline {3.9.7}GIMP}{31}{subsection.3.9.7}
+\contentsline {subsection}{\numberline {3.9.8}Projectlibre}{32}{subsection.3.9.8}
+\contentsline {chapter}{\numberline {4}Metodolox\IeC {\'\i }a}{33}{chapter.4}
+\contentsline {section}{\numberline {4.1}TDD}{34}{section.4.1}
+\contentsline {section}{\numberline {4.2}XP}{35}{section.4.2}
+\contentsline {chapter}{\numberline {5}An\IeC {\'a}lise}{37}{chapter.5}
+\contentsline {section}{\numberline {5.1}Requirimentos funcionais}{38}{section.5.1}
+\contentsline {section}{\numberline {5.2}Requirimentos non funcionais}{39}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Autenticaci\IeC {\'o}n}{39}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Internacionalizaci\IeC {\'o}n}{39}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Rendemento}{40}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Seguridade}{40}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Adaptabilidade a dispositivos m\IeC {\'o}biles}{40}{subsection.5.2.5}
+\contentsline {chapter}{\numberline {6}Dese\IeC {\~n}o}{41}{chapter.6}
+\contentsline {section}{\numberline {6.1}Descrici\IeC {\'o}n do funcionamento}{42}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Actividades de consumo de contidos}{42}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Actividades de produci\IeC {\'o}n de contidos}{42}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Arquitectura}{43}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Capa Modelo}{44}{subsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.1.1}Usuarios}{44}{subsubsection.6.2.1.1}
+\contentsline {subsubsection}{\numberline {6.2.1.2}Programas e episodios}{45}{subsubsection.6.2.1.2}
+\contentsline {subsubsection}{\numberline {6.2.1.3}Votos e comentarios}{47}{subsubsection.6.2.1.3}
+\contentsline {subsubsection}{\numberline {6.2.1.4}A entidade Station}{47}{subsubsection.6.2.1.4}
+\contentsline {subsubsection}{\numberline {6.2.1.5}Administraci\IeC {\'o}n de contido}{47}{subsubsection.6.2.1.5}
+\contentsline {subsection}{\numberline {6.2.2}Capa Vista}{48}{subsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.1}Engadir contido}{50}{subsubsection.6.2.2.1}
+\contentsline {subsection}{\numberline {6.2.3}Capa Template}{51}{subsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.3.1}Portada}{52}{subsubsection.6.2.3.1}
+\contentsline {subsubsection}{\numberline {6.2.3.2}P\IeC {\'a}xinas de engadir e editar contido}{53}{subsubsection.6.2.3.2}
+\contentsline {subsubsection}{\numberline {6.2.3.3}P\IeC {\'a}xinas de detalle}{53}{subsubsection.6.2.3.3}
+\contentsline {subsubsection}{\numberline {6.2.3.4}P\IeC {\'a}xina de resultados de busca}{53}{subsubsection.6.2.3.4}
+\contentsline {subsubsection}{\numberline {6.2.3.5}P\IeC {\'a}xinas de xesti\IeC {\'o}n}{54}{subsubsection.6.2.3.5}
+\contentsline {section}{\numberline {6.3}Actualizaci\IeC {\'o}n dos datos}{56}{section.6.3}
+\contentsline {subsubsection}{\numberline {6.3.0.1}Novos episodios}{56}{subsubsection.6.3.0.1}
+\contentsline {subsubsection}{\numberline {6.3.0.2}Popularidade e cualificaci\IeC {\'o}n dos programas}{57}{subsubsection.6.3.0.2}
+\contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{59}{chapter.7}
+\contentsline {section}{\numberline {7.1}Estrutura xeral do c\IeC {\'o}digo fonte}{60}{section.7.1}
+\contentsline {section}{\numberline {7.2}Ficheiros de imaxe}{61}{section.7.2}
+\contentsline {section}{\numberline {7.3}A vista de engadir programa}{62}{section.7.3}
+\contentsline {section}{\numberline {7.4}A traduci\IeC {\'o}n}{63}{section.7.4}
+\contentsline {section}{\numberline {7.5}O contador de escoitas}{64}{section.7.5}
+\contentsline {section}{\numberline {7.6}O panel de xesti\IeC {\'o}n}{64}{section.7.6}
+\contentsline {section}{\numberline {7.7}Execuci\IeC {\'o}n dos procesos en Celery}{66}{section.7.7}
+\contentsline {section}{\numberline {7.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{66}{section.7.8}
+\contentsline {chapter}{\numberline {8}Planificaci\IeC {\'o}n}{69}{chapter.8}
+\contentsline {section}{\numberline {8.1}Orixe do proxecto (REVISAR)}{70}{section.8.1}
+\contentsline {section}{\numberline {8.2}Iteraci\IeC {\'o}ns}{70}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Primeira reuni\IeC {\'o}n (Iteraci\IeC {\'o}n 0)}{70}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Iteraci\IeC {\'o}n 1}{71}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Iteraci\IeC {\'o}n 2}{72}{subsection.8.2.3}
+\contentsline {subsection}{\numberline {8.2.4}Iteraci\IeC {\'o}n 3}{73}{subsection.8.2.4}
+\contentsline {subsection}{\numberline {8.2.5}Iteraci\IeC {\'o}n 4}{74}{subsection.8.2.5}
+\contentsline {subsection}{\numberline {8.2.6}Iteraci\IeC {\'o}n 5}{74}{subsection.8.2.6}
+\contentsline {subsection}{\numberline {8.2.7}Iteraci\IeC {\'o}n 6}{75}{subsection.8.2.7}
+\contentsline {subsection}{\numberline {8.2.8}Iteraci\IeC {\'o}n 7}{76}{subsection.8.2.8}
+\contentsline {subsection}{\numberline {8.2.9}Iteraci\IeC {\'o}n 8}{76}{subsection.8.2.9}
+\contentsline {subsection}{\numberline {8.2.10}Iteraci\IeC {\'o}n 9}{77}{subsection.8.2.10}
+\contentsline {subsection}{\numberline {8.2.11}Iteraci\IeC {\'o}n 10}{78}{subsection.8.2.11}
+\contentsline {subsection}{\numberline {8.2.12}Iteraci\IeC {\'o}n 11}{80}{subsection.8.2.12}
+\contentsline {section}{\numberline {8.3}Estudo de custos}{80}{section.8.3}
+\contentsline {section}{\numberline {8.4}Programaci\IeC {\'o}n das tarefas}{81}{section.8.4}
 \contentsline {chapter}{\numberline {9}Probas do sistema}{85}{chapter.9}
 \contentsline {section}{\numberline {9.1}Probas de unidade}{86}{section.9.1}
 \contentsline {section}{\numberline {9.2}Probas de integraci\IeC {\'o}n}{91}{section.9.2}
