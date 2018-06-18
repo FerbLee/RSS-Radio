@@ -1,7 +1,13 @@
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {5.1}Requirimentos funcionais}{\reset@font\mtcSfont 40}{section.5.1}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {5.2}Requirimentos non funcionais}{\reset@font\mtcSfont 41}{section.5.2}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.2.1}Autenticaci\IeC {\'o}n}{\reset@font\mtcSSfont 41}{subsection.5.2.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.2.2}Internacionalizaci\IeC {\'o}n}{\reset@font\mtcSSfont 41}{subsection.5.2.2}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.2.3}Rendemento}{\reset@font\mtcSSfont 42}{subsection.5.2.3}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.2.4}Seguridade}{\reset@font\mtcSSfont 42}{subsection.5.2.4}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.2.5}Adaptabilidade a dispositivos m\IeC {\'o}biles}{\reset@font\mtcSSfont 42}{subsection.5.2.5}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {5.1}Descrici\IeC {\'o}n do funcionamento}{\reset@font\mtcSfont 40}{section.5.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.1.1}Actividades de consumo de contidos}{\reset@font\mtcSSfont 40}{subsection.5.1.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.1.2}Actividades de produci\IeC {\'o}n de contidos}{\reset@font\mtcSSfont 40}{subsection.5.1.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {5.2}Requirimentos funcionais}{\reset@font\mtcSfont 41}{section.5.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {5.3}Requirimentos non funcionais}{\reset@font\mtcSfont 42}{section.5.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.3.1}Autenticaci\IeC {\'o}n}{\reset@font\mtcSSfont 42}{subsection.5.3.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.3.2}Protecci\IeC {\'o}n de datos}{\reset@font\mtcSSfont 42}{subsection.5.3.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.3.3}Internacionalizaci\IeC {\'o}n}{\reset@font\mtcSSfont 43}{subsection.5.3.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.3.4}Rendemento}{\reset@font\mtcSSfont 43}{subsection.5.3.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.3.5}Concorrencia}{\reset@font\mtcSSfont 43}{subsection.5.3.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.3.6}Seguridade}{\reset@font\mtcSSfont 43}{subsection.5.3.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.3.7}Adaptabilidade a dispositivos m\IeC {\'o}biles}{\reset@font\mtcSSfont 44}{subsection.5.3.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {5.3.8}Usabilidade}{\reset@font\mtcSSfont 44}{subsection.5.3.8}}
