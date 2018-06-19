@@ -270,14 +270,11 @@ A partir de aquí, as sucesivas reunións consistiron en \textbf{revisións dest
 	\label{fig:procura_final}
 \end{figure}
 
+\pagebreak
 
-\section{Avaliación de custos}
+\section{Control da execución}
 
-A intención desta sección é facer unha estimación do custo do proxecto. Para iso, recompilouse o tempo de traballo empregado en cada iteración e clasificáronse as tarefas realizadas por tipo:
-
-\subsection{Clasificación de tarefas}
-
-As tarefas clasifícanse nos seguintes tipos:
+Gardouse un rexistro das tarefas realizadas e a súa duración e considerouse un hipotético custo por hora de traballo. Clasifícanse nos seguintes tipos:
 
 \begin{itemize}
 	\item \textbf{Organización:} Englóbanse aquí as tarefas de selección das ferramentas e as metodoloxías, o seu aprendizaxe e a instalación e configuración do entorno de desenvolvemento. 
@@ -288,89 +285,191 @@ As tarefas clasifícanse nos seguintes tipos:
 	\item \textbf{Documentación:} Escritura da presente memoria.
 \end{itemize} 
 
+Na táboa \ref{tab:tipo} amósase o tempo empregado polo total das tarefas pertencentes a cada tipo do listado anterior. Do mesmo xeito, gardouse un rexistro do tempo que se adicou ao traballo por iteración. Pode verse na táboa \ref{tab:custo}.
 
-
-\section{Estudo de custos(vello)}
-
-A intención desta sección é facer unha estimación do custo do proxecto. Dado que este foi realizado por unha única persoa levando a cabo distintas tarefas en cada fase do proxecto, estimarase un custe uniforme de 19€/h para todas elas. 
-
-Na táboa \ref{tab:custo} pódese ver o gasto por iteración e o custo total do proxecto.
-
-\begin{table}[h]
+\begin{table}[H]
 	\centering
-	\begin{tabular}{|p{5cm}|l|l|}
+	\begin{tabular}{|p{8cm}|r|r|}
+		\hline
+		\rowcolor{blue!10}
+		Tipo de tarefa & Horas de traballo & Porcentaxe \\
+		\hline
+		Organización & 16 &  2.6\\
+		\hline
+		Análise & 55 &  9.1\\
+		\hline
+		Deseño & 41 &  6.8\\
+		\hline
+		Implementación & 271 &  44.7\\
+		\hline
+		Probas & 55 &  9.1\\
+		\hline
+		Documentación & 133 &  21.9\\
+		\hline
+		\textbf{Total} & 607 &  100.0\\
+		\hline
+	\end{tabular}
+	\caption{Tempo empregado acumulado por tipo de tarefa.}
+	\label{tab:tipo}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{8cm}|r|r|}
 		\hline
 		\rowcolor{blue!10}
 		Iteración & Horas de traballo & Custo(€)\\
 		\hline
-		Primeira reunión & 1 &  19\\
+		Primeira reunión & 2 &  0.3\\
 		\hline
-		Iteración 1 & 3 &  57\\
+		Iteración 1 & 8 &  1.3\\
 		\hline
-		Iteración 2 & 12 &  228\\
+		Iteración 2 & 12 &  2.0\\
 		\hline
-		Iteración 3 & 10 &  190\\
+		Iteración 3 & 10 &  1.7\\
 		\hline
-		Iteración 4 & 20 &  380\\
+		Iteración 4 & 20 &  3.3\\
 		\hline
-		Iteración 5 & 25 &  475\\
+		Iteración 5 & 63 &  10.4\\
 		\hline
-		Iteración 6 & 23 &  437\\
+		Iteración 6 & 60 &  9.9\\
 		\hline
-		Iteración 7 & 27 &  513\\
+		Iteración 7 & 66 &  10.9\\
 		\hline
-		Iteración 8 & 32 &  608\\
+		Iteración 8 & 75 &  12.4\\
 		\hline
-		Iteración 9 & 26 &  494\\
+		Iteración 9 & 55 &  9.1\\
 		\hline
-		Iteración 10 & 30 &  570\\
+		Iteración 10 & 66 &  10.9\\
 		\hline
-		Iteración 11 &  18 &  342\\
+		Iteración 11 &  48 &  7.9\\
 		\hline
-		Escritura da documentación & 45 & 855\\
+		Iteracións so de documentación & 122 & 20.1\\
 		\hline
-		\textbf{Total} & \textbf{272} & \textbf{5168} \\
+		\textbf{Total} & 607 & 100.0 \\
 		\hline
 	\end{tabular}
-	\caption{Custo das distintas etapas de traballo.}
-\label{tab:custo}
+	\caption{Tempo empregado nas distintas etapas de traballo.}
+	\label{tab:custo}
 \end{table}
 
 
-\section{Programación das tarefas}
+
+
+
+\subsection{Diagrama de Gantt}
+
+A continuación proporciónase un diagrama de Gantt dividido, por claridade, en distintas imaxes. Para a súa correcta interpretación cómpre ter en conta que o representado non é o resultado dunha planificación predictiva, senón a evolución real das tarefas a través do tempo. 
+
+Isto é así debido á utilización das metodoloxías áxiles. Como se explicou no capítulo \ref{chp:metodoloxia} sobre a metodoloxía, o desenvolvemento é iterativo e incremental, de xeito que o desenvolvemento está orientado ás historias de usuario definidas en cada iteración.
+
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.55,keepaspectratio=true]{./images/gantt/gantt1-1.png}
-	\caption{Diagrama de Gantt: Novembro 2017 - Decembro.}
-	\label{fig:gantt1-1}
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g1.png}
+	\caption{Diagrama de Gantt. Novembro-Decembro.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5,keepaspectratio=true]{./images/gantt/gantt1-2.png}
-	\caption{Diagrama de Gantt: Decembro 2017 - Xaneiro 2018.}
-	\label{fig:gantt1-2}
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g2.png}
+	\caption{Diagrama de Gantt. Decembro.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5,keepaspectratio=true]{./images/gantt/gantt2.png}
-	\caption{Diagrama de Gantt: Xaneiro 2018 - Marzo 2018. }
-	\label{fig:gantt2}
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g3.png}
+	\caption{Diagrama de Gantt. Decembro-Xaneiro}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4,keepaspectratio=true]{./images/gantt/gantt3.png}
-	\caption{Diagrama de Gantt: Marzo 2018 - Maio 2018. }
-	\label{fig:gantt3}
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g4.png}
+	\caption{Diagrama de Gantt. Xaneiro-Febreiro}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6,keepaspectratio=true]{./images/gantt/gantt4.png}
-	\caption{Diagrama de Gantt: Maio 2018 - Xuño 2018. }
-	\label{fig:gantt4}
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g5.png}
+	\caption{Diagrama de Gantt. Febreiro}
 \end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g6.png}
+	\caption{Diagrama de Gantt. Febreiro-Marzo}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g7.png}
+	\caption{Diagrama de Gantt. Marzo-Abril}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g8.png}
+	\caption{Diagrama de Gantt. Abril}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g9.png}
+	\caption{Diagrama de Gantt. Abril-Maio}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g10.png}
+	\caption{Diagrama de Gantt. Maio}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/gantt/g11.png}
+	\caption{Diagrama de Gantt. Maio-Xuño}
+\end{figure}
+
+\section{Avaliación de custos}
+
+A intención desta sección é facer unha \textbf{estimación do custo do proxecto}. Dado que este foi realizado por unha única persoa levando a cabo distintas tarefas en cada fase do proxecto, suporemos un custo por hora común para todos os tipos de tarefa vistos na sección anterior. Nun proxecto en equipo, sería posible que os distintos tipos de tarefas se levasen a cabo por persoal de distinta cualificación e salario, polo que o cálculo sería máis complexo.
+
+Para a estimación desta contía, suponse un \textbf{salario bruto anual de 30.000€} (trinta mil euros). O calendario laboral do ano 2018 en España consta de 244 días laborables. Un empregado acollido ao convenio colectivo de analista-programador conta con 23 días de vacacións anuais e unha xornada de 8 horas, polo tanto, o seu \textbf{salario por hora} calcúlase da seguinte forma:
+
+\[ \dfrac{SalarioAnual}{(DiasLaborables - DiasVacacions) HorasXornada} = \dfrac{30000}{(244 - 23) 8} = 16.97 euros/hora \]
+
+Para a realización deste proxecto \textbf{non se adquiriu ningún hardware} específico nin se contrataron servizos de terceiros. As \textbf{ferramentas} utilizadas, expostas no capítulo \ref{chp:tecnologia} sobre a tecnoloxía utilizada, foron na súa totalidade \textbf{libres e gratuítas}, polo que non se fixo gasto algún en licenzas.
+
+Non se terán en conta os custos en \textbf{luz eléctrica}, conexión a Internet nin material de oficina (folios, bolígrafos...) empregado. Tampouco aqueles gastos derivados do uso de equipos informáticos propios.
+
+Tendo en conta todo o anterior e, baseándonos nos datos da táboa \ref{tab:tipo}, faise a \textbf{estimación de custo total deste proxecto} como se pode ver na táboa \ref{tab:custo_final}.
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{8cm}|r|}
+		\hline
+		\rowcolor{blue!10}
+		Tipo de tarefa & Custo(€)\\
+		\hline
+		Organización & 271.52\\
+		\hline
+		Análise & 933.35\\
+		\hline
+		Deseño &  1544.27\\
+		\hline
+		Implementación &  4598.87\\
+		\hline
+		Probas &  695.77\\
+		\hline
+		Documentación &  2257.01\\
+		\hline
+		\textbf{Total} &  \textbf{10300.79}\\
+		\hline
+	\end{tabular}
+	\caption{Custo total estimado do proxecto.}
+	\label{tab:custo_final}
+\end{table}
+

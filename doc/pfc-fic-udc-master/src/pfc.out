@@ -89,34 +89,33 @@
 \BOOKMARK [2][-]{subsection.8.2.10}{Iteraci\363n 9}{section.8.2}% 89
 \BOOKMARK [2][-]{subsection.8.2.11}{Iteraci\363n 10}{section.8.2}% 90
 \BOOKMARK [2][-]{subsection.8.2.12}{Iteraci\363n 11}{section.8.2}% 91
-\BOOKMARK [1][-]{section.8.3}{Avaliaci\363n de custos}{chapter.8}% 92
-\BOOKMARK [2][-]{subsection.8.3.1}{Clasificaci\363n de tarefas}{section.8.3}% 93
-\BOOKMARK [1][-]{section.8.4}{Estudo de custos\(vello\)}{chapter.8}% 94
-\BOOKMARK [1][-]{section.8.5}{Programaci\363n das tarefas}{chapter.8}% 95
-\BOOKMARK [0][-]{chapter.9}{Probas do sistema}{}% 96
-\BOOKMARK [1][-]{section.9.1}{Plan de probas}{chapter.9}% 97
-\BOOKMARK [1][-]{section.9.2}{Probas de unidade}{chapter.9}% 98
-\BOOKMARK [1][-]{section.9.3}{Probas de integraci\363n}{chapter.9}% 99
-\BOOKMARK [1][-]{section.9.4}{Probas de aceptaci\363n}{chapter.9}% 100
-\BOOKMARK [0][-]{chapter.10}{Conclusi\363ns}{}% 101
-\BOOKMARK [1][-]{section.10.1}{Co\361ecementos acadados}{chapter.10}% 102
-\BOOKMARK [1][-]{section.10.2}{Traballo Futuro}{chapter.10}% 103
-\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice: Dicionario de datos}{}% 104
-\BOOKMARK [0][-]{appendix.Alph2}{Ap\351ndice: Licenza}{}% 105
-\BOOKMARK [1][-]{section.Alph2.1}{Licenzas das dependencias do proxecto}{appendix.Alph2}% 106
-\BOOKMARK [1][-]{section.Alph2.2}{Conclusi\363n}{appendix.Alph2}% 107
-\BOOKMARK [0][-]{appendix.Alph3}{Ap\351ndice: Manual de usuario}{}% 108
-\BOOKMARK [1][-]{section.Alph3.1}{Usuarios}{appendix.Alph3}% 109
-\BOOKMARK [2][-]{subsection.Alph3.1.1}{Crear}{section.Alph3.1}% 110
-\BOOKMARK [2][-]{subsection.Alph3.1.2}{Editar}{section.Alph3.1}% 111
-\BOOKMARK [1][-]{section.Alph3.2}{Acci\363ns de ouvinte}{appendix.Alph3}% 112
-\BOOKMARK [2][-]{subsection.Alph3.2.1}{Escoitar e seguir unha emisora}{section.Alph3.2}% 113
-\BOOKMARK [2][-]{subsection.Alph3.2.2}{Subscribirse a un programa}{section.Alph3.2}% 114
-\BOOKMARK [2][-]{subsection.Alph3.2.3}{Acci\363ns sobre os episodios}{section.Alph3.2}% 115
-\BOOKMARK [2][-]{subsection.Alph3.2.4}{Contidos favoritos}{section.Alph3.2}% 116
-\BOOKMARK [1][-]{section.Alph3.3}{Procura de contidos}{appendix.Alph3}% 117
-\BOOKMARK [1][-]{section.Alph3.4}{Acci\363ns de produtor de contidos}{appendix.Alph3}% 118
-\BOOKMARK [2][-]{subsection.Alph3.4.1}{Crear unha emisora}{section.Alph3.4}% 119
-\BOOKMARK [2][-]{subsection.Alph3.4.2}{Xestionar unha emisora}{section.Alph3.4}% 120
-\BOOKMARK [2][-]{subsection.Alph3.4.3}{Crear un programa}{section.Alph3.4}% 121
-\BOOKMARK [2][-]{subsection.Alph3.4.4}{Xestionar un programa}{section.Alph3.4}% 122
+\BOOKMARK [1][-]{section.8.3}{Control da execuci\363n}{chapter.8}% 92
+\BOOKMARK [2][-]{subsection.8.3.1}{Diagrama de Gantt}{section.8.3}% 93
+\BOOKMARK [1][-]{section.8.4}{Avaliaci\363n de custos}{chapter.8}% 94
+\BOOKMARK [0][-]{chapter.9}{Probas do sistema}{}% 95
+\BOOKMARK [1][-]{section.9.1}{Plan de probas}{chapter.9}% 96
+\BOOKMARK [1][-]{section.9.2}{Probas de unidade}{chapter.9}% 97
+\BOOKMARK [1][-]{section.9.3}{Probas de integraci\363n}{chapter.9}% 98
+\BOOKMARK [1][-]{section.9.4}{Probas de aceptaci\363n}{chapter.9}% 99
+\BOOKMARK [0][-]{chapter.10}{Conclusi\363ns}{}% 100
+\BOOKMARK [1][-]{section.10.1}{Co\361ecementos acadados}{chapter.10}% 101
+\BOOKMARK [1][-]{section.10.2}{Traballo Futuro}{chapter.10}% 102
+\BOOKMARK [0][-]{appendix.Alph1}{Ap\351ndice: Dicionario de datos}{}% 103
+\BOOKMARK [0][-]{appendix.Alph2}{Ap\351ndice: Licenza}{}% 104
+\BOOKMARK [1][-]{section.Alph2.1}{Licenzas das dependencias do proxecto}{appendix.Alph2}% 105
+\BOOKMARK [1][-]{section.Alph2.2}{Conclusi\363n}{appendix.Alph2}% 106
+\BOOKMARK [0][-]{appendix.Alph3}{Ap\351ndice: Manual de usuario}{}% 107
+\BOOKMARK [1][-]{section.Alph3.1}{Usuarios}{appendix.Alph3}% 108
+\BOOKMARK [2][-]{subsection.Alph3.1.1}{Crear}{section.Alph3.1}% 109
+\BOOKMARK [2][-]{subsection.Alph3.1.2}{Editar}{section.Alph3.1}% 110
+\BOOKMARK [1][-]{section.Alph3.2}{Acci\363ns de ouvinte}{appendix.Alph3}% 111
+\BOOKMARK [2][-]{subsection.Alph3.2.1}{Escoitar e seguir unha emisora}{section.Alph3.2}% 112
+\BOOKMARK [2][-]{subsection.Alph3.2.2}{Subscribirse a un programa}{section.Alph3.2}% 113
+\BOOKMARK [2][-]{subsection.Alph3.2.3}{Acci\363ns sobre os episodios}{section.Alph3.2}% 114
+\BOOKMARK [2][-]{subsection.Alph3.2.4}{Contidos favoritos}{section.Alph3.2}% 115
+\BOOKMARK [1][-]{section.Alph3.3}{Procura de contidos}{appendix.Alph3}% 116
+\BOOKMARK [1][-]{section.Alph3.4}{Acci\363ns de produtor de contidos}{appendix.Alph3}% 117
+\BOOKMARK [2][-]{subsection.Alph3.4.1}{Crear unha emisora}{section.Alph3.4}% 118
+\BOOKMARK [2][-]{subsection.Alph3.4.2}{Xestionar unha emisora}{section.Alph3.4}% 119
+\BOOKMARK [2][-]{subsection.Alph3.4.3}{Crear un programa}{section.Alph3.4}% 120
+\BOOKMARK [2][-]{subsection.Alph3.4.4}{Xestionar un programa}{section.Alph3.4}% 121
