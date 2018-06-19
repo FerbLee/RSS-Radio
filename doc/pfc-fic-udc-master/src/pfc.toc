@@ -110,40 +110,42 @@
 \contentsline {subsection}{\numberline {8.2.10}Iteraci\IeC {\'o}n 9}{82}{subsection.8.2.10}
 \contentsline {subsection}{\numberline {8.2.11}Iteraci\IeC {\'o}n 10}{83}{subsection.8.2.11}
 \contentsline {subsection}{\numberline {8.2.12}Iteraci\IeC {\'o}n 11}{84}{subsection.8.2.12}
-\contentsline {section}{\numberline {8.3}Estudo de custos}{84}{section.8.3}
-\contentsline {section}{\numberline {8.4}Programaci\IeC {\'o}n das tarefas}{85}{section.8.4}
-\contentsline {chapter}{\numberline {9}Probas do sistema}{89}{chapter.9}
-\contentsline {section}{\numberline {9.1}Plan de probas}{90}{section.9.1}
-\contentsline {section}{\numberline {9.2}Probas de unidade}{90}{section.9.2}
-\contentsline {section}{\numberline {9.3}Probas de integraci\IeC {\'o}n}{95}{section.9.3}
-\contentsline {section}{\numberline {9.4}Probas de aceptaci\IeC {\'o}n}{98}{section.9.4}
-\contentsline {chapter}{\numberline {10}Conclusi\IeC {\'o}ns}{99}{chapter.10}
-\contentsline {section}{\numberline {10.1}Co\IeC {\~n}ecementos acadados}{101}{section.10.1}
-\contentsline {section}{\numberline {10.2}Traballo Futuro}{101}{section.10.2}
-\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice: Dicionario de datos}{103}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{109}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{109}{section.Alph2.1}
-\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{110}{section.Alph2.2}
-\contentsline {chapter}{\numberline {C}Ap\IeC {\'e}ndice: Manual de usuario}{111}{appendix.Alph3}
-\contentsline {section}{\numberline {C.1}Usuarios}{112}{section.Alph3.1}
-\contentsline {subsection}{\numberline {C.1.1}Crear}{112}{subsection.Alph3.1.1}
-\contentsline {subsection}{\numberline {C.1.2}Editar}{112}{subsection.Alph3.1.2}
-\contentsline {section}{\numberline {C.2}Acci\IeC {\'o}ns de ouvinte}{115}{section.Alph3.2}
-\contentsline {subsection}{\numberline {C.2.1}Escoitar e seguir unha emisora}{115}{subsection.Alph3.2.1}
-\contentsline {subsection}{\numberline {C.2.2}Subscribirse a un programa}{116}{subsection.Alph3.2.2}
-\contentsline {subsection}{\numberline {C.2.3}Acci\IeC {\'o}ns sobre os episodios}{116}{subsection.Alph3.2.3}
-\contentsline {subsection}{\numberline {C.2.4}Contidos favoritos}{120}{subsection.Alph3.2.4}
-\contentsline {section}{\numberline {C.3}Procura de contidos}{121}{section.Alph3.3}
-\contentsline {section}{\numberline {C.4}Acci\IeC {\'o}ns de produtor de contidos}{122}{section.Alph3.4}
-\contentsline {subsection}{\numberline {C.4.1}Crear unha emisora}{122}{subsection.Alph3.4.1}
-\contentsline {subsection}{\numberline {C.4.2}Xestionar unha emisora}{122}{subsection.Alph3.4.2}
-\contentsline {subsubsection}{\numberline {C.4.2.1}Editar perfil}{122}{subsubsection.Alph3.4.2.1}
-\contentsline {subsubsection}{\numberline {C.4.2.2}Xestionar emisi\IeC {\'o}n}{122}{subsubsection.Alph3.4.2.2}
-\contentsline {subsubsection}{\numberline {C.4.2.3}Xestionar administradores}{125}{subsubsection.Alph3.4.2.3}
-\contentsline {subsubsection}{\numberline {C.4.2.4}Borrar emisora}{126}{subsubsection.Alph3.4.2.4}
-\contentsline {subsection}{\numberline {C.4.3}Crear un programa}{126}{subsection.Alph3.4.3}
-\contentsline {subsection}{\numberline {C.4.4}Xestionar un programa}{128}{subsection.Alph3.4.4}
-\contentsline {subsubsection}{\numberline {C.4.4.1}Editar perfil}{128}{subsubsection.Alph3.4.4.1}
-\contentsline {subsubsection}{\numberline {C.4.4.2}Xestionar emisi\IeC {\'o}n}{128}{subsubsection.Alph3.4.4.2}
-\contentsline {subsubsection}{\numberline {C.4.4.3}Xestionar administradores}{129}{subsubsection.Alph3.4.4.3}
-\contentsline {subsubsection}{\numberline {C.4.4.4}Borrar programa}{130}{subsubsection.Alph3.4.4.4}
+\contentsline {section}{\numberline {8.3}Avaliaci\IeC {\'o}n de custos}{84}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Clasificaci\IeC {\'o}n de tarefas}{84}{subsection.8.3.1}
+\contentsline {section}{\numberline {8.4}Estudo de custos(vello)}{85}{section.8.4}
+\contentsline {section}{\numberline {8.5}Programaci\IeC {\'o}n das tarefas}{86}{section.8.5}
+\contentsline {chapter}{\numberline {9}Probas do sistema}{91}{chapter.9}
+\contentsline {section}{\numberline {9.1}Plan de probas}{92}{section.9.1}
+\contentsline {section}{\numberline {9.2}Probas de unidade}{92}{section.9.2}
+\contentsline {section}{\numberline {9.3}Probas de integraci\IeC {\'o}n}{97}{section.9.3}
+\contentsline {section}{\numberline {9.4}Probas de aceptaci\IeC {\'o}n}{100}{section.9.4}
+\contentsline {chapter}{\numberline {10}Conclusi\IeC {\'o}ns}{101}{chapter.10}
+\contentsline {section}{\numberline {10.1}Co\IeC {\~n}ecementos acadados}{103}{section.10.1}
+\contentsline {section}{\numberline {10.2}Traballo Futuro}{103}{section.10.2}
+\contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice: Dicionario de datos}{105}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{111}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{111}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Conclusi\IeC {\'o}n}{112}{section.Alph2.2}
+\contentsline {chapter}{\numberline {C}Ap\IeC {\'e}ndice: Manual de usuario}{113}{appendix.Alph3}
+\contentsline {section}{\numberline {C.1}Usuarios}{114}{section.Alph3.1}
+\contentsline {subsection}{\numberline {C.1.1}Crear}{114}{subsection.Alph3.1.1}
+\contentsline {subsection}{\numberline {C.1.2}Editar}{114}{subsection.Alph3.1.2}
+\contentsline {section}{\numberline {C.2}Acci\IeC {\'o}ns de ouvinte}{117}{section.Alph3.2}
+\contentsline {subsection}{\numberline {C.2.1}Escoitar e seguir unha emisora}{117}{subsection.Alph3.2.1}
+\contentsline {subsection}{\numberline {C.2.2}Subscribirse a un programa}{118}{subsection.Alph3.2.2}
+\contentsline {subsection}{\numberline {C.2.3}Acci\IeC {\'o}ns sobre os episodios}{118}{subsection.Alph3.2.3}
+\contentsline {subsection}{\numberline {C.2.4}Contidos favoritos}{122}{subsection.Alph3.2.4}
+\contentsline {section}{\numberline {C.3}Procura de contidos}{123}{section.Alph3.3}
+\contentsline {section}{\numberline {C.4}Acci\IeC {\'o}ns de produtor de contidos}{124}{section.Alph3.4}
+\contentsline {subsection}{\numberline {C.4.1}Crear unha emisora}{124}{subsection.Alph3.4.1}
+\contentsline {subsection}{\numberline {C.4.2}Xestionar unha emisora}{124}{subsection.Alph3.4.2}
+\contentsline {subsubsection}{\numberline {C.4.2.1}Editar perfil}{124}{subsubsection.Alph3.4.2.1}
+\contentsline {subsubsection}{\numberline {C.4.2.2}Xestionar emisi\IeC {\'o}n}{124}{subsubsection.Alph3.4.2.2}
+\contentsline {subsubsection}{\numberline {C.4.2.3}Xestionar administradores}{127}{subsubsection.Alph3.4.2.3}
+\contentsline {subsubsection}{\numberline {C.4.2.4}Borrar emisora}{128}{subsubsection.Alph3.4.2.4}
+\contentsline {subsection}{\numberline {C.4.3}Crear un programa}{128}{subsection.Alph3.4.3}
+\contentsline {subsection}{\numberline {C.4.4}Xestionar un programa}{130}{subsection.Alph3.4.4}
+\contentsline {subsubsection}{\numberline {C.4.4.1}Editar perfil}{130}{subsubsection.Alph3.4.4.1}
+\contentsline {subsubsection}{\numberline {C.4.4.2}Xestionar emisi\IeC {\'o}n}{130}{subsubsection.Alph3.4.4.2}
+\contentsline {subsubsection}{\numberline {C.4.4.3}Xestionar administradores}{131}{subsubsection.Alph3.4.4.3}
+\contentsline {subsubsection}{\numberline {C.4.4.4}Borrar programa}{132}{subsubsection.Alph3.4.4.4}
