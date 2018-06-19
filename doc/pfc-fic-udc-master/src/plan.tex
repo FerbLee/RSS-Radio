@@ -65,7 +65,7 @@ Novos obxectivos:
 
 \subsection{Iteración 2}
 
-Configurouse o entorno de django e as ferramentas de desenvolvemento. Creáronse as clases Program e Episode coas súas correspondentes táboas nunha base de datos controlada mediante PostgreSQL. Esas primeiras clases aínda non contiñan información das imaxes nin das etiquetas e os datos non extraíbles do RSS contiñan valores nulos. O sistema executábase sobre o servidor de desenvolvemento de Django, algo que se mantivo durante todo o proceso de desenvolvemento por comodidade e eficiencia. Creouse tamén un repositorio para o control de versións utilizando a plataforma GitHub (ver sección \ref{git})
+Configurouse o entorno de Django e as ferramentas de desenvolvemento. Utilizouse a \textbf{técnica TDD} (ver capítulo \ref{chp:metodoloxia} sobre a metodoloxía) as clases Program e Episode coas súas correspondentes táboas nunha base de datos controlada mediante \textbf{PostgreSQL}. Esas primeiras clases aínda non contiñan información das imaxes nin das etiquetas e os datos non extraíbles do RSS contiñan valores nulos. O sistema executábase sobre o \textbf{servidor de desenvolvemento} de Django, algo que se mantivo durante todo o proceso de desenvolvemento por comodidade e eficiencia. Creouse tamén un repositorio para o \textbf{control de versións} utilizando a plataforma GitHub (ver sección \ref{git})
 
 Conseguiuse a medias o obxectivo de servir unha interface web sinxela: Amosábanse os datos gardados, pero non servía para engadir novo contido aínda. Desprazouse ese obxectivo á seguinte iteración.
 
@@ -76,19 +76,19 @@ Conseguiuse a medias o obxectivo de servir unha interface web sinxela: Amosában
 	\label{fig:it2_episode}
 \end{figure}
 
-Os traballos de ampliación do código de lectura de RSS leváronse a cabo: Os programas e episodios recollían toda a información requirida no momento agás a información de imaxe e de etiqueta (tag). Os traballos neste código revelaron a necesidade de dispor de distintos tipos de lector dependendo da fonte da que o ficheiro RSS fose extraído. 
+Os traballos de ampliación do código de lectura de RSS leváronse a cabo: Os programas e episodios recollían toda a información requirida no momento agás á de imaxe e de etiqueta (tag). Os traballos neste código revelaron a necesidade de dispor de \textbf{distintos tipos de lector} dependendo da fonte da que o ficheiro RSS fose extraído. 
 
-Novos obxectivos:: 
+Cos obxectivos de instalación e configuración cumpridos, comezou a recompilación de historias de usuario: 
 
 \begin{itemize}
-	\item Engadir formularios á interface para crear novos programas desde ela.
-	\item Implementar novos tipos de lector de RSS.
-	\item Aplicar \say{plantillas} de estilos ao frontend. 
+	\item Engadir \textbf{formularios} á interface para crear novos programas desde ela.
+	\item Implementar \textbf{novos tipos de lector} de RSS.
+	\item Aplicar \say{plantillas} de \textbf{estilos} ao frontend. 
 \end{itemize}
 
 \subsection{Iteración 3}
 
-Creouse o formulario de envío do enlace RSS. Instalouse o soporte de Django para Bootstrap 4, podendo así usar eses modelos. Utilizándoos, creouse unha páxina de engadir programa co aspecto amosado na figura \ref{fig:it3_add_program}.
+Creouse o formulario de envío do enlace RSS. Instalouse o soporte de Django para \textbf{Bootstrap 4}, podendo así usar eses modelos. Utilizándoos, creouse unha páxina de engadir programa co aspecto amosado na figura \ref{fig:it3_add_program}.
 
 \begin{figure}[h]
 	\centering
@@ -97,20 +97,20 @@ Creouse o formulario de envío do enlace RSS. Instalouse o soporte de Django par
 	\label{fig:it3_add_program}
 \end{figure}
 
-Implementouse o soporte para os distintos formatos de ficheiro RSS: Ao principio da iteración só se podían engadir ficheiros extraídos de RadioCo. Ao final, os parsers para Ivoox e Podomatic quedaron tamén implementados. Pese a que os 3 funcionaban, a calidade do código non era a satisfactoria.
+Implementouse o soporte para os distintos formatos de ficheiro RSS: Ao principio da iteración só se podían engadir ficheiros extraidos de \textbf{RadioCo}. Ao final, os parsers para \textbf{Ivoox e Podomatic} quedaron tamén implementados. Pese a que os 3 funcionaban, a calidade do código non era a satisfactoria.
 
-Novos obxectivos:
+Novas historias de usuario:
 
 \begin{itemize}
-	\item Refactorización dos lectores de RSS.
-	\item Implementación das clases de imaxe e etiqueta.
-	\item Redefinir a estrutura das páxinas. 
+	\item \textbf{Refactorización} dos lectores de RSS.
+	\item Implementación das clases de \textbf{imaxe e etiqueta}.
+	\item Redefinir a \textbf{estrutura} das páxinas. 
 \end{itemize}
 
 
 \subsection{Iteración 4}
 
-Nesta iteración créase un módulo específico para as funcións de lectura de RSS. Aplícase un patrón estratexia para dar soporte a distintos parsers cunha interface única (máis detalles no capítulo \ref{chp:disenho} sobre o deseño). Para completar o proceso de inserción de programas e episodios, implementáronse as clases da imaxe e etiqueta (Image e Tag).
+Nesta iteración créase un \textbf{módulo específico} para as funcións de lectura de RSS. Aplícase un \textbf{patrón estratexia} para dar soporte a distintos parsers cunha interface única (máis detalles no capítulo \ref{chp:disenho} sobre o deseño). Para completar o proceso de inserción de programas e episodios, implementáronse as clases da imaxe e etiqueta (Image e Tag).
 
 \begin{figure}[h]
 	\centering
@@ -119,22 +119,22 @@ Nesta iteración créase un módulo específico para as funcións de lectura de 
 	\label{fig:it4_tag}
 \end{figure}
 
-No tocante á interface, introducíronse nesta iteración as follas de estilo con CSS-Grid, definindo un deseño que serviu coma base do que máis tarde sería o deseño definitivo.
+No tocante á interface, introducíronse nesta iteración as follas de estilo con \textbf{CSS-Grid}, definindo un deseño que serviu coma base do que máis tarde sería o deseño definitivo.
 
 Novos obxectivos:
 
 \begin{itemize}
-	\item Crear un proceso que corra no servidor para manter os programas actualizados.
-	\item Engadir usuarios ao sistema. 
+	\item Crear un proceso que corra no servidor para \textbf{manter os programas actualizados}.
+	\item Engadir \textbf{usuarios} ao sistema. 
 \end{itemize}
 
 \subsection{Iteración 5}
 
-Levouse a cabo a instalación de Celery e as súas dependencias para correr procesos sobre os seus fíos. Reutilizouse o código do módulo que contén os parsers de RSS. 
+Levouse a cabo a instalación de \textbf{Celery} e as súas dependencias para correr procesos sobre os seus fíos. Reutilizouse o código do módulo que contén os parsers de RSS. 
 
-No tocante aos usuarios, escribiuse unha primeira versión da autenticación e o rexistro, o cal deu pé a relacionar os usuarios cos seus programas engadidos. Porén, a clase usuario por defecto de Django non satisfacía as necesidades previstas.
+No tocante aos usuarios, escribiuse unha primeira versión da \textbf{autenticación} e o rexistro, o cal deu pé a relacionar os usuarios cos seus programas engadidos. Porén, a clase usuario por defecto de Django non satisfacía as necesidades previstas.
 
-Novos obxectivos:
+Novas historias de usuario:
 
 \begin{itemize}
 	\item Estender a clase Usuario.
@@ -144,11 +144,9 @@ Novos obxectivos:
 
 \subsection{Iteración 6}
 
-A partir desta iteración, as reunións pasan a ser semanais.
+Introduciuse unha \textbf{clase de apoio} para outorgarlle ao usuario de Django unha serie de atributos necesarios no sistema. Introduciuse a comprobación de autenticación naquelas vistas que o requirisen, por exemplo, engadir programa, como se ve nas figuras \ref{fig:it6_log} e \ref{fig:it6_anon}.
 
-Introduciuse unha clase de apoio para outorgarlle ao usuario de Django unha serie de atributos necesarios no sistema. Introduciuse a comprobación de autenticación naquelas vistas que o requirisen, por exemplo, engadir programa, como se ve nas figuras \ref{fig:it6_log} e \ref{fig:it6_anon}.
-
-Fíxose unha primeira implementación da vista de edición de usuario, pero sen soporte para o cambio de contrasinal. Quedaría para a iteración seguinte.
+Fíxose unha primeira implementación da vista de \textbf{edición de usuario}, pero sen soporte para o cambio de contrasinal. Quedaría para a iteración seguinte.
 
 \begin{figure}[h]
 	\centering
@@ -164,87 +162,90 @@ Fíxose unha primeira implementación da vista de edición de usuario, pero sen 
 	\label{fig:it6_anon}
 \end{figure}
 
-Novos obxectivos:
+Novas historias de usuario:
 \begin{itemize}
-	\item Completar páxina de edición de usuario.
-	\item Implementar clases para os votos e os comentarios dos episodios.
-	\item Implentar a clase de emisora e canle.
-	\item Crear deseño de interacción das páxinas.
+	\item Completar páxina de \textbf{edición de usuario}.
+	\item Implementar clases para os \textbf{votos e os comentarios} dos episodios.
+	\item Implentar a clase de \textbf{emisora e canle}.
+	\item Crear \textbf{deseño de interacción} das páxinas.
 \end{itemize}
 
 \subsection{Iteración 7}
 
-Debuxáronse uns deseños esquemáticos das distintas páxinas de interface web e definiuse a navegación entre elas. Este deseño de interface foi xa o definitivo. Valería, en diante, coma guía para confeccionar as distintas vistas. Poden verse algúns borradores no capítulo \ref{chp:disenho} sobre o deseño.
+Debuxáronse uns \textbf{deseños esquemáticos} das distintas páxinas de \textbf{interface web} e definiuse a navegación entre elas. Este deseño de interface foi xa o definitivo. Valería, en diante, coma guía para confeccionar as distintas vistas. Poden verse algúns borradores no capítulo \ref{chp:disenho} sobre o deseño.
 
-O resto de obxectivos foron cumpridos. Nesta iteración decidiu desbotarse a clase de Canle por ter unhas funcións moi limitadas e solaparse en gran parte con Emisora.
+O resto de obxectivos foron cumpridos. Nesta iteración decidiu \textbf{desbotarse a clase de Canle} por ter unhas funcións moi limitadas e solaparse en gran parte con Emisora.
 
-Novos obxectivos:
+Novas historias de usuario:
 \begin{itemize}
-	\item Dar soporte á internacionalización.
-	\item Crear vista para engadir novas emisoras.
+	\item Dar soporte á \textbf{internacionalización}.
+	\item Crear vista para engadir \textbf{novas emisoras}.
 \end{itemize}
 
 
 \subsection{Iteración 8}
 
-Engadiuse o soporte de Django para a internacionalización e fíxose unha primeira tradución da web a lingua galega. Non obstante, o seu funcionamento non era o axeitado. Dado que se estaba empregar moito tempo nesta tarefa sen acadar ningún resultado, decidiuse pospoñela.
+Engadiuse o soporte de Django para a internacionalización e fíxose unha primeira \textbf{tradución} da web a lingua galega. Non obstante, o seu \textbf{funcionamento non era o axeitado}. Dado que se estaba empregar moito tempo nesta tarefa sen acadar ningún resultado, decidiuse pospoñela.
 
-Co gallo de situar o selector de idioma, fíxose unha cabeceira para situar as ferramentas transversais ás vistas.
+Co gallo de situar o selector de idioma, fíxose unha \textbf{cabeceira} para situar as ferramentas transversais ás vistas.
 
 Integráronse a vista de engadir programa e a nova de crear emisora nunha única, chamada \say{engadir contido}. Debido ao bloqueo sufrido pola tarefa de internacionalización, sobrou tempo que se empregou en implementar a vista da páxina principal (index) e a vista de detalles de emisora (figura \ref{fig:station_detail_final}).
 
-Novos obxectivos:
-\begin{itemize}
-	\item Corrixir internacionalización (Posposto)
-	\item Crear edición de emisora e programa.
-	\item Implementar accións de ouvinte.
-	\item Completar vistas de detalle de emisora e programa
-\end{itemize}
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4,keepaspectratio=true]{./images/station_detail_final.png}
+	\includegraphics[scale=0.43,keepaspectratio=true]{./images/station_detail_final.png}
 	\caption{It8: Vista de detalles de emisora.}
 	\label{fig:station_detail_final}
 \end{figure}
 
+Novas historias de usuario:
+\begin{itemize}
+	\item Corrixir internacionalización (Posposto)
+	\item Crear \textbf{edición de emisora} e programa.
+	\item Implementar \textbf{accións de ouvinte}.
+	\item Completar \textbf{vistas de detalle} de emisora e programa
+\end{itemize}
+
+
 
 \subsection{Iteración 9}
 
-Actualizáronse as vistas de detalle de programa e episodio (ver figura \ref{fig:episode_detail_final}). Implementáronse as accións dos ouvintes: Votar os episodios (Positivo, negativo e desfacer voto), subscribirse, seguir emisora e engadir comentarios.
+Actualizáronse as vistas de detalle de programa e episodio (ver figura \ref{fig:episode_detail_final}). Implementáronse as accións dos ouvintes: \textbf{Votar os episodios} (Positivo, negativo e desfacer voto), subscribirse, seguir emisora e engadir comentarios.
 
-Ao afrontar a implementación das vistas de edición, discutiuse a cerca da relación entre os usuarios e os seu contido. Chegouse a conclusión de que sería necesaria a creación de roles de administración para programas e emisoras.
+Ao afrontar a implementación das vistas de edición, discutiuse a cerca da relación entre os usuarios e os seu contido. Chegouse a conclusión de que sería necesaria a creación de \textbf{roles de administración} para programas e emisoras.
 
 Descubríronse unha serie de erros na vista de engadir contidos que foron corrixidos. Non se realizou ningunha actividade no tocante á internacionalización.
 
-Novos obxectivos:
-\begin{itemize}
-	\item Corrixir internacionalización.
-	\item Crear roles de usuario.
-	\item Crear panel de edición e xestión de emisora e programa.
-	\item Implementar as funcións de procura de contidos.
-\end{itemize}
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5,keepaspectratio=true]{./images/episode_detail_final.png}
 	\caption{It9: Vista de detalles de episodio.}
 	\label{fig:episode_detail_final}
 \end{figure}
 
+Novas historias de usuario:
+\begin{itemize}
+	\item Corrixir \textbf{internacionalización}.
+	\item Crear \textbf{roles} de usuario.
+	\item Crear \textbf{panel de edición} e xestión de emisora e programa.
+	\item Implementar as funcións de \textbf{procura} de contidos.
+\end{itemize}
+
+
+
 
 \subsection{Iteración 10}
 
-Creáronse os roles de usuario e fíxose o panel de edición e xestión de programas e emisoras. A implementación da procura quedou posposta por falta de tempo.
+Creáronse os roles de usuario e fíxose o panel de edición e xestión de programas e emisoras (figura \ref{fig:xestionl_final}). A implementación da procura quedou posposta por falta de tempo.
 
 Coméntose a posibilidade de adaptar o estilo da páxina para os dispositivos móbiles.
 
-Novos obxectivos:
+Novas historias de usuario:
 \begin{itemize}
-	\item Comezar a redacción da documentación.
+	\item Comezar a redacción da \textbf{documentación}.
 	\item Corrixir internacionalización.
 	\item Implementar as funcións de procura de contidos.
-	\item Adaptar o estilo para dispositivos móbiles.
+	\item Adaptar o estilo para \textbf{dispositivos móbiles}.
 \end{itemize}
 
 \begin{figure}[h]
@@ -257,17 +258,17 @@ Novos obxectivos:
 
 \subsection{Iteración 11}
 
+
+Todos os obxectivos restantes foron cumpridos, sendo o máis destacable a nova vista de \textbf{resultados de busca} (Figura \ref{fig:procura_final}). Implementáronse ferramentas de busca por texto e busca por tag.
+
+A partir de aquí, as sucesivas reunións consistiron en \textbf{revisións desta documentación}. Demos, polo tanto, o desenvolvemento por finalizado.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4,keepaspectratio=true]{./images/procura_final.png}
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/procura_final.png}
 	\caption{It11: Páxina de resultados de busca.}
 	\label{fig:procura_final}
 \end{figure}
-
-Todos os obxectivos restantes foron cumpridos, sendo o máis destacable a nova vista de resultados de busca (Figura \ref{fig:procura_final}). Implementáronse ferramentas de busca por texto e busca por tag.
-
-A partir de aquí, as sucesivas reunións consistiron en revisións desta documentación. Demos, polo tanto, o desenvolvemento por finalizado.
-
 
 
 \section{Estudo de custos}
