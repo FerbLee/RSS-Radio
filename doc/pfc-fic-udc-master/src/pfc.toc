@@ -90,11 +90,11 @@
 \contentsline {section}{\numberline {7.1}Estrutura xeral do c\IeC {\'o}digo fonte}{64}{section.7.1}
 \contentsline {section}{\numberline {7.2}Ficheiros de imaxe}{65}{section.7.2}
 \contentsline {section}{\numberline {7.3}A vista de engadir programa}{66}{section.7.3}
-\contentsline {section}{\numberline {7.4}A traduci\IeC {\'o}n}{67}{section.7.4}
+\contentsline {section}{\numberline {7.4}A Internacionalizaci\IeC {\'o}n}{67}{section.7.4}
 \contentsline {section}{\numberline {7.5}O contador de escoitas}{68}{section.7.5}
 \contentsline {section}{\numberline {7.6}O panel de xesti\IeC {\'o}n}{69}{section.7.6}
-\contentsline {section}{\numberline {7.7}Execuci\IeC {\'o}n dos procesos en Celery}{69}{section.7.7}
-\contentsline {section}{\numberline {7.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{69}{section.7.8}
+\contentsline {section}{\numberline {7.7}Execuci\IeC {\'o}n dos procesos en Celery}{70}{section.7.7}
+\contentsline {section}{\numberline {7.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{70}{section.7.8}
 \contentsline {chapter}{\numberline {8}Planificaci\IeC {\'o}n}{73}{chapter.8}
 \contentsline {section}{\numberline {8.1}Orixe do proxecto (REVISAR)}{74}{section.8.1}
 \contentsline {section}{\numberline {8.2}Iteraci\IeC {\'o}ns}{74}{section.8.2}

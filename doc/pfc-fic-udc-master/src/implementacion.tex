@@ -105,7 +105,7 @@ Se ningún parser da interpretado o RSS, o usuario será redirixido a unha páxi
 	\label{fig:add_program}
 \end{figure} 
 
-\section{A tradución}
+\section{A Internacionalización}
 
 A tradución implementouse mediante as ferramentas que Django prové: \textit{i18n} para a tradución de texto estático dos templates e \textit{ugettext} para o texto xerado no código Python. Ambas válense do paquete gettext de GNU. 
 
@@ -146,16 +146,18 @@ O panel de xestión de emisora e programa comparten gran parte do código, así 
 	
 \end{itemize}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45,keepaspectratio=true]{./images/impl-panel.png}
+	\caption{Panel de xestión dunha emisora. Vista de xestión da emisión. }
+	\label{fig:panel}
+\end{figure} 
+
 Para o caso da xestión de emisión atopámonos co problema de como darlle ao usuario unha ferramenta para seleccionar calquera programa existente na base de datos, pois pode ser unha lista moi extensa. Solucionouse isto aplicando unha ferramenta de selección de jQuery consistente nunha lista despregable que permite a busca por texto sobre a lista de opcións coa que sexa cargada (ver figura \ref{fig:panel}). 
 
 Unha solución semellante se aplicou na vista de administración, pois a lista de usuarios a seleccionar tamén pode ser moi longa.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.5,keepaspectratio=true]{./images/impl-panel.png}
-	\caption{Panel de xestión dunha emisora. Vista de xestión da emisión. }
-	\label{fig:panel}
-\end{figure} 
+
 
 
 \section{Execución dos procesos en Celery}
@@ -164,9 +166,9 @@ Para correr procesos de actualización sobre Celery, declaráronse os \say{endpo
 
 Eses endpoints serán utilizados polo worker de Celery para identificar os procesos e para poder configurar a súa periodicidade na sección de Celery do panel de administración de Django, como se ve na figura \ref{fig:celery}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45,keepaspectratio=true]{./images/celery.png}
+	\includegraphics[scale=0.43,keepaspectratio=true]{./images/celery.png}
 	\caption{Páxina de administración da aplicación, sección de procesos de Celery.}
 	\label{fig:celery}
 \end{figure} 
@@ -174,7 +176,7 @@ Eses endpoints serán utilizados polo worker de Celery para identificar os proce
 
 \section{Adaptabilidade a dispositivos móbiles}
 
-Utilizouse a regra de CSS \textbf{@media} para definir diferentes estilos dependendo do tamaño da pantalla na que se amose o portal web. O listado \ref{lst:responsive} amosa o código para que un CSS-grid de 4 columnas pase a ser de 2 se a pantalla do dispositivo ten menos de 700 píxeles de ancho. 
+Utilizouse a regra de CSS \textbf{@media} para definir diferentes estilos dependendo do tamaño da pantalla na que se amose o portal web. O listado \ref{lst:responsive} amosa o código para que un CSS-Grid de 4 columnas pase a ser de 2 se a pantalla do dispositivo ten menos de 700 píxeles de ancho. Pódense comparar os estilos do exemplo citado vendo as figuras \ref{fig:responsive1} e \ref{fig:responsive2}. 
 
 \begin{lstlisting}[caption=Extracto da folla de estilos de index.html, label=lst:responsive]
 @media only screen and (min-width: 700px) {
@@ -205,3 +207,6 @@ Utilizouse a regra de CSS \textbf{@media} para definir diferentes estilos depend
 	}
 }
 \end{lstlisting}
+
+
+
