@@ -24,69 +24,71 @@
 \contentsline {xchapter}{An\IeC {\'a}lise}{39}{chapter.5}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Dese\IeC {\~n}o}{45}{chapter.6}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces \IeC {\'A}rbore de m\IeC {\'o}dulos do aplicativo web.\relax }}{46}{figure.caption.18}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces \IeC {\'A}rbore de m\IeC {\'o}dulos da aplicaci\IeC {\'o}n web.\relax }}{46}{figure.caption.18}
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama Entidade-Relaci\IeC {\'o}n da Base de Datos.\relax }}{48}{figure.caption.19}
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Diagrama de clases da capa modelo.\relax }}{49}{figure.caption.20}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Esquema do funcionamento das vistas.\relax }}{52}{figure.caption.21}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Patr\IeC {\'o}n Estratexia utilizado para o procesamento de RSS.\relax }}{53}{figure.caption.22}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Esquema dun elemento da cuadr\IeC {\'\i }cula.\relax }}{54}{figure.caption.23}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Portada.\relax }}{55}{figure.caption.24}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Detalles de programa.\relax }}{57}{figure.caption.25}
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Xesti\IeC {\'o}n de emisi\IeC {\'o}n.\relax }}{58}{figure.caption.26}
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Mapa de navegaci\IeC {\'o}n entre as distintas p\IeC {\'a}xinas.\relax }}{59}{figure.caption.27}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Mapa de navegaci\IeC {\'o}n entre as distintas p\IeC {\'a}xinas.\relax }}{51}{figure.caption.21}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Esquema do funcionamento das vistas.\relax }}{53}{figure.caption.22}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Patr\IeC {\'o}n Estratexia utilizado para o procesamento de RSS.\relax }}{54}{figure.caption.23}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Esquema dun elemento da cuadr\IeC {\'\i }cula.\relax }}{55}{figure.caption.24}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Portada.\relax }}{56}{figure.caption.25}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Dese\IeC {\~n}o final da portada.\relax }}{57}{figure.caption.26}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Dese\IeC {\~n}o da portada para dispositivos m\IeC {\'o}biles. \IeC {\'A} esquerda, a parte superior, \IeC {\'a} dereita, a parte inferior.\relax }}{57}{figure.caption.27}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Detalles de programa.\relax }}{59}{figure.caption.28}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Extracto do borrador do dese\IeC {\~n}o da interface. Xesti\IeC {\'o}n de emisi\IeC {\'o}n.\relax }}{60}{figure.caption.29}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementaci\IeC {\'o}n}{61}{chapter.7}
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Estrutura do c\IeC {\'o}digo fonte do proxecto.\relax }}{62}{figure.caption.28}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Formulario de engadir programa.\relax }}{65}{figure.caption.29}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Fragmento do ficheiro .po para a traduci\IeC {\'o}n ao Galego.\relax }}{66}{figure.caption.30}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Panel de xesti\IeC {\'o}n dunha emisora. Vista de xesti\IeC {\'o}n da emisi\IeC {\'o}n. \relax }}{67}{figure.caption.31}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces P\IeC {\'a}xina de administraci\IeC {\'o}n da aplicaci\IeC {\'o}n, secci\IeC {\'o}n de procesos de Celery.\relax }}{68}{figure.caption.32}
+\contentsline {xchapter}{Implementaci\IeC {\'o}n}{63}{chapter.7}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Estrutura do c\IeC {\'o}digo fonte do proxecto.\relax }}{64}{figure.caption.30}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Formulario de engadir programa.\relax }}{67}{figure.caption.31}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Fragmento do ficheiro .po para a traduci\IeC {\'o}n ao Galego.\relax }}{68}{figure.caption.32}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Panel de xesti\IeC {\'o}n dunha emisora. Vista de xesti\IeC {\'o}n da emisi\IeC {\'o}n. \relax }}{69}{figure.caption.33}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces P\IeC {\'a}xina de administraci\IeC {\'o}n da aplicaci\IeC {\'o}n, secci\IeC {\'o}n de procesos de Celery.\relax }}{70}{figure.caption.34}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Planificaci\IeC {\'o}n}{71}{chapter.8}
-\contentsline {figure}{\numberline {8.1}{\ignorespaces It1: Diagrama de clases do primeiro borrador de dese\IeC {\~n}o.\relax }}{73}{figure.caption.33}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces It2: Interface web. P\IeC {\'a}xina dun episodio.\relax }}{75}{figure.caption.34}
-\contentsline {figure}{\numberline {8.3}{\ignorespaces It3: Interface web. P\IeC {\'a}xina de engadir programa.\relax }}{75}{figure.caption.35}
-\contentsline {figure}{\numberline {8.4}{\ignorespaces It4: Resultado de consulta \IeC {\'a} base de datos relacionando programas cos seus tags.\relax }}{76}{figure.caption.36}
-\contentsline {figure}{\numberline {8.5}{\ignorespaces It6: index.html para usuario identificado.\relax }}{77}{figure.caption.37}
-\contentsline {figure}{\numberline {8.6}{\ignorespaces It6: index.html para usuario an\IeC {\'o}nimo.\relax }}{78}{figure.caption.38}
-\contentsline {figure}{\numberline {8.7}{\ignorespaces It8: Vista de detalles de emisora.\relax }}{79}{figure.caption.39}
-\contentsline {figure}{\numberline {8.8}{\ignorespaces It9: Vista de detalles de episodio.\relax }}{80}{figure.caption.40}
-\contentsline {figure}{\numberline {8.9}{\ignorespaces It10: Panel de xesti\IeC {\'o}n de programa.\relax }}{81}{figure.caption.41}
-\contentsline {figure}{\numberline {8.10}{\ignorespaces It11: P\IeC {\'a}xina de resultados de busca.\relax }}{82}{figure.caption.42}
-\contentsline {figure}{\numberline {8.11}{\ignorespaces Diagrama de Gantt: Novembro 2017 - Decembro.\relax }}{83}{figure.caption.44}
-\contentsline {figure}{\numberline {8.12}{\ignorespaces Diagrama de Gantt: Decembro 2017 - Xaneiro 2018.\relax }}{83}{figure.caption.45}
-\contentsline {figure}{\numberline {8.13}{\ignorespaces Diagrama de Gantt: Xaneiro 2018 - Marzo 2018. \relax }}{84}{figure.caption.46}
-\contentsline {figure}{\numberline {8.14}{\ignorespaces Diagrama de Gantt: Marzo 2018 - Maio 2018. \relax }}{85}{figure.caption.47}
-\contentsline {figure}{\numberline {8.15}{\ignorespaces Diagrama de Gantt: Maio 2018 - Xu\IeC {\~n}o 2018. \relax }}{86}{figure.caption.48}
+\contentsline {xchapter}{Planificaci\IeC {\'o}n}{73}{chapter.8}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces It1: Diagrama de clases do primeiro borrador de dese\IeC {\~n}o.\relax }}{75}{figure.caption.35}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces It2: Interface web. P\IeC {\'a}xina dun episodio.\relax }}{77}{figure.caption.36}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces It3: Interface web. P\IeC {\'a}xina de engadir programa.\relax }}{77}{figure.caption.37}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces It4: Resultado de consulta \IeC {\'a} base de datos relacionando programas cos seus tags.\relax }}{78}{figure.caption.38}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces It6: index.html para usuario identificado.\relax }}{79}{figure.caption.39}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces It6: index.html para usuario an\IeC {\'o}nimo.\relax }}{80}{figure.caption.40}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces It8: Vista de detalles de emisora.\relax }}{81}{figure.caption.41}
+\contentsline {figure}{\numberline {8.8}{\ignorespaces It9: Vista de detalles de episodio.\relax }}{82}{figure.caption.42}
+\contentsline {figure}{\numberline {8.9}{\ignorespaces It10: Panel de xesti\IeC {\'o}n de programa.\relax }}{83}{figure.caption.43}
+\contentsline {figure}{\numberline {8.10}{\ignorespaces It11: P\IeC {\'a}xina de resultados de busca.\relax }}{84}{figure.caption.44}
+\contentsline {figure}{\numberline {8.11}{\ignorespaces Diagrama de Gantt: Novembro 2017 - Decembro.\relax }}{85}{figure.caption.46}
+\contentsline {figure}{\numberline {8.12}{\ignorespaces Diagrama de Gantt: Decembro 2017 - Xaneiro 2018.\relax }}{85}{figure.caption.47}
+\contentsline {figure}{\numberline {8.13}{\ignorespaces Diagrama de Gantt: Xaneiro 2018 - Marzo 2018. \relax }}{86}{figure.caption.48}
+\contentsline {figure}{\numberline {8.14}{\ignorespaces Diagrama de Gantt: Marzo 2018 - Maio 2018. \relax }}{87}{figure.caption.49}
+\contentsline {figure}{\numberline {8.15}{\ignorespaces Diagrama de Gantt: Maio 2018 - Xu\IeC {\~n}o 2018. \relax }}{88}{figure.caption.50}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Probas do sistema}{87}{chapter.9}
+\contentsline {xchapter}{Probas do sistema}{89}{chapter.9}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusi\IeC {\'o}ns}{97}{chapter.10}
+\contentsline {xchapter}{Conclusi\IeC {\'o}ns}{99}{chapter.10}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Ap\IeC {\'e}ndice: Dicionario de datos}{101}{appendix.Alph1}
+\contentsline {xchapter}{Ap\IeC {\'e}ndice: Dicionario de datos}{103}{appendix.Alph1}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Ap\IeC {\'e}ndice: Licenza}{107}{appendix.Alph2}
+\contentsline {xchapter}{Ap\IeC {\'e}ndice: Licenza}{109}{appendix.Alph2}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Ap\IeC {\'e}ndice: Manual de usuario}{109}{appendix.Alph3}
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Portada da web para usuario an\IeC {\'o}nimo\relax }}{109}{figure.caption.49}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Rexistro de usuario.\relax }}{111}{figure.caption.50}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Detalles de usuario. Informaci\IeC {\'o}n do perfil.\relax }}{112}{figure.caption.51}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Editar usuario.\relax }}{113}{figure.caption.52}
-\contentsline {figure}{\numberline {C.5}{\ignorespaces Detalles de emisora.\relax }}{115}{figure.caption.53}
-\contentsline {figure}{\numberline {C.6}{\ignorespaces Detalles de programa.\relax }}{116}{figure.caption.54}
-\contentsline {figure}{\numberline {C.7}{\ignorespaces Detalles de episodio.\relax }}{117}{figure.caption.55}
-\contentsline {figure}{\numberline {C.8}{\ignorespaces Contidos favoritos na portada.\relax }}{118}{figure.caption.56}
-\contentsline {figure}{\numberline {C.9}{\ignorespaces Contidos favoritos na vista de perfil de usuario.\relax }}{118}{figure.caption.57}
-\contentsline {figure}{\numberline {C.10}{\ignorespaces P\IeC {\'a}xina de resultados de procura. Exemplo de busca pola palabra radio.\relax }}{119}{figure.caption.58}
-\contentsline {figure}{\numberline {C.11}{\ignorespaces Engadir emisora.\relax }}{121}{figure.caption.59}
-\contentsline {figure}{\numberline {C.12}{\ignorespaces Vista de detalles de emisora: Nova emisora.\relax }}{122}{figure.caption.60}
-\contentsline {figure}{\numberline {C.13}{\ignorespaces Panel de xesti\IeC {\'o}n de emisora: Editar perfil.\relax }}{122}{figure.caption.61}
-\contentsline {figure}{\numberline {C.14}{\ignorespaces Panel de xesti\IeC {\'o}n de emisora: Xestionar emisi\IeC {\'o}n.\relax }}{123}{figure.caption.62}
-\contentsline {figure}{\numberline {C.15}{\ignorespaces Panel de xesti\IeC {\'o}n de emisora: Xestionar administradores.\relax }}{124}{figure.caption.63}
-\contentsline {figure}{\numberline {C.16}{\ignorespaces Panel de xesti\IeC {\'o}n de emisora: Borrar emisora.\relax }}{124}{figure.caption.64}
-\contentsline {figure}{\numberline {C.17}{\ignorespaces Engadir programa.\relax }}{125}{figure.caption.65}
-\contentsline {figure}{\numberline {C.18}{\ignorespaces Vista de detalles de program: Novo programa.\relax }}{125}{figure.caption.66}
-\contentsline {figure}{\numberline {C.19}{\ignorespaces Panel de xesti\IeC {\'o}n de programa: Editar perfil.\relax }}{126}{figure.caption.67}
-\contentsline {figure}{\numberline {C.20}{\ignorespaces Panel de xesti\IeC {\'o}n de programa: Xestionar emisi\IeC {\'o}n.\relax }}{127}{figure.caption.68}
-\contentsline {figure}{\numberline {C.21}{\ignorespaces Panel de xesti\IeC {\'o}n de programa: Xestionar administradores.\relax }}{127}{figure.caption.69}
-\contentsline {figure}{\numberline {C.22}{\ignorespaces Panel de xesti\IeC {\'o}n de programa: Borrar programa.\relax }}{128}{figure.caption.70}
+\contentsline {xchapter}{Ap\IeC {\'e}ndice: Manual de usuario}{111}{appendix.Alph3}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Portada da web para usuario an\IeC {\'o}nimo\relax }}{111}{figure.caption.51}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Rexistro de usuario.\relax }}{113}{figure.caption.52}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Detalles de usuario. Informaci\IeC {\'o}n do perfil.\relax }}{114}{figure.caption.53}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Editar usuario.\relax }}{115}{figure.caption.54}
+\contentsline {figure}{\numberline {C.5}{\ignorespaces Detalles de emisora.\relax }}{117}{figure.caption.55}
+\contentsline {figure}{\numberline {C.6}{\ignorespaces Detalles de programa.\relax }}{118}{figure.caption.56}
+\contentsline {figure}{\numberline {C.7}{\ignorespaces Detalles de episodio.\relax }}{119}{figure.caption.57}
+\contentsline {figure}{\numberline {C.8}{\ignorespaces Contidos favoritos na portada.\relax }}{120}{figure.caption.58}
+\contentsline {figure}{\numberline {C.9}{\ignorespaces Contidos favoritos na vista de perfil de usuario.\relax }}{120}{figure.caption.59}
+\contentsline {figure}{\numberline {C.10}{\ignorespaces P\IeC {\'a}xina de resultados de procura. Exemplo de busca pola palabra radio.\relax }}{121}{figure.caption.60}
+\contentsline {figure}{\numberline {C.11}{\ignorespaces Engadir emisora.\relax }}{123}{figure.caption.61}
+\contentsline {figure}{\numberline {C.12}{\ignorespaces Vista de detalles de emisora: Nova emisora.\relax }}{124}{figure.caption.62}
+\contentsline {figure}{\numberline {C.13}{\ignorespaces Panel de xesti\IeC {\'o}n de emisora: Editar perfil.\relax }}{124}{figure.caption.63}
+\contentsline {figure}{\numberline {C.14}{\ignorespaces Panel de xesti\IeC {\'o}n de emisora: Xestionar emisi\IeC {\'o}n.\relax }}{125}{figure.caption.64}
+\contentsline {figure}{\numberline {C.15}{\ignorespaces Panel de xesti\IeC {\'o}n de emisora: Xestionar administradores.\relax }}{126}{figure.caption.65}
+\contentsline {figure}{\numberline {C.16}{\ignorespaces Panel de xesti\IeC {\'o}n de emisora: Borrar emisora.\relax }}{126}{figure.caption.66}
+\contentsline {figure}{\numberline {C.17}{\ignorespaces Engadir programa.\relax }}{127}{figure.caption.67}
+\contentsline {figure}{\numberline {C.18}{\ignorespaces Vista de detalles de program: Novo programa.\relax }}{127}{figure.caption.68}
+\contentsline {figure}{\numberline {C.19}{\ignorespaces Panel de xesti\IeC {\'o}n de programa: Editar perfil.\relax }}{128}{figure.caption.69}
+\contentsline {figure}{\numberline {C.20}{\ignorespaces Panel de xesti\IeC {\'o}n de programa: Xestionar emisi\IeC {\'o}n.\relax }}{129}{figure.caption.70}
+\contentsline {figure}{\numberline {C.21}{\ignorespaces Panel de xesti\IeC {\'o}n de programa: Xestionar administradores.\relax }}{129}{figure.caption.71}
+\contentsline {figure}{\numberline {C.22}{\ignorespaces Panel de xesti\IeC {\'o}n de programa: Borrar programa.\relax }}{130}{figure.caption.72}
