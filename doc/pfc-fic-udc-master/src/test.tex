@@ -5,15 +5,24 @@
 \minitoc
 \newpage
 
-Neste capítulo explicarase o proceso de probas ao que se someteu o sistema desenvolvido. Distinguimos entre probas de unidade e probas de integración.
+Neste capítulo explicarase o proceso de probas ao que se someteu o sistema desenvolvido. 
+
+\section{Plan de probas}
+
+Durante as primeiras fases do desenvolvemento utilizouse a técnica \textbf{TDD} (ver capítulo \ref{chp:metodoloxia} sobre metodoloxía) polo que se comezou realizando \textbf{probas de unidade automatizadas} para as clases do modelo de datos e as do módulo rss\_link\_parsers.py.
+
+As \textbf{probas de integración} comezaron á vez que o desenvolvemento das funcións e clases de vista do módulo views.py. Son tamén tests de unidade pero utilizando un simulador de peticións GET e POST.
+
+Finalmente, realizouse un conxunto de \textbf{tests de aceptación} de xeito manual. Utilizáronse para validar o correcto funcionamento da \textbf{interface}.
+
 
 \section{Probas de unidade}
 
-Son aquelas que verifican o correcto funcionamento individual das compoñentes. Para realizar este tipo de probas, cómpre definir un entorno independente para cada unha de xeito que os resultados das anteriores non inflúan nas posteriores. Coma consecuencia da utilización da metodoloxía TDD (ver capítulo \ref{chp:metodoloxia}) os casos de proba definidos estarán automatizados. Isto fai posible executalos cando se fagan cambios no código coa fin de detectar a aparición de efectos non desexados. O código correspondente pode atoparse no ficheiro \say{tests.py} incluido no proxecto (ver figura \ref{fig:project_tree})
+Son aquelas que verifican o \textbf{correcto funcionamento individual das compoñentes}. Para realizar este tipo de probas, cómpre definir un entorno independente para cada unha de xeito que os resultados das anteriores non inflúan nas posteriores. Os casos de proba están automatizados. Isto fai posible executalos cando se fagan cambios no código coa fin de detectar a aparición de efectos non desexados. O código correspondente pode atoparse no ficheiro \textbf{tests.py} incluído no proxecto (ver figura \ref{fig:project_tree})
 
-Utilizouse a biblioteca \say{django.test} de Django, a cal, mediante o uso do paquete \say{unittest} estándar de Python, permite a escritura das probas de unidade. Defínense, para isto, conxuntos de casos de proba en forma de clase que ha ser herdeira da clase TestCase, incluída na biblioteca. Confecciónanse, a continuación, as probas en forma de métodos cuxo nome ha levar o prefixo "test".
+Utilizouse a biblioteca \textit{django.test} de Django, a cal, mediante o uso do paquete \textit{unittest} estándar de Python, permite a escritura das probas de unidade. Defínense, para isto, conxuntos de casos de proba en forma de clase que ha ser herdeira da \textbf{clase TestCase}, incluída na biblioteca. Confecciónanse, a continuación, as probas en forma de métodos cuxo nome ha levar o prefixo "test".
 
-Para asegurar a independencia entre probas, Django creará unha base de datos temporal que será borrada automaticamente unha vez os tests finalicen, independentemente do seu éxito. Isto implica que cada instancia filla de TestCase teña que popular a base de datos coma paso previo á execución dos tests, podendo isto facerse en cada proba ou declarando un método setUp.
+Para asegurar a independencia entre probas, Django creará unha \textbf{base de datos temporal} que será borrada automaticamente unha vez os tests finalicen, independentemente do seu éxito. Isto implica que cada instancia filla de TestCase teña que popular a base de datos coma paso previo á execución dos tests, podendo isto facerse en cada proba ou declarando un \textbf{método setUp}.
 
 
 \begin{lstlisting}[language=Python, caption=Probas de unidade dos metodos de Program, label=lst:programtest]
@@ -78,7 +87,7 @@ class ProgramModelTests(TestCase):
 \end{lstlisting}
  
 
-O código amosado no exemplo \ref{lst:programtest} é o utilizado nas probas de unidade da clase Program. Primeiro, o método \textit{setUp} crea na base de datos temporal o programa \textit{p1}, 3 usuarios dos cales lle asigna 2 coma administradores e máis 2 tags que tamén lle asigna. Nótese que se utiliza un método de creación propio dun obxecto imaxe, iso é posible porque xa ten a súa propia proba de unidade executada anteriormente no mesmo ficheiro. O código xa probado pasa a considerarse seguro e pode ser utilizado nos tests seguintes.
+O código amosado no exemplo \ref{lst:programtest} é o utilizado nas probas de unidade da clase \textbf{Program}. Primeiro, o método \textit{setUp} crea na base de datos temporal o programa \textit{p1}, 3 usuarios dos cales lle asigna 2 coma administradores e máis 2 tags que tamén lle asigna. Nótese que se utiliza un método de creación propio dun obxecto imaxe, iso é posible porque xa ten a súa propia proba de unidade executada anteriormente no mesmo ficheiro. O código xa probado pasa a considerarse seguro e pode ser utilizado nos tests seguintes.
 
 O primeiro test comproba que o método \textit{check\_user\_is\_admin(user,[type])} de Program responda correctamente á pregunta de se o usuario dado é administrador dese programa e cos permisos especificados. O segundo comproba se o método de borrado borra tamén a imaxe asignada e fai decrecer o contador de uso dos tags. Probas semellantes se fixeron para as clases do módulo models.py que posúen métodos propios.
 
@@ -175,9 +184,9 @@ class ParserIvooxRSSLPTests(TestCase):
 		p2.image.delete()
 \end{lstlisting}   
 
-No exemplo \ref{lst:ivooxtest} atópase o código que valeu para probar o funcionamento dun dos intérpretes de RSS do módulo rss\_link\_parser.py (ver sección \ref{rss_parser_section}), concretamente o correspondente aos ficheiros co formato de Ivoox.  Tanto con este coma cos outros \say{parsers} probáronse as subrutinas auxiliares e máis os métodos \textit{parse\_program} e \textit{parse\_episode}. No amosado, inclúese tamén o test da función \textit{parse\_and\_save} herdada da superclase.
+No exemplo \ref{lst:ivooxtest} atópase o código que valeu para probar o funcionamento dun dos \textbf{intérpretes de RSS} do módulo rss\_link\_parser.py (ver sección \ref{rss_parser_section}), concretamente o correspondente aos ficheiros co formato de Ivoox.  Tanto con este coma cos outros \say{parsers} probáronse as subrutinas auxiliares e máis os métodos \textit{parse\_program} e \textit{parse\_episode}. No amosado, inclúese tamén o test da función \textit{parse\_and\_save} herdada da superclase.
 
-Para realizar as anteriores probas utilizáronse ficheiros RSS reais descargados a disco local. Dado que o obxectivo último desta clase é a creación de obxectos a partir da información do RSS, as probas enfócanse en comprobar se o gardado en base de datos coincide co esperado.
+Para realizar as anteriores probas utilizáronse \textbf{ficheiros RSS reais} descargados a disco local. Dado que o obxectivo último desta clase é a creación de obxectos a partir da información do RSS, as probas enfócanse en comprobar se o gardado en base de datos coincide co esperado.
 
 
 \begin{lstlisting}[language=Python, caption=Probas de unidade do proceso de actualización de popularidade, label=lst:popdaemon]
@@ -241,9 +250,9 @@ Ao comezar o test, compróbase se os valores de ámbolos dous atributos son os i
 
 \section{Probas de integración}
 
-Son aquelas que serven para verificar o traballo conxunto de distintas compoñentes. Estes casos de test, por regra xeral, tratan de probar as conexións entre compoñentes ignorando o funcionamento interno\cite{tests}.
+Son aquelas que serven para \textbf{verificar o traballo conxunto de distintas compoñentes}. Estes casos de test, por regra xeral, tratan de probar as conexións entre compoñentes ignorando o funcionamento interno\cite{tests}.
 
-No módulo views.py atópanse as funcións que reciben os datos entrantes e pasan as respostas ao cliente. Para probalas foi necesario o uso da clase Client, dispoñible na biblioteca de Django utilizada para os tests. Esta clase interactúa co sistema a modo de navegador web sinxelo permitindo simular operacións de GET e POST, ver a cadea redirección entre os distintos templates e comprobar que os datos presentes no contexto son os axeitados.
+No módulo views.py atópanse as funcións que reciben os datos entrantes e pasan as respostas ao cliente. Para probalas foi necesario o uso da \textbf{clase Client}, dispoñible na biblioteca de Django utilizada para os tests. Esta clase interactúa co sistema a modo de navegador web sinxelo permitindo simular operacións de GET e POST, ver a cadea redirección entre os distintos templates e comprobar que os datos presentes no contexto son os axeitados.
 
 \begin{lstlisting}[language=Python, caption=Fragmento das probas da vista index, label=lst:index]
 class IndexViewTests(TestCase):
@@ -309,7 +318,7 @@ class IndexViewTests(TestCase):
 \end{lstlisting}
 
 
-No exemplo \ref{lst:index} vénse algunhas probas realizadas para a vista de \say{index}, que se corresponde coa páxina principal do aplicativo. Créanse primeiro, na función de clase \textit{setUpTestData}, 12 programas e 20 emisoras co obxectivo de comprobar que o contexto está a pasar o número deles correcto, na orde correcta e cos datos axeitados a cerca da paxinación. Isto realízase no segundo test, o do método \textit{test\_program\_list}, só para o caso dos programas (as emisoras tamén se proban, pero incluílo semella redundante). O primeiro test, \textit{test\_view\_uses\_correct\_template}, comproba que se accede á vista index a través do template axeitado.
+No exemplo \ref{lst:index} vénse algunhas probas realizadas para a vista de \textit{index}, que se corresponde coa páxina principal da aplicación. Créanse primeiro, na función de clase \textit{setUpTestData}, 12 programas e 20 emisoras co obxectivo de comprobar que o contexto está a pasar o número deles correcto, na orde correcta e cos datos axeitados a cerca da paxinación. Isto realízase no segundo test, o do método \textit{test\_program\_list}, só para o caso dos programas (as emisoras tamén se proban, pero incluílo semella redundante). O primeiro test, \textit{test\_view\_uses\_correct\_template}, comproba que se accede á vista index a través do template axeitado.
 
 \begin{lstlisting}[language=Python, caption=Fragmento das probas da vista add\_content, label=lst:add_content]
 class AddContentViewTests(TestCase):
@@ -353,4 +362,7 @@ class AddContentViewTests(TestCase):
 
 Aquelas vistas que requiran que o usuario estea identificado tamén poden ser probadas, como se ve no exemplo \ref{lst:add_content}. O primeiro caso proba que o login funciona e que se utiliza o template correcto. O segundo, proba a inserción dunha nova emisora a través do formulario que se enviaría desde a interface web.
 
-O código puramente de \say{front-end} (Javascript, HTML...) foi probado de xeito manual e non automatizado.
+
+\section{Probas de aceptación}
+
+O código puramente de \textbf{frontend} (Javascript, HTML...) foi probado de xeito manual e non automatizado. Tamén se contou cun usuario alleo ao proxecto para realizar un pequeno conxunto de probas.

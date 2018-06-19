@@ -92,9 +92,9 @@
 \contentsline {section}{\numberline {7.3}A vista de engadir programa}{66}{section.7.3}
 \contentsline {section}{\numberline {7.4}A traduci\IeC {\'o}n}{67}{section.7.4}
 \contentsline {section}{\numberline {7.5}O contador de escoitas}{68}{section.7.5}
-\contentsline {section}{\numberline {7.6}O panel de xesti\IeC {\'o}n}{68}{section.7.6}
-\contentsline {section}{\numberline {7.7}Execuci\IeC {\'o}n dos procesos en Celery}{70}{section.7.7}
-\contentsline {section}{\numberline {7.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{70}{section.7.8}
+\contentsline {section}{\numberline {7.6}O panel de xesti\IeC {\'o}n}{69}{section.7.6}
+\contentsline {section}{\numberline {7.7}Execuci\IeC {\'o}n dos procesos en Celery}{69}{section.7.7}
+\contentsline {section}{\numberline {7.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{69}{section.7.8}
 \contentsline {chapter}{\numberline {8}Planificaci\IeC {\'o}n}{73}{chapter.8}
 \contentsline {section}{\numberline {8.1}Orixe do proxecto (REVISAR)}{74}{section.8.1}
 \contentsline {section}{\numberline {8.2}Iteraci\IeC {\'o}ns}{74}{section.8.2}
@@ -113,11 +113,13 @@
 \contentsline {section}{\numberline {8.3}Estudo de custos}{84}{section.8.3}
 \contentsline {section}{\numberline {8.4}Programaci\IeC {\'o}n das tarefas}{85}{section.8.4}
 \contentsline {chapter}{\numberline {9}Probas do sistema}{89}{chapter.9}
-\contentsline {section}{\numberline {9.1}Probas de unidade}{90}{section.9.1}
-\contentsline {section}{\numberline {9.2}Probas de integraci\IeC {\'o}n}{95}{section.9.2}
+\contentsline {section}{\numberline {9.1}Plan de probas}{90}{section.9.1}
+\contentsline {section}{\numberline {9.2}Probas de unidade}{90}{section.9.2}
+\contentsline {section}{\numberline {9.3}Probas de integraci\IeC {\'o}n}{95}{section.9.3}
+\contentsline {section}{\numberline {9.4}Probas de aceptaci\IeC {\'o}n}{98}{section.9.4}
 \contentsline {chapter}{\numberline {10}Conclusi\IeC {\'o}ns}{99}{chapter.10}
 \contentsline {section}{\numberline {10.1}Co\IeC {\~n}ecementos acadados}{101}{section.10.1}
-\contentsline {section}{\numberline {10.2}Futuros traballos}{101}{section.10.2}
+\contentsline {section}{\numberline {10.2}Traballo Futuro}{101}{section.10.2}
 \contentsline {chapter}{\numberline {A}Ap\IeC {\'e}ndice: Dicionario de datos}{103}{appendix.Alph1}
 \contentsline {chapter}{\numberline {B}Ap\IeC {\'e}ndice: Licenza}{109}{appendix.Alph2}
 \contentsline {section}{\numberline {B.1}Licenzas das dependencias do proxecto}{109}{section.Alph2.1}
