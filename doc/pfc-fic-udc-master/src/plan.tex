@@ -1,15 +1,15 @@
 \chapter[Planificación]{
   \label{chp:plan}
-  Planificación
+  Planificación e avaliación de custos
 }
 \minitoc
 \newpage
 
-Neste capítulo explicarase a planificación do traballo realizado e a avaliación de custes.  
+Neste capítulo explicarase a planificación do traballo realizado e a avaliación de custos. 
 
-\section{Orixe do proxecto (REVISAR)}
+\section{Concepción do proxecto}
 
- Definíronse uns requirimentos iniciais, máis centrados naquel entón na redifusión e a organización que na escoita. A seguinte lista é unha transcrición das notas tomadas durante ese encontro:
+Como xa se comentou na sección \ref{orixe}, o proxecto nace dun \textbf{encontro con membros de radios comunitarias}. Naquel mesmo momento obtivéronse unha serie de primitivas historias de usuario, máis centradas entón na redifusión e a organización que na escoita. A seguinte lista é unha \textbf{transcrición das notas tomadas} durante ese encontro:
 
 \begin{itemize}
 	\item Os usuarios dos sistema son as propias emisoras.
@@ -18,26 +18,30 @@ Neste capítulo explicarase a planificación do traballo realizado e a avaliaci�
 	\item As emisoras teñen que poder saber quen está a emitir os seus programas.
 \end{itemize}
 
+Cómpre clarificar que o listado anterior só se trata de impresións que, finalmente, inspiraron este traballo. En \textbf{modo algún se deben tomar coma obxectivos do proxecto}, pois estes non foron definidos até a primeira reunión ou iteración 0 (ver sección \ref{it0})
 
 \section{Iteracións}
 
-Como se explicou no capítulo \ref{chp:metodoloxia}, o desenvolvemento executouse de  de forma iterativa e incremental onde unha iteración son os obxectivos a cumprir entre dúas reunións co cliente. Ao ser isto un proxecto de final de carreira, contarase o tempo entre as sesións de revisión de progresos entre o director do proxecto e o alumno. Estas reunións tiveron unha periodicidade bisemanal na súa meirande parte, reducindo a duración dos ciclos nas derradeiras fases da implementación.
+Como se explicou no capítulo \ref{chp:metodoloxia} a cerca da metodoloxía, o desenvolvemento executouse de  de forma \textbf{iterativa e incremental}. Unha iteración consiste nun ciclo de desenvolvemento cuns obxectivos a cumprir (historias de usuario) e unha reunión co cliente onde se fai unha valoración dos progresos e se recollen novas historias de usuario.
+
+Ao ser isto un proxecto de final de carreira, contaranse coma reunións co cliente as sesións de \textbf{revisión de progresos} entre o director do proxecto e o alumno. Estas reunións tiveron unha periodicidade quincenal (aproximadamente, dependendo da dispoñibilidade)
 
 
 \subsection{Primeira reunión (Iteración 0)}
+\label{it0}
 
-Na primeira reunión estableceuse a lista de obxectivos xerais do proxecto repasados xa na sección \ref{obxectivos}. Estes supoñen unha aproximación ao problema máis ambiciosa que a idea orixinal de ter un simple directorio web compartido entre emisoras pois ten en conta as necesidades dos ouvintes e a propiedade dos programas por parte dos seus autores e non necesariamente da emisora, cousa bastante común no mundo da radio comunitaria. Foi neste momento cando se tomou a decisión de utilizar Django coma framework de desenvolvemento e PostgreSQL coma sistema de xestión de bases de datos.
+Na primeira reunión estableceuse a \textbf{lista de obxectivos xerais do proxecto} repasados xa no listado da sección \ref{obxectivos}. Estes supoñen unha aproximación ao problema máis ambiciosa que a idea orixinal de ter un simple directorio web compartido entre emisoras pois ten en conta as \textbf{necesidades dos ouvintes} e a propiedade dos programas por parte dos seus autores e non necesariamente da emisora, cousa bastante común no mundo da radio comunitaria. Foi neste momento cando se tomou a decisión de utilizar \textbf{Django} coma framework de desenvolvemento e \textbf{PostgreSQL} coma sistema de xestión de bases de datos.
 
 Os obxectivos de cara a primeira iteración foron:
 
 \begin{itemize}
-	\item Facer un primeiro borrador do deseño do modelo de datos.
-	\item Investigar a manipulación de ficheiros RSS utilizando Python. Desde o principio, a consulta dos ficheiros de RSS intuíuse coma o xeito de manter actualizados os programas mais neste momento aínda non se tomara unha decisión firme de como facelo.
+	\item Facer un primeiro borrador do deseño do \textbf{modelo de datos}.
+	\item Investigar a manipulación de \textbf{ficheiros RSS} utilizando Python. Desde o principio, a consulta dos ficheiros de RSS intuíuse coma o xeito de manter actualizados os programas mais neste momento aínda non se tomara unha decisión firme de como facelo.
 \end{itemize}
 
 \subsection{Iteración 1}
 
-Cumpríronse os obxectivos marcados, entregando un deseño preliminar do modelo de datos na data estimada (figura \ref{fig:classold}) 
+Cumpríronse os obxectivos marcados, entregando un \textbf{deseño preliminar do modelo de datos} na data estimada (figura \ref{fig:classold}) 
 
 \begin{figure}[h]
 	\centering
@@ -46,17 +50,17 @@ Cumpríronse os obxectivos marcados, entregando un deseño preliminar do modelo 
 	\label{fig:classold}
 \end{figure}
 
-Unha cousa a comentar neste primeiro modelo é a existencia dunha clase \say{canle} intermediaria entre a emisora e o programa que, como veremos, quedou finalmente desbotada. A idea era que os colectivos que realmente teñen unha emisión por onda e aqueles que publican podcasts de escoita baixo demanda terían necesidades distintas e debían diferenciarse, sempre sen bloquear a posibilidade de que unha radio emitise podcasts.
+Unha cousa a comentar neste primeiro modelo é a existencia dunha clase \textbf{\say{canle}} intermediaria entre a emisora e o programa que, como veremos, quedou finalmente desbotada. A idea era que os colectivos que realmente teñen unha emisión por onda e aqueles que publican podcasts de escoita baixo demanda terían necesidades distintas e debían diferenciarse, sempre sen bloquear a posibilidade de que unha radio emitise podcasts.
 
-En canto ao RSS, fixéronse os primeiros scripts de lectura. Ese primeiro código era capaz de descargar un ficheiro RSS e transformalo nun obxecto cos datos do programa que á súa vez contiña unha lista de obxectos cos datos dos episodios, demostrando que a consulta de RSS si era a forma axeitada de afrontar a inserción e actualización dos contidos.
+En canto ao RSS, fixéronse os primeiros \textbf{scripts de lectura}. Ese primeiro código era capaz de descargar un ficheiro RSS e transformalo nun obxecto cos datos do programa que á súa vez contiña unha lista de obxectos cos datos dos episodios, demostrando que a consulta de RSS si era a forma axeitada de afrontar a inserción e actualización dos contidos.
 
 Novos obxectivos:
 
 \begin{itemize}
-	\item Instalar a infraestrutura desenvolvemento: Instalación do entorno Django-PostgreSQL.
-	\item Implementación de Programa e Episodio.
-	\item Implementación dunha interface web básica.
-	\item Ampliar o código do script de lectura dos ficheiros RSS.
+	\item \textbf{Instalar a infraestrutura} desenvolvemento: Instalación do entorno Django-PostgreSQL.
+	\item Implementación de \textbf{Programa e Episodio}.
+	\item Implementación dunha \textbf{interface web básica}.
+	\item Ampliar o código do \textbf{script de lectura} dos ficheiros RSS.
 \end{itemize}
 
 \subsection{Iteración 2}

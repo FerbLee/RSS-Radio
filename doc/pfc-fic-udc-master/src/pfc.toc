@@ -96,20 +96,20 @@
 \contentsline {section}{\numberline {7.7}Execuci\IeC {\'o}n dos procesos en Celery}{70}{section.7.7}
 \contentsline {section}{\numberline {7.8}Adaptabilidade a dispositivos m\IeC {\'o}biles}{70}{section.7.8}
 \contentsline {chapter}{\numberline {8}Planificaci\IeC {\'o}n}{73}{chapter.8}
-\contentsline {section}{\numberline {8.1}Orixe do proxecto (REVISAR)}{74}{section.8.1}
+\contentsline {section}{\numberline {8.1}Concepci\IeC {\'o}n do proxecto}{74}{section.8.1}
 \contentsline {section}{\numberline {8.2}Iteraci\IeC {\'o}ns}{74}{section.8.2}
 \contentsline {subsection}{\numberline {8.2.1}Primeira reuni\IeC {\'o}n (Iteraci\IeC {\'o}n 0)}{74}{subsection.8.2.1}
 \contentsline {subsection}{\numberline {8.2.2}Iteraci\IeC {\'o}n 1}{75}{subsection.8.2.2}
 \contentsline {subsection}{\numberline {8.2.3}Iteraci\IeC {\'o}n 2}{76}{subsection.8.2.3}
 \contentsline {subsection}{\numberline {8.2.4}Iteraci\IeC {\'o}n 3}{77}{subsection.8.2.4}
 \contentsline {subsection}{\numberline {8.2.5}Iteraci\IeC {\'o}n 4}{78}{subsection.8.2.5}
-\contentsline {subsection}{\numberline {8.2.6}Iteraci\IeC {\'o}n 5}{78}{subsection.8.2.6}
+\contentsline {subsection}{\numberline {8.2.6}Iteraci\IeC {\'o}n 5}{79}{subsection.8.2.6}
 \contentsline {subsection}{\numberline {8.2.7}Iteraci\IeC {\'o}n 6}{79}{subsection.8.2.7}
 \contentsline {subsection}{\numberline {8.2.8}Iteraci\IeC {\'o}n 7}{80}{subsection.8.2.8}
-\contentsline {subsection}{\numberline {8.2.9}Iteraci\IeC {\'o}n 8}{80}{subsection.8.2.9}
+\contentsline {subsection}{\numberline {8.2.9}Iteraci\IeC {\'o}n 8}{81}{subsection.8.2.9}
 \contentsline {subsection}{\numberline {8.2.10}Iteraci\IeC {\'o}n 9}{81}{subsection.8.2.10}
 \contentsline {subsection}{\numberline {8.2.11}Iteraci\IeC {\'o}n 10}{82}{subsection.8.2.11}
-\contentsline {subsection}{\numberline {8.2.12}Iteraci\IeC {\'o}n 11}{84}{subsection.8.2.12}
+\contentsline {subsection}{\numberline {8.2.12}Iteraci\IeC {\'o}n 11}{83}{subsection.8.2.12}
 \contentsline {section}{\numberline {8.3}Estudo de custos}{84}{section.8.3}
 \contentsline {section}{\numberline {8.4}Programaci\IeC {\'o}n das tarefas}{85}{section.8.4}
 \contentsline {chapter}{\numberline {9}Probas do sistema}{89}{chapter.9}
