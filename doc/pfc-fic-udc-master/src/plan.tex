@@ -292,7 +292,7 @@ Na táboa \ref{tab:tipo} amósase o tempo empregado polo total das tarefas perte
 	\begin{tabular}{|p{8cm}|r|r|}
 		\hline
 		\rowcolor{blue!10}
-		Tipo de tarefa & Horas de traballo & Porcentaxe \\
+		Tipo de tarefa & Horas de traballo & Horas de traballo(\%) \\
 		\hline
 		Organización & 16 &  2.6\\
 		\hline
@@ -319,7 +319,7 @@ Na táboa \ref{tab:tipo} amósase o tempo empregado polo total das tarefas perte
 	\begin{tabular}{|p{8cm}|r|r|}
 		\hline
 		\rowcolor{blue!10}
-		Iteración & Horas de traballo & Custo(€)\\
+		Iteración & Horas de traballo & Horas de traballo(\%)\\
 		\hline
 		Primeira reunión & 2 &  0.3\\
 		\hline
@@ -436,15 +436,21 @@ Isto é así debido á utilización das metodoloxías áxiles. Como se explicou 
 
 A intención desta sección é facer unha \textbf{estimación do custo do proxecto}. Dado que este foi realizado por unha única persoa levando a cabo distintas tarefas en cada fase do proxecto, suporemos un custo por hora común para todos os tipos de tarefa vistos na sección anterior. Nun proxecto en equipo, sería posible que os distintos tipos de tarefas se levasen a cabo por persoal de distinta cualificación e salario, polo que o cálculo sería máis complexo.
 
-Para a estimación desta contía, suponse un \textbf{salario bruto anual de 30.000€} (trinta mil euros). O calendario laboral do ano 2018 en España consta de 244 días laborables. Un empregado acollido ao convenio colectivo de analista-programador conta con 23 días de vacacións anuais e unha xornada de 8 horas, polo tanto, o seu \textbf{salario por hora} calcúlase da seguinte forma:
+Segundo a legalidade vixente no momento da entrega desta memoria, o custo social para un traballador con contrato temporal, por ser dunha duración menor de un ano, incluíndo as continxencias comúns da empresa (23'60\%), o desemprego por contrato de duración determinada a tempo completo (6,70\%) o FOGASA (0,20\%) e a formación profesional (0,60\%), supón un 31,10\% de custos socias que debe abonar unha empresa sobre o salario bruto\cite{custo}.
 
-\[ \dfrac{SalarioAnual}{(DiasLaborables - DiasVacacions) HorasXornada} = \dfrac{30000}{(244 - 23) 8} = 16.97 euros/hora \]
+Para a estimación desta contía, suponse un \textbf{salario bruto anual de 30.000€} (trinta mil euros), polo tanto, seguindo o cálculo anterior, os custos sociais ascenderán a 9330€. 
+
+\[ CustoEmpresa = SalarioAnual + CustosSociais = 30000 + 9330 = 39330 euros \]
+
+ O calendario laboral do ano 2018 en España consta de 244 días laborables. Un empregado acollido ao convenio colectivo de analista-programador conta con 23 días de vacacións anuais e unha xornada de 8 horas, polo tanto, o \textbf{custo por hora} para a empresa calcúlase da seguinte forma:
+
+\[ \dfrac{CustoEmpresa}{(DiasLaborables - DiasVacacions) HorasXornada} = \dfrac{39330}{(244 - 23) 8} = 22.25 euros/hora \]
 
 Para a realización deste proxecto \textbf{non se adquiriu ningún hardware} específico nin se contrataron servizos de terceiros. As \textbf{ferramentas} utilizadas, expostas no capítulo \ref{chp:tecnologia} sobre a tecnoloxía utilizada, foron na súa totalidade \textbf{libres e gratuítas}, polo que non se fixo gasto algún en licenzas.
 
 Non se terán en conta os custos en \textbf{luz eléctrica}, conexión a Internet nin material de oficina (folios, bolígrafos...) empregado. Tampouco aqueles gastos derivados do uso de equipos informáticos propios.
 
-Tendo en conta todo o anterior e, baseándonos nos datos da táboa \ref{tab:tipo}, faise a \textbf{estimación de custo total deste proxecto} como se pode ver na táboa \ref{tab:custo_final}.
+Tendo en conta todo o anterior e, baseándonos nos datos da táboa \ref{tab:tipo}, faise a \textbf{estimación de custo total deste proxecto} que se pode ver na táboa \ref{tab:custo_final}.
 
 
 \begin{table}[H]
@@ -454,19 +460,19 @@ Tendo en conta todo o anterior e, baseándonos nos datos da táboa \ref{tab:tipo
 		\rowcolor{blue!10}
 		Tipo de tarefa & Custo(€)\\
 		\hline
-		Organización & 271.52\\
+		Organización & 356.00\\
 		\hline
-		Análise & 933.35\\
+		Análise & 1223.75\\
 		\hline
-		Deseño &  1544.27\\
+		Deseño &  2024.75\\
 		\hline
-		Implementación &  4598.87\\
+		Implementación &  6029.75\\
 		\hline
-		Probas &  695.77\\
+		Probas &  912.25\\
 		\hline
-		Documentación &  2257.01\\
+		Documentación &  2959.25\\
 		\hline
-		\textbf{Total} &  \textbf{10300.79}\\
+		\textbf{Total} &  \textbf{13505.75}\\
 		\hline
 	\end{tabular}
 	\caption{Custo total estimado do proxecto.}
