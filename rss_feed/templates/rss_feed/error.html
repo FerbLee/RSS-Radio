@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h2>{% trans "An error occurred. The program could not be added." %}</h2>
+<h3>{% trans "Please, check the link to the RSS file was correct." %}</h3>
+
+<a href="{% url 'rss_feed:index'%}"><b>{% trans "Accept" %}</b></a>
+
+{% endblock %}

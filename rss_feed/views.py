@@ -694,7 +694,7 @@ def add_content(request):
                     
             if new_program_added == None:
                 print('ERROR IN PARSING. PROGRAM NOT ADDED')
-                return HttpResponseNotFound()
+                return HttpResponseRedirect(reverse('rss_feed:error'))
             
             # Save RSS non related atbs
             new_program_added.website = form_rss.cleaned_data.get('website')
@@ -1280,7 +1280,10 @@ def deleted_content(request,**kwargs):
     
     return render(request, 'rss_feed/deleted.html')
     
+@login_required    
+def error(request,**kwargs):
     
+    return render(request, 'rss_feed/error.html')    
     
 
 class ManageProgramView(generic.DetailView):

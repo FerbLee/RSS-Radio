@@ -58,6 +58,7 @@ urlpatterns = [
     url(r'^vote-episode/(?P<pk>[0-9]+)/(?P<type>[\w-]+)$', views.vote_episode, name='vote_episode'),
     url(r'^delete-comment/(?P<epk>[0-9]+)/(?P<cpk>[0-9]+)/$', views.delete_comment, name='delete_comment'),
     url(r'^deleted/', views.deleted_content, name='deleted'),
+    url(r'^error/', views.error, name='error'),
     url(r'^search_results/$', views.search,name='search_results'),
     url(r'^download/$', views.download,name='download'),
     #url(r'^search/$', views.search,name='search'),

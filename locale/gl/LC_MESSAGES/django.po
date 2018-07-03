@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-17 22:52+0000\n"
+"POT-Creation-Date: 2018-07-03 16:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: rss_feed/forms.py:95
+#: rss_feed/forms.py:111
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only"
 msgstr ""
 "Campo requirido. Non pode ser maior de 150 caracteres. Aceptanse Letras, "
 "números e os símbolos @/./+/-/_"
 
-#: rss_feed/forms.py:96
+#: rss_feed/forms.py:112
 msgid ""
 "<ul><li>Your password cannot be too similar to your other personal "
 "information.</li><li>Your password must contain at least 8 characters.</"
@@ -36,198 +36,198 @@ msgstr ""
 "non pode ser un utilizado comunmente.</li><li>O teu password non pode ser "
 "completamente numérico</li></ul>"
 
-#: rss_feed/forms.py:97
+#: rss_feed/forms.py:113
 msgid "Enter the same password as before, for verification."
 msgstr "Introduza o mesmo password que antes, para a verificación."
 
-#: rss_feed/forms.py:99
+#: rss_feed/forms.py:115
 msgid "Required"
 msgstr "Campo requirido"
 
-#: rss_feed/forms.py:101 rss_feed/forms.py:166
+#: rss_feed/forms.py:117 rss_feed/forms.py:182
 msgid "Location"
 msgstr "Localización"
 
-#: rss_feed/forms.py:102 rss_feed/forms.py:119 rss_feed/forms.py:165
+#: rss_feed/forms.py:118 rss_feed/forms.py:135 rss_feed/forms.py:181
 msgid "Description"
 msgstr "Descrición"
 
-#: rss_feed/forms.py:105 rss_feed/forms.py:122
+#: rss_feed/forms.py:121 rss_feed/forms.py:138
 msgid "Avatar"
 msgstr "Avatar"
 
-#: rss_feed/forms.py:133
+#: rss_feed/forms.py:149
 msgid "Old password"
 msgstr "Antigo password"
 
-#: rss_feed/forms.py:134
+#: rss_feed/forms.py:150
 msgid "New password"
 msgstr "Novo password"
 
-#: rss_feed/forms.py:135
+#: rss_feed/forms.py:151
 msgid "New password confirmation"
 msgstr "Confirmar novo password"
 
-#: rss_feed/forms.py:149
+#: rss_feed/forms.py:165
 msgid "RSS Link"
 msgstr "Enlace ao RSS"
 
-#: rss_feed/forms.py:151
+#: rss_feed/forms.py:167
 msgid "Sharing mode"
 msgstr "Compartición"
 
-#: rss_feed/forms.py:152
+#: rss_feed/forms.py:168
 msgid "Enable episode comments"
 msgstr "Permitir comentarios"
 
-#: rss_feed/forms.py:153 rss_feed/forms.py:175
+#: rss_feed/forms.py:169 rss_feed/forms.py:191
 msgid "Website"
 msgstr "Sitio web"
 
-#: rss_feed/forms.py:162
+#: rss_feed/forms.py:178
 msgid "Name"
 msgstr "Nome"
 
-#: rss_feed/forms.py:167
+#: rss_feed/forms.py:183
 msgid "Profile Image"
 msgstr "Imaxe de Perfil"
 
-#: rss_feed/forms.py:168
+#: rss_feed/forms.py:184
 msgid "Logo"
 msgstr "Logo"
 
-#: rss_feed/forms.py:170
+#: rss_feed/forms.py:186
 msgid "Media"
 msgstr "Medio"
 
-#: rss_feed/forms.py:172
+#: rss_feed/forms.py:188
 msgid "Area"
 msgstr "Área"
 
-#: rss_feed/forms.py:173
+#: rss_feed/forms.py:189
 msgid "Frequency"
 msgstr "Frecuencia"
 
-#: rss_feed/forms.py:174
+#: rss_feed/forms.py:190
 msgid "Streaming Link"
 msgstr "Enlace ao streaming"
 
-#: rss_feed/forms.py:186
+#: rss_feed/forms.py:202
 msgid "Text"
 msgstr "Texto"
 
-#: rss_feed/forms.py:256 rss_feed/templates/rss_feed/manage_station.html:37
-#: rss_feed/views.py:893 rss_feed/views.py:896
+#: rss_feed/forms.py:272 rss_feed/templates/rss_feed/manage_station.html:37
+#: rss_feed/views.py:909 rss_feed/views.py:912
 msgid "Program"
 msgstr "Programa"
 
-#: rss_feed/forms.py:257
+#: rss_feed/forms.py:273
 msgid "Broadcast Schedule"
 msgstr "Horario de emisión"
 
-#: rss_feed/forms.py:283
+#: rss_feed/forms.py:299
 msgid "Administrator"
 msgstr "Administrador"
 
-#: rss_feed/forms.py:284 rss_feed/templates/rss_feed/admin_program.html:40
+#: rss_feed/forms.py:300 rss_feed/templates/rss_feed/admin_program.html:40
 #: rss_feed/templates/rss_feed/admin_station.html:40
 msgid "Permissions"
 msgstr "Permisos"
 
-#: rss_feed/forms.py:293 rss_feed/templates/base.html:53
+#: rss_feed/forms.py:309 rss_feed/templates/base.html:54
 msgid "Search"
 msgstr "Procura"
 
-#: rss_feed/models.py:24
+#: rss_feed/models.py:40
 msgid "Enable"
 msgstr "Permitir"
 
-#: rss_feed/models.py:25
+#: rss_feed/models.py:41
 msgid "Disable"
 msgstr "Deshabilitar"
 
-#: rss_feed/models.py:28
+#: rss_feed/models.py:44
 msgid "share free"
 msgstr "libre"
 
-#: rss_feed/models.py:29
+#: rss_feed/models.py:45
 msgid "ask first"
 msgstr "restringida"
 
-#: rss_feed/models.py:30
+#: rss_feed/models.py:46
 msgid "no share"
 msgstr "desactivada"
 
-#: rss_feed/models.py:34
+#: rss_feed/models.py:50
 msgid "like"
 msgstr "gústame"
 
-#: rss_feed/models.py:35
+#: rss_feed/models.py:51
 msgid "dislike"
 msgstr "Non me gusta"
 
-#: rss_feed/models.py:36
+#: rss_feed/models.py:52
 msgid "neutral"
 msgstr "neutral"
 
-#: rss_feed/models.py:39
+#: rss_feed/models.py:55
 msgid "Radio FM/AM"
 msgstr "Radio FM/AM"
 
-#: rss_feed/models.py:40
+#: rss_feed/models.py:56
 msgid "Radio Digital"
 msgstr "Radio Digital"
 
-#: rss_feed/models.py:41
+#: rss_feed/models.py:57
 msgid "TV Channel"
 msgstr "Canle de TV"
 
-#: rss_feed/models.py:42
+#: rss_feed/models.py:58
 msgid "Radio Internet"
 msgstr "Radio Internet"
 
-#: rss_feed/models.py:43
+#: rss_feed/models.py:59
 msgid "Podcasting Channel"
 msgstr "Canle de Podcasts"
 
-#: rss_feed/models.py:43
+#: rss_feed/models.py:59
 msgid "Others"
 msgstr "Outros"
 
-#: rss_feed/models.py:45
+#: rss_feed/models.py:61
 msgid "Owner"
 msgstr "Propietario"
 
-#: rss_feed/models.py:46
+#: rss_feed/models.py:62
 msgid "Admin"
 msgstr "Admin"
 
-#: rss_feed/templates/base.html:35
+#: rss_feed/templates/base.html:36
 msgid "Logged as"
 msgstr "Identificado coma"
 
-#: rss_feed/templates/base.html:38
+#: rss_feed/templates/base.html:39
 msgid "Log out"
 msgstr "Pechar sesión"
 
-#: rss_feed/templates/base.html:43
+#: rss_feed/templates/base.html:44
 msgid "Welcome, please"
 msgstr "Benvido, por favor"
 
-#: rss_feed/templates/base.html:43
+#: rss_feed/templates/base.html:44
 msgid "log in"
 msgstr "identifícate"
 
-#: rss_feed/templates/base.html:44
+#: rss_feed/templates/base.html:45
 msgid "or"
 msgstr "ou"
 
-#: rss_feed/templates/base.html:44
+#: rss_feed/templates/base.html:45
 #: rss_feed/templates/registration/login.html:40
 msgid "sign up"
 msgstr "rexístrate"
 
-#: rss_feed/templates/base.html:71
+#: rss_feed/templates/base.html:72
 msgid "Change"
 msgstr "Cambiar"
 
@@ -382,7 +382,7 @@ msgid "Select"
 msgstr "Seleccionar"
 
 #: rss_feed/templates/rss_feed/admin_program.html:40
-#: rss_feed/templates/rss_feed/admin_station.html:40 rss_feed/views.py:1129
+#: rss_feed/templates/rss_feed/admin_station.html:40 rss_feed/views.py:1145
 msgid "User"
 msgstr "Usuario"
 
@@ -435,7 +435,12 @@ msgstr ""
 msgid "Delete Station"
 msgstr "Eliminar Emisora"
 
+#: rss_feed/templates/rss_feed/deleted.html:5
+msgid "Your content was successfully deleted"
+msgstr "O contido foi eliminado satisfactoriamente"
+
 #: rss_feed/templates/rss_feed/deleted.html:7
+#: rss_feed/templates/rss_feed/error.html:8
 #: rss_feed/templates/rss_feed/predelete_program.html:19
 #: rss_feed/templates/rss_feed/predelete_station.html:19
 msgid "Accept"
@@ -698,7 +703,7 @@ msgstr "Área:"
 msgid "Frequency:"
 msgstr "Frecuencia:"
 
-#: rss_feed/templates/rss_feed/detail_station.html:49
+#: rss_feed/templates/rss_feed/detail_station.html:50
 msgid "Streaming:"
 msgstr "En directo:"
 
@@ -797,6 +802,14 @@ msgstr "Cambiar Password"
 #: rss_feed/templates/rss_feed/edit_user.html:37
 msgid "Cancel Password Change"
 msgstr "Cancelar cambio de Password"
+
+#: rss_feed/templates/rss_feed/error.html:5
+msgid "An error occurred. The program could not be added."
+msgstr "Ocorreu un erro. O programa non puido ser engadido."
+
+#: rss_feed/templates/rss_feed/error.html:6
+msgid "Please, check the link to the RSS file was correct."
+msgstr "Por favor, comproba que o enlace ao ficheiro RSS é correcto."
 
 #: rss_feed/templates/rss_feed/index.html:5
 msgid "Add New Content"
@@ -910,32 +923,32 @@ msgstr "Usuarios atopados:"
 msgid "No users"
 msgstr "Non se atoparon usuarios"
 
-#: rss_feed/views.py:893
+#: rss_feed/views.py:909
 msgid " needs approval to be broadcasted. A request was sent."
 msgstr ""
 " necesita da aprobación previa para ser emitido. Mandouse unha petición."
 
-#: rss_feed/views.py:896
+#: rss_feed/views.py:912
 msgid "was successfully added!"
 msgstr "foi engadido satisfactoriamente!"
 
-#: rss_feed/views.py:934
+#: rss_feed/views.py:950
 msgid "program was successfully removed."
 msgstr "foi eliminado satisfactoriamente."
 
-#: rss_feed/views.py:936
+#: rss_feed/views.py:952
 msgid "programs were successfully removed."
 msgstr "programas foron eliminados satisfactoriamente."
 
-#: rss_feed/views.py:951
+#: rss_feed/views.py:967
 msgid "program was successfully updated."
 msgstr "programa foi actualizado satisfactoriamente."
 
-#: rss_feed/views.py:953
+#: rss_feed/views.py:969
 msgid "programs were successfully updated."
 msgstr "programas foron actualizados satisfactoriamente."
 
-#: rss_feed/views.py:956 rss_feed/views.py:1349
+#: rss_feed/views.py:972 rss_feed/views.py:1368
 msgid ""
 "No program was selected. Please, check the program lines in order to commit "
 "the changes."
@@ -943,27 +956,27 @@ msgstr ""
 "Ningún programa foi seleccionado. Por favor, marque os selectores de "
 "programa para efectuar os cambios "
 
-#: rss_feed/views.py:1129
+#: rss_feed/views.py:1145
 msgid "was successfully added as"
 msgstr "foi engadido satisfactoriamente coma"
 
-#: rss_feed/views.py:1164
+#: rss_feed/views.py:1180
 msgid "admin was successfully removed."
 msgstr "admin foi eliminado satisfactoriamente."
 
-#: rss_feed/views.py:1166
+#: rss_feed/views.py:1182
 msgid "admin were successfully removed."
 msgstr "admins foron eliminados satisfactoriamente."
 
-#: rss_feed/views.py:1192
+#: rss_feed/views.py:1208
 msgid "admin was successfully updated."
 msgstr "admin foi actualizado satisfactoriamente."
 
-#: rss_feed/views.py:1194
+#: rss_feed/views.py:1210
 msgid "admin were successfully updated."
 msgstr "admin foi actualizado satisfactoriamente."
 
-#: rss_feed/views.py:1197
+#: rss_feed/views.py:1213
 msgid ""
 "No admin was selected. Please, check the admin lines in order to commit the "
 "changes."
@@ -971,11 +984,11 @@ msgstr ""
 "Ningún admin foi seleccionado. Por favor, marque os selectores de admin para "
 "efectuar os cambios"
 
-#: rss_feed/views.py:1345
+#: rss_feed/views.py:1364
 msgid "station was successfully removed."
 msgstr "emisora foi eliminada satisfactoriamente."
 
-#: rss_feed/views.py:1347
+#: rss_feed/views.py:1366
 msgid "stations were successfully removed."
 msgstr "emisoras foron eliminadas satisfactoriamente."
 
